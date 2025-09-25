@@ -15,14 +15,15 @@
     },
     {
       "id": "mod-02",
-      "title": "Módulo 2: Estrutura e Formatação",
+      "title": "Módulo 2: Estrutura e Formatação Essencial do Texto",
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-02/index.html" },
-        { "title": "Classes de Documento", "path": "/modules/modulo-02/aula-01.html" },
-        { "title": "Título, Autor e Seções", "path": "/modules/modulo-02/aula-02.html" },
-        { "title": "Navegação Automática", "path": "/modules/modulo-02/aula-03.html" },
-        { "title": "Formatação de Texto", "path": "/modules/modulo-02/aula-04.html" },
-        { "title": "Acentos e Símbolos", "path": "/modules/modulo-02/aula-05.html" }
+        { "title": "Classes e Configurações de Documento", "path": "/modules/modulo-02/aula-01.html" },
+        { "title": "Estrutura Hierárquica do Documento", "path": "/modules/modulo-02/aula-02.html" },
+        { "title": "Formatação e Estilos de Texto", "path": "/modules/modulo-02/aula-03.html" },
+        { "title": "Os Mapas do Documento - Sumário e Listas Automáticas", "path": "/modules/modulo-02/aula-04.html" },
+        { "title": "A Paleta do Tipógrafo - Estilos e Tamanhos de Fonte", "path": "/modules/modulo-02/aula-05.html" },
+        { "title": "Acentos e Caracteres Especiais - Escrevendo sem Medo", "path": "/modules/modulo-02/aula-06.html" }
       ]
     }
   ],
