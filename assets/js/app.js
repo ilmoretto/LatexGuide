@@ -209,8 +209,54 @@
     });
   }
 
+  function initCopyButtons(){
+    const copyButtons = $$('.copy-button');
+    copyButtons.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const codeBlock = btn.closest('.code-block');
+        const codeContent = codeBlock?.querySelector('pre code');
+        if (!codeContent) return;
+
+        const textToCopy = codeContent.textContent || '';
+        
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          
+          // Visual feedback
+          const originalText = btn.textContent;
+          btn.textContent = 'Copiado!';
+          btn.style.backgroundColor = '#10b981';
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = '#444';
+          }, 2000);
+        } catch (err) {
+          // Fallback para navegadores mais antigos
+          const textarea = document.createElement('textarea');
+          textarea.value = textToCopy;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          
+          // Visual feedback
+          const originalText = btn.textContent;
+          btn.textContent = 'Copiado!';
+          btn.style.backgroundColor = '#10b981';
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = '#444';
+          }, 2000);
+        }
+      });
+    });
+  }
+
   async function init(){
     initToggle();
+    initCopyButtons();
     try{
       const data = await loadData();
       buildSidebar(data);

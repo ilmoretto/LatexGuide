@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 1 — Aula 3: A Estrutura Mínima</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box, .activity-box { 
+      border-left: 4px solid #22d3ee; 
+      padding: 1.5rem; 
+      margin-bottom: 2rem; 
+      background-color: rgba(34, 211, 238, 0.1); 
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+    .code-container { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 1rem; 
+      align-items: start; 
+    }
+    .code-block { 
+      background-color: #282c34; 
+      color: #abb2bf; 
+      padding: 1.5rem; 
+      border-radius: 8px; 
+      font-family: 'Courier New', Courier, monospace; 
+      white-space: pre-wrap; 
+      position: relative; 
+    }
+    .code-block pre { 
+      margin: 0; 
+    }
+    .latex-preview { 
+      background-color: var(--panel); 
+      border: 1px solid var(--border); 
+      padding: 1.5rem; 
+      border-radius: 8px; 
+      font-family: 'Lora', serif;
+      color: var(--text);
+    }
+    .code-block .copy-button { 
+      position: absolute; 
+      top: 10px; 
+      right: 10px; 
+      background-color: #444; 
+      color: white; 
+      border: none; 
+      padding: 5px 10px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+    }
+    .explanation-list li { 
+      margin-bottom: 1rem; 
+    }
+    .explanation-list code { 
+      background-color: var(--panel); 
+      color: var(--accent); 
+      padding: 2px 5px; 
+      border-radius: 4px; 
+      font-family: 'Courier New', Courier, monospace; 
+    }
+    @media (max-width: 768px) {
+      .code-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 3: A Estrutura Mínima de um Documento</h1>
+        <p class="lead">Todo documento LaTeX, não importa se tem uma ou mil páginas, obedece a uma estrutura fundamental. Nesta aula, vamos analisar o código mínimo necessário para criar um documento e entender o papel de cada comando.</p>
+
+        <section id="embasamento-teorico">
+          <h2>1. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>Um arquivo <code>.tex</code> é dividido em duas partes lógicas: o <strong>Preâmbulo</strong> e o <strong>Corpo do Documento</strong>. O Preâmbulo é onde você define as configurações globais do documento: o tipo de documento, pacotes a serem usados, informações de título, etc. O Corpo é onde o conteúdo visível do documento (texto, figuras, tabelas) é de fato escrito.</p>
+          </div>
+        </section>
+
+        <section id="apresentacao-conteudo">
+          <h2>2. Apresentação do Conteúdo</h2>
+          <p>Analisaremos o código de um "Olá, Mundo!" em LaTeX, explicando linha por linha sua função.</p>
+        </section>
+
+        <section id="desenvolvimento">
+          <h2>3. Desenvolvimento: Anatomia do Código</h2>
+          <p>O código abaixo é o mais simples que podemos ter para gerar um documento com algum conteúdo.</p>
+
+          <div class="code-container">
+            <div>
+              <h4>Código LaTeX</h4>
+              <div class="code-block">
+                <button class="copy-button" aria-label="Copiar código">Copiar</button>
+                <pre><code>\documentclass{article}
+
+\begin{document}
+
+Olá, mundo! Este é o meu primeiro documento em LaTeX.
+
+\end{document}</code></pre>
+              </div>
+            </div>
+            <div>
+              <h4>Visualização do Resultado</h4>
+              <div class="latex-preview">
+                <p>Olá, mundo! Este é o meu primeiro documento em LaTeX.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem;">Desvendando cada comando:</h3>
+          <ul class="explanation-list">
+            <li>
+              <code>\documentclass{article}</code>
+              <p>Este é <strong>sempre o primeiro comando</strong> de qualquer documento LaTeX. Ele define a "classe" ou tipo de documento que estamos criando. A classe <code>article</code> é a mais comum, ideal para artigos, relatórios pequenos e outros textos curtos. Ela define formatações padrão para coisas como títulos, seções e tamanho da página. Outras classes importantes que veremos são <code>report</code> (para trabalhos mais longos, com capítulos) e <code>book</code>.</p>
+            </li>
+            <li>
+              <code>\begin{document}</code>
+              <p>Este comando marca o fim do preâmbulo e o <strong>início do corpo do documento</strong>. Todo o conteúdo que deve aparecer no PDF final precisa estar depois deste comando.</p>
+            </li>
+            <li>
+              <code>Olá, mundo! ...</code>
+              <p>Este é o conteúdo textual do nosso documento. O texto que você digita aqui é processado pelo LaTeX e inserido no PDF final, com formatação de parágrafo automática.</p>
+            </li>
+            <li>
+              <code>\end{document}</code>
+              <p>Este comando sinaliza o <strong>fim do documento</strong>. O LaTeX ignora completamente qualquer coisa que venha depois desta linha. É crucial que todo <code>\begin{document}</code> tenha um <code>\end{document}</code> correspondente.</p>
+            </li>
+          </ul>
+        </section>
+
+        <section id="atividade">
+          <h2>4. Atividade Prática</h2>
+          <div class="activity-box">
+            <p>Vamos praticar no projeto "CursoLaTeX-Modulo1" que você criou no Overleaf.</p>
+            <ol>
+              <li>Apague todo o código que veio no template e substitua pelo código mínimo que vimos nesta aula.</li>
+              <li>Altere a frase "Olá, mundo!..." por um parágrafo de 2 ou 3 frases sobre você.</li>
+              <li>Clique em "Recompile" e observe como o PDF é atualizado com seu texto.</li>
+              <li><strong>Experimente:</strong> O que acontece se você esquecer de colocar o <code>\end{document}</code> no final? (Dica: o Overleaf provavelmente mostrará um erro). Corrija o erro e recompile.</li>
+            </ol>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

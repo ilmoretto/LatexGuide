@@ -6,7 +6,10 @@
       "title": "Módulo 1: Fundamentos",
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-01/index.html" },
-        { "title": "Aula 1", "path": "/modules/modulo-01/aula-01.html" }
+        { "title": "Aula 1", "path": "/modules/modulo-01/aula-01.html" },
+        { "title": "Aula 2", "path": "/modules/modulo-01/aula-02.html" },
+        { "title": "Aula 3", "path": "/modules/modulo-01/aula-03.html" },
+        { "title": "Aula 4", "path": "/modules/modulo-01/aula-04.html" }
       ]
     },
     {

@@ -1,35 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 1 — Aula 1</title>
-
+  <title>Módulo 1 — Aula 1: A Filosofia do LaTeX</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #22d3ee;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(34, 211, 238, 0.1);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+
+    .code-block {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+
+    .code-block pre {
+      margin: 0;
+    }
+
+    .highlight {
+      color: #61afef;
+    }
+
+    .comment {
+      color: #5c6370;
+      font-style: italic;
+    }
+  </style>
 </head>
+
 <body>
   <header class="topbar">
-    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
     <div class="brand">
       <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
       <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
     </div>
   </header>
-
   <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
-
   <div class="layout">
     <main class="content">
-      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+            <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 1 (placeholder)</h1>
-        <p>Estrutura de aula. Adicione seu conteúdo aqui.</p>
+        <h1>Aula 1: A Filosofia do LaTeX — Por que Pensar Diferente?</h1>
+        <p class="lead">Antes de escrevermos nossa primeira linha de código, é fundamental entender a ideia por trás do
+          LaTeX. Por que ele funciona de uma maneira tão diferente de programas como Microsoft Word ou Google Docs?
+          Compreender essa filosofia é o primeiro e mais importante passo para dominar a ferramenta.</p>
+        
+        <section id="embasamento-teorico">
+          <h2>1. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>O LaTeX foi desenvolvido a partir do programa TeX, criado por Donald Knuth, um renomado cientista da
+              computação. A motivação de Knuth era resolver a deterioração da qualidade tipográfica em publicações
+              científicas. A premissa central é a <strong>separação entre conteúdo e formatação</strong>. Em vez de o autor se
+              preocupar simultaneamente com o que escreve e com a aparência do texto (fontes, margens, espaçamento), ele
+              foca exclusivamente no conteúdo e em sua estrutura lógica. A formatação visual fica a cargo de um
+              "paginador profissional" — no nosso caso, o próprio LaTeX.</p>
+          </div>
+        </section>
+
+        <section id="apresentacao-conteudo">
+          <h2>2. Apresentação do Conteúdo</h2>
+          <p>Nesta aula, vamos explorar a diferença crucial entre dois estilos de processamento de texto: <strong>WYSIWYG</strong> e
+            <strong>Marcação Lógica</strong>.</p>
+        </section>
+
+        <section id="desenvolvimento">
+          <h2>3. Desenvolvimento do Conteúdo</h2>
+
+          <h3>Estilo Visual (WYSIWYG - What You See Is What You Get)</h3>
+          <p>É o modelo de programas como Word, Pages e Google Docs. O texto que você digita na tela aparece exatamente
+            como será impresso. Você usa menus, botões e atalhos para aplicar formatação (negrito, itálico, etc.)
+            diretamente no texto.</p>
+          <ul>
+            <li><strong>Vantagem:</strong> É intuitivo e visualmente imediato.</li>
+            <li><strong>Desvantagem:</strong> A consistência da formatação em documentos longos é difícil de manter. O
+              autor gasta muito tempo com ajustes visuais, e a estrutura lógica do documento pode se tornar
+              inconsistente.</li>
+          </ul>
+
+          <h3>Estilo de Marcação Lógica (LaTeX)</h3>
+          <p>Neste modelo, o processo é dividido em duas etapas distintas. Primeiro, você escreve o conteúdo em um
+            arquivo de texto simples (código-fonte), utilizando comandos para descrever a <strong>estrutura lógica</strong> do
+            documento (isto é um título, isto é uma seção, isto é uma equação).</p>
+          <p>Depois, você <strong>compila</strong> esse arquivo. O programa LaTeX interpreta os comandos e gera um documento final
+            (geralmente um PDF) com uma formatação tipográfica profissional e consistente.</p>
+
+          <h4>O Fluxo de Trabalho em LaTeX</h4>
+          <p>O processo se parece mais com programação do que com edição de texto tradicional:</p>
+          <div class="code-block">
+            <pre>1. <strong>Editar:</strong> Você escreve seu texto e comandos em um arquivo .tex.
+↓
+2. <strong>Compilar:</strong> Um programa (o motor TeX) lê seu arquivo .tex e o processa.
+↓
+3. <strong>Visualizar:</strong> O programa gera um arquivo de saída (ex: .pdf) que você pode visualizar ou imprimir.</pre>
+          </div>
+          <p>Esta abordagem garante que, uma vez definida a estrutura, a formatação será aplicada de forma consistente
+            em todo o documento, não importa o quão longo ou complexo ele seja.</p>
+        </section>
+
+        <section id="atividade">
+          <h2>4. Atividade de Reflexão</h2>
+          <div class="activity-box">
+            <p>Antes de prosseguir, reflita sobre um trabalho acadêmico ou relatório que você escreveu recentemente
+              usando um editor de texto tradicional (como o Word).</p>
+            <ol>
+              <li>Quais foram as maiores dificuldades de formatação que você encontrou? (Ex: numeração de seções,
+                alinhamento de imagens, formatação da bibliografia).</li>
+              <li>Quanto tempo você gastou em ajustes puramente visuais?</li>
+              <li>Houve algum momento em que uma pequena alteração (como adicionar um parágrafo) desconfigurou o resto
+                do documento?</li>
+            </ol>
+            <p>Anote suas respostas. Ao longo deste curso, você descobrirá como o LaTeX resolve cada um desses problemas
+              de forma elegante e automática.</p>
+          </div>
+        </section>
+
       </article>
       <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
     </main>
   </div>
-
   <script src="../../assets/js/app.js" defer></script>
 </body>
+
 </html>
