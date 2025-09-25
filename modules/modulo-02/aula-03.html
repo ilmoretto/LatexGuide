@@ -3,40 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 2 — Aula 3: Navegação Automática — O Sumário</title>
+  <title>Módulo 2 — Aula 3: Formatação de Texto — Estilos e Caracteres Especiais</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
-    .theory-box, .activity-box {
-      border-left: 4px solid #a855f7;
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #9333ea;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      background-color: rgba(168, 85, 247, 0.08);
+      background-color: rgba(147, 51, 234, 0.1);
       border-radius: 0 8px 8px 0;
       color: var(--text);
     }
-    .code-block {
-      background-color: #282c34;
-      color: #abb2bf;
+
+    .formatting-card {
+      border-left: 4px solid #9333ea;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+      border: 1px solid var(--border);
+    }
+
+    .functionality-showcase {
+      background: var(--panel);
+      border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      position: relative;
+      margin-bottom: 2rem;
     }
-    .code-block pre { margin: 0; }
+
+    .code-block {
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
     .copy-button {
       position: absolute;
       top: 10px;
       right: 10px;
-      background-color: #a855f7;
+      background: #4a5568;
       color: white;
       border: none;
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .result-demo {
+      background: var(--panel);
+      border: 2px solid #9333ea;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Lora', serif;
+      position: relative;
+    }
+
+    .result-demo::before {
+      content: "Resultado Visual:";
+      position: absolute;
+      top: -12px;
+      left: 15px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 0.85rem;
+      color: #9333ea;
+      font-weight: 600;
+    }
+
+    .special-chars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .char-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .char-symbol {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #9333ea;
+      margin: 0.5rem 0;
+    }
+
+    .tips-warning {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      color: #92400e;
+    }
+
+    .tips-warning::before {
+      content: "💡 ";
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .danger-warning {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 1px solid #ef4444;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      color: #dc2626;
+    }
+
+    .danger-warning::before {
+      content: "⚠️ ";
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .semantic-emphasis {
+      background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05));
+      border: 1px solid rgba(147, 51, 234, 0.3);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .complete-example {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      color: #1a202c;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .example-title {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .example-author {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    .example-section {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1.5rem 0 1rem 0;
+      color: #1a202c;
+    }
+
+    @media (max-width: 768px) {
+      .special-chars-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .functionality-showcase {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -53,49 +195,357 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 3: Navegação Automática — O Sumário</h1>
-        <section>
-          <h2>1. Embasamento Teórico</h2>
-          <div class="theory-box">
-            <p>Uma das funcionalidades mais poderosas e que mais economizam tempo no LaTeX é a sua capacidade de gerar estruturas de navegação automaticamente. O sumário (<em>Table of Contents</em>) não é uma lista que você digita manualmente. Em vez disso, o LaTeX o constrói para você, lendo os comandos de seção (<code>\chapter</code>, <code>\section</code>, etc.) que você já usou no seu documento. Isso garante que o sumário esteja sempre 100% sincronizado com o conteúdo.</p>
+        <h1>Aula 3: Formatação de Texto — Estilos e Caracteres Especiais</h1>
+
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">Olá novamente!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Com a estrutura do nosso documento definida, é hora de focar nos <strong>detalhes do conteúdo</strong>.</p>
+          <p style="color: var(--muted); font-style: italic;">Esta aula é a sua imersão na "caixa de ferramentas" do escritor LaTeX, onde você aprenderá a guiar o olhar do leitor, dar ênfase às ideias certas e manusear com segurança os caracteres especiais da linguagem.</p>
+        </div>
+
+        <section id="formatacao-fonte">
+          <h2>1. Formatação de Fonte: Mais do que Estilo, Semântica</h2>
+
+          <div class="semantic-emphasis">
+            <p style="margin: 0; font-weight: 600; color: #9333ea;">Conceito Fundamental:</p>
+            <p style="margin: 0.5rem 0 0 0;">No LaTeX, a formatação de texto não é apenas decorativa, é <strong>semântica</strong>. Você informa a intenção por trás do destaque.</p>
+          </div>
+
+          <h3>Funcionalidade: Negrito (\\textbf)</h3>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Deixa o texto selecionado em negrito.</p>
+                <p>Para dar ênfase forte, destacar termos-chave pela primeira vez ou criar títulos de impacto visual.</p>
+                <p><code>\\textbf{texto a ser destacado}</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>A conclusão foi <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inequívoca</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              A conclusão foi <strong>inequívoca</strong>.
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> Use com moderação. Um texto com excesso de negrito se torna visualmente poluído e perde o impacto.
+            </div>
+          </div>
+
+          <h3>Funcionalidade: Itálico (\\textit)</h3>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Deixa o texto selecionado em itálico.</p>
+                <p>É a forma padrão para dar ênfase suave, citar títulos de livros ou artigos, ou usar palavras estrangeiras (e.g., <em>status quo</em>).</p>
+                <p><code>\\textit{texto a ser destacado}</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>A palavra <span style="color: #82aaff;">\\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">saudade</span><span style="color: #ffffff;">}</span> é única da língua portuguesa.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              A palavra <em>saudade</em> é única da língua portuguesa.
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> Para ênfase geral, prefira o comando <code>\\emph</code> que veremos a seguir. Use <code>\\textit</code> quando a convenção tipográfica exige itálico (como em títulos de obras).
+            </div>
+          </div>
+
+          <h3>Funcionalidade: Ênfase (\\emph)</h3>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Enfatiza o texto, geralmente com itálico. Seu comportamento é contextual.</p>
+                <p>É o comando semanticamente mais correto para "dar ênfase". Ele permite ênfase dentro de ênfase.</p>
+                <p><code>\\emph{texto a ser enfatizado}</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>Isso é <span style="color: #82aaff;">\\emph</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">muito</span><span style="color: #ffffff;">}</span> importante. <span style="color: #82aaff;">\\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Dentro do itálico, </span><span style="color: #82aaff;">\\emph</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">isto</span><span style="color: #ffffff;">}</span><span style="color: #c3e88d;"> volta ao normal.</span><span style="color: #ffffff;">}</span></code></pre>
+            </div>
+            
+            <div class="result-demo">
+              Isso é <em>muito</em> importante. <em>Dentro do itálico, <span style="font-style: normal;">isto</span> volta ao normal.</em>
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> Sempre que sua intenção for apenas "enfatizar", use <code>\\emph</code> em vez de <code>\\textit</code>. É mais flexível.
+            </div>
+          </div>
+
+          <h3>Funcionalidade: Versalete (\\textsc)</h3>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Transforma letras minúsculas em maiúsculas com a altura de minúsculas (Sᴍᴀʟʟ Cᴀᴘs).</p>
+                <p>É a forma tipograficamente mais elegante para siglas, evitando que "ABNT" ou "UFPR" se destaquem excessivamente no meio de uma frase.</p>
+                <p><code>\\textsc{Sigla}</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>O documento segue as normas da <span style="color: #82aaff;">\\textsc</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">ABNT</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              O documento segue as normas da <span style="font-variant: small-caps;">ABNT</span>.
+            </div>
+
+            <div class="danger-warning">
+              <strong>Armadilha Comum:</strong> Se você escrever <code>\\textsc{abnt}</code>, o resultado é o esperado. Se escrever <code>\\textsc{ABNT}</code>, o resultado será ABNT em maiúsculas normais, pois não há "versaletes" de letras maiúsculas. <strong>Escreva a sigla em minúsculas dentro do comando.</strong>
+            </div>
+          </div>
+
+          <h3>Funcionalidade: Fonte de Máquina de Escrever (\\texttt)</h3>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Aplica uma fonte monoespacada (onde todas as letras têm a mesma largura).</p>
+                <p>É essencial para diferenciar visualmente trechos de código, comandos, caminhos de arquivo, URLs e qualquer texto que precise ser representado literalmente.</p>
+                <p><code>\\texttt{texto literal}</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>Use o comando <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">}</span> para criar uma nova seção.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              Use o comando <code>\\section</code> para criar uma nova seção.
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> Ao escrever um tutorial de LaTeX (como este!), use <code>\\texttt</code> para todos os comandos e nomes de pacotes.
+            </div>
           </div>
         </section>
-        <section>
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Nesta aula, você aprenderá a inserir um sumário automático em seu documento e entenderá o crucial conceito de <strong>compilação múltipla</strong>.</p>
+
+        <section id="caracteres-especiais">
+          <h2>2. Caracteres Especiais: Os Símbolos com Superpoderes</h2>
+
+          <div class="theory-box">
+            <p>Esses são os caracteres que o LaTeX usa para sua própria sintaxe. Para usá-los como texto, você precisa <strong>"neutralizar" seus poderes</strong> com uma barra invertida (\\).</p>
+          </div>
+
+          <h3>Funcionalidade: Escapar Caracteres (\\)</h3>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Permite imprimir os 10 caracteres reservados do LaTeX.</p>
+                <p>Sem o escape, o compilador tentará executar uma função em vez de imprimir o símbolo, causando erros ou resultados inesperados.</p>
+                <p><code>\\&lt;caractere&gt;</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Os 10 Caracteres Especiais:</h4>
+            <div class="special-chars-grid">
+              <div class="char-card">
+                <div class="char-symbol">$</div>
+                <p><code>\\$</code></p>
+                <p>Modo matemático</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">&</div>
+                <p><code>\\&</code></p>
+                <p>Separador de colunas</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">%</div>
+                <p><code>\\%</code></p>
+                <p>Comentário</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">#</div>
+                <p><code>\\#</code></p>
+                <p>Parâmetro de macro</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">^</div>
+                <p><code>\\^{}</code></p>
+                <p>Sobrescrito</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">_</div>
+                <p><code>\\_</code></p>
+                <p>Subscrito</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">{</div>
+                <p><code>\\{</code></p>
+                <p>Início de grupo</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">}</div>
+                <p><code>\\}</code></p>
+                <p>Fim de grupo</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">~</div>
+                <p><code>\\~{}</code></p>
+                <p>Espaço não quebrável</p>
+              </div>
+              <div class="char-card">
+                <div class="char-symbol">\\</div>
+                <p><code>\\textbackslash</code></p>
+                <p>Comando LaTeX</p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo (consolidado):</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>O item custa <span style="color: #82aaff;">\\$</span>10 <span style="color: #82aaff;">\\&</span> tem 5<span style="color: #82aaff;">\\%</span> de desconto. <span style="color: #82aaff;">\\#</span>FicaADica. O comando é <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\_</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              O item custa $10 & tem 5% de desconto. #FicaADica. O comando é <code>_</code>.
+            </div>
+
+            <div class="danger-warning">
+              <strong>Armadilha Comum:</strong> Esquecer de escapar o <code>%</code> é uma das fontes de erro mais frustrantes para iniciantes, pois o LaTeX simplesmente "deleta" o resto da linha sem dar um aviso claro. <strong>Se parte do seu texto sumiu, procure por um % perdido!</strong>
+            </div>
+          </div>
         </section>
-        <section>
-          <h2>3. Desenvolvimento do Conteúdo</h2>
-          <h3>O Comando <code>\tableofcontents</code></h3>
-          <p>Insira o comando <code>\tableofcontents</code> no local onde deseja que o sumário apareça, geralmente logo após o <code>\maketitle</code>.</p>
-          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>...
-\begin{document}
-    \maketitle
-    
-    \tableofcontents
-    
-    \section{Introdução}
-    ...
-\end{document}</code></pre></div>
-          <h3>O Segredo da Compilação Múltipla</h3>
-          <p>Quando você compilar o documento pela primeira vez após adicionar o <code>\tableofcontents</code>, o sumário pode aparecer em branco ou desatualizado. Isso é normal! O LaTeX precisa de duas compilações para atualizar o sumário corretamente.</p>
-          <ol>
-            <li><strong>Primeira Compilação:</strong> O LaTeX lê o documento e salva as informações de seções em um arquivo auxiliar (<code>.toc</code>).</li>
-            <li><strong>Segunda Compilação:</strong> O LaTeX lê o arquivo <code>.toc</code> e monta o sumário.</li>
-          </ol>
-          <p>Sempre que alterar a estrutura de seções, recompilar duas vezes para atualizar o sumário.</p>
+
+        <section id="exemplo-completo">
+          <h2>3. Exemplo Prático Completo: Montando um Manual de Estilo</h2>
+
+          <p>Vamos agora usar todas as funcionalidades aprendidas para criar um parágrafo denso e bem formatado, que sirva como um guia de referência rápido.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código Completo</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper, 11pt]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Guia de Estilo e Boas Práticas em </span><span style="color: #82aaff;">\\LaTeX</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A. Tipógrafo</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\today</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\maketitle</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Formatação e Caracteres Especiais</span><span style="color: #ffffff;">}</span>
+
+Ao redigir um documento no padrão da <span style="color: #82aaff;">\\textsc</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abnt</span><span style="color: #ffffff;">}</span>, é <span style="color: #82aaff;">\\emph</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fundamental</span><span style="color: #ffffff;">}</span> 
+seguir algumas diretrizes. A ênfase em termos deve ser feita com 
+<span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\textbackslash emph</span><span style="color: #ffffff;">}</span>, enquanto termos de grande importância podem 
+receber <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">destaque máximo</span><span style="color: #ffffff;">}</span>. Palavras estrangeiras, como 
+<span style="color: #82aaff;">\\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">et al.</span><span style="color: #ffffff;">}</span>, usam itálico.
+
+A sintaxe do <span style="color: #82aaff;">\\LaTeX\\</span> depende de caracteres especiais. Para reportar um valor 
+monetário, como R<span style="color: #82aaff;">\\$</span> 50,00, deve-se usar o comando `<span style="color: #82aaff;">\\$</span>`. Para porcentagens, 
+como 20<span style="color: #82aaff;">\\%</span>, usa-se `<span style="color: #82aaff;">\\%</span>`. A barra invertida `<span style="color: #82aaff;">\\</span>` em si é gerada com o comando 
+`<span style="color: #82aaff;">\\textbackslash</span>`. Ignorar essas regras é a causa de <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">90</span><span style="color: #82aaff;">\\%</span><span style="color: #ffffff;">}</span> dos erros 
+de compilação para iniciantes.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>Resultado Esperado no PDF:</h3>
+
+          <div class="complete-example">
+            <div class="example-title">Guia de Estilo e Boas Práticas em LaTeX</div>
+            <div class="example-author">A. Tipógrafo<br>[Data da compilação]</div>
+            
+            <div class="example-section">1 Formatação e Caracteres Especiais</div>
+            
+            <p style="text-align: justify; line-height: 1.6;">
+              Ao redigir um documento no padrão da <span style="font-variant: small-caps;">ABNT</span>, é <em>fundamental</em> seguir algumas diretrizes. A ênfase em termos deve ser feita com <code>\\emph</code>, enquanto termos de grande importância podem receber <strong>destaque máximo</strong>. Palavras estrangeiras, como <em>et al.</em>, usam itálico.
+            </p>
+            
+            <p style="text-align: justify; line-height: 1.6;">
+              A sintaxe do LaTeX depende de caracteres especiais. Para reportar um valor monetário, como R$ 50,00, deve-se usar o comando `$`. Para porcentagens, como 20%, usa-se `%`. A barra invertida `\\` em si é gerada com o comando `\\textbackslash`. Ignorar essas regras é a causa de <strong>90%</strong> dos erros de compilação para iniciantes.
+            </p>
+          </div>
         </section>
-        <section>
-          <h2>4. Atividade Prática</h2>
+
+        <section id="atividade">
+          <h2>4. Atividade Prática (Consolidando o Módulo 2)</h2>
           <div class="activity-box">
-            <ol>
-              <li>Abra o projeto da aula anterior no Overleaf, que já contém seções e subseções.</li>
-              <li>Adicione o comando <code>\tableofcontents</code> logo após o <code>\maketitle</code>.</li>
-              <li>Recompile o projeto. Observe o sumário gerado.</li>
-              <li>Adicione uma nova seção: <code>\section{Conclusão}</code> no final do documento.</li>
-              <li>Recompile apenas uma vez. O sumário já incluiu a nova seção?</li>
-              <li>Recompile uma segunda vez. Agora o sumário deve estar atualizado.</li>
+            <h3 style="margin-top: 0;">Missão: Manual Rápido para Colegas</h3>
+
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Crie um novo documento no Overleaf.</strong></li>
+
+              <li><strong>Estrutura:</strong> Configure-o com a classe <code>article</code>, <code>12pt</code>, <code>a4paper</code>, e os pacotes para português. Adicione título, autor e data.</li>
+
+              <li><strong>Conteúdo:</strong> Crie uma seção chamada "Resumo das Funcionalidades".</li>
+
+              <li><strong>Dentro dela, escreva um parágrafo que sirva como um "manual rápido" para um colega. Seu parágrafo deve, obrigatoriamente:</strong>
+                <ul style="margin-top: 0.5rem;">
+                  <li>Usar <code>\\textbf</code> para a palavra <strong>"essencial"</strong></li>
+                  <li>Usar <code>\\emph</code> para a palavra <strong>"semântico"</strong></li>
+                  <li>Mencionar a sigla PDF usando <code>\\textsc</code></li>
+                  <li>Explicar como se escreve o caractere & no texto, mostrando o comando <code>\\&</code> com a fonte <code>\\texttt</code></li>
+                  <li>Incluir uma frase sobre um desconto de 25%</li>
+                </ul>
+              </li>
+
+              <li><strong>Compile e garanta que o resultado final esteja impecável.</strong></li>
             </ol>
+
+            <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: #9333ea;">Ao completar esta atividade, você terá:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Dominado todos os comandos de formatação básica</li>
+                <li>Aprendido a escapar caracteres especiais com segurança</li>
+                <li>Criado um documento que combina estrutura, formatação e texto</li>
+                <li>Desenvolvido confiança para usar LaTeX em projetos reais</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Parabéns! Você concluiu o Módulo 2 e agora tem as ferramentas essenciais para criar documentos LaTeX bem estruturados e formatados!</p>
+            </div>
           </div>
         </section>
       </article>

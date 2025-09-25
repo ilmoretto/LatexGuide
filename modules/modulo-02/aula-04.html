@@ -3,61 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 2 — Aula 4: Estilizando o Texto — Fontes e Tamanhos</title>
+  <title>Módulo 2 — Aula 4: Os Mapas do Documento — Sumário e Listas Automáticas</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
-    .theory-box, .activity-box {
-      border-left: 4px solid #a855f7;
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #9333ea;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      background-color: rgba(168, 85, 247, 0.08);
+      background-color: rgba(147, 51, 234, 0.1);
       border-radius: 0 8px 8px 0;
       color: var(--text);
     }
-    .code-block {
-      background-color: #282c34;
-      color: #abb2bf;
+
+    .functionality-showcase {
+      background: var(--panel);
+      border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      position: relative;
+      margin-bottom: 2rem;
     }
-    .code-block pre { margin: 0; }
+
+    .navigation-card {
+      border-left: 4px solid #9333ea;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+      border: 1px solid var(--border);
+    }
+
+    .code-block {
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
     .copy-button {
       position: absolute;
       top: 10px;
       right: 10px;
-      background-color: #a855f7;
+      background: #4a5568;
       color: white;
       border: none;
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 0.8rem;
     }
-    .font-demo {
+
+    .result-demo {
+      background: var(--panel);
+      border: 2px solid #9333ea;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Lora', serif;
+      position: relative;
+    }
+
+    .result-demo::before {
+      content: "Resultado Visual:";
+      position: absolute;
+      top: -12px;
+      left: 15px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 0.85rem;
+      color: #9333ea;
+      font-weight: 600;
+    }
+
+    .tips-warning {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      color: #92400e;
+    }
+
+    .tips-warning::before {
+      content: "💡 ";
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .danger-warning {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 1px solid #ef4444;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      color: #dc2626;
+    }
+
+    .danger-warning::before {
+      content: "⚠️ ";
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .golden-rule {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      color: #92400e;
+      position: relative;
+    }
+
+    .golden-rule::before {
+      content: "👑 REGRA DE OURO";
+      position: absolute;
+      top: -12px;
+      left: 15px;
+      background: #fef3c7;
+      padding: 0 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #92400e;
+    }
+
+    .navigation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .nav-command {
       background: var(--panel);
       border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
+      text-align: center;
+    }
+
+    .command-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #9333ea;
+      margin-bottom: 1rem;
+    }
+
+    .depth-control {
+      background: rgba(147, 51, 234, 0.05);
+      border: 1px solid rgba(147, 51, 234, 0.3);
+      padding: 1.2rem;
+      border-radius: 8px;
       margin: 1rem 0;
     }
-    .font-demo h4 {
-      margin-top: 0;
-      color: var(--primary);
+
+    .complete-example {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      color: #1a202c;
+      font-family: 'Times New Roman', serif;
     }
-    .size-demo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+
+    .pdf-preview {
+      background: var(--panel);
+      border: 2px solid #9333ea;
+      padding: 1.5rem;
+      border-radius: 8px;
       margin: 1rem 0;
+      position: relative;
     }
+
+    .pdf-preview::before {
+      content: "📄 Preview do PDF:";
+      position: absolute;
+      top: -12px;
+      left: 15px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 0.85rem;
+      color: #9333ea;
+      font-weight: 600;
+    }
+
+    .toc-example {
+      background: var(--panel);
+      border-left: 4px solid #9333ea;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .toc-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .toc-entry {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.3rem 0;
+    }
+
+    .toc-subsection {
+      margin-left: 1rem;
+    }
+
     @media (max-width: 768px) {
-      .size-demo {
+      .navigation-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .functionality-showcase {
+        padding: 1rem;
       }
     }
   </style>
@@ -75,106 +243,271 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 4: Estilizando o Texto — Fontes e Tamanhos</h1>
-        
-        <section>
-          <h2>1. Embasamento Teórico</h2>
-          <div class="theory-box">
-            <p>Embora a filosofia do LaTeX seja focar na estrutura, existem momentos em que é necessário dar ênfase a uma palavra ou trecho específico. O LaTeX oferece um conjunto robusto de comandos para alterar o estilo da fonte (família, peso e forma) e seu tamanho. É crucial entender a diferença entre <strong>comandos</strong> (que afetam apenas o texto dentro de seus argumentos) e <strong>declarações</strong> (que afetam todo o texto subsequente dentro de um escopo). Para o autoestudo, focaremos nos comandos por serem mais seguros e intuitivos.</p>
-          </div>
-        </section>
+        <h1>Aula 4: Os Mapas do Documento — Sumário e Listas Automáticas</h1>
 
-        <section>
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Nesta aula, você aprenderá os principais comandos para modificar a aparência do texto. Cobriremos a alteração da forma (itálico, inclinado), do peso (negrito), da família (serifa, sem serifa, monoespaçada) e do tamanho relativo da fonte.</p>
-        </section>
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">Bem-vindo(á) à quarta aula do Módulo 2!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Já aprendemos a criar a estrutura hierárquica de um documento. Agora, vamos explorar em profundidade um dos recursos mais <strong>espetaculares</strong> e que mais economizam tempo no LaTeX:</p>
+          <p style="color: var(--muted); font-style: italic;">A geração automática de "mapas" de navegação para o seu leitor. O principal deles é o Sumário, mas o mesmo princípio se aplica a Listas de Figuras e Tabelas.</p>
+        </div>
 
-        <section>
-          <h2>3. Desenvolvimento do Conteúdo</h2>
-          
-          <h3>Mudando a Forma e o Peso da Fonte</h3>
-          <p>Estes são os comandos mais comuns para dar destaque ao texto. Eles recebem o texto a ser modificado como um argumento entre chaves <code>{}</code>.</p>
-          
-          <div class="font-demo">
-            <h4>Comandos de Formatação:</h4>
-            <ul>
-              <li><code>\textbf{texto em negrito}</code> → <strong>texto em negrito</strong></li>
-              <li><code>\textit{texto em itálico}</code> → <em>texto em itálico</em></li>
-              <li><code>\texttt{texto monoespaçado}</code> → <span style="font-family: monospace;">texto monoespaçado</span> (ideal para código ou URLs)</li>
-              <li><code>\textsc{Texto em Versalete}</code> → <span style="font-variant: small-caps;">Texto em Versalete</span></li>
-              <li><code>\underline{texto sublinhado}</code> → <u>texto sublinhado</u></li>
-            </ul>
-            <p><strong>Aninhamento:</strong> <code>\textbf{\textit{negrito e itálico}}</code> → <strong><em>negrito e itálico</em></strong></p>
-          </div>
+        <section id="sumario-automatico">
+          <h2>1. Funcionalidade: Sumário Automático (\tableofcontents)</h2>
 
-          <h3>Mudando o Tamanho da Fonte</h3>
-          <p>O LaTeX possui comandos para alterar o tamanho da fonte de forma relativa ao tamanho base. Para aplicar a um trecho específico, use: <code>{\comandoDeTamanho texto}</code></p>
-          
-          <div class="size-demo">
-            <div>
-              <h4>Comandos de Tamanho (do menor ao maior):</h4>
-              <ul>
-                <li><code>{\tiny texto muito pequeno}</code></li>
-                <li><code>{\scriptsize texto bem pequeno}</code></li>
-                <li><code>{\footnotesize texto pequeno}</code></li>
-                <li><code>{\small texto um pouco menor}</code></li>
-                <li><code>{\normalsize texto normal}</code></li>
-                <li><code>{\large texto grande}</code></li>
-                <li><code>{\Large texto maior}</code></li>
-                <li><code>{\LARGE texto bem maior}</code></li>
-                <li><code>{\huge texto enorme}</code></li>
-                <li><code>{\Huge texto gigante}</code></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Demonstração Visual:</h4>
-              <div style="line-height: 1.8;">
-                <div style="font-size: 0.6em;">tiny</div>
-                <div style="font-size: 0.7em;">scriptsize</div>
-                <div style="font-size: 0.8em;">footnotesize</div>
-                <div style="font-size: 0.9em;">small</div>
-                <div style="font-size: 1em;">normalsize</div>
-                <div style="font-size: 1.2em;">large</div>
-                <div style="font-size: 1.4em;">Large</div>
-                <div style="font-size: 1.7em;">LARGE</div>
-                <div style="font-size: 2em;">huge</div>
-                <div style="font-size: 2.5em;">Huge</div>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Cria uma Tabela de Conteúdos (Sumário) completa, listando todas as partes, capítulos, seções e subseções numeradas do seu documento, junto com seus respectivos números de página.</p>
+                <p>Fazer um sumário manualmente é um processo tedioso, propenso a erros e que precisa ser refeito a cada alteração no documento. O LaTeX automatiza 100% desse trabalho, garantindo precisão absoluta.</p>
+                <p>Simplesmente insira o comando <code>\tableofcontents</code> no local onde o sumário deve aparecer (geralmente após o <code>\maketitle</code> e o resumo).</p>
               </div>
             </div>
-          </div>
 
-          <h3>Exemplo Prático Integrado</h3>
-          <div class="code-block">
-            <button class="copy-button" aria-label="Copiar código">Copiar</button>
-            <pre><code>\documentclass[12pt, a4paper]{article}
-\begin{document}
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\tableofcontents</span>
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Introdução</span><span style="color: #ffffff;">}</span>
+...
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Conclusão</span><span style="color: #ffffff;">}</span>
+...
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+            </div>
 
-Este é um texto com tamanho \textbf{normal}.
-
-Para dar ênfase, podemos usar o \textit{itálico}. 
-Para código, usamos o tipo \texttt{monoespaçado}.
-
-Podemos também controlar o tamanho:
-{\small este trecho é um pouco menor.} 
-Este trecho voltou ao normal.
-
-E para grandes destaques:
-{\LARGE CUIDADO!}
-
-\end{document}</code></pre>
+            <div class="golden-rule">
+              <p style="margin: 0; font-weight: bold;">A Regra de Ouro:</p>
+              <p style="margin: 0.5rem 0 0 0;">O LaTeX precisa de <strong>duas compilações</strong> para gerar um sumário correto. Na primeira, ele lê o documento e anota as seções em um arquivo <code>.toc</code>. Na segunda, ele lê o arquivo <code>.toc</code> e monta o sumário. Se o seu sumário parecer vazio ou desatualizado, apenas recompile o projeto!</p>
+            </div>
           </div>
         </section>
 
-        <section>
-          <h2>4. Atividade Prática</h2>
+        <section id="listas-figuras-tabelas">
+          <h2>2. Funcionalidade: Listas de Figuras e Tabelas (\listoffigures, \listoftables)</h2>
+
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Assim como o sumário, esses comandos geram automaticamente uma lista de todas as figuras ou tabelas que possuem uma legenda (<code>\caption</code>).</p>
+                <p>Em trabalhos acadêmicos (TCCs, dissertações), é um requisito padrão da ABNT ter listas separadas para esses elementos, e fazê-las manualmente é impraticável.</p>
+                <p>Coloque <code>\listoffigures</code> e <code>\listoftables</code> no local desejado, geralmente após o <code>\tableofcontents</code>.</p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #777777;">% (No preâmbulo, é necessário o pacote graphicx para figuras)</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">graphicx</span><span style="color: #ffffff;">}</span>
+...
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\tableofcontents</span>
+<span style="color: #82aaff;">\\listoffigures</span>
+<span style="color: #82aaff;">\\listoftables</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">figure</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\centering</span>
+    <span style="color: #82aaff;">\\includegraphics</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">minha_imagem.png</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\caption</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Esta é a legenda da minha figura.</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\label</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fig:exemplo</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">figure</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">table</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\centering</span>
+    <span style="color: #82aaff;">\\caption</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Esta é a legenda da minha tabela.</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\label</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tab:exemplo</span><span style="color: #ffffff;">}</span>
+    <span style="color: #777777;">% ... conteúdo da tabela</span>
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">table</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+            </div>
+
+            <div class="danger-warning">
+              <strong>Armadilha Comum:</strong> Esses comandos só funcionarão para figuras e tabelas que estão dentro de seus respectivos ambientes (<code>figure</code> e <code>table</code>) e que possuem um comando <code>\caption</code>. <strong>Sem legenda, o LaTeX não tem o que listar!</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="controle-profundidade">
+          <h2>3. Funcionalidade: Controle de Profundidade do Sumário (\setcounter)</h2>
+
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Permite definir qual o nível hierárquico mais baixo que deve aparecer no sumário.</p>
+                <p>Para controlar a granularidade do seu sumário. Em um livro, talvez você não queira que as <code>subsubsection</code> apareçam, para não poluir o mapa geral.</p>
+                <p>Coloque <code>\setcounter{tocdepth}{&lt;nível&gt;}</code> no seu preâmbulo.</p>
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Níveis Disponíveis:</h4>
+            <div class="depth-control">
+              <ul style="margin: 0; padding-left: 1.5rem;">
+                <li><strong>0:</strong> Apenas <code>\part</code> e <code>\chapter</code>.</li>
+                <li><strong>1:</strong> Até <code>\section</code>.</li>
+                <li><strong>2:</strong> Até <code>\subsection</code> (valor comum).</li>
+                <li><strong>3:</strong> Até <code>\subsubsection</code>.</li>
+              </ul>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">report</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\setcounter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tocdepth</span><span style="color: #ffffff;">}{</span><span style="color: #f78c6c;">1</span><span style="color: #ffffff;">}</span> <span style="color: #777777;">% Sumário mostrará apenas capítulos e seções</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+...</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>4. Exemplo Prático Completo: Montando um Documento com Navegação Completa</h2>
+
+          <p>Vamos criar um documento que utiliza todos esses elementos de navegação, como se fosse o esqueleto de um pequeno trabalho acadêmico.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+          <p style="font-style: italic; color: var(--muted);">Para este exemplo funcionar, você precisará ter uma imagem qualquer no seu projeto Overleaf. Crie uma pasta chamada "figuras" e coloque uma imagem chamada "grafico.png" dentro dela, ou apenas remova as linhas relacionadas à figura.</p>
+
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código Completo</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">graphicx</span><span style="color: #ffffff;">}</span> <span style="color: #777777;">% Pacote necessário para \includegraphics</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Relatório com Navegação Automática</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Estudante Organizado</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\today</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\setcounter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tocdepth</span><span style="color: #ffffff;">}{</span><span style="color: #f78c6c;">2</span><span style="color: #ffffff;">}</span> <span style="color: #777777;">% Mostrar até subseções no sumário</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\maketitle</span>
+
+<span style="color: #82aaff;">\\newpage</span> <span style="color: #777777;">% Força uma nova página para os elementos de navegação</span>
+
+<span style="color: #82aaff;">\\tableofcontents</span>
+<span style="color: #82aaff;">\\listoffigures</span>
+<span style="color: #82aaff;">\\listoftables</span>
+
+<span style="color: #82aaff;">\\newpage</span> <span style="color: #777777;">% Força uma nova página para iniciar o conteúdo</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Análise de Dados</span><span style="color: #ffffff;">}</span>
+Nesta seção, apresentamos os dados coletados. A Figura~<span style="color: #82aaff;">\\ref</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fig:dados</span><span style="color: #ffffff;">}</span> ilustra
+a distribuição, enquanto a Tabela~<span style="color: #82aaff;">\\ref</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tab:dados</span><span style="color: #ffffff;">}</span> resume os valores.
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">figure</span><span style="color: #ffffff;">}[</span><span style="color: #c3e88d;">h</span><span style="color: #ffffff;">]</span> <span style="color: #777777;">% O [h] é uma sugestão para o LaTeX colocar a figura "here" (aqui)</span>
+    <span style="color: #82aaff;">\\centering</span> <span style="color: #777777;">% Centraliza a figura</span>
+    <span style="color: #777777;">% \includegraphics[width=0.7\textwidth]{figuras/grafico.png}</span>
+    <span style="color: #82aaff;">\\rule</span><span style="color: #ffffff;">{</span><span style="color: #f78c6c;">8cm</span><span style="color: #ffffff;">}{</span><span style="color: #f78c6c;">5cm</span><span style="color: #ffffff;">}</span> <span style="color: #777777;">% Usando uma caixa preta para simular a imagem</span>
+    <span style="color: #82aaff;">\\caption</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Gráfico de dispersão dos dados coletados.</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\label</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fig:dados</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">figure</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\subsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Discussão dos Resultados</span><span style="color: #ffffff;">}</span>
+A análise prossegue aqui.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Resultados Numéricos</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">table</span><span style="color: #ffffff;">}[</span><span style="color: #c3e88d;">h</span><span style="color: #ffffff;">]</span>
+    <span style="color: #82aaff;">\\centering</span>
+    <span style="color: #82aaff;">\\caption</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Resumo dos valores estatísticos.</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\label</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tab:dados</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tabular</span><span style="color: #ffffff;">}{</span><span style="color: #c3e88d;">|l|c|</span><span style="color: #ffffff;">}</span>
+        <span style="color: #82aaff;">\\hline</span>
+        Métrica <span style="color: #82aaff;">&</span> Valor <span style="color: #82aaff;">\\\\</span>
+        <span style="color: #82aaff;">\\hline</span>
+        Média <span style="color: #82aaff;">&</span> 42.0 <span style="color: #82aaff;">\\\\</span>
+        Desvio Padrão <span style="color: #82aaff;">&</span> 5.7 <span style="color: #82aaff;">\\\\</span>
+        <span style="color: #82aaff;">\\hline</span>
+    <span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tabular</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">table</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>Resultado Esperado no PDF:</h3>
+
+          <div class="pdf-preview">
+            <p><strong>Página 1:</strong> A página de rosto.</p>
+            <p><strong>Página 2:</strong> Uma página contendo, em sequência:</p>
+            <div class="toc-example">
+              <div class="toc-title">Sumário</div>
+              <div class="toc-entry">
+                <span>1 Análise de Dados</span>
+                <span>3</span>
+              </div>
+              <div class="toc-entry toc-subsection">
+                <span>1.1 Discussão dos Resultados</span>
+                <span>3</span>
+              </div>
+              <div class="toc-entry">
+                <span>2 Resultados Numéricos</span>
+                <span>3</span>
+              </div>
+              <div style="margin-top: 1rem;">
+                <strong>Lista de Figuras</strong><br>
+                <div class="toc-entry">
+                  <span>Figura 1: Gráfico de dispersão...</span>
+                  <span>3</span>
+                </div>
+              </div>
+              <div style="margin-top: 1rem;">
+                <strong>Lista de Tabelas</strong><br>
+                <div class="toc-entry">
+                  <span>Tabela 1: Resumo dos valores...</span>
+                  <span>3</span>
+                </div>
+              </div>
+            </div>
+            <p><strong>Página 3:</strong> O conteúdo principal, com as seções, a figura e a tabela, devidamente numeradas.</p>
+          </div>
+        </section>
+
+        <section id="atividade">
+          <h2>5. Atividade Prática (Navegação Mestra - 15 minutos)</h2>
           <div class="activity-box">
-            <ol>
-              <li>No seu projeto Overleaf, escolha um dos parágrafos que você já escreveu.</li>
-              <li>Coloque pelo menos uma palavra em <strong>negrito</strong> e outra em <em>itálico</em>.</li>
-              <li>Imagine que você está citando o nome de um software ou um site. Coloque esse nome em <code>fonte monoespaçada</code>.</li>
-              <li>Crie uma nova frase no final do parágrafo. Nela, faça a primeira palavra ser <code>\large</code> e a última <code>\small</code>. Lembre-se de usar as chaves <code>{}</code> para limitar o efeito dos comandos de tamanho.</li>
-              <li>Recompile o documento e verifique se todas as formatações foram aplicadas corretamente. Observe como o texto após o trecho com tamanho modificado retorna automaticamente ao tamanho normal.</li>
+            <h3 style="margin-top: 0;">Missão: Dominando os Mapas Automáticos</h3>
+
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Use o Exemplo Prático Completo</strong> no seu projeto Overleaf (você pode manter a <code>\rule</code> para simular a imagem).</li>
+
+              <li><strong>Modificação 1:</strong> Adicione uma nova seção <code>\section{Conclusão}</code> no final do documento. Recompile duas vezes. A nova seção apareceu automaticamente no sumário?</li>
+
+              <li><strong>Modificação 2:</strong> No preâmbulo, mude o <code>\setcounter{tocdepth}</code> para 1. Recompile duas vezes. O que aconteceu com o sumário? A subseção "Discussão dos Resultados" desapareceu dele?</li>
+
+              <li><strong>Modificação 3:</strong> Remova o comando <code>\caption</code> da tabela. Recompile duas vezes. O que aconteceu com a "Lista de Tabelas"? (Ela deve desaparecer ou ficar vazia, provando que a legenda é essencial).</li>
             </ol>
+
+            <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: #9333ea;">Ao completar esta atividade, você terá:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Dominado a geração automática de sumários e listas</li>
+                <li>Entendido o processo de compilação múltipla do LaTeX</li>
+                <li>Aprendido a controlar a profundidade do sumário</li>
+                <li>Compreendido a importância das legendas para as listas automáticas</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Você agora possui uma das habilidades mais valiosas do LaTeX: criar documentos que se organizam sozinhos!</p>
+            </div>
           </div>
         </section>
       </article>

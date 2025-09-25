@@ -3,40 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 2 — Aula 2: Título, Autor e Seções</title>
+  <title>Módulo 2 — Aula 2: Estrutura do Documento — Títulos e Navegação</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
-    .theory-box, .activity-box {
-      border-left: 4px solid #a855f7;
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #9333ea;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      background-color: rgba(168, 85, 247, 0.08);
+      background-color: rgba(147, 51, 234, 0.1);
       border-radius: 0 8px 8px 0;
       color: var(--text);
     }
-    .code-block {
-      background-color: #282c34;
-      color: #abb2bf;
+
+    .concept-card {
+      border-left: 4px solid #9333ea;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+      border: 1px solid var(--border);
+    }
+
+    .command-showcase {
+      background: var(--panel);
+      border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      position: relative;
+      margin-bottom: 1.5rem;
     }
-    .code-block pre { margin: 0; }
+
+    .code-block {
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
     .copy-button {
       position: absolute;
       top: 10px;
       right: 10px;
-      background-color: #a855f7;
+      background: #4a5568;
       color: white;
       border: none;
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .result-preview {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Lora', serif;
+      position: relative;
+    }
+
+    .result-preview::before {
+      content: "Resultado Visual:";
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 0.85rem;
+      color: #9333ea;
+      font-weight: 600;
+    }
+
+    .hierarchy-visual {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .toc-example {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Times New Roman', serif;
+      color: #1a202c;
+    }
+
+    .depth-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .depth-table th,
+    .depth-table td {
+      padding: 1rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    .depth-table th {
+      background: #9333ea;
+      color: white;
+      font-weight: 600;
+    }
+
+    .depth-table tr:nth-child(even) {
+      background: rgba(147, 51, 234, 0.05);
+    }
+
+    .challenge-card {
+      background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05));
+      border: 1px solid rgba(147, 51, 234, 0.3);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .command-showcase {
+        padding: 1rem;
+      }
+      
+      .depth-table {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -53,64 +155,313 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 2: Criando a Estrutura — Título, Autor e Seções</h1>
-        <section>
-          <h2>1. Embasamento Teórico</h2>
+        <h1>Aula 2: Estrutura do Documento — Títulos e Navegação</h1>
+
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">Bem-vindo(a) de volta!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Nesta aula, vamos nos aprofundar nos comandos que dão a <strong>"cara"</strong> e o <strong>"mapa"</strong> do seu documento.</p>
+          <p style="color: var(--muted); font-style: italic;">Cada um dos conceitos que veremos agora tem um impacto visual e estrutural significativo. Vamos explorar cada um deles com exemplos práticos.</p>
+        </div>
+
+        <section id="elementos-pre-textuais">
+          <h2>1. Elementos Pré-Textuais: A Arte do \maketitle</h2>
+
           <div class="theory-box">
-            <p>Um documento bem escrito não é apenas um bloco de texto; ele possui uma hierarquia clara que guia o leitor. No LaTeX, essa hierarquia não é criada com formatação manual, mas sim com <strong>comandos estruturais</strong>. Você informa ao LaTeX que "isto é um título" ou "isto é uma seção", e o sistema se encarrega de formatá-los de maneira consistente, numerá-los e, como veremos na próxima aula, adicioná-los ao sumário.</p>
+            <p>A criação do título não é apenas sobre digitar texto; é sobre fornecer <strong>metadados</strong> que o LaTeX usará para criar uma apresentação consistente.</p>
+          </div>
+
+          <h3>\title{...}: Quebrando Linhas no Título</h3>
+          <div class="command-showcase">
+            <p>Às vezes, um título é longo demais para uma única linha. Você pode sugerir uma quebra de linha usando <code>\\</code>.</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Código:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Um Título Muito, Muito Longo</span><span style="color: #82aaff;">\\\\</span><span style="color: #c3e88d;"> que Precisa Ser Quebrado em Duas Linhas</span><span style="color: #ffffff;">}</span></code></pre>
+            </div>
+            
+            <div class="result-preview">
+              <div style="text-align: center; font-size: 1.4rem; font-weight: bold; line-height: 1.3;">
+                Um Título Muito, Muito Longo<br>
+                que Precisa Ser Quebrado em Duas Linhas
+              </div>
+            </div>
+            
+            <p><strong>Resultado:</strong> O LaTeX quebrará a linha no ponto indicado, mantendo o alinhamento central.</p>
+          </div>
+
+          <h3>\author{...}: Múltiplos Autores e Afiliações</h3>
+          <div class="command-showcase">
+            <p>Para trabalhos com mais de um autor, use o comando <code>\and</code> para separá-los. O LaTeX cuidará de distribuí-los de forma elegante.</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Código Básico:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Marie Curie </span><span style="color: #82aaff;">\\and</span><span style="color: #c3e88d;"> Pierre Curie</span><span style="color: #ffffff;">}</span></code></pre>
+            </div>
+            
+            <div class="result-preview">
+              <div style="text-align: center; font-size: 1.1rem;">
+                Marie Curie &nbsp;&nbsp;&nbsp;&nbsp; Pierre Curie
+              </div>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Código Avançado com Afiliações:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span>
+    <span style="color: #c3e88d;">Marie Curie </span><span style="color: #82aaff;">\\\\</span><span style="color: #82aaff;"> \\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Universidade de Paris</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\and</span>
+    <span style="color: #c3e88d;">Pierre Curie </span><span style="color: #82aaff;">\\\\</span><span style="color: #82aaff;"> \\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Universidade de Paris</span><span style="color: #ffffff;">}</span>
+<span style="color: #ffffff;">}</span></code></pre>
+            </div>
+
+            <div class="result-preview">
+              <div style="text-align: center; font-size: 1.1rem;">
+                <div style="display: inline-block; margin: 0 2rem;">
+                  Marie Curie<br>
+                  <em style="font-size: 0.9rem; color: #666;">Universidade de Paris</em>
+                </div>
+                <div style="display: inline-block; margin: 0 2rem;">
+                  Pierre Curie<br>
+                  <em style="font-size: 0.9rem; color: #666;">Universidade de Paris</em>
+                </div>
+              </div>
+            </div>
+
+            <p><strong>Resultado:</strong> Os nomes aparecerão lado a lado ou em colunas, dependendo da classe e do espaço disponível.</p>
+          </div>
+
+          <h3>\date{...}: Controle Total sobre a Data</h3>
+          <div class="command-showcase">
+            <p>O comando <code>\today</code> é dinâmico, mas você pode fixar qualquer data. Para omiti-la, use chaves vazias.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+              <div>
+                <h5 style="color: #9333ea;">Data específica:</h5>
+                <div class="code-block" style="margin: 0.5rem 0;">
+                  <pre style="margin: 0; font-size: 0.9rem;"><code><span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">12 de Outubro de 1492</span><span style="color: #ffffff;">}</span></code></pre>
+                </div>
+              </div>
+              
+              <div>
+                <h5 style="color: #9333ea;">Omitir a data:</h5>
+                <div class="code-block" style="margin: 0.5rem 0;">
+                  <pre style="margin: 0; font-size: 0.9rem;"><code><span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{}</span></code></pre>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
-        <section>
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Vamos aprender a criar a página de rosto de um documento e a dividi-lo em seções, subseções e outras divisões lógicas.</p>
-        </section>
-        <section>
-          <h2>3. Desenvolvimento do Conteúdo</h2>
-          <h3>Criando o Título do Documento:</h3>
-          <ul>
-            <li><code>\title{Título do Seu Trabalho}</code></li>
-            <li><code>\author{Seu Nome Completo}</code></li>
-            <li><code>\date{Data de Publicação}</code> (Use <code>\today</code> para inserir a data atual automaticamente)</li>
-          </ul>
-          <p>Para exibir o título, use <code>\maketitle</code> logo após <code>\begin{document}</code>.</p>
-          <h3>Hierarquia de Seções:</h3>
-          <ul>
-            <li><code>\chapter{Título do Capítulo}</code> (apenas em <code>report</code> e <code>book</code>)</li>
-            <li><code>\section{Título da Seção}</code></li>
-            <li><code>\subsection{Título da Subseção}</code></li>
-            <li><code>\subsubsection{Título da Sub-subseção}</code></li>
-          </ul>
-          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[12pt, a4paper]{article}
 
-% --- PREÂMBULO ---
-\title{Um Estudo Sobre a Estrutura de Documentos}
-\author{Maria da Silva}
-\date{\today}
+        <section id="estrutura-hierarquica">
+          <h2>2. A Estrutura Hierárquica: Construindo com Níveis</h2>
 
-% --- CORPO DO DOCUMENTO ---
-\begin{document}
-    \maketitle
-    
-    \section{Introdução}
-    Este documento explora os conceitos fundamentais da estruturação em LaTeX.
-    
-    \section{Metodologia}
-    A metodologia é baseada na prática e experimentação.
-    
-    \subsection{Ferramentas Utilizadas}
-    A principal ferramenta utilizada é o Overleaf.
-\end{document}</code></pre></div>
+          <div class="theory-box">
+            <p>Os comandos de seccionamento são o <strong>núcleo da organização</strong>. Cada um tem um propósito específico e comportamentos únicos.</p>
+          </div>
+
+          <h3>\part{...}: A Grande Divisão</h3>
+          <div class="concept-card">
+            <p>Usado principalmente em <code>book</code>, <code>\part</code> cria uma página de título intermediária, sem número, apenas com o nome da parte.</p>
+            <p><strong>Ideal para:</strong> Dividir um livro em seções como "Parte I: Fundamentos" e "Parte II: Aplicações".</p>
+          </div>
+
+          <h3>\chapter{...}: O Começo de um Novo Bloco</h3>
+          <div class="concept-card">
+            <p>Em <code>report</code> e <code>book</code>, este comando é um <strong>ponto de reinício</strong>. Ele inicia uma nova página e zera os contadores de seção, equação e figura.</p>
+          </div>
+
+          <h3>\section*{...}: A Seção Não Numerada</h3>
+          <div class="concept-card">
+            <p>A versão "estrelada" de um comando de seção cria um título formatado, mas <strong>não o numera</strong> e <strong>não o inclui no sumário</strong>.</p>
+            <p><strong>Perfeito para:</strong> Seções como "Prefácio", "Agradecimentos" ou "Referências".</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Código:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Resultados</span><span style="color: #ffffff;">}</span>
+<span style="color: #546e7a;">% ... texto do capítulo</span>
+<span style="color: #82aaff;">\\section*</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Agradecimentos Especiais</span><span style="color: #ffffff;">}</span>
+<span style="color: #abb2bf;">Agradeço a todos.</span></code></pre>
+            </div>
+
+            <p><strong>Resultado:</strong> O título "Agradecimentos Especiais" aparecerá formatado como uma seção, mas sem o número (e não estará no <code>\tableofcontents</code>).</p>
+          </div>
         </section>
-        <section>
-          <h2>4. Atividade Prática</h2>
-          <div class="activity-box">
-            <ol>
-              <li>No seu projeto Overleaf, adicione as informações de título, autor e data no preâmbulo.</li>
-              <li>Logo após <code>\begin{document}</code>, adicione o comando <code>\maketitle</code>.</li>
-              <li>Estruture o texto que você já escreveu em seções. Crie uma <code>\section{Introdução}</code> e uma <code>\section{Desenvolvimento}</code>.</li>
-              <li>Dentro da seção "Desenvolvimento", crie uma <code>\subsection{Primeiros Testes}</code> e coloque ali um dos seus parágrafos.</li>
-              <li>Recompile e observe como o LaTeX criou uma página de título e formatou e numerou suas seções e subseções automaticamente.</li>
+
+        <section id="sumario-controle">
+          <h2>3. O Sumário: \tableofcontents e \setcounter</h2>
+
+          <div class="theory-box">
+            <p>Gerar o sumário é fácil, mas <strong>controlá-lo</strong> é onde o poder se revela.</p>
+          </div>
+
+          <h3>\setcounter{tocdepth}{&lt;número&gt;}: Controlando a Profundidade</h3>
+          <div class="command-showcase">
+            <p>Este comando, colocado no preâmbulo, define até que nível de detalhe o sumário será gerado.</p>
+            
+            <table class="depth-table">
+              <thead>
+                <tr>
+                  <th>Comando</th>
+                  <th>Níveis Incluídos</th>
+                  <th>Uso Comum</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>\setcounter{tocdepth}{0}</code></td>
+                  <td>Apenas \part e \chapter</td>
+                  <td>Livros com estrutura muito simples</td>
+                </tr>
+                <tr>
+                  <td><code>\setcounter{tocdepth}{1}</code></td>
+                  <td>Até \section</td>
+                  <td>Relatórios concisos</td>
+                </tr>
+                <tr>
+                  <td><code>\setcounter{tocdepth}{2}</code></td>
+                  <td>Até \subsection</td>
+                  <td><strong>Valor comum e recomendado</strong></td>
+                </tr>
+                <tr>
+                  <td><code>\setcounter{tocdepth}{3}</code></td>
+                  <td>Até \subsubsection</td>
+                  <td>Documentos muito detalhados</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>4. Exemplo Prático Detalhado: Montando um Relatório Completo</h2>
+
+          <p>Vamos agora consolidar todos esses conceitos em um único exemplo. Este código cria um relatório, demonstrando a página de título com múltiplos autores, a estrutura de capítulos e seções, um sumário com profundidade controlada e uma seção não numerada.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código Completo</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper, 12pt]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">report</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% --- INFORMAÇÕES DO PREÂMBULO ---</span>
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Relatório Abrangente Sobre a Tipografia Digital</span><span style="color: #82aaff;">\\\\</span>
+       <span style="color: #82aaff;">\\large</span><span style="color: #c3e88d;"> Uma Análise Histórica e Prática</span><span style="color: #ffffff;">}</span> <span style="color: #546e7a;">% Título com subtítulo</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span>
+    <span style="color: #c3e88d;">Alan Turing </span><span style="color: #82aaff;">\\\\</span><span style="color: #82aaff;"> \\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Universidade de Cambridge</span><span style="color: #ffffff;">}</span>
+    <span style="color: #82aaff;">\\and</span>
+    <span style="color: #c3e88d;">Ada Lovelace </span><span style="color: #82aaff;">\\\\</span><span style="color: #82aaff;"> \\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Colaboradora de Charles Babbage</span><span style="color: #ffffff;">}</span>
+<span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\today</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% Define que o sumário mostrará até o nível de \\subsection (nível 2)</span>
+<span style="color: #82aaff;">\\setcounter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">tocdepth</span><span style="color: #ffffff;">}{</span><span style="color: #f78c6c;">2</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% --- CORPO DO DOCUMENTO ---</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\maketitle</span> <span style="color: #546e7a;">% Gera a página de título separada</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abstract</span><span style="color: #ffffff;">}</span>
+    Este relatório explora a evolução da tipografia, desde os tipos móveis 
+    de Gutenberg até os algoritmos complexos do sistema TeX.
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abstract</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\tableofcontents</span>
+
+<span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Fundamentos Históricos</span><span style="color: #ffffff;">}</span>
+Este capítulo aborda os primórdios da impressão e da tipografia.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Invenção de Gutenberg</span><span style="color: #ffffff;">}</span>
+A prensa de tipos móveis revolucionou a disseminação do conhecimento.
+
+<span style="color: #82aaff;">\\subsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">O Impacto na Renascença</span><span style="color: #ffffff;">}</span>
+A disponibilidade de livros impulsionou o pensamento crítico.
+
+<span style="color: #82aaff;">\\subsubsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Uma Nota sobre as Fontes Góticas</span><span style="color: #ffffff;">}</span>
+As primeiras fontes imitavam a escrita manual da época.
+
+<span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Revolução Digital com TeX</span><span style="color: #ffffff;">}</span>
+Aqui, analisamos o salto quântico em qualidade e automação.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Motivação de Donald Knuth</span><span style="color: #ffffff;">}</span>
+A frustração com a baixa qualidade tipográfica dos sistemas digitais 
+da década de 1970 foi o catalisador.
+
+<span style="color: #82aaff;">\\section*</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Agradecimentos</span><span style="color: #ffffff;">}</span>
+Agradecemos a todos os pioneiros da computação.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>O que observar ao compilar este código:</h3>
+
+          <div class="result-preview">
+            <ol style="line-height: 1.8;">
+              <li><strong>Página de Título (Página 1):</strong> Será uma página exclusiva, com o título principal e o subtítulo (formatado com <code>\large</code>), os dois autores com suas afiliações, e a data da compilação.</li>
+              
+              <li><strong>Resumo (Página 2):</strong> O ambiente <code>abstract</code> criará uma página separada para o resumo.</li>
+              
+              <li><strong>Sumário (Página 3):</strong> O sumário aparecerá em sua própria página. Graças a <code>\setcounter{tocdepth}{2}</code>, ele listará os capítulos, as seções E as subseções. A subsubsection não aparecerá, pois está no nível 3. A seção "Agradecimentos" também não aparecerá, por ser "estrelada".</li>
+              
+              <li><strong>Capítulo 1 (Iniciando na Página 5):</strong> O LaTeX iniciará o "Capítulo 1" em uma nova página (página 5, se o sumário ocupar apenas uma página).</li>
+              
+              <li><strong>Hierarquia e Numeração:</strong> Você verá claramente a estrutura "Capítulo 1", "Seção 1.1", "Subseção 1.1.1", seguida por "Capítulo 2" e "Seção 2.1".</li>
             </ol>
+          </div>
+
+          <div class="toc-example">
+            <h4 style="text-align: center; margin-top: 0;">Índice</h4>
+            <div style="margin: 1rem 0;">
+              <div>1 &nbsp; Fundamentos Históricos ..................................... 5</div>
+              <div style="margin-left: 1rem;">1.1 &nbsp; A Invenção de Gutenberg ............................ 5</div>
+              <div style="margin-left: 2rem;">1.1.1 &nbsp; O Impacto na Renascença ..................... 5</div>
+              <div>2 &nbsp; A Revolução Digital com TeX ................................ 6</div>
+              <div style="margin-left: 1rem;">2.1 &nbsp; A Motivação de Donald Knuth ........................ 6</div>
+            </div>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 1rem; font-style: italic;">Nota: "Uma Nota sobre as Fontes Góticas" não aparece (nível 3) e "Agradecimentos" não aparece (seção estrelada).</p>
+          </div>
+        </section>
+
+        <section id="atividade">
+          <h2>5. Atividade Prática (Maestria Estrutural - 20 minutos)</h2>
+          <div class="activity-box">
+            <h3 style="margin-top: 0;">Copie o código do Exemplo Prático Detalhado para seu projeto Overleaf e compile.</h3>
+
+            <div class="challenge-card">
+              <h4 style="color: #9333ea; margin-top: 0;">Desafio 1 (Controle do Sumário):</h4>
+              <ol style="margin-bottom: 0;">
+                <li>Altere o <code>\setcounter{tocdepth}</code> para <code>3</code>. Recompile duas vezes. A subsubsection "Uma Nota sobre as Fontes Góticas" agora aparece no sumário?</li>
+                <li>Agora, altere para <code>0</code>. O que restou no sumário?</li>
+              </ol>
+            </div>
+
+            <div class="challenge-card">
+              <h4 style="color: #9333ea; margin-top: 0;">Desafio 2 (Seção Numerada):</h4>
+              <p style="margin-bottom: 0;">Remova o asterisco do comando <code>\section*{Agradecimentos}</code>, transformando-o em <code>\section{Agradecimentos}</code>. Recompile duas vezes. O que mudou no corpo do documento e no sumário?</p>
+            </div>
+
+            <div class="challenge-card">
+              <h4 style="color: #9333ea; margin-top: 0;">Desafio 3 (Mudança de Classe):</h4>
+              <p style="margin-bottom: 0;">Mude a classe para <code>book</code> e adicione a opção <code>twoside</code>. Recompile. Observe atentamente os números das páginas e as margens. Os capítulos ainda começam em páginas ímpares? Como as margens se comportam?</p>
+            </div>
+
+            <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: #9333ea;">Com esta aula, você ganhou:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Controle granular sobre títulos, autores e datas</li>
+                <li>Domínio da hierarquia estrutural com seções numeradas e não numeradas</li>
+                <li>Manipulação avançada do sumário com profundidade controlada</li>
+                <li>Compreensão prática dos efeitos visuais de cada comando</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Você está pronto para ir além da estrutura e focar no conteúdo em si. Na próxima aula, mergulharemos na formatação de texto!</p>
+            </div>
           </div>
         </section>
       </article>

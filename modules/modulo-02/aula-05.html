@@ -3,77 +3,192 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 2 — Aula 5: Acentuação e Símbolos Internacionais</title>
+  <title>Módulo 2 — Aula 5: A Paleta do Tipógrafo — Estilos e Tamanhos de Fonte</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
-    .theory-box, .activity-box {
-      border-left: 4px solid #a855f7;
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #9333ea;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      background-color: rgba(168, 85, 247, 0.08);
+      background-color: rgba(147, 51, 234, 0.1);
       border-radius: 0 8px 8px 0;
       color: var(--text);
     }
-    .code-block {
-      background-color: #282c34;
-      color: #abb2bf;
+
+    .functionality-showcase {
+      background: var(--panel);
+      border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      position: relative;
+      margin-bottom: 2rem;
     }
-    .code-block pre { margin: 0; }
+
+    .font-card {
+      border-left: 4px solid #9333ea;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+      border: 1px solid var(--border);
+    }
+
+    .code-block {
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
     .copy-button {
       position: absolute;
       top: 10px;
       right: 10px;
-      background-color: #a855f7;
+      background: #4a5568;
       color: white;
       border: none;
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 0.8rem;
     }
-    .package-demo {
+
+    .result-demo {
+      background: var(--panel);
+      border: 2px solid #9333ea;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Lora', serif;
+      position: relative;
+    }
+
+    .result-demo::before {
+      content: "Resultado Visual:";
+      position: absolute;
+      top: -12px;
+      left: 15px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 0.85rem;
+      color: #9333ea;
+      font-weight: 600;
+    }
+
+    .tips-warning {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      color: #92400e;
+    }
+
+    .tips-warning::before {
+      content: "💡 ";
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .danger-warning {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 1px solid #ef4444;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      color: #dc2626;
+    }
+
+    .danger-warning::before {
+      content: "⚠️ ";
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .size-scale {
       background: var(--panel);
       border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
       margin: 1rem 0;
     }
-    .package-demo h4 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-    .symbols-grid {
+
+    .size-demo {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: auto 1fr;
       gap: 1rem;
-      margin: 1rem 0;
+      align-items: center;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      background: rgba(147, 51, 234, 0.05);
     }
-    .symbol-item {
-      background: var(--panel);
-      padding: 1rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-    .symbol-item code {
-      background: #282c34;
-      color: #61afef;
+
+    .size-command {
+      font-family: 'Courier New', monospace;
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #82aaff);
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
-      font-size: 0.9em;
+      font-size: 0.9rem;
     }
-    .symbol-result {
-      font-size: 1.2em;
-      margin-top: 0.5rem;
+
+    .size-preview {
+      font-family: 'Times New Roman', serif;
+    }
+
+    .complete-example {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      color: #1a202c;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .example-title {
+      text-align: center;
+      font-size: 1.4rem;
       font-weight: bold;
-      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .example-author {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    .example-section {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1.5rem 0 1rem 0;
+      color: #1a202c;
+    }
+
+    .example-subsection {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 1rem 0 0.5rem 0;
+      color: #1a202c;
+    }
+
+    @media (max-width: 768px) {
+      .functionality-showcase {
+        padding: 1rem;
+      }
+      
+      .size-demo {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -90,112 +205,306 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 5: Acentuação e Símbolos Internacionais</h1>
-        
-        <section>
-          <h2>1. Embasamento Teórico</h2>
-          <div class="theory-box">
-            <p>O TeX, em sua origem, foi criado em um contexto onde o inglês e o conjunto de caracteres ASCII eram o padrão. Para que ele pudesse entender e exibir corretamente caracteres de outras línguas, como os acentos do português (<code>á</code>, <code>ã</code>, <code>ç</code>), foram criados "pacotes" — extensões que ensinam novas habilidades ao LaTeX. Os pacotes <code>inputenc</code> e <code>babel</code> são essenciais e praticamente obrigatórios para qualquer pessoa que escreva em português, pois eles cuidam da codificação de entrada e das regras de hifenização e terminologia do idioma.</p>
+        <h1>Aula 5: A Paleta do Tipógrafo — Estilos e Tamanhos de Fonte</h1>
+
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">Bem-vindo(á) à quinta aula do Módulo 2!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Com a estrutura macro do nosso documento solidamente definida, é hora de mergulhar nos <strong>detalhes que dão clareza e hierarquia visual</strong> ao nosso texto.</p>
+          <p style="color: var(--muted); font-style: italic;">Nesta aula, você aprenderá a usar a "paleta de ferramentas" do LaTeX para aplicar estilos de fonte, não como mera decoração, mas como um recurso semântico para guiar a leitura e enfatizar suas ideias.</p>
+        </div>
+
+        <section id="estilos-fonte">
+          <h2>1. Funcionalidade: Estilos de Fonte</h2>
+
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>São comandos que alteram a aparência de um trecho de texto.</p>
+                <p>Para criar contraste, destacar termos importantes, seguir convenções tipográficas (como itálico para palavras estrangeiras) e melhorar a legibilidade.</p>
+                <p>Envolvendo o texto desejado com o comando apropriado.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>1. Negrito (\textbf)</h3>
+          <div class="font-card">
+            <p><strong>Uso:</strong> Para ênfase máxima. Ideal para destacar termos que estão sendo definidos pela primeira vez ou para criar um forte impacto visual.</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>O resultado do experimento foi <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">conclusivo</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              O resultado do experimento foi <strong>conclusivo</strong>.
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> Evite o excesso. Se tudo é importante, nada é importante. Use o negrito para os pontos verdadeiramente cruciais.
+            </div>
+          </div>
+
+          <h3>2. Itálico (\textit) e Ênfase (\emph)</h3>
+          <div class="font-card">
+            <p><strong>Uso:</strong> <code>\textit</code> é usado para seguir convenções, como em títulos de livros (<em>O Senhor dos Anéis</em>) ou palavras estrangeiras (<em>de facto</em>). <code>\emph</code> é usado para dar ênfase contextual a uma palavra no meio de uma frase.</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo \textit:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>O conceito foi introduzido no livro <span style="color: #82aaff;">\\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Estrutura das Revoluções Científicas</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo \emph:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>Esta teoria é <span style="color: #82aaff;">\\emph</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">completamente</span><span style="color: #ffffff;">}</span> diferente da anterior.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              Esta teoria é <em>completamente</em> diferente da anterior.
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> Prefira <code>\emph</code> para ênfase geral. Sua capacidade de se aninhar (itálico dentro de itálico vira normal) o torna semanticamente mais poderoso e flexível.
+            </div>
+          </div>
+
+          <h3>3. Versalete (\textsc)</h3>
+          <div class="font-card">
+            <p><strong>Uso:</strong> A forma tipograficamente correta para siglas (ABNT, UFPR, NASA). As letras maiúsculas têm a mesma altura das letras minúsculas, integrando-se suavemente ao texto.</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>A pesquisa foi financiada pela <span style="color: #82aaff;">\\textsc</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fapesp</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              A pesquisa foi financiada pela <span style="font-variant: small-caps;">FAPESP</span>.
+            </div>
+
+            <div class="danger-warning">
+              <strong>Armadilha Comum:</strong> Digite a sigla em <strong>minúsculas</strong> dentro do comando para garantir o efeito correto: <code>\textsc{fapesp}</code> é o ideal.
+            </div>
+          </div>
+
+          <h3>4. Fonte Monoespaçada (\texttt)</h3>
+          <div class="font-card">
+            <p><strong>Uso:</strong> Essencial para exibir qualquer texto que precise ser representado literalmente, sem interpretação de formatação, como código-fonte, comandos, URLs, caminhos de arquivo ou endereços de e-mail.</p>
+            
+            <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
+            <div class="code-block">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre style="margin: 0; white-space: pre-wrap;"><code>Para compilar, use o comando <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">pdflatex nome_do_arquivo.tex</span><span style="color: #ffffff;">}</span>.</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              Para compilar, use o comando <code>pdflatex nome_do_arquivo.tex</code>.
+            </div>
+
+            <div class="tips-warning">
+              <strong>Dica de Uso:</strong> É a melhor maneira de falar sobre o código LaTeX dentro de um documento LaTeX.
+            </div>
           </div>
         </section>
 
-        <section>
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Nesta aula, vamos entender a função dos pacotes e como usar os dois pacotes mais importantes para a língua portuguesa: <code>inputenc</code> e <code>babel</code>. Também veremos como inserir símbolos e caracteres especiais que não estão no teclado.</p>
-        </section>
+        <section id="tamanhos-fonte">
+          <h2>2. Funcionalidade: Tamanhos de Fonte Relativos</h2>
 
-        <section>
-          <h2>3. Desenvolvimento do Conteúdo</h2>
-          
-          <h3>Carregando Pacotes no Preâmbulo</h3>
-          <p>Pacotes são adicionados no preâmbulo do documento usando o comando <code>\usepackage[opções]{nome-do-pacote}</code>.</p>
-          
-          <div class="package-demo">
-            <h4>Pacote <code>inputenc</code> (Input Encoding):</h4>
-            <p>Este pacote diz ao LaTeX como interpretar os caracteres que você digita no teclado. A codificação <code>UTF-8</code> é o padrão universal hoje e permite o uso de acentos e símbolos de praticamente qualquer idioma diretamente no código.</p>
-            <p><strong>Uso:</strong> <code>\usepackage[utf8]{inputenc}</code></p>
-            <p><em>Sem esta linha, digitar "coração" no código resultaria em erro ou em caracteres estranhos no PDF.</em></p>
-          </div>
-
-          <div class="package-demo">
-            <h4>Pacote <code>babel</code> (Language Support):</h4>
-            <p>Este pacote adapta o LaTeX às convenções de um idioma específico. Quando ativado para o português do Brasil, ele:</p>
-            <ul>
-              <li>Traduz termos automáticos (ex: "Contents" vira "Sumário", "Chapter" vira "Capítulo").</li>
-              <li>Aplica as regras corretas de hifenização para palavras em português.</li>
-              <li>Ajusta a formatação de datas.</li>
-            </ul>
-            <p><strong>Uso:</strong> <code>\usepackage[brazil]{babel}</code></p>
-          </div>
-
-          <h3>Inserindo Símbolos Especiais do LaTeX</h3>
-          <p>Como vimos no Módulo 1, alguns caracteres são "reservados" pelo LaTeX para executar comandos. Para exibi-los no texto, você precisa usar um comando específico:</p>
-          
-          <div class="symbols-grid">
-            <div class="symbol-item">
-              <code>\%</code>
-              <div class="symbol-result">%</div>
-            </div>
-            <div class="symbol-item">
-              <code>\$</code>
-              <div class="symbol-result">$</div>
-            </div>
-            <div class="symbol-item">
-              <code>\&</code>
-              <div class="symbol-result">&</div>
-            </div>
-            <div class="symbol-item">
-              <code>\_</code>
-              <div class="symbol-result">_</div>
-            </div>
-            <div class="symbol-item">
-              <code>\{</code>
-              <div class="symbol-result">{</div>
-            </div>
-            <div class="symbol-item">
-              <code>\}</code>
-              <div class="symbol-result">}</div>
+          <div class="functionality-showcase">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Comandos que alteram o tamanho da fonte em relação ao tamanho padrão do documento (definido na <code>\documentclass</code>).</p>
+                <p>Para criar hierarquia visual (títulos maiores que o texto, notas de rodapé menores) ou para ajustar o texto em espaços restritos como tabelas.</p>
+                <p>São usados como "interruptores". O ideal é usá-los dentro de um grupo <code>{...}</code> para que o efeito seja local: <code>{\comando texto}</code>.</p>
+              </div>
             </div>
           </div>
 
-          <h3>Exemplo de Preâmbulo Completo para Português</h3>
+          <h3>A Escala de Tamanhos (do menor para o maior):</h3>
+          <div class="size-scale">
+            <div class="size-demo">
+              <div class="size-command">\tiny</div>
+              <div class="size-preview" style="font-size: 0.6rem;">Texto minúsculo</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\scriptsize</div>
+              <div class="size-preview" style="font-size: 0.7rem;">Texto muito pequeno</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\footnotesize</div>
+              <div class="size-preview" style="font-size: 0.8rem;">Texto pequeno (tamanho comum para notas de rodapé e legendas)</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\small</div>
+              <div class="size-preview" style="font-size: 0.9rem;">Texto um pouco menor</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\normalsize</div>
+              <div class="size-preview" style="font-size: 1rem; font-weight: bold;">Texto normal (o tamanho padrão do texto)</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\large</div>
+              <div class="size-preview" style="font-size: 1.2rem;">Texto um pouco maior</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\Large</div>
+              <div class="size-preview" style="font-size: 1.4rem;">Texto maior</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\LARGE</div>
+              <div class="size-preview" style="font-size: 1.7rem;">Texto bem maior</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\huge</div>
+              <div class="size-preview" style="font-size: 2rem;">Texto muito grande</div>
+            </div>
+            <div class="size-demo">
+              <div class="size-command">\Huge</div>
+              <div class="size-preview" style="font-size: 2.5rem;">Texto gigante</div>
+            </div>
+          </div>
+
+          <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo:</h4>
           <div class="code-block">
-            <button class="copy-button" aria-label="Copiar código">Copiar</button>
-            <pre><code>\documentclass[12pt, a4paper]{article}
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code>Texto em tamanho normal. <span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\large</span> Este texto é maior.<span style="color: #ffffff;">}</span> E voltamos ao normal.</code></pre>
+          </div>
+          
+          <div class="result-demo">
+            Texto em tamanho normal. <span style="font-size: 1.2rem;">Este texto é maior.</span> E voltamos ao normal.
+          </div>
 
-% --- PACOTES ESSENCIAIS PARA PORTUGUÊS ---
-\usepackage[utf8]{inputenc}
-\usepackage[brazil]{babel}
-
-\title{Documento em Português}
-\author{João da Silva}
-
-\begin{document}
-    \maketitle
-    
-    \section{Acentuação e Símbolos}
-    
-    Graças ao pacote inputenc, a palavra "coração" é escrita corretamente. 
-    O pacote babel garante que a hifenização de palavras como "extraordinariamente"
-    esteja correta.
-    
-    Precisamos pagar uma taxa de 50\%. O preço é R\$ 10,00.
-    Os símbolos reservados incluem chaves \{ e \}.
-    
-\end{document}</code></pre>
+          <div class="danger-warning">
+            <strong>Armadilha Comum:</strong> Se você esquecer de colocar o comando de tamanho dentro de chaves, todo o resto do seu documento ficará com aquele tamanho! <code>\large Este texto é maior.</code> fará com que tudo a partir dali seja <code>\large</code>.
           </div>
         </section>
 
-        <section>
-          <h2>4. Atividade Prática</h2>
+        <section id="exemplo-completo">
+          <h2>3. Exemplo Prático Completo: Criando uma Página de Manual</h2>
+
+          <p>Vamos combinar todos os estilos e tamanhos de fonte para criar uma página de um manual de estilo fictício.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código Completo</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper, 11pt]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Manual de Estilo da Editora Compilar</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Equipe Editorial</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\today</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\maketitle</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Uso de Fontes e Estilos</span><span style="color: #ffffff;">}</span>
+
+A consistência na formatação é <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">essencial</span><span style="color: #ffffff;">}</span> para a qualidade de
+nossas publicações.
+
+<span style="color: #82aaff;">\\subsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Regras de Ênfase</span><span style="color: #ffffff;">}</span>
+Para dar ênfase a uma palavra, use o comando <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\textbackslash emph</span><span style="color: #ffffff;">}</span>.
+Isso resultará em texto <span style="color: #82aaff;">\\emph</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">enfatizado</span><span style="color: #ffffff;">}</span>. O uso de itálico direto com
+<span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\textbackslash textit</span><span style="color: #ffffff;">}</span> deve ser reservado para títulos de obras,
+como em <span style="color: #82aaff;">\\textit</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Memórias Póstumas de Brás Cubas</span><span style="color: #ffffff;">}</span>.
+
+<span style="color: #82aaff;">\\subsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Hierarquia de Informação</span><span style="color: #ffffff;">}</span>
+Títulos devem ser maiores para criar uma hierarquia clara.
+<span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\Large</span> Este é um título de destaque dentro do texto.<span style="color: #ffffff;">}</span>
+
+Para notas e observações, podemos usar fontes menores.
+<span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\small</span> Esta observação é importante, mas secundária.<span style="color: #ffffff;">}</span>
+
+Notas de rodapé e legendas de figuras utilizam um tamanho ainda menor
+por padrão, o <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\textbackslash footnotesize</span><span style="color: #ffffff;">}</span>.
+<span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\footnotesize</span> Exemplo de texto em tamanho de nota de rodapé.<span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>Resultado Esperado no PDF:</h3>
+
+          <div class="complete-example">
+            <div class="example-title">Manual de Estilo da Editora Compilar</div>
+            <div class="example-author">Equipe Editorial<br>[Data da compilação]</div>
+            
+            <div class="example-section">1 Uso de Fontes e Estilos</div>
+            
+            <p style="text-align: justify; line-height: 1.6;">
+              A consistência na formatação é <strong>essencial</strong> para a qualidade de nossas publicações.
+            </p>
+            
+            <div class="example-subsection">1.1 Regras de Ênfase</div>
+            <p style="text-align: justify; line-height: 1.6;">
+              Para dar ênfase a uma palavra, use o comando <code>\emph</code>. Isso resultará em texto <em>enfatizado</em>. O uso de itálico direto com <code>\textit</code> deve ser reservado para títulos de obras, como em <em>Memórias Póstumas de Brás Cubas</em>.
+            </p>
+            
+            <div class="example-subsection">1.2 Hierarquia de Informação</div>
+            <p style="text-align: justify; line-height: 1.6;">
+              Títulos devem ser maiores para criar uma hierarquia clara.
+            </p>
+            <p style="font-size: 1.4rem; font-weight: bold; margin: 1rem 0;">
+              Este é um título de destaque dentro do texto.
+            </p>
+            <p style="text-align: justify; line-height: 1.6;">
+              Para notas e observações, podemos usar fontes menores.
+            </p>
+            <p style="font-size: 0.9rem; line-height: 1.6;">
+              Esta observação é importante, mas secundária.
+            </p>
+            <p style="text-align: justify; line-height: 1.6;">
+              Notas de rodapé e legendas de figuras utilizam um tamanho ainda menor por padrão, o <code>\footnotesize</code>.
+            </p>
+            <p style="font-size: 0.8rem; line-height: 1.6;">
+              Exemplo de texto em tamanho de nota de rodapé.
+            </p>
+          </div>
+        </section>
+
+        <section id="atividade">
+          <h2>4. Atividade Prática (Seu Manual de Estilo - 15 minutos)</h2>
           <div class="activity-box">
-            <ol>
-              <li>Verifique se o seu projeto no Overleaf já possui as linhas <code>\usepackage[utf8]{inputenc}</code> e <code>\usepackage[brazil]{babel}</code> no preâmbulo. Se não tiver, adicione-as.</li>
-              <li>Escreva um novo parágrafo contendo palavras com diferentes tipos de acentos do português (agudo, crase, circunflexo, til, cedilha). Ex: "Ação, pêssego, à, guaraná, tradição."</li>
-              <li>Recompile e confirme que todos os acentos aparecem corretamente no PDF.</li>
-              <li>Crie uma pequena lista explicando o propósito de 3 símbolos especiais, exibindo o próprio símbolo na explicação. Por exemplo: "O símbolo \% é usado para iniciar comentários no código."</li>
-              <li>Compile o documento final deste módulo. Você agora tem um documento estruturado, com texto formatado e configurado corretamente para o português.</li>
+            <h3 style="margin-top: 0;">Missão: Dominando a Paleta Tipográfica</h3>
+
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Crie um novo documento no Overleaf.</strong></li>
+
+              <li><strong>Crie uma seção chamada "Meu Guia Pessoal de Estilo".</strong></li>
+
+              <li><strong>Dentro da seção, escreva três parágrafos curtos:</strong>
+                <ul style="margin-top: 0.5rem;">
+                  <li><strong>Parágrafo 1:</strong> Explique a diferença entre <code>\textbf</code> e <code>\emph</code>. Use os próprios comandos para destacar seus nomes no texto.</li>
+                  <li><strong>Parágrafo 2:</strong> Crie uma frase de destaque usando o tamanho <code>\Large</code> e a coloque entre dois parágrafos de tamanho normal. Lembre-se de usar <code>{}</code> para limitar o efeito do comando de tamanho.</li>
+                  <li><strong>Parágrafo 3:</strong> Escreva sobre sua sigla favorita (ex: CPU, DNA, etc.) usando <code>\textsc</code>.</li>
+                </ul>
+              </li>
             </ol>
+
+            <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: #9333ea;">Ao completar esta atividade, você terá:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Dominado os estilos fundamentais de fonte do LaTeX</li>
+                <li>Aprendido a usar tamanhos de forma controlada e semântica</li>
+                <li>Compreendido a importância da hierarquia visual em documentos</li>
+                <li>Desenvolvido sua própria filosofia de formatação</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Parabéns! Você concluiu o Módulo 2 e agora possui todas as ferramentas para criar documentos LaTeX visualmente atraentes e bem estruturados!</p>
+            </div>
           </div>
         </section>
       </article>

@@ -3,40 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 2 — Aula 1: Classes de Documento</title>
+  <title>Módulo 2 — Aula 1: Classes de Documento — A Fundação do LaTeX</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
-    .theory-box, .activity-box {
-      border-left: 4px solid #a855f7;
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #9333ea;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      background-color: rgba(168, 85, 247, 0.08);
+      background-color: rgba(147, 51, 234, 0.1);
       border-radius: 0 8px 8px 0;
       color: var(--text);
     }
-    .code-block {
-      background-color: #282c34;
-      color: #abb2bf;
+
+    .class-card {
+      border-left: 4px solid #9333ea;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+      border: 1px solid var(--border);
+    }
+
+    .option-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
       padding: 1.5rem;
       border-radius: 8px;
-      margin-top: 1rem;
       margin-bottom: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      position: relative;
     }
-    .code-block pre { margin: 0; }
+
+    .code-block {
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
     .copy-button {
       position: absolute;
       top: 10px;
       right: 10px;
-      background-color: #a855f7;
+      background: #4a5568;
       color: white;
       border: none;
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .hierarchy-list {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .hierarchy-list li {
+      margin: 0.5rem 0;
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: #9333ea;
+      color: white;
+      font-weight: 600;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: rgba(147, 51, 234, 0.05);
+    }
+
+    .example-result {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Lora', serif;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-table {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -53,53 +126,228 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 1: A Fundação — <code>\documentclass</code> e as Classes de Documento</h1>
-        <section>
-          <h2>1. Embasamento Teórico</h2>
+        <h1>Aula 1: Classes de Documento — A Fundação do LaTeX</h1>
+
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">Seja bem-vindo(a) ao Módulo 2!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">No módulo anterior, aprendemos a <strong>linguagem básica da construção</strong>. Agora, vamos estudar as diferentes "plantas baixas" que definem o tipo de obra.</p>
+          <p style="color: var(--muted); font-style: italic;">A escolha da <code>\documentclass</code> não é apenas uma formalidade; é a <strong>decisão arquitetônica mais impactante</strong> que você tomará, determinando o esqueleto, a escala e as capacidades do seu documento.</p>
+        </div>
+
+        <section id="classes-documento">
+          <h2>1. As Classes de Documento: Definindo a Natureza do Projeto</h2>
+
           <div class="theory-box">
-            <p>Todo documento LaTeX começa com a definição de sua <strong>classe</strong>. A classe é um conjunto fundamental de regras que determina o layout geral do seu documento. Escolher a classe correta é a primeira e mais importante decisão de formatação, pois ela define se seu documento terá capítulos, como os títulos serão apresentados e qual a formatação padrão da página. Esta abordagem reforça a filosofia do LaTeX: você informa a <strong>intenção</strong> (estou escrevendo um artigo) e o sistema cuida dos detalhes de formatação.</p>
+            <p>Vamos detalhar as três classes fundamentais, explorando suas características e usos ideais, conforme compilado a partir dos manuais técnicos e guias especializados.</p>
+          </div>
+
+          <h3>Classe article</h3>
+          <div class="class-card">
+            <h4 style="color: #9333ea; margin-top: 0;">Pense na classe article como a planta de um apartamento: autocontido, eficiente e direto ao ponto.</h4>
+            
+            <p><strong>Uso Ideal:</strong> Artigos científicos para periódicos, ensaios curtos, relatórios de laboratório, listas de exercícios, apresentações de conferência.</p>
+
+            <h5>Hierarquia Máxima:</h5>
+            <p>A principal unidade estrutural é a <code>\section</code>. Não há conceito de "capítulo". A hierarquia completa é:</p>
+            <div class="hierarchy-list">
+              <ul>
+                <li>\\section</li>
+                <li style="margin-left: 1rem;">\\subsection</li>
+                <li style="margin-left: 2rem;">\\subsubsection</li>
+                <li style="margin-left: 3rem;">\\paragraph</li>
+                <li style="margin-left: 4rem;">\\subparagraph</li>
+              </ul>
+            </div>
+
+            <h5>Layout Padrão:</h5>
+            <ul>
+              <li><strong>Título:</strong> O <code>\maketitle</code> coloca o título no topo da primeira página, e o texto do documento começa logo abaixo. Não há uma página de rosto separada por padrão.</li>
+              <li><strong>Impressão:</strong> Configurada para <code>oneside</code> (um lado), o que significa que as margens esquerda e direita são simétricas.</li>
+              <li><strong>Numeração:</strong> Equações, figuras e tabelas são numeradas sequencialmente ao longo de todo o documento (e.g., Equação 1, Equação 2, ...).</li>
+            </ul>
+          </div>
+
+          <h3>Classe report</h3>
+          <div class="class-card">
+            <h4 style="color: #9333ea; margin-top: 0;">A classe report é como a planta de uma casa: múltiplos cômodos (seções) organizados em andares (capítulos).</h4>
+            
+            <p><strong>Uso Ideal:</strong> Trabalhos de Conclusão de Curso (TCCs), dissertações de mestrado, teses de doutorado, relatórios técnicos extensos, documentação de software.</p>
+
+            <h5>Hierarquia Máxima:</h5>
+            <p>A principal unidade é o <code>\chapter</code>. A numeração dos elementos (seções, equações, figuras) é reiniciada a cada capítulo.</p>
+
+            <h5>Layout Padrão:</h5>
+            <ul>
+              <li><strong>Título:</strong> O <code>\maketitle</code> gera uma página de rosto separada.</li>
+              <li><strong>Capítulos:</strong> Cada <code>\chapter</code> inicia automaticamente em uma nova página.</li>
+              <li><strong>Impressão:</strong> Ainda configurada para <code>oneside</code> por padrão, mas frequentemente usada com a opção <code>twoside</code>.</li>
+              <li><strong>Abstract:</strong> Possui um ambiente <code>abstract</code> que gera uma página de resumo separada.</li>
+            </ul>
+          </div>
+
+          <h3>Classe book</h3>
+          <div class="class-card">
+            <h4 style="color: #9333ea; margin-top: 0;">A classe book é a planta de um grande edifício ou de um condomínio, com múltiplas seções organizadas em blocos.</h4>
+            
+            <p><strong>Uso Ideal:</strong> Livros, teses muito longas e complexas.</p>
+
+            <h5>Hierarquia Máxima:</h5>
+            <p>Adiciona um nível acima do capítulo, o <code>\part</code>, para agrupar grandes seções do livro.</p>
+
+            <h5>Layout Padrão:</h5>
+            <ul>
+              <li><strong>Impressão:</strong> Configurada por padrão para <code>twoside</code>, otimizada para impressão frente e verso. As margens internas (medianiz) são menores que as externas.</li>
+              <li><strong>Capítulos:</strong> Não apenas começam em uma nova página, mas por padrão, em uma página ímpar (à direita), deixando uma página em branco se necessário.</li>
+              <li><strong>Elementos Pré-textuais:</strong> Possui comandos específicos como <code>\frontmatter</code>, <code>\mainmatter</code> e <code>\backmatter</code> para controlar a numeração das páginas (romana para o prefácio, arábica para o conteúdo principal, etc.).</li>
+            </ul>
           </div>
         </section>
-        <section>
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Nesta aula, vamos dissecar o comando <code>\documentclass</code>. Você aprenderá sobre as três classes de documento mais importantes (<code>article</code>, <code>report</code> e <code>book</code>) e como customizá-las usando opções para alterar o tamanho da fonte, o tipo de papel e o layout da página.</p>
+
+        <section id="opcoes-classe">
+          <h2>2. As Opções da Classe: Ajustando os Detalhes da Planta</h2>
+
+          <div class="theory-box">
+            <p>As opções, passadas entre colchetes, são os <strong>"ajustes finos"</strong> do seu projeto. Vamos ver exemplos práticos para as mais importantes.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">10pt, 11pt, 12pt</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[12pt]{article}</code></p>
+              <p><strong>Efeito:</strong> Define a fonte base do corpo do texto para 12 pontos, tornando a leitura mais confortável em muitos casos. Títulos e outros elementos serão redimensionados proporcionalmente.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">a4paper</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[a4paper]{report}</code></p>
+              <p><strong>Efeito:</strong> Configura as dimensões da página para o padrão A4 (210mm x 297mm), o mais comum no Brasil e na Europa. Sem isso, o padrão é o letterpaper americano.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">twoside</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[twoside]{report}</code></p>
+              <p><strong>Efeito:</strong> Informa ao LaTeX para formatar o documento para impressão frente e verso. O resultado mais visível são as margens assimétricas (a margem interna é menor) e os cabeçalhos que podem ser diferentes para páginas pares e ímpares.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">twocolumn</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[twocolumn]{article}</code></p>
+              <p><strong>Efeito:</strong> Formata todo o corpo do documento em um layout de duas colunas, comum em artigos científicos e newsletters. O LaTeX gerencia o fluxo de texto entre as colunas automaticamente.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">landscape</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[landscape]{article}</code></p>
+              <p><strong>Efeito:</strong> Inverte as dimensões de altura e largura da página, criando um layout em modo paisagem. Ideal para apresentar tabelas muito largas ou figuras panorâmicas.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">titlepage</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[titlepage]{article}</code></p>
+              <p><strong>Efeito:</strong> Força a classe <code>article</code> (que normalmente não o faz) a criar uma página de título separada para as informações do <code>\maketitle</code>. O texto principal começará na página seguinte.</p>
+            </div>
+          </div>
         </section>
-        <section>
-          <h2>3. Desenvolvimento do Conteúdo</h2>
-          <p>A sintaxe do comando é a seguinte:</p>
-          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[opções]{classe}</code></pre></div>
-          <ul>
-            <li><strong>{classe}:</strong> Argumento obrigatório que define o tipo do documento.</li>
-            <li><strong>[opções]:</strong> Argumentos opcionais, separados por vírgula, que modificam o comportamento da classe.</li>
-          </ul>
-          <h3>Classes de Documento Principais:</h3>
-          <ul>
-            <li><strong>article</strong>: Ideal para documentos curtos, como artigos científicos, relatórios, listas de exercícios e pequenas apresentações. Não possui <code>\chapter</code>. A hierarquia começa em <code>\section</code>.</li>
-            <li><strong>report</strong>: Usada para documentos mais longos que requerem múltiplos capítulos, como relatórios de pesquisa, monografias ou dissertações simples. Introduz o comando <code>\chapter</code>.</li>
-            <li><strong>book</strong>: Projetada para livros. Oferece recursos adicionais, como a formatação padrão para impressão frente e verso (<code>twoside</code>).</li>
-          </ul>
-          <h3>Opções Mais Comuns:</h3>
-          <ul>
-            <li><strong>Tamanho da Fonte:</strong> <code>10pt</code>, <code>11pt</code>, <code>12pt</code>.</li>
-            <li><strong>Tamanho do Papel:</strong> <code>a4paper</code>, <code>letterpaper</code>, <code>b5paper</code>.</li>
-            <li><strong>Layout da Página:</strong> <code>oneside</code> ou <code>twoside</code>.</li>
-            <li><strong>Número de Colunas:</strong> <code>onecolumn</code> ou <code>twocolumn</code>.</li>
-          </ul>
-          <h3>Exemplos Práticos:</h3>
-          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[11pt, a4paper]{article}</code></pre></div>
-          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[12pt, a4paper, twoside]{report}</code></pre></div>
-          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[10pt, a4paper, twocolumn]{article}</code></pre></div>
-        </section>
-        <section>
-          <h2>4. Atividade Prática</h2>
-          <div class="activity-box">
-            <ol>
-              <li>Comece com o código da aula anterior. A primeira linha deve ser <code>\documentclass{article}</code>.</li>
-              <li>Adicione as opções para definir o tamanho da fonte para <code>12pt</code> e o papel para <code>a4paper</code>. Recompile e observe a mudança.</li>
-              <li>Mude a classe de <code>article</code> para <code>report</code>. Recompile. A aparência visual mudou?</li>
-              <li>Volte a classe para <code>article</code> e adicione a opção <code>twocolumn</code>. Recompile e veja o texto em duas colunas.</li>
-              <li>Ao final, deixe seu preâmbulo configurado como <code>\documentclass[12pt, a4paper]{article}</code> para as próximas aulas.</li>
+
+        <section id="exemplo-pratico">
+          <h2>3. Exemplo Prático Combinado</h2>
+
+          <p>Vamos criar um pequeno documento usando a classe <code>report</code> e algumas opções para ver o efeito combinado. Este exemplo demonstra como a escolha da classe e das opções define fundamentalmente o resultado.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #546e7a;">% Classe 'report', fonte 12pt, papel A4, layout frente e verso.</span>
+<span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[12pt, a4paper, twoside]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">report</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Relatório Abrangente Sobre a Tipografia Digital</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Equipe LaTeX</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Setembro de 2025</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% A opção 'titlepage' é padrão no 'report', então o título terá sua própria página.</span>
+<span style="color: #82aaff;">\\maketitle</span>
+
+<span style="color: #546e7a;">% O ambiente 'abstract' também gera uma página separada no 'report'.</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abstract</span><span style="color: #ffffff;">}</span>
+    Este é o resumo do nosso relatório, apresentando os principais pontos 
+    que serão discutidos nos capítulos a seguir.
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abstract</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\tableofcontents</span>
+
+<span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Era do TeX</span><span style="color: #ffffff;">}</span>
+Como a classe é 'report', este capítulo iniciará uma nova página. A numeração das seções
+será vinculada a este capítulo.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">O Problema da Qualidade</span><span style="color: #ffffff;">}</span>
+Donald Knuth estava insatisfeito com a qualidade tipográfica da época.
+
+<span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Chegada do LaTeX</span><span style="color: #ffffff;">}</span>
+<span style="color: #546e7a;">% Como a opção 'twoside' está ativa, o LaTeX pode deixar a página 4 em branco</span>
+<span style="color: #546e7a;">% para garantir que este capítulo comece em uma página ímpar (página 5).</span>
+Este segundo capítulo também iniciará em uma nova página.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Simplificando o Processo</span><span style="color: #ffffff;">}</span>
+Leslie Lamport criou macros para facilitar o uso do TeX.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>O que observar ao compilar este código:</h3>
+
+          <div class="example-result">
+            <ol style="line-height: 1.8;">
+              <li><strong>Página 1 (Folha de Rosto):</strong> O título estará sozinho em uma página.</li>
+              
+              <li><strong>Página 2 (Resumo):</strong> O conteúdo do ambiente <code>abstract</code> terá sua própria página.</li>
+              
+              <li><strong>Página 3 (Sumário):</strong> O sumário será gerado aqui.</li>
+              
+              <li><strong>Página 4 (Pode estar em branco):</strong> Se a opção <code>openright</code> (padrão em <code>book</code> e às vezes em <code>report</code> com <code>twoside</code>) estiver ativa, esta página pode ser deixada em branco para que o próximo capítulo comece na página 5 (uma página da direita).</li>
+              
+              <li><strong>Página 5 (Capítulo 1):</strong> O primeiro capítulo começa aqui.</li>
+              
+              <li><strong>Página 7 (Capítulo 2):</strong> O segundo capítulo também começa em uma nova página (e também em uma página ímpar).</li>
+              
+              <li><strong>Margens:</strong> Ao visualizar o PDF, você notará que as margens não são iguais. Nas páginas ímpares, a margem esquerda será maior; nas páginas pares, a direita será maior, preparando o documento para encadernação.</li>
             </ol>
+          </div>
+        </section>
+
+        <section id="atividade">
+          <h2>4. Atividade Prática (Seja o Arquiteto - 20 minutos)</h2>
+          <div class="activity-box">
+            <h3 style="margin-top: 0;">Missão: Experimentar com Classes e Opções</h3>
+
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Use o código do Exemplo Prático Combinado</strong> acima.</li>
+
+              <li><strong>Experimento 1:</strong> Mude a classe de <code>report</code> para <code>book</code>. Recompile. Quais diferenças sutis você nota? 
+                <br><span style="color: var(--muted); font-style: italic;">(Dica: olhe a numeração das páginas pré-textuais e o texto nos cabeçalhos, se houver)</span>
+              </li>
+
+              <li><strong>Experimento 2:</strong> Volte a classe para <code>report</code>. Remova a opção <code>twoside</code>. Recompile. O que aconteceu com as margens das páginas?</li>
+
+              <li><strong>Experimento 3:</strong> Mantenha a classe <code>report</code> e a opção <code>twoside</code>. Adicione a opção <code>twocolumn</code>. Recompile. Observe como o LaTeX refaz todo o layout do seu relatório complexo para um formato de duas colunas, mantendo a estrutura de capítulos e seções.</li>
+            </ol>
+
+            <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: #9333ea;">Com este conhecimento detalhado, você agora pode:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Tomar decisões informadas sobre a melhor estrutura para qualquer tipo de documento</li>
+                <li>Compreender como as opções de classe afetam o layout final</li>
+                <li>Escolher between article, report e book com base nas necessidades específicas</li>
+                <li>Aplicar opções como twoside, twocolumn e titlepage estrategicamente</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Está pronto(a) para a próxima aula, onde vamos focar nos detalhes da página de rosto e na formatação dos títulos?</p>
+            </div>
           </div>
         </section>
       </article>
