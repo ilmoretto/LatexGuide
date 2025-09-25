@@ -1,61 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR" x-data="{ sidebarOpen: false }" x-effect="document.body.style.overflow = (sidebarOpen && window.matchMedia('(max-width: 1024px)').matches) ? 'hidden' : ''">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="base-path" content="">
   <title>Curso de LaTeX — Estrutura</title>
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
-  <!-- KaTeX CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <header class="topbar">
-    <button id="sidebarToggle" class="icon-btn" aria-label="Alternar menu" :aria-expanded="sidebarOpen.toString()" aria-controls="sidebar" @click="sidebarOpen = !sidebarOpen">☰</button>
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
     <div class="brand">
       <img src="assets/img/logo.svg" alt="" class="brand__logo">
       <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
     </div>
-
-    <!-- Busca -->
-    <div class="search">
-      <input id="searchInput" class="search__input" type="search" placeholder="Buscar aulas..." autocomplete="off" />
-      <div id="searchResultsBox" class="search__results" aria-label="Resultados da busca">
-        <ul id="searchResults"></ul>
-      </div>
-    </div>
   </header>
 
-  <aside id="sidebar" class="sidebar" aria-label="Menu lateral" :class="{'is-open': sidebarOpen}" @click.outside="sidebarOpen=false"></aside>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
 
   <div class="layout">
-    <main id="content" class="content">
+    <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Bem-vindo(a) ao Curso de LaTeX (Estrutura)</h1>
-        <p>Este projeto é apenas a estrutura do curso (layout, navegação, busca e páginas). Substitua estes textos pelos seus conteúdos. Fórmulas KaTeX: $a^2 + b^2 = c^2$.</p>
+        <h1>Bem-vindo(a) — Estrutura do Curso</h1>
+        <p>Esta é apenas a estrutura do curso (layout, navegação e páginas). Edite data/modules.json e os arquivos em modules/ para organizar seu conteúdo.</p>
         <ul>
-          <li>Use o menu lateral para navegar entre módulos e aulas.</li>
-          <li>Edite o arquivo <code>data/modules.json</code> para adicionar/organizar módulos e páginas.</li>
-          <li>Campo de busca no topo (Fuse.js) — procura por títulos de aulas e módulos.</li>
+          <li>Menu lateral responsivo com módulos e aulas.</li>
+          <li>Breadcrumbs e botões Anterior/Próximo.</li>
+          <li>Sem frameworks — apenas HTML, CSS e JS puros.</li>
         </ul>
       </article>
       <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
     </main>
   </div>
 
-  <!-- CDNs -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
-
-  <!-- Scripts locais -->
-  <script defer src="assets/js/main.js"></script>
-  <script defer src="assets/js/search.js"></script>
-  <script defer src="assets/js/math.js"></script>
+  <script src="assets/js/app.js" defer></script>
 </body>
 </html>

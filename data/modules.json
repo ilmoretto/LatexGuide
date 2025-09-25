@@ -1,17 +1,16 @@
 {
-  "courseTitle": "Curso de LaTeX (Estrutura)",
+  "courseTitle": "Curso de LaTeX",
   "modules": [
     {
-      "id": "modulo-01",
+      "id": "mod-01",
       "title": "Módulo 1: Fundamentos",
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-01/index.html" },
-        { "title": "Aula 1 (placeholder)", "path": "/modules/modulo-01/aula-01.html" },
-        { "title": "Aula 2 (placeholder)", "path": "/modules/modulo-01/aula-02.html" }
+        { "title": "Aula 1", "path": "/modules/modulo-01/aula-01.html" }
       ]
     },
     {
-      "id": "modulo-02",
+      "id": "mod-02",
       "title": "Módulo 2: Intermediário",
       "pages": [
         { "title": "Introdução ao Módulo", "path": "/modules/modulo-02/index.html" }
@@ -19,7 +18,6 @@
     }
   ],
   "extra": [
-    { "title": "Sobre o Curso", "path": "/pages/sobre.html" },
-    { "title": "Como Usar", "path": "/pages/como-usar.html" }
+    { "title": "Início", "path": "/index.html" }
   ]
 }
