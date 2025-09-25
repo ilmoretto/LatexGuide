@@ -9,7 +9,8 @@
         { "title": "A Filosofia do LaTeX", "path": "/modules/modulo-01/aula-01.html" },
         { "title": "Preparando o Ambiente", "path": "/modules/modulo-01/aula-02.html" },
         { "title": "A Estrutura Mínima", "path": "/modules/modulo-01/aula-03.html" },
-        { "title": "Parágrafos e Comentários", "path": "/modules/modulo-01/aula-04.html" }
+        { "title": "Parágrafos e Comentários", "path": "/modules/modulo-01/aula-04.html" },
+        { "title": "Compilando Documentos", "path": "/modules/modulo-01/aula-05.html" }
       ]
     },
     {

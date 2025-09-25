@@ -22,8 +22,8 @@
       align-items: start; 
     }
     .code-block { 
-      background-color: #282c34; 
-      color: #abb2bf; 
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0); 
       padding: 1.5rem; 
       border-radius: 8px; 
       font-family: 'Courier New', Courier, monospace; 
@@ -135,7 +135,7 @@
           <h3>Pacotes Indispensáveis para Português</h3>
           <p>Para escrever em português de forma correta e sem dores de cabeça, três pacotes são indispensáveis:</p>
 
-          <div style="background: #282c34; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative;">
+          <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative;">
             <button style="position: absolute; top: 10px; right: 10px; background: #4a5568; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
             <div style="color: #82aaff;">\\usepackage<span style="color: #c3e88d;">[utf8]</span>{<span style="color: #c3e88d;">inputenc</span>} <span style="color: #546e7a;">% Permite usar acentos diretamente no código</span></div>
             <div style="color: #82aaff;">\\usepackage<span style="color: #c3e88d;">[T1]</span>{<span style="color: #c3e88d;">fontenc</span>}    <span style="color: #546e7a;">% Garante a correta hifenização e copia/cola de acentos</span></div>
@@ -149,7 +149,7 @@
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;" class="code-container">
             <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
               <h4 style="color: var(--accent); margin-top: 0;">No Preâmbulo (Informar os dados):</h4>
-              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+              <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
                 <div style="color: #82aaff;">\\title<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Meu Artigo Científico</span><span style="color: #ffffff;">}</span></div>
                 <div style="color: #82aaff;">\\author<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">João da Silva</span><span style="color: #ffffff;">}</span></div>
                 <div style="color: #82aaff;">\\date<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Setembro 2025</span><span style="color: #ffffff;">}</span></div>
@@ -158,7 +158,7 @@
             
             <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
               <h4 style="color: var(--accent); margin-top: 0;">No Corpo do Documento (Gerar a página):</h4>
-              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+              <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
                 <div style="color: #82aaff;">\\maketitle</div>
               </div>
               <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">Este comando "monta" a página de título com base nas informações do preâmbulo.</p>
@@ -176,7 +176,7 @@
           <div style="background: var(--panel); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; margin: 1.5rem 0;">
             <h4 style="color: var(--accent); margin-top: 0;">Hierarquia de Seções:</h4>
             <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
-              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+              <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
                 <div style="color: #82aaff; margin-bottom: 0.5rem;">\\section<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Nome da Seção</span><span style="color: #ffffff;">}</span></div>
                 <div style="color: #82aaff; margin-bottom: 0.5rem;">\\subsection<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Nome da Subseção</span><span style="color: #ffffff;">}</span></div>
                 <div style="color: #82aaff;">\\subsubsection<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Nome da Sub-subseção</span><span style="color: #ffffff;">}</span></div>
@@ -219,7 +219,7 @@
 
           <h3>Código-Fonte (main.tex)</h3>
           
-          <div style="background: #282c34; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative; overflow-x: auto;">
+          <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative; overflow-x: auto;">
             <button style="position: absolute; top: 10px; right: 10px; background: #4a5568; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
             <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #546e7a;">% --- PREÂMBULO ---</span>
 <span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper, 12pt]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>

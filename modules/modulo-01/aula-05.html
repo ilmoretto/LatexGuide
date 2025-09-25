@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 1 — Aula 5: O Jogo dos Erros e a Gestão dos Espaços</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box,
+    .content-box,
+    .activity-box {
+      border-left: 4px solid #22d3ee;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(34, 211, 238, 0.1);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+
+    .error-box {
+      border-left: 4px solid #ef4444;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(239, 68, 68, 0.1);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+
+    .success-box {
+      border-left: 4px solid #10b981;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(16, 185, 129, 0.1);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+
+    .code-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .code-block {
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .error-highlight {
+      background-color: rgba(239, 68, 68, 0.3);
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #4a5568;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .error-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .error-table th,
+    .error-table td {
+      padding: 0.8rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    .error-table th {
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+
+    .error-table tr:nth-child(even) {
+      background: rgba(34, 211, 238, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .code-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 5: O Jogo dos Erros e a Gestão dos Espaços</h1>
+
+        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(34, 211, 238, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: var(--accent); margin-top: 0;">Parabéns por chegar até aqui!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Você já sabe estruturar e formatar um texto básico. No entanto, ao <strong>programar em LaTeX</strong> (sim, é uma forma de programação!), inevitavelmente você encontrará erros.</p>
+          <p style="color: var(--muted); font-style: italic;">Além disso, pode ficar confuso sobre como o LaTeX gerencia os espaços em branco. Esta aula é sobre como se tornar um <strong>detetive de erros</strong> e um <strong>mestre dos espaços</strong>.</p>
+        </div>
+
+        <section id="mensagens-erro">
+          <h2>1. Entendendo as Mensagens de Erro: Seu Compilador é Seu Amigo</h2>
+
+          <div class="theory-box">
+            <p>Mais cedo ou mais tarde, ao compilar, em vez de um belo PDF, você verá seu editor no Overleaf destacar uma linha em vermelho e mostrar um arquivo de "log" com mensagens crípticas. <strong>Não entre em pânico!</strong> Entender essas mensagens é a chave para a independência.</p>
+          </div>
+
+          <h3>Os Erros Mais Comuns para Iniciantes</h3>
+
+          <div class="error-table-container" style="overflow-x: auto;">
+            <table class="error-table">
+              <thead>
+                <tr>
+                  <th>Tipo de Erro</th>
+                  <th>Exemplo</th>
+                  <th>Mensagem Típica</th>
+                  <th>Solução</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Comando com erro de digitação</strong></td>
+                  <td><code>\sction</code> em vez de <code>\section</code></td>
+                  <td><span style="color: #ef4444;">Undefined control sequence</span></td>
+                  <td>Verifique a ortografia do comando. O Overleaf sugere a correção.</td>
+                </tr>
+                <tr>
+                  <td><strong>Esquecer de fechar chave</strong></td>
+                  <td><code>\textbf{texto sem fim</code></td>
+                  <td><span style="color: #ef4444;">Runaway argument?</span></td>
+                  <td>Encontre a chave <code>{</code> que não tem par <code>}</code> correspondente.</td>
+                </tr>
+                <tr>
+                  <td><strong>Caractere especial sem escape</strong></td>
+                  <td><code>10% de 100</code></td>
+                  <td>Varia (pode causar erros estranhos)</td>
+                  <td>Use "escape": <code>10\%</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Como Ler o Log de Erros no Overleaf</h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Destaque Visual</h4>
+              <p>O Overleaf destacará a primeira linha onde encontrou um problema. <strong>Atenção:</strong> o erro real pode estar em uma linha anterior.</p>
+            </div>
+
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Primeira Linha</h4>
+              <p>Leia a primeira linha da mensagem de erro. Geralmente, ela é a mais informativa.</p>
+            </div>
+
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Número da Linha</h4>
+              <p>O log mostra o número da linha (l.xx) onde o erro foi detectado, ajudando a localizá-lo.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="gestao-espacos">
+          <h2>2. A Gestão de Espaços: Como o LaTeX Pensa</h2>
+
+          <div class="theory-box">
+            <p>Essa é uma das maiores fontes de confusão para iniciantes. O LaTeX tem suas próprias regras para espaços, que <strong>ignoram o que você faz no editor</strong>.</p>
+          </div>
+
+          <h3>Regras Fundamentais dos Espaços</h3>
+
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 2rem 0;">
+            <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--accent); margin-top: 0;">1. Múltiplos Espaços = Um Espaço</h4>
+              <p>Digitar <code>Olá,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mundo!</code> no seu código resulta em <em>"Olá, mundo!"</em>. O LaTeX comprime múltiplos espaços em um só.</p>
+            </div>
+
+            <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--accent); margin-top: 0;">2. Quebra de Linha = Um Espaço</h4>
+              <div class="code-container">
+                <div>
+                  <p><strong>Código:</strong></p>
+                  <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+                    Uma frase<br>
+                    continua.
+                  </div>
+                </div>
+                <div>
+                  <p><strong>Resultado:</strong></p>
+                  <div style="background: var(--panel); border: 1px solid var(--border); padding: 1rem; border-radius: 6px;">
+                    "Uma frase continua."
+                  </div>
+                </div>
+              </div>
+              <p>Para o LaTeX, uma quebra de linha no código é apenas um espaço, a menos que seja uma linha em branco.</p>
+            </div>
+
+            <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--accent); margin-top: 0;">3. Linha em Branco = Novo Parágrafo</h4>
+              <p><strong>Esta é a regra mais importante.</strong> Para realmente separar parágrafos, deixe uma (ou mais) linhas vazias no seu código.</p>
+            </div>
+
+            <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--accent); margin-top: 0;">4. Espaços após Comandos</h4>
+              <p>O LaTeX "come" os espaços após comandos com nomes de letras. Exemplo: <code>\LaTeX é legal</code> resulta em <em>"LaTeXé legal"</em> (sem espaço!).</p>
+              
+              <div style="margin-top: 1rem; padding: 1rem; background: rgba(34, 211, 238, 0.1); border-radius: 6px;">
+                <p style="margin: 0; font-weight: 600;">A Solução:</p>
+                <ul style="margin: 0.5rem 0 0 0; font-family: 'Courier New', monospace;">
+                  <li><code>\LaTeX\ é legal</code> → "LaTeX é legal"</li>
+                  <li><code>\LaTeX{} é legal</code> → "LaTeX é legal"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-pratico">
+          <h2>3. Exemplo Prático: Corrigindo um Documento "Quebrado"</h2>
+
+          <p>Abaixo está um código cheio de erros comuns. Tente identificar os problemas antes de olhar a solução.</p>
+
+          <h3>Código-Fonte com Erros (main.tex)</h3>
+
+          <div class="error-box">
+            <p style="font-weight: 600; margin-top: 0;">⚠️ Este código contém vários erros intencionais para aprendizado!</p>
+          </div>
+
+          <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative; overflow-x: auto;">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Relatório de Erros Comuns</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Detetive de Código</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\today</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\maketitle</span>
+<span style="color: #82aaff;">\\tableofcontents</span>
+
+<span class="error-highlight">\\sction</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Primeiro Problema</span><span style="color: #ffffff;">}</span> <span style="color: #546e7a;">% Erro aqui!</span>
+Este é o primeiro parágrafo. Queremos destacar a palavra <span class="error-highlight">\\textbf{importante.</span>
+O preço é de <span class="error-highlight">100$</span> e o desconto é de <span class="error-highlight">15%</span>.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Segundo Problema</span><span style="color: #ffffff;">}</span>
+O sistema <span class="error-highlight">\\LaTeX   é</span> muito poderoso.
+Uma frase
+quebrada no código.
+<span style="color: #546e7a;">% Onde está o fechamento do negrito?</span>
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>Análise dos Erros e a Versão Corrigida</h3>
+
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0;">
+            <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px;">
+              <p style="margin: 0;"><strong>❌ <code>\sction</code>:</strong> Comando digitado incorretamente. O correto é <code>\section</code>.</p>
+            </div>
+            
+            <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px;">
+              <p style="margin: 0;"><strong>❌ <code>\textbf{importante.</code>:</strong> A chave <code>{</code> foi aberta, mas nunca fechada. Deveria fechar após "importante".</p>
+            </div>
+            
+            <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px;">
+              <p style="margin: 0;"><strong>❌ <code>100$</code> e <code>15%</code>:</strong> Caracteres especiais usados sem "escape". O correto é <code>100\$</code> e <code>15\%</code>.</p>
+            </div>
+            
+            <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 1rem; border-radius: 8px;">
+              <p style="margin: 0;"><strong>❌ <code>\LaTeX   é</code>:</strong> Múltiplos espaços serão reduzidos a um. O espaço após <code>\LaTeX</code> será "comido". O correto é <code>\LaTeX\ é</code>.</p>
+            </div>
+            
+            <div style="background: #f0f9ff; border: 1px solid #bfdbfe; padding: 1rem; border-radius: 8px;">
+              <p style="margin: 0;"><strong>ℹ️ "Uma frase quebrada":</strong> A quebra de linha no meio da frase será tratada como um simples espaço. Isso não é um erro, mas um comportamento esperado.</p>
+            </div>
+          </div>
+
+          <h3>Código-Fonte Corrigido (main.tex)</h3>
+
+          <div class="success-box">
+            <p style="font-weight: 600; margin-top: 0;">✅ Versão corrigida - todos os erros foram resolvidos!</p>
+          </div>
+
+          <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative; overflow-x: auto;">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #82aaff;">\\documentclass</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Relatório de Erros Comuns</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Detetive de Código</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #82aaff;">\\today</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\maketitle</span>
+<span style="color: #82aaff;">\\tableofcontents</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Primeiro Problema</span><span style="color: #ffffff;">}</span> <span style="color: #546e7a;">% Corrigido!</span>
+Este é o primeiro parágrafo. Queremos destacar a palavra <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">importante</span><span style="color: #ffffff;">}</span>. <span style="color: #546e7a;">% Corrigido!</span>
+O preço é de <span style="color: #ffffff;">100</span><span style="color: #82aaff;">\\$</span> e o desconto é de <span style="color: #ffffff;">15</span><span style="color: #82aaff;">\\%</span>. <span style="color: #546e7a;">% Corrigido!</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Segundo Problema</span><span style="color: #ffffff;">}</span>
+O sistema <span style="color: #82aaff;">\\LaTeX\\</span> é muito poderoso. <span style="color: #546e7a;">% Corrigido!</span>
+Uma frase quebrada no código.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+        </section>
+
+        <section id="atividade">
+          <h2>4. Atividade Prática (Modo Detetive - 15 minutos)</h2>
+          <div class="activity-box">
+            <h3 style="margin-top: 0;">Missão: Tornar-se um Detetive de Erros LaTeX</h3>
+
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Copie o código com erros</strong> para o seu projeto Overleaf. Tente compilar.</li>
+
+              <li><strong>Observe as mensagens de erro</strong> que o Overleaf apresenta. Tente identificar:
+                <ul style="margin-top: 0.5rem;">
+                  <li>O <span style="color: #ef4444; font-weight: 600;">Undefined control sequence</span></li>
+                  <li>O <span style="color: #ef4444; font-weight: 600;">Runaway argument?</span></li>
+                  <li>Erros relacionados aos caracteres especiais</li>
+                </ul>
+              </li>
+
+              <li><strong>Corrija os erros um por um</strong>, recompilando após cada correção para ver o progresso.</li>
+
+              <li><strong>Por fim</strong>, certifique-se de que o documento final seja compilado sem erros e tenha a aparência correta.</li>
+            </ol>
+
+            <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: var(--accent);">Após completar esta atividade, você será capaz de:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Interpretar mensagens de erro do LaTeX</li>
+                <li>Identificar e corrigir erros comuns de sintaxe</li>
+                <li>Compreender como o LaTeX gerencia espaços</li>
+                <li>Debugar documentos de forma eficiente</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Parabéns! Você agora é oficialmente um "Detetive de Erros LaTeX" competente!</p>
+            </div>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+
+</html>

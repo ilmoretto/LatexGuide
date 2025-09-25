@@ -118,7 +118,7 @@
             <p><strong>Todo e qualquer documento LaTeX</strong>, não importa o tamanho ou complexidade, precisa ter a seguinte estrutura mínima:</p>
           </div>
 
-          <div style="background: #282c34; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace;">
+          <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace;">
             <div style="color: #c3e88d;"><span style="color: #82aaff;">\\documentclass</span>{<span style="color: #c3e88d;">article</span>}</div>
             <div style="margin: 1rem 0;"></div>
             <div style="color: #82aaff;">\\begin{<span style="color: #c3e88d;">document</span>}</div>
@@ -175,7 +175,7 @@
             
             <ol style="font-size: 1.1rem; line-height: 1.8;">
               <li>Dentro do ambiente <code>document</code>, <strong>apague o texto padrão</strong> e escreva algo como: 
-                <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-style: italic;">
+                <div style="background: var(--panel); border: 1px solid var(--border); padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-style: italic;">
                   "Meu primeiro parágrafo em LaTeX. É mais fácil do que eu pensava!"
                 </div>
               </li>
@@ -233,7 +233,7 @@
             
             <ol style="font-size: 1.05rem; line-height: 1.7;">
               <li><strong>Limpe o código</strong> deixando apenas a estrutura mínima que aprendemos:
-                <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
+                <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
                   \documentclass{article}<br>
                   <br>
                   \begin{document}<br>
@@ -243,7 +243,7 @@
               </li>
               
               <li><strong>No preâmbulo</strong> (entre as duas linhas em branco), adicione um comentário explicando o que é aquela área. Use o caractere <code>%</code>:
-                <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #6c757d;">
+                <div style="background: var(--code-bg, #282c34); color: var(--code-comment, #6c757d); padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
                   % Esta é a área do preâmbulo - aqui ficam as configurações
                 </div>
               </li>

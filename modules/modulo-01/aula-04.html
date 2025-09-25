@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 1 — Aula 4: Parágrafos e Comentários</title>
+  <title>Módulo 1 — Aula 4: Refinando o Texto - Fontes, Acentos e Caracteres Especiais</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <style>
@@ -23,8 +23,8 @@
       margin-bottom: 2rem; 
     }
     .code-block { 
-      background-color: #282c34; 
-      color: #abb2bf; 
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0); 
       padding: 1.5rem; 
       border-radius: 8px; 
       font-family: 'Courier New', Courier, monospace; 
@@ -87,93 +87,266 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 4: Parágrafos, Quebras de Linha e Comentários</h1>
-        <p class="lead">Agora que sabemos a estrutura básica, vamos aprender a controlar o fluxo do nosso texto. Entender como o LaTeX trata os espaços e as linhas é fundamental para evitar surpresas na formatação.</p>
+        <h1>Aula 4: Refinando o Texto - Fontes, Acentos e Caracteres Especiais</h1>
+        
+        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(34, 211, 238, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: var(--accent); margin-top: 0;">Bem-vindo(a) à quarta aula!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Até agora, construímos a <strong>estrutura robusta</strong> do nosso documento. É como ter uma casa com paredes, cômodos e andares bem definidos.</p>
+          <p style="color: var(--muted); font-style: italic;">Agora, vamos cuidar do "acabamento": a pintura, a decoração e os detalhes que dão vida e clareza ao texto. Nesta aula, vamos aprender a controlar a aparência do texto e a lidar com as particularidades da língua portuguesa.</p>
+        </div>
 
-        <section id="embasamento-teorico">
-          <h2>1. Embasamento Teórico</h2>
-          <div class="theory-box">
-            <p>No LaTeX, o que você vê no código-fonte não é necessariamente o que você obtém no resultado final, especialmente em relação a espaçamentos. O LaTeX ignora múltiplos espaços em branco entre palavras e trata quebras de linha simples como um único espaço. Esta abordagem permite que ele otimize o layout do parágrafo (justificação, hifenização) de forma automática, uma de suas maiores forças.</p>
-          </div>
-        </section>
-
-        <section id="apresentacao-conteudo">
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Vamos aprender a criar parágrafos, forçar quebras de linha e usar comentários para organizar nosso código.</p>
-        </section>
-
-        <section id="desenvolvimento">
-          <h2>3. Desenvolvimento: Controlando o Fluxo de Texto</h2>
-
-          <h3>Criando Novos Parágrafos</h3>
-          <p>Para o LaTeX, um novo parágrafo é sinalizado por uma ou mais <strong>linhas em branco</strong> no arquivo de código-fonte. Por padrão, a primeira linha de um novo parágrafo (exceto o primeiro da seção) recebe uma pequena indentação (recuo).</p>
-          <div class="code-container">
-            <div>
-              <h4>Código LaTeX</h4>
-              <div class="code-block">
-                <button class="copy-button" aria-label="Copiar código">Copiar</button>
-                <pre><code>\documentclass{article}
-\begin{document}
-
-Este é o primeiro parágrafo.
-Ele continua na mesma linha, mesmo
-que o código fonte tenha uma quebra.
-
-Este é o segundo parágrafo. A linha
-em branco no código acima sinalizou
-o seu início.
-
-\end{document}</code></pre>
-              </div>
-            </div>
-            <div>
-              <h4>Visualização do Resultado</h4>
-              <div class="latex-preview">
-                <p>Este é o primeiro parágrafo. Ele continua na mesma linha, mesmo que o código fonte tenha uma quebra.</p>
-                <p style="text-indent: 1.5em; margin-top: 1rem;">Este é o segundo parágrafo. A linha em branco no código acima sinalizou o seu início.</p>
-              </div>
-            </div>
-          </div>
-
-          <h3>Forçando uma Quebra de Linha</h3>
-          <p>Às vezes, você precisa iniciar uma nova linha sem iniciar um novo parágrafo (como em um poema ou um endereço). Para isso, use o comando de barra dupla invertida: <code>\\</code>.</p>
-
-          <h3>Comentários</h3>
-          <p>O caractere de porcentagem <code>%</code> transforma o resto da linha em um comentário. O LaTeX ignora completamente os comentários durante a compilação. Eles são extremamente úteis para:</p>
-          <ul>
-            <li>Deixar notas para você mesmo no futuro.</li>
-            <li>Explicar partes complexas do código.</li>
-            <li>"Desativar" temporariamente uma linha de código sem apagá-la.</li>
-          </ul>
+        <section id="formatacao-texto">
+          <h2>1. Formatação de Texto: Dando Ênfase às Suas Ideias</h2>
           
-          <div class="code-block">
-            <button class="copy-button" aria-label="Copiar código">Copiar</button>
-            <pre><code><span class="comment">% Esta linha é um comentário e será ignorada.</span>
-\documentclass{article}
-\begin{document}
+          <div class="theory-box">
+            <p>Em qualquer texto, certas palavras ou frases precisam de destaque. O LaTeX oferece <strong>comandos lógicos</strong> para isso. Você não diz "use a fonte X no tamanho Y", mas sim <em>"esta palavra é importante"</em> ou <em>"este termo é enfatizado"</em>.</p>
+          </div>
 
-Rua da Aprendizagem, 123 \\ <span class="comment">% Força uma quebra de linha</span>
-Bairro do Conhecimento \\
-Cidade do Saber - CS
+          <h3>Os Comandos Essenciais de Formatação</h3>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div class="code-container">
+              <div>
+                <h4>Código LaTeX</h4>
+                <div class="code-block">
+                  <button class="copy-button" aria-label="Copiar código">Copiar</button>
+                  <pre><code>\\textbf{texto em negrito}
+\\textit{texto em itálico}
+\\underline{texto sublinhado}
+\\textsc{Texto em Versalete}
+\\texttt{texto monoespaçado}</code></pre>
+                </div>
+              </div>
+              <div>
+                <h4>Resultado Visual</h4>
+                <div class="latex-preview">
+                  <p><strong>texto em negrito</strong></p>
+                  <p><em>texto em itálico</em></p>
+                  <p><u>texto sublinhado</u></p>
+                  <p><span style="font-variant: small-caps;">Tᴇxᴛᴏ ᴇᴍ Vᴇʀsᴀʟᴇᴛᴇ</span></p>
+                  <p><code>texto monoespaçado</code></p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-<span class="comment">% A linha em branco abaixo inicia um novo parágrafo.</span>
+          <h3>Uma Abordagem Mais Moderna: o Comando \emph</h3>
+          
+          <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0;">
+            <p><strong>O LaTeX também oferece o comando <code>\emph{...}</code> (ênfase)</strong>. A primeira vez que você o usa, ele aplica itálico. Se você usar <code>\emph</code> dentro de um texto que já está em itálico, ele reverte para o formato normal, criando um <em>contraste inteligente</em>.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+                Texto normal com \\emph{destaque}.<br>
+                \\textit{Texto em itálico com<br>
+                \\emph{destaque reverso}.}
+              </div>
+              <div style="background: var(--panel); border: 1px solid var(--border); padding: 1rem; border-radius: 6px; font-family: serif;">
+                Texto normal com <em>destaque</em>.<br>
+                <em>Texto em itálico com <span style="font-style: normal;">destaque reverso</span>.</em>
+              </div>
+            </div>
+          </div>
+        </section>
 
-Este é um novo parágrafo.
+        <section id="acentos-caracteres">
+          <h2>2. Acentos e Caracteres Especiais: O Jeito Certo de Escrever em Português</h2>
+          
+          <div class="theory-box">
+            <p>Na aula passada, incluímos os pacotes <code>inputenc</code>, <code>fontenc</code> e <code>babel</code>. Eles são nossos <strong>melhores amigos</strong> para escrever em português. Graças a eles, 99% do tempo você poderá digitar acentos e o ç diretamente no teclado, como faria em qualquer outro editor.</p>
+          </div>
 
-\end{document}</code></pre>
+          <h3>Caracteres Reservados do LaTeX</h3>
+          
+          <p>Contudo, é fundamental conhecer os <strong>caracteres reservados</strong> do LaTeX, aqueles que têm uma função especial no código. Para imprimir esses caracteres, você precisa "escapá-los" com uma barra invertida (\).</p>
+
+          <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace;">
+              <thead>
+                <tr style="background: var(--accent); color: white;">
+                  <th style="padding: 0.8rem; text-align: left; border: 1px solid var(--border);">Caractere</th>
+                  <th style="padding: 0.8rem; text-align: left; border: 1px solid var(--border);">Função no LaTeX</th>
+                  <th style="padding: 0.8rem; text-align: left; border: 1px solid var(--border);">Comando para Imprimir</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">#</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Argumentos de macros</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\#</code></td>
+                </tr>
+                <tr style="background: rgba(34, 211, 238, 0.05);">
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">$</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Início/Fim do modo matemático</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\$</code></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">%</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Comentário</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\%</code></td>
+                </tr>
+                <tr style="background: rgba(34, 211, 238, 0.05);">
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">&</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Separador de colunas (em tabelas)</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\&</code></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">_</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Subscrito (no modo matemático)</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\_</code></td>
+                </tr>
+                <tr style="background: rgba(34, 211, 238, 0.05);">
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">{</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Início de um grupo/argumento</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\{</code></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">}</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Fim de um grupo/argumento</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\}</code></td>
+                </tr>
+                <tr style="background: rgba(34, 211, 238, 0.05);">
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">~</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Espaço "inquebrável"</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\textasciitilde</code></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">^</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Sobrescrito (no modo matemático)</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\textasciicircum</code></td>
+                </tr>
+                <tr style="background: rgba(34, 211, 238, 0.05);">
+                  <td style="padding: 0.8rem; border: 1px solid var(--border); font-weight: bold; color: var(--accent);">\</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);">Início de um comando</td>
+                  <td style="padding: 0.8rem; border: 1px solid var(--border);"><code>\\textbackslash</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="paragrafos-espacamento">
+          <h2>3. Parágrafos, Quebras de Linha e Espaçamento</h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Criação de Parágrafos</h4>
+              <p>Uma <strong>linha em branco</strong> no código inicia um novo parágrafo, e o LaTeX aplica um recuo (indentação) na primeira linha.</p>
+            </div>
+            
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Forçando Quebra de Linha</h4>
+              <p>O comando <code>\\\\</code> força uma quebra de linha <strong>sem iniciar</strong> um novo parágrafo. Use com moderação, pois pode criar espaçamentos estranhos.</p>
+            </div>
+            
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Impedindo Indentação</h4>
+              <p>Se você quer um parágrafo sem recuo (comum após títulos), use <code>\\noindent</code> no início do parágrafo.</p>
+            </div>
+            
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">Espaçamento Horizontal</h4>
+              <p>Para adicionar espaço extra, use <code>\\quad</code> ou <code>\\qquad</code>. Para um espaço pequeno, use <code>\\,</code>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-pratico">
+          <h2>4. Exemplo Prático: Refinando a Introdução do Artigo</h2>
+          
+          <p>Vamos pegar o artigo da aula anterior e aplicar os conceitos de formatação para refinar a introdução e adicionar uma nota sobre os caracteres especiais.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+          
+          <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative; overflow-x: auto;">
+            <button style="position: absolute; top: 10px; right: 10px; background: #4a5568; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #546e7a;">% --- PREÂMBULO ---</span>
+<span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper, 12pt]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Princípios da Gravitação Universal</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Isaac Newton</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Julho de 1687</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% --- CORPO DO DOCUMENTO ---</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\maketitle</span>
+<span style="color: #82aaff;">\\tableofcontents</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Introdução</span><span style="color: #ffffff;">}</span>
+Este documento apresenta os conceitos <span style="color: #82aaff;">\\emph</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fundamentais</span><span style="color: #ffffff;">}</span> da lei da 
+gravitação universal. A motivação para este trabalho, conforme 
+documentado na <span style="color: #82aaff;">\\textbf</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Royal Society</span><span style="color: #ffffff;">}</span>, surgiu após a observação de uma 
+maçã caindo de uma macieira.
+
+<span style="color: #82aaff;">\\noindent</span> <span style="color: #546e7a;">% Este parágrafo não terá recuo.</span>
+A ideia principal é que a mesma força que atua na maçã também governa 
+o movimento dos planetas. Uma revolução para a época!
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Caracteres Especiais no LaTeX</span><span style="color: #ffffff;">}</span>
+É crucial entender que certos caracteres, como <span style="color: #82aaff;">\\$</span> (dólar), <span style="color: #82aaff;">\\%</span> (porcentagem) 
+e <span style="color: #82aaff;">\\&</span> (e comercial), têm funções especiais. Para imprimi-los, usamos uma 
+barra invertida antes deles, por exemplo: <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">`\\textbackslash\\#`</span><span style="color: #ffffff;">}</span>, <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">`\\textbackslash\\$`</span><span style="color: #ffffff;">}</span>, <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">`\\textbackslash\\%`</span><span style="color: #ffffff;">}</span>. 
+O próprio comando para a barra invertida é <span style="color: #82aaff;">\\texttt</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">`\\textbackslash\\textbackslash`</span><span style="color: #ffffff;">}</span>.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>Resultado Esperado no PDF (foco nas partes modificadas):</h3>
+          
+          <div style="background: var(--panel); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Lora', serif;">
+            <h3>1 Introdução</h3>
+            <p>Este documento apresenta os conceitos <em>fundamentais</em> da lei da gravitação universal. A motivação para este trabalho, conforme documentado na <strong>Royal Society</strong>, surgiu após a observação de uma maçã caindo de uma macieira.</p>
+            
+            <p style="text-indent: 0;">A ideia principal é que a mesma força que atua na maçã também governa o movimento dos planetas. Uma revolução para a época!</p>
+            
+            <h3 style="margin-top: 2rem;">2 Caracteres Especiais no LaTeX</h3>
+            <p>É crucial entender que certos caracteres, como $ (dólar), % (porcentagem) e & (e comercial), têm funções especiais. Para imprimi-los, usamos uma barra invertida antes deles, por exemplo: <code>`\#`</code>, <code>`\$`</code>, <code>`\%`</code>. O próprio comando para a barra invertida é <code>`\textbackslash`</code>.</p>
+          </div>
+
+          <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+            <p style="margin: 0; font-weight: 600; color: var(--accent);">Observe no resultado:</p>
+            <ul style="margin: 0.5rem 0 0 0;">
+              <li>A palavra <em>"fundamentais"</em> está em itálico, graças ao <code>\emph</code></li>
+              <li><strong>"Royal Society"</strong> está em negrito, como definido por <code>\textbf</code></li>
+              <li>O segundo parágrafo da introdução não tem o recuo inicial devido ao <code>\noindent</code></li>
+              <li>Na Seção 2, os caracteres especiais foram impressos corretamente, e o código para produzi-los foi exibido usando <code>\texttt</code> para dar o estilo de "código"</li>
+            </ul>
           </div>
         </section>
 
         <section id="atividade">
-          <h2>4. Atividade Prática</h2>
+          <h2>5. Atividade Prática (Refinando seu Texto - 15 minutos)</h2>
           <div class="activity-box">
-            <p>Vamos expandir nosso documento no Overleaf.</p>
-            <ol>
-              <li>No seu projeto, escreva dois parágrafos distintos sobre qualquer assunto. Lembre-se de separá-los com uma linha em branco.</li>
-              <li>Dentro do segundo parágrafo, adicione o seu endereço, usando o comando <code>\\</code> para separar as linhas do logradouro, cidade e CEP.</li>
-              <li>Adicione comentários ao seu código: um no topo explicando o objetivo do arquivo e outro ao lado do comando <code>\\</code> explicando sua função.</li>
-              <li>Compile e verifique se o resultado no PDF corresponde ao esperado: dois parágrafos (o segundo com indentação) e o endereço com as linhas devidamente quebradas.</li>
+            <h3 style="margin-top: 0;">Missão: Aplicar Formatação e Caracteres Especiais</h3>
+            
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Abra o seu projeto</strong> da aula anterior no Overleaf.</li>
+              
+              <li><strong>No parágrafo da sua primeira seção</strong>, escolha duas palavras e aplique <code>\textbf</code> em uma e <code>\textit</code> na outra.</li>
+              
+              <li><strong>Crie uma nova subseção</strong> chamada <code>\subsection{Observações Importantes}</code>.</li>
+              
+              <li><strong>Dentro desta nova subseção</strong>, escreva um parágrafo explicando (com suas palavras) por que o caractere % é útil. Certifique-se de que o próprio símbolo % apareça no seu texto final usando <code>\%</code>.</li>
+              
+              <li><strong>No parágrafo seguinte</strong>, escreva uma frase sobre o custo de um projeto, por exemplo: <em>"O custo estimado é de R\$ 5.000,00"</em>. Garanta que o <code>\$</code> seja impresso corretamente.</li>
+              
+              <li><strong>Recompile</strong> e verifique se todas as formatações e caracteres especiais apareceram como esperado.</li>
             </ol>
+            
+            <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: var(--accent);">Ao completar esta atividade, você dominará:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Formatação básica de texto (negrito, itálico, ênfase)</li>
+                <li>Uso correto de caracteres especiais em português</li>
+                <li>Controle de parágrafos e indentação</li>
+                <li>Aplicação prática de conceitos tipográficos</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Seu documento agora tem o "acabamento" profissional que fará toda a diferença!</p>
+            </div>
           </div>
         </section>
       </article>

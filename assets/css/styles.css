@@ -9,6 +9,11 @@
   --accent: #22d3ee;
   --primary: #60a5fa;
 
+  /* Variáveis para blocos de código */
+  --code-bg: #282c34;
+  --code-text: #e2e8f0;
+  --code-comment: #6c757d;
+
   --topbar-h: 56px;
   --sidebar-w: clamp(260px, 22vw, 340px);
 
@@ -33,6 +38,11 @@
   --border: #e2e8f0;
   --accent: #0ea5e9;
   --primary: #3b82f6;
+
+  /* Variáveis para blocos de código no tema claro */
+  --code-bg: #f8f9fa;
+  --code-text: #2d3748;
+  --code-comment: #718096;
 
   --shadow: 0 8px 24px rgba(0,0,0,.1), 0 2px 6px rgba(0,0,0,.05);
 }

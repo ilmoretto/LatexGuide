@@ -20,8 +20,8 @@
     }
 
     .code-block {
-      background-color: #282c34;
-      color: #abb2bf;
+      background: var(--code-bg, #282c34);
+      color: var(--code-text, #e2e8f0);
       padding: 1.5rem;
       border-radius: 8px;
       margin-top: 1rem;
@@ -94,7 +94,7 @@
           <div class="theory-box">
             <p><strong>O LaTeX funciona exatamente assim.</strong> Você escreve um arquivo de texto simples (sua "planta baixa"), dando instruções e focando na estrutura lógica do seu documento. Você diz:</p>
             
-            <div style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 6px; margin: 1rem 0; font-family: 'Courier New', monospace;">
+                        <div style="background: var(--code-bg, #282c34); color: var(--code-text, #e2e8f0); padding: 1rem; border-radius: 6px; margin: 1rem 0; font-family: 'Courier New', monospace;">
               <div style="color: #81c784;"><code>\section{Introdução}</code> <span style="color: #90a4ae; font-size: 0.9em;">// Isto é uma seção chamada "Introdução"</span></div>
               <div style="color: #81c784;"><code>\textbf{termo importante}</code> <span style="color: #90a4ae; font-size: 0.9em;">// Este "termo importante" deve estar em negrito</span></div>
               <div style="color: #81c784;"><code>\begin{equation}</code> <span style="color: #90a4ae; font-size: 0.9em;">// Aqui começa uma equação matemática importante</span></div>
