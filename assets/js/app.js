@@ -254,9 +254,89 @@
     });
   }
 
+  function initThemeToggle(){
+    // Verificar tema salvo no localStorage
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    // Aplicar tema inicial
+    if (initialTheme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+
+    // Criar botão de alternância se não existir
+    let themeToggle = $('#themeToggle');
+    if (!themeToggle) {
+      themeToggle = document.createElement('button');
+      themeToggle.id = 'themeToggle';
+      themeToggle.className = 'theme-toggle';
+      themeToggle.setAttribute('aria-label', 'Alternar tema');
+      themeToggle.innerHTML = `
+        <span class="theme-icon">🌙</span>
+        <span class="theme-text">Escuro</span>
+      `;
+      
+      // Inserir na topbar
+      const topbar = $('.topbar');
+      if (topbar) {
+        topbar.appendChild(themeToggle);
+      }
+    }
+
+    // Atualizar aparência do botão
+    function updateThemeToggle() {
+      const isLight = document.documentElement.classList.contains('light-theme');
+      const icon = themeToggle.querySelector('.theme-icon');
+      const text = themeToggle.querySelector('.theme-text');
+      
+      if (isLight) {
+        icon.textContent = '☀️';
+        text.textContent = 'Claro';
+      } else {
+        icon.textContent = '🌙';
+        text.textContent = 'Escuro';
+      }
+    }
+
+    // Função para alternar tema
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.contains('light-theme');
+      
+      if (isLight) {
+        document.documentElement.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+      }
+      
+      updateThemeToggle();
+    }
+
+    // Event listener para o botão
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    // Atualizar aparência inicial
+    updateThemeToggle();
+
+    // Detectar mudanças na preferência do sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          document.documentElement.classList.remove('light-theme');
+        } else {
+          document.documentElement.classList.add('light-theme');
+        }
+        updateThemeToggle();
+      }
+    });
+  }
+
   async function init(){
     initToggle();
     initCopyButtons();
+    initThemeToggle();
     try{
       const data = await loadData();
       buildSidebar(data);

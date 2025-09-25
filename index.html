@@ -3,10 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curso de LaTeX — Estrutura</title>
+  <title>Curso de LaTeX — Do Básico à Publicação Acadêmica</title>
 
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
+  
+  <!-- Estilos adicionais para a página de início -->
+  <style>
+    .lead { 
+      font-size: 1.2rem; 
+      color: var(--muted); 
+      margin-bottom: 2rem; 
+      line-height: 1.7;
+    }
+    .page h2 { 
+      border-bottom: 2px solid var(--accent); 
+      padding-bottom: 0.5rem; 
+      margin-top: 2.5rem; 
+      margin-bottom: 1.5rem; 
+      color: var(--primary); 
+    }
+    .page ul, .page ol { 
+      margin-left: 1.5rem; 
+      margin-bottom: 1.5rem; 
+    }
+    .page li { 
+      margin-bottom: 0.75rem; 
+    }
+    .cta-section { 
+      background-color: rgba(34, 211, 238, 0.1); 
+      border: 1px solid var(--border); 
+      padding: 2rem; 
+      text-align: center; 
+      border-radius: 12px; 
+      margin-top: 3rem;
+      box-shadow: var(--shadow);
+    }
+    .cta-section h2 { 
+      border: none; 
+      margin-top: 0; 
+      color: var(--accent);
+    }
+    .cta-button { 
+      background: linear-gradient(135deg, var(--primary), var(--accent)); 
+      color: var(--bg); 
+      padding: 0.75rem 1.5rem; 
+      border-radius: 8px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      display: inline-block; 
+      margin-top: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta-button:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -23,13 +76,58 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Bem-vindo(a) — Estrutura do Curso</h1>
-        <p>Esta é apenas a estrutura do curso (layout, navegação e páginas). Edite data/modules.json e os arquivos em modules/ para organizar seu conteúdo.</p>
+        <h1>Bem-vindo(a) ao Curso de LaTeX: Do Básico à Publicação Acadêmica</h1>
+        <p class="lead">Se você já se sentiu frustrado com a formatação de trabalhos acadêmicos, perdeu horas ajustando margens, referências ou a numeração de figuras, este curso é para você. Vamos transformar o desafio de escrever documentos complexos em um processo lógico, eficiente e com resultados profissionais.</p>
+
+        <h2>O que você vai aprender?</h2>
+        <p>Ao final deste curso de autoaprendizagem, você terá total autonomia para:</p>
         <ul>
-          <li>Menu lateral responsivo com módulos e aulas.</li>
-          <li>Breadcrumbs e botões Anterior/Próximo.</li>
-          <li>Sem frameworks — apenas HTML, CSS e JS puros.</li>
+          <li><strong>Entender a filosofia do LaTeX</strong> e por que ele é a ferramenta preferida em ambientes acadêmicos e científicos.</li>
+          <li><strong>Criar documentos estruturados do zero</strong>, com controle total sobre seções, capítulos e sumários automáticos.</li>
+          <li><strong>Escrever expressões matemáticas complexas</strong> com perfeição tipográfica, de simples equações a matrizes e integrais.</li>
+          <li><strong>Inserir e gerenciar figuras e tabelas</strong>, com legendas e referências cruzadas que se atualizam sozinhas.</li>
+          <li><strong>Automatizar sua bibliografia</strong> com BibTeX, esquecendo a formatação manual de referências para sempre.</li>
+          <li><strong>Formatar seu TCC ou artigo</strong> de acordo com as rigorosas normas da <strong>ABNT</strong>.</li>
+          <li><strong>Aplicar todo o conhecimento</strong> em um projeto final prático, utilizando um template acadêmico real da UFPR.</li>
         </ul>
+
+        <h2>Para quem é este curso?</h2>
+        <p>Este curso foi desenhado para atender às necessidades de:</p>
+        <ul>
+          <li><strong>Estudantes de graduação e pós-graduação</strong> que precisam entregar relatórios, TCCs, dissertações e teses com formatação impecável.</li>
+          <li><strong>Pesquisadores e cientistas</strong> que publicam artigos e livros e precisam de uma ferramenta robusta e confiável.</li>
+          <li><strong>Qualquer pessoa</strong> interessada em produzir documentos técnicos de alta qualidade, com consistência e profissionalismo.</li>
+        </ul>
+        
+        <h2>Como este curso funciona?</h2>
+        <p>A metodologia é 100% focada no <strong>autoaprendizagem</strong> e na prática constante ("mão na massa").</p>
+        <ul>
+            <li><strong>Sem vídeos, sem aulas ao vivo:</strong> Todo o conteúdo é textual, claro e direto, permitindo que você aprenda no seu próprio ritmo.</li>
+            <li><strong>Progressivo e Modular:</strong> O curso é dividido em 9 módulos que evoluem do básico ao avançado. Cada aula se baseia no conhecimento anterior, construindo uma base sólida.</li>
+            <li><strong>Foco na Aplicação:</strong> Cada conceito teórico é seguido por exemplos práticos, exercícios de fixação e um projeto ao final de cada módulo para consolidar o aprendizado.</li>
+            <li><strong>Ambiente Online:</strong> Utilizaremos o <strong>Overleaf</strong>, uma plataforma online gratuita que elimina a necessidade de qualquer instalação. Você só precisa de um navegador e vontade de aprender.</li>
+        </ul>
+
+        <h2>Estrutura do Curso</h2>
+        <p>Nossa jornada de aprendizado está organizada nos seguintes módulos:</p>
+        <ol>
+          <li><strong>Módulo 1:</strong> Fundamentos e Primeiro Contato</li>
+          <li><strong>Módulo 2:</strong> Estrutura e Formatação Essencial do Texto</li>
+          <li><strong>Módulo 3:</strong> O Poder da Matemática</li>
+          <li><strong>Módulo 4:</strong> Incorporando Elementos Visuais (Figuras e Tabelas)</li>
+          <li><strong>Módulo 5:</strong> Gerenciamento de Documentos Longos</li>
+          <li><strong>Módulo 6:</strong> Personalização e Automação (Trabalhando de Forma Inteligente)</li>
+          <li><strong>Módulo 7:</strong> Layout e Estrutura Visual da Página</li>
+          <li><strong>Módulo 8:</strong> Formatando Trabalhos Acadêmicos com LaTeX e ABNT</li>
+          <li><strong>Módulo 9:</strong> Estudo de Caso – Utilizando o Template UFPR-ABNTEX</li>
+        </ol>
+
+        <div class="cta-section">
+          <h2>Pronto(a) para começar?</h2>
+          <p>Não é preciso instalar nada! Tudo que você precisa é de um navegador de internet. Acesse a primeira aula para entender a filosofia por trás do LaTeX e preparar seu ambiente de trabalho.</p>
+          <a href="modules/modulo-01/aula-01.html" class="cta-button">Ir para a Primeira Aula</a>
+        </div>
+
       </article>
       <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
     </main>
