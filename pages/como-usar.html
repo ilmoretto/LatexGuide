@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR" x-data="{ sidebarOpen: false }" x-effect="document.body.style.overflow = (sidebarOpen && window.matchMedia('(max-width: 1024px)').matches) ? 'hidden' : ''">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="">
+  <title>Como Usar (placeholder)</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Alternar menu" :aria-expanded="sidebarOpen.toString()" aria-controls="sidebar" @click="sidebarOpen = !sidebarOpen">☰</button>
+    <div class="brand">
+      <img src="../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <div class="search">
+      <input id="searchInput" class="search__input" type="search" placeholder="Buscar aulas..." autocomplete="off" />
+      <div id="searchResultsBox" class="search__results" aria-label="Resultados da busca">
+        <ul id="searchResults"></ul>
+      </div>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral" :class="{'is-open': sidebarOpen}" @click.outside="sidebarOpen=false"></aside>
+
+  <div class="layout">
+    <main id="content" class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Como Usar (placeholder)</h1>
+        <ol>
+          <li>Abra o menu lateral para escolher um módulo.</li>
+          <li>Leia a página e avance com os botões Anterior/Próximo.</li>
+          <li>Edite o JSON para adicionar novas aulas.</li>
+          <li>Escreva fórmulas com <code>$a^2 + b^2 = c^2$</code> (inline) ou <code>$$\int_0^1 x^2\,dx = \frac{1}{3}$$</code> (display); o KaTeX renderiza automaticamente, mas não dentro de <code>&lt;code&gt;</code>.</li>
+        </ol>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+  <script defer src="../assets/js/main.js"></script>
+  <script defer src="../assets/js/search.js"></script>
+  <script defer src="../assets/js/math.js"></script>
+</body>
+</html>
