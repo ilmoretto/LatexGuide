@@ -82,78 +82,270 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 3: A Estrutura Mínima de um Documento</h1>
-        <p class="lead">Todo documento LaTeX, não importa se tem uma ou mil páginas, obedece a uma estrutura fundamental. Nesta aula, vamos analisar o código mínimo necessário para criar um documento e entender o papel de cada comando.</p>
+        <h1>Aula 3: Estruturando o Conteúdo</h1>
+        
+        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(34, 211, 238, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: var(--accent); margin-top: 0;">Olá novamente, arquiteto(a) da informação!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Na aula anterior, criamos a fundação do nosso documento. Agora, vamos erguer a <strong>estrutura principal</strong>.</p>
+          <p style="color: var(--muted); font-style: italic;">Esta aula é sobre dar ordem, hierarquia e navegabilidade ao seu trabalho. Veremos como transformar um texto simples em um documento organizado profissionalmente, pronto para crescer.</p>
+        </div>
 
-        <section id="embasamento-teorico">
-          <h2>1. Embasamento Teórico</h2>
+        <section id="documentclass-opcoes">
+          <h2>1. A Pedra Angular: \documentclass e Suas Opções</h2>
+          
           <div class="theory-box">
-            <p>Um arquivo <code>.tex</code> é dividido em duas partes lógicas: o <strong>Preâmbulo</strong> e o <strong>Corpo do Documento</strong>. O Preâmbulo é onde você define as configurações globais do documento: o tipo de documento, pacotes a serem usados, informações de título, etc. O Corpo é onde o conteúdo visível do documento (texto, figuras, tabelas) é de fato escrito.</p>
+            <p>A primeira linha do seu código <strong>define a natureza inteira do seu documento</strong>. A escolha da classe e de suas opções tem consequências profundas.</p>
           </div>
-        </section>
 
-        <section id="apresentacao-conteudo">
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Analisaremos o código de um "Olá, Mundo!" em LaTeX, explicando linha por linha sua função.</p>
-        </section>
-
-        <section id="desenvolvimento">
-          <h2>3. Desenvolvimento: Anatomia do Código</h2>
-          <p>O código abaixo é o mais simples que podemos ter para gerar um documento com algum conteúdo.</p>
-
-          <div class="code-container">
-            <div>
-              <h4>Código LaTeX</h4>
-              <div class="code-block">
-                <button class="copy-button" aria-label="Copiar código">Copiar</button>
-                <pre><code>\documentclass{article}
-
-\begin{document}
-
-Olá, mundo! Este é o meu primeiro documento em LaTeX.
-
-\end{document}</code></pre>
-              </div>
+          <h3>Classes Fundamentais</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">article</h4>
+              <p>Para artigos, relatórios pequenos e textos curtos. Não possui comando <code>\chapter</code>.</p>
             </div>
-            <div>
-              <h4>Visualização do Resultado</h4>
-              <div class="latex-preview">
-                <p>Olá, mundo! Este é o meu primeiro documento em LaTeX.</p>
-              </div>
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">report</h4>
+              <p>Para TCCs e relatórios longos. Introduz o comando <code>\chapter</code> que inicia nova página.</p>
+            </div>
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">book</h4>
+              <p>Para livros completos. Também possui <code>\chapter</code> e formatação específica para livros.</p>
             </div>
           </div>
 
-          <h3 style="margin-top: 2rem;">Desvendando cada comando:</h3>
-          <ul class="explanation-list">
-            <li>
-              <code>\documentclass{article}</code>
-              <p>Este é <strong>sempre o primeiro comando</strong> de qualquer documento LaTeX. Ele define a "classe" ou tipo de documento que estamos criando. A classe <code>article</code> é a mais comum, ideal para artigos, relatórios pequenos e outros textos curtos. Ela define formatações padrão para coisas como títulos, seções e tamanho da página. Outras classes importantes que veremos são <code>report</code> (para trabalhos mais longos, com capítulos) e <code>book</code>.</p>
-            </li>
-            <li>
-              <code>\begin{document}</code>
-              <p>Este comando marca o fim do preâmbulo e o <strong>início do corpo do documento</strong>. Todo o conteúdo que deve aparecer no PDF final precisa estar depois deste comando.</p>
-            </li>
-            <li>
-              <code>Olá, mundo! ...</code>
-              <p>Este é o conteúdo textual do nosso documento. O texto que você digita aqui é processado pelo LaTeX e inserido no PDF final, com formatação de parágrafo automática.</p>
-            </li>
-            <li>
-              <code>\end{document}</code>
-              <p>Este comando sinaliza o <strong>fim do documento</strong>. O LaTeX ignora completamente qualquer coisa que venha depois desta linha. É crucial que todo <code>\begin{document}</code> tenha um <code>\end{document}</code> correspondente.</p>
-            </li>
-          </ul>
+          <h3>Opções Essenciais</h3>
+          <p>Lembre-se que as opções são adicionadas entre colchetes: <code>\documentclass[opções]{classe}</code></p>
+          
+          <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+            <ul style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+              <li><strong>Tamanho da Fonte:</strong> 10pt (padrão), 11pt, 12pt</li>
+              <li><strong>Tamanho do Papel:</strong> a4paper</li>
+              <li><strong>Layout:</strong> oneside (padrão para article), twoside (padrão para book)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="preambulo-cerebro">
+          <h2>2. O Preâmbulo: O Cérebro do Seu Documento</h2>
+          
+          <div class="theory-box">
+            <p>O preâmbulo é a área entre <code>\documentclass</code> e <code>\begin{document}</code>. É aqui que carregamos nossas <em>"ferramentas" extras</em> através de pacotes.</p>
+          </div>
+
+          <h3>Pacotes Indispensáveis para Português</h3>
+          <p>Para escrever em português de forma correta e sem dores de cabeça, três pacotes são indispensáveis:</p>
+
+          <div style="background: #282c34; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative;">
+            <button style="position: absolute; top: 10px; right: 10px; background: #4a5568; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <div style="color: #82aaff;">\\usepackage<span style="color: #c3e88d;">[utf8]</span>{<span style="color: #c3e88d;">inputenc</span>} <span style="color: #546e7a;">% Permite usar acentos diretamente no código</span></div>
+            <div style="color: #82aaff;">\\usepackage<span style="color: #c3e88d;">[T1]</span>{<span style="color: #c3e88d;">fontenc</span>}    <span style="color: #546e7a;">% Garante a correta hifenização e copia/cola de acentos</span></div>
+            <div style="color: #82aaff;">\\usepackage<span style="color: #c3e88d;">[brazil]</span>{<span style="color: #c3e88d;">babel</span>}  <span style="color: #546e7a;">% Traduz termos como "Chapter" para "Capítulo"</span></div>
+          </div>
+        </section>
+
+        <section id="pagina-titulo">
+          <h2>3. A Página de Título: Apresentação Profissional</h2>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;" class="code-container">
+            <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--accent); margin-top: 0;">No Preâmbulo (Informar os dados):</h4>
+              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+                <div style="color: #82aaff;">\\title<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Meu Artigo Científico</span><span style="color: #ffffff;">}</span></div>
+                <div style="color: #82aaff;">\\author<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">João da Silva</span><span style="color: #ffffff;">}</span></div>
+                <div style="color: #82aaff;">\\date<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Setembro 2025</span><span style="color: #ffffff;">}</span></div>
+              </div>
+            </div>
+            
+            <div style="background: var(--panel); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--accent); margin-top: 0;">No Corpo do Documento (Gerar a página):</h4>
+              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+                <div style="color: #82aaff;">\\maketitle</div>
+              </div>
+              <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">Este comando "monta" a página de título com base nas informações do preâmbulo.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="estrutura-hierarquica">
+          <h2>4. A Estrutura Hierárquica: Dando Ordem ao Conteúdo</h2>
+          
+          <div class="theory-box">
+            <p><strong>Você não "formata" um título, você "declara" que um pedaço de texto é um título de seção.</strong> O LaTeX faz o resto: numeração, fonte, espaçamento.</p>
+          </div>
+
+          <div style="background: var(--panel); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; margin: 1.5rem 0;">
+            <h4 style="color: var(--accent); margin-top: 0;">Hierarquia de Seções:</h4>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
+              <div style="background: #282c34; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-family: 'Courier New', monospace;">
+                <div style="color: #82aaff; margin-bottom: 0.5rem;">\\section<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Nome da Seção</span><span style="color: #ffffff;">}</span></div>
+                <div style="color: #82aaff; margin-bottom: 0.5rem;">\\subsection<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Nome da Subseção</span><span style="color: #ffffff;">}</span></div>
+                <div style="color: #82aaff;">\\subsubsection<span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Nome da Sub-subseção</span><span style="color: #ffffff;">}</span></div>
+              </div>
+              
+              <div>
+                <p style="margin: 0;"><strong>Resultado automático:</strong></p>
+                <ul style="margin: 0.5rem 0 0 0;">
+                  <li>Numeração automática (1, 1.1, 1.1.1)</li>
+                  <li>Formatação consistente</li>
+                  <li>Espaçamento adequado</li>
+                  <li>Integração com sumário</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div style="background: rgba(34, 211, 238, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1.5rem;">
+              <p style="margin: 0;"><strong>Dica Importante:</strong> Para seções sem número (que não aparecerão no sumário), use a versão "estrelada": <code>\section*{Referências}</code></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="sumario-automatico">
+          <h2>5. O Sumário Automático: A Planta Baixa para o Leitor</h2>
+          
+          <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin: 1.5rem 0;">
+            <p style="font-size: 1.1rem; margin: 0;">Com a estrutura definida, gerar um sumário é <strong>trivial</strong>. Basta adicionar o comando <code>\tableofcontents</code> onde você deseja que ele apareça (geralmente após o <code>\maketitle</code>).</p>
+          </div>
+
+          <div style="background: #ff6b6b; color: white; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+            <p style="margin: 0; font-weight: 600;">Lembrete Crucial:</p>
+            <p style="margin: 0.5rem 0 0 0;">O sumário precisa de <strong>duas compilações</strong> para ser atualizado corretamente após mudanças na estrutura (adição, remoção ou alteração de seções).</p>
+          </div>
+        </section>
+
+        <section id="exemplo-pratico">
+          <h2>6. Exemplo Prático: Um Artigo sobre Gravitação</h2>
+          
+          <p>Vamos ver como todos esses conceitos se unem. Abaixo está o código completo de um pequeno artigo. Você pode copiar e colar este código diretamente no editor central do seu projeto Overleaf para ver o resultado.</p>
+
+          <h3>Código-Fonte (main.tex)</h3>
+          
+          <div style="background: #282c34; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; position: relative; overflow-x: auto;">
+            <button style="position: absolute; top: 10px; right: 10px; background: #4a5568; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #546e7a;">% --- PREÂMBULO ---</span>
+<span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[a4paper, 12pt]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">article</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% Pacotes essenciais para a língua portuguesa</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% Informações do documento</span>
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Princípios da Gravitação Universal</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Isaac Newton</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Julho de 1687</span><span style="color: #ffffff;">}</span>
+
+
+<span style="color: #546e7a;">% --- CORPO DO DOCUMENTO ---</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\maketitle</span> <span style="color: #546e7a;">% Este comando gera o título com base nas informações acima</span>
+
+<span style="color: #82aaff;">\\tableofcontents</span> <span style="color: #546e7a;">% Este comando gera o sumário automaticamente</span>
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Introdução</span><span style="color: #ffffff;">}</span>
+Este documento apresenta os conceitos fundamentais da lei da gravitação universal. 
+A motivação para este trabalho surgiu após a observação de uma maçã caindo de 
+uma macieira.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Lei do Inverso do Quadrado</span><span style="color: #ffffff;">}</span>
+A força da gravidade entre dois corpos é diretamente proporcional ao produto 
+de suas massas e inversamente proporcional ao quadrado da distância entre eles.
+
+<span style="color: #82aaff;">\\subsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Formulação Matemática</span><span style="color: #ffffff;">}</span>
+A lei pode ser expressa matematicamente. Veremos a fórmula no Módulo 3.
+
+<span style="color: #82aaff;">\\subsection</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Implicações para a Órbita dos Planetas</span><span style="color: #ffffff;">}</span>
+Esta formulação explica com precisão as órbitas elípticas dos planetas ao 
+redor do Sol, conforme observado por Kepler.
+
+<span style="color: #82aaff;">\\section*</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Agradecimentos</span><span style="color: #ffffff;">}</span> <span style="color: #546e7a;">% Seção sem numeração</span>
+Agradeço à maçã pela inspiração.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>Resultado Esperado no PDF (após compilar):</h3>
+          
+          <div style="background: var(--panel); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Lora', serif;">
+            <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
+              <h2 style="font-size: 1.5rem; margin: 0;">Princípios da Gravitação Universal</h2>
+              <p style="margin: 0.5rem 0;">Isaac Newton</p>
+              <p style="margin: 0; font-style: italic;">Julho de 1687</p>
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+              <h3>Sumário</h3>
+              <div style="font-family: monospace; line-height: 1.8;">
+                <div>1 Introdução . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1</div>
+                <div>2 A Lei do Inverso do Quadrado . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1</div>
+                <div>&nbsp;&nbsp;2.1 Formulação Matemática . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1</div>
+                <div>&nbsp;&nbsp;2.2 Implicações para a Órbita dos Planetas . . . . . . . . . . . . . . . . . . . 1</div>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+              <h3>1 Introdução</h3>
+              <p>Este documento apresenta os conceitos fundamentais da lei da gravitação universal. A motivação para este trabalho surgiu após a observação de uma maçã caindo de uma macieira.</p>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+              <h3>2 A Lei do Inverso do Quadrado</h3>
+              <p>A força da gravidade entre dois corpos é diretamente proporcional ao produto de suas massas e inversamente proporcional ao quadrado da distância entre eles.</p>
+              
+              <h4 style="margin-left: 1rem;">2.1 Formulação Matemática</h4>
+              <p style="margin-left: 1rem;">A lei pode ser expressa matematicamente. Veremos a fórmula no Módulo 3.</p>
+              
+              <h4 style="margin-left: 1rem;">2.2 Implicações para a Órbita dos Planetas</h4>
+              <p style="margin-left: 1rem;">Esta formulação explica com precisão as órbitas elípticas dos planetas ao redor do Sol, conforme observado por Kepler.</p>
+            </div>
+            
+            <div>
+              <h3>Agradecimentos</h3>
+              <p>Agradeço à maçã pela inspiração.</p>
+            </div>
+          </div>
+
+          <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+            <p style="margin: 0; font-weight: 600; color: var(--accent);">Observe no resultado:</p>
+            <ul style="margin: 0.5rem 0 0 0;">
+              <li>O título, autor e data foram formatados no topo</li>
+              <li>O sumário foi gerado com a numeração correta e os números de página</li>
+              <li>As seções 1 e 2 estão numeradas e em negrito</li>
+              <li>As subseções 2.1 e 2.2 estão numeradas de acordo com a seção principal</li>
+              <li>A seção "Agradecimentos" não possui número e não apareceu no sumário, como esperado</li>
+            </ul>
+          </div>
         </section>
 
         <section id="atividade">
-          <h2>4. Atividade Prática</h2>
+          <h2>7. Atividade Prática (Agora é sua vez - 15 minutos)</h2>
           <div class="activity-box">
-            <p>Vamos praticar no projeto "CursoLaTeX-Modulo1" que você criou no Overleaf.</p>
-            <ol>
-              <li>Apague todo o código que veio no template e substitua pelo código mínimo que vimos nesta aula.</li>
-              <li>Altere a frase "Olá, mundo!..." por um parágrafo de 2 ou 3 frases sobre você.</li>
-              <li>Clique em "Recompile" e observe como o PDF é atualizado com seu texto.</li>
-              <li><strong>Experimente:</strong> O que acontece se você esquecer de colocar o <code>\end{document}</code> no final? (Dica: o Overleaf provavelmente mostrará um erro). Corrija o erro e recompile.</li>
+            <h3 style="margin-top: 0;">Missão: Construir seu Primeiro Artigo Estruturado</h3>
+            
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Copie o código do exemplo acima</strong> e cole no seu projeto Overleaf. Compile e veja se o resultado é o mesmo.</li>
+              
+              <li><strong>Modifique o código:</strong>
+                <ul style="margin-top: 0.5rem;">
+                  <li>Altere o título e o autor para um tema de seu interesse</li>
+                  <li>Adicione uma nova seção <code>\section{Conclusões}</code> ao final do documento, <em>antes</em> dos Agradecimentos</li>
+                  <li>Dentro da nova seção, adicione uma subseção <code>\subsection{Trabalhos Futuros}</code></li>
+                </ul>
+              </li>
+              
+              <li><strong>Recompile o documento duas vezes.</strong> O que aconteceu com o sumário? A nova seção e subseção apareceram lá, com a numeração e a página corretas?</li>
             </ol>
+            
+            <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: var(--accent);">Ao final desta atividade, você terá:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Dominado a estrutura hierárquica do LaTeX</li>
+                <li>Criado seu primeiro documento com sumário automático</li>
+                <li>Experimentado com seções numeradas e não-numeradas</li>
+                <li>Compreendido o processo de dupla compilação</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Parabéns! Você acabou de dar um grande passo na construção de documentos profissionais!</p>
+            </div>
           </div>
         </section>
       </article>

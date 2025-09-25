@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 2 — Aula 1: Classes de Documento</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box, .activity-box {
+      border-left: 4px solid #a855f7;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(168, 85, 247, 0.08);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+    .code-block {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .code-block pre { margin: 0; }
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #a855f7;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 1: A Fundação — <code>\documentclass</code> e as Classes de Documento</h1>
+        <section>
+          <h2>1. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>Todo documento LaTeX começa com a definição de sua <strong>classe</strong>. A classe é um conjunto fundamental de regras que determina o layout geral do seu documento. Escolher a classe correta é a primeira e mais importante decisão de formatação, pois ela define se seu documento terá capítulos, como os títulos serão apresentados e qual a formatação padrão da página. Esta abordagem reforça a filosofia do LaTeX: você informa a <strong>intenção</strong> (estou escrevendo um artigo) e o sistema cuida dos detalhes de formatação.</p>
+          </div>
+        </section>
+        <section>
+          <h2>2. Apresentação do Conteúdo</h2>
+          <p>Nesta aula, vamos dissecar o comando <code>\documentclass</code>. Você aprenderá sobre as três classes de documento mais importantes (<code>article</code>, <code>report</code> e <code>book</code>) e como customizá-las usando opções para alterar o tamanho da fonte, o tipo de papel e o layout da página.</p>
+        </section>
+        <section>
+          <h2>3. Desenvolvimento do Conteúdo</h2>
+          <p>A sintaxe do comando é a seguinte:</p>
+          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[opções]{classe}</code></pre></div>
+          <ul>
+            <li><strong>{classe}:</strong> Argumento obrigatório que define o tipo do documento.</li>
+            <li><strong>[opções]:</strong> Argumentos opcionais, separados por vírgula, que modificam o comportamento da classe.</li>
+          </ul>
+          <h3>Classes de Documento Principais:</h3>
+          <ul>
+            <li><strong>article</strong>: Ideal para documentos curtos, como artigos científicos, relatórios, listas de exercícios e pequenas apresentações. Não possui <code>\chapter</code>. A hierarquia começa em <code>\section</code>.</li>
+            <li><strong>report</strong>: Usada para documentos mais longos que requerem múltiplos capítulos, como relatórios de pesquisa, monografias ou dissertações simples. Introduz o comando <code>\chapter</code>.</li>
+            <li><strong>book</strong>: Projetada para livros. Oferece recursos adicionais, como a formatação padrão para impressão frente e verso (<code>twoside</code>).</li>
+          </ul>
+          <h3>Opções Mais Comuns:</h3>
+          <ul>
+            <li><strong>Tamanho da Fonte:</strong> <code>10pt</code>, <code>11pt</code>, <code>12pt</code>.</li>
+            <li><strong>Tamanho do Papel:</strong> <code>a4paper</code>, <code>letterpaper</code>, <code>b5paper</code>.</li>
+            <li><strong>Layout da Página:</strong> <code>oneside</code> ou <code>twoside</code>.</li>
+            <li><strong>Número de Colunas:</strong> <code>onecolumn</code> ou <code>twocolumn</code>.</li>
+          </ul>
+          <h3>Exemplos Práticos:</h3>
+          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[11pt, a4paper]{article}</code></pre></div>
+          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[12pt, a4paper, twoside]{report}</code></pre></div>
+          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>\documentclass[10pt, a4paper, twocolumn]{article}</code></pre></div>
+        </section>
+        <section>
+          <h2>4. Atividade Prática</h2>
+          <div class="activity-box">
+            <ol>
+              <li>Comece com o código da aula anterior. A primeira linha deve ser <code>\documentclass{article}</code>.</li>
+              <li>Adicione as opções para definir o tamanho da fonte para <code>12pt</code> e o papel para <code>a4paper</code>. Recompile e observe a mudança.</li>
+              <li>Mude a classe de <code>article</code> para <code>report</code>. Recompile. A aparência visual mudou?</li>
+              <li>Volte a classe para <code>article</code> e adicione a opção <code>twocolumn</code>. Recompile e veja o texto em duas colunas.</li>
+              <li>Ao final, deixe seu preâmbulo configurado como <code>\documentclass[12pt, a4paper]{article}</code> para as próximas aulas.</li>
+            </ol>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

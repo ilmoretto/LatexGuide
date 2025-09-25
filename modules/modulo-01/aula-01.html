@@ -60,76 +60,127 @@
             <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
         <h1>Aula 1: A Filosofia do LaTeX — Por que Pensar Diferente?</h1>
-        <p class="lead">Antes de escrevermos nossa primeira linha de código, é fundamental entender a ideia por trás do
-          LaTeX. Por que ele funciona de uma maneira tão diferente de programas como Microsoft Word ou Google Docs?
-          Compreender essa filosofia é o primeiro e mais importante passo para dominar a ferramenta.</p>
         
-        <section id="embasamento-teorico">
-          <h2>1. Embasamento Teórico</h2>
+        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(34, 211, 238, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: var(--accent); margin-top: 0;">🎯 Olá, futuro mestre do LaTeX!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Bem-vindo(a) à sua primeira aula. Antes de digitarmos uma única linha de código, precisamos fazer uma viagem conceitual. Por que o LaTeX existe? Por que ele funciona de uma maneira tão diferente dos editores de texto que você provavelmente usa todos os dias?</p>
+          <p style="color: var(--muted); font-style: italic;">Já se irritou com uma imagem que, ao ser movida um milímetro, desconfigurou todo o seu texto? Ou com a numeração de seções que enlouqueceu de repente? O LaTeX nasceu para resolver esses problemas, mas para isso, ele nos convida a pensar de uma forma diferente sobre a escrita.</p>
+        </div>
+
+        <section id="mundo-wysiwyg">
+          <h2>1. O Mundo WYSIWYG (O Que Você Vê é o Que Você Obtém)</h2>
+          
+          <p>Pense no Word. Você digita, aplica negrito, muda o tamanho da fonte, insere uma imagem e vê o resultado imediatamente na tela. Esse paradigma é chamado de <strong>WYSIWYG</strong> (What You See Is What You Get).</p>
+          
           <div class="theory-box">
-            <p>O LaTeX foi desenvolvido a partir do programa TeX, criado por Donald Knuth, um renomado cientista da
-              computação. A motivação de Knuth era resolver a deterioração da qualidade tipográfica em publicações
-              científicas. A premissa central é a <strong>separação entre conteúdo e formatação</strong>. Em vez de o autor se
-              preocupar simultaneamente com o que escreve e com a aparência do texto (fontes, margens, espaçamento), ele
-              foca exclusivamente no conteúdo e em sua estrutura lógica. A formatação visual fica a cargo de um
-              "paginador profissional" — no nosso caso, o próprio LaTeX.</p>
+            <p>Este é o que podemos chamar de <strong>"Estilo Visual"</strong>. Você é o autor, o designer e o diagramador, tudo ao mesmo tempo. A vantagem é a gratificação instantânea. A desvantagem é que você gasta uma energia enorme se preocupando com a aparência (a formatação) enquanto deveria estar focado no mais importante: <strong>o conteúdo</strong>.</p>
+            <p>Essa mistura de tarefas é a principal causa da instabilidade e das "surpresas" na formatação de documentos longos.</p>
           </div>
-        </section>
 
-        <section id="apresentacao-conteudo">
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Nesta aula, vamos explorar a diferença crucial entre dois estilos de processamento de texto: <strong>WYSIWYG</strong> e
-            <strong>Marcação Lógica</strong>.</p>
-        </section>
-
-        <section id="desenvolvimento">
-          <h2>3. Desenvolvimento do Conteúdo</h2>
-
-          <h3>Estilo Visual (WYSIWYG - What You See Is What You Get)</h3>
-          <p>É o modelo de programas como Word, Pages e Google Docs. O texto que você digita na tela aparece exatamente
-            como será impresso. Você usa menus, botões e atalhos para aplicar formatação (negrito, itálico, etc.)
-            diretamente no texto.</p>
+          <h3>Características do WYSIWYG:</h3>
           <ul>
-            <li><strong>Vantagem:</strong> É intuitivo e visualmente imediato.</li>
-            <li><strong>Desvantagem:</strong> A consistência da formatação em documentos longos é difícil de manter. O
-              autor gasta muito tempo com ajustes visuais, e a estrutura lógica do documento pode se tornar
-              inconsistente.</li>
+            <li><strong>✅ Vantagem:</strong> É intuitivo e visualmente imediato. Você vê exatamente como será impresso.</li>
+            <li><strong>❌ Desvantagem:</strong> A consistência da formatação em documentos longos é difícil de manter.</li>
+            <li><strong>❌ Problema:</strong> O autor gasta muito tempo com ajustes visuais em vez de focar no conteúdo.</li>
+            <li><strong>❌ Instabilidade:</strong> Pequenas alterações podem desconfigurar todo o documento.</li>
           </ul>
+        </section>
 
-          <h3>Estilo de Marcação Lógica (LaTeX)</h3>
-          <p>Neste modelo, o processo é dividido em duas etapas distintas. Primeiro, você escreve o conteúdo em um
-            arquivo de texto simples (código-fonte), utilizando comandos para descrever a <strong>estrutura lógica</strong> do
-            documento (isto é um título, isto é uma seção, isto é uma equação).</p>
-          <p>Depois, você <strong>compila</strong> esse arquivo. O programa LaTeX interpreta os comandos e gera um documento final
-            (geralmente um PDF) com uma formatação tipográfica profissional e consistente.</p>
+        <section id="mundo-latex">
+          <h2>2. O Mundo LaTeX (O Que Você Pensa é o Que Você Obtém)</h2>
+          
+          <p>Agora, imagine que você é um <strong>arquiteto</strong>. Você não constrói a casa tijolo por tijolo. Primeiro, você cria uma planta baixa (o projeto), especificando: "aqui haverá uma parede", "esta sala terá 30 metros quadrados", "aqui ficará a porta de entrada".</p>
+          
+          <div class="theory-box">
+            <p><strong>O LaTeX funciona exatamente assim.</strong> Você escreve um arquivo de texto simples (sua "planta baixa"), dando instruções e focando na estrutura lógica do seu documento. Você diz:</p>
+            
+            <div style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 6px; margin: 1rem 0; font-family: 'Courier New', monospace;">
+              <div style="color: #81c784;"><code>\section{Introdução}</code> <span style="color: #90a4ae; font-size: 0.9em;">// Isto é uma seção chamada "Introdução"</span></div>
+              <div style="color: #81c784;"><code>\textbf{termo importante}</code> <span style="color: #90a4ae; font-size: 0.9em;">// Este "termo importante" deve estar em negrito</span></div>
+              <div style="color: #81c784;"><code>\begin{equation}</code> <span style="color: #90a4ae; font-size: 0.9em;">// Aqui começa uma equação matemática importante</span></div>
+            </div>
+            
+            <p>Você <strong>não se preocupa</strong> com o tamanho da fonte da seção, o espaçamento antes e depois dela ou a numeração da equação. <em>Você apenas declara a intenção.</em></p>
+          </div>
 
-          <h4>O Fluxo de Trabalho em LaTeX</h4>
+          <p>Depois, você entrega essa "planta baixa" (seu arquivo <code>.tex</code>) para o "mestre de obras" (o compilador LaTeX). É ele quem vai interpretar suas instruções e construir o "prédio" (o arquivo PDF final), perfeitamente formatado, consistente e com uma qualidade tipográfica profissional.</p>
+
+          <h3>O Fluxo de Trabalho em LaTeX</h3>
           <p>O processo se parece mais com programação do que com edição de texto tradicional:</p>
           <div class="code-block">
-            <pre>1. <strong>Editar:</strong> Você escreve seu texto e comandos em um arquivo .tex.
-↓
-2. <strong>Compilar:</strong> Um programa (o motor TeX) lê seu arquivo .tex e o processa.
-↓
-3. <strong>Visualizar:</strong> O programa gera um arquivo de saída (ex: .pdf) que você pode visualizar ou imprimir.</pre>
+            <pre>1. <strong>📝 Editar:</strong> Você escreve seu texto e comandos em um arquivo .tex
+   ↓
+2. <strong>⚙️ Compilar:</strong> O "mestre de obras" (compilador) lê e processa seu arquivo
+   ↓
+3. <strong>👁️ Visualizar:</strong> Você obtém um PDF perfeitamente formatado</pre>
           </div>
-          <p>Esta abordagem garante que, uma vez definida a estrutura, a formatação será aplicada de forma consistente
-            em todo o documento, não importa o quão longo ou complexo ele seja.</p>
+        </section>
+
+        <section id="grande-vantagem">
+          <h2>3. A Grande Vantagem: Por que se dar a esse trabalho?</h2>
+          
+          <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;">
+            <h3 style="color: var(--accent); margin-top: 0;">🎯 Foco Total no Conteúdo</h3>
+            <p>Você se concentra no que realmente importa: suas ideias e sua escrita. O LaTeX cuida da aparência.</p>
+            
+            <h3 style="color: var(--accent);">✨ Qualidade Profissional</h3>
+            <p>O resultado final tem uma aparência de livro, não de "trabalho de escola". O LaTeX toma decisões de design baseadas em séculos de boas práticas tipográficas.</p>
+            
+            <h3 style="color: var(--accent);">🛡️ Estabilidade Absoluta</h3>
+            <p>Suas figuras, tabelas e equações nunca mais sairão do lugar sozinhas. A estrutura é robusta e previsível.</p>
+            
+            <h3 style="color: var(--accent);">🧮 Poder Matemático</h3>
+            <p>O sistema foi criado por Donald Knuth, um gênio da computação, justamente para produzir textos matemáticos de alta complexidade com perfeição.</p>
+            
+            <h3 style="color: var(--accent);">🤖 Automação</h3>
+            <p>Sumários, listas de figuras, referências bibliográficas e citações são gerados e atualizados automaticamente.</p>
+            
+            <h3 style="color: var(--accent);">🎨 Formatação Inteligente</h3>
+            <p>Como destaca a documentação da UFPR: a separação clara entre formatação e conteúdo permite <em>"mudanças na formatação do texto inteiro com apenas a mudança de alguns comandos"</em>.</p>
+          </div>
+        </section>
+
+        <section id="embasamento-teorico">
+          <h2>4. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>O LaTeX foi desenvolvido a partir do programa TeX, criado por <strong>Donald Knuth</strong>, um renomado cientista da computação. A motivação de Knuth era resolver a deterioração da qualidade tipográfica em publicações científicas.</p>
+            
+            <p>A premissa central é a <strong>separação entre conteúdo e formatação</strong>. Em vez de o autor se preocupar simultaneamente com o que escreve e com a aparência do texto (fontes, margens, espaçamento), ele foca exclusivamente no conteúdo e em sua estrutura lógica. A formatação visual fica a cargo de um "paginador profissional" — no nosso caso, o próprio LaTeX.</p>
+            
+            <p>Esta abordagem garante que, uma vez definida a estrutura, a formatação será aplicada de forma consistente em todo o documento, não importa o quão longo ou complexo ele seja.</p>
+          </div>
+        </section>
+
+        <section id="conclusao">
+          <h2>5. Conclusão da Aula 1</h2>
+          
+          <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.03)); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 12px 12px 0;">
+            <p><strong>Entender essa filosofia é o passo mais crucial.</strong> Com o LaTeX, você deixa de ser um "decorador" de texto e se torna um <strong>"arquiteto da informação"</strong>.</p>
+            
+            <p>A curva de aprendizado inicial é um pequeno preço a pagar pela paz de espírito, profissionalismo e poder que você ganhará, especialmente na vida acadêmica.</p>
+          </div>
         </section>
 
         <section id="atividade">
-          <h2>4. Atividade de Reflexão</h2>
+          <h2>6. Atividade Prática (Reflexão - 5 minutos)</h2>
           <div class="activity-box">
-            <p>Antes de prosseguir, reflita sobre um trabalho acadêmico ou relatório que você escreveu recentemente
-              usando um editor de texto tradicional (como o Word).</p>
+            <h3 style="margin-top: 0;">🎯 Experimento de Comparação:</h3>
+            
+            <p><strong>Passo 1:</strong> Abra um documento em branco no <strong>Microsoft Word</strong> (ou Google Docs). Olhe para a interface: a quantidade de botões, menus e opções de formatação. <em>O que a interface te convida a fazer?</em></p>
+            
+            <p><strong>Passo 2:</strong> Agora, abra um editor de texto simples (como o <strong>Bloco de Notas</strong> no Windows ou o <strong>TextEdit</strong> no Mac). Note a simplicidade. Não há botões de formatação. O foco é unicamente no texto.</p>
+            
+            <p><strong>Reflexão:</strong> Note a diferença de foco entre as duas ferramentas. O arquivo que escreveremos para o LaTeX se parecerá muito mais com o do Bloco de Notas.</p>
+            
+            <h3>💭 Questões para Reflexão:</h3>
             <ol>
-              <li>Quais foram as maiores dificuldades de formatação que você encontrou? (Ex: numeração de seções,
-                alinhamento de imagens, formatação da bibliografia).</li>
-              <li>Quanto tempo você gastou em ajustes puramente visuais?</li>
-              <li>Houve algum momento em que uma pequena alteração (como adicionar um parágrafo) desconfigurou o resto
-                do documento?</li>
+              <li>Quais foram as maiores dificuldades de formatação que você já encontrou em editores como Word? (Ex: numeração de seções, alinhamento de imagens, formatação da bibliografia)</li>
+              <li>Quanto tempo você já gastou em ajustes puramente visuais em documentos importantes?</li>
+              <li>Já teve algum momento em que uma pequena alteração (como adicionar um parágrafo) desconfigurou o resto do documento?</li>
+              <li>Como seria trabalhar focando apenas no <em>conteúdo</em> e deixar a formatação para depois?</li>
             </ol>
-            <p>Anote suas respostas. Ao longo deste curso, você descobrirá como o LaTeX resolve cada um desses problemas
-              de forma elegante e automática.</p>
+            
+            <p style="color: var(--accent); font-weight: 600; margin-top: 1.5rem;">💡 Anote suas respostas. Ao longo deste curso, você descobrirá como o LaTeX resolve cada um desses problemas de forma elegante e automática.</p>
           </div>
         </section>
 

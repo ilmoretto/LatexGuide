@@ -46,85 +46,233 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 2: Preparando o Ambiente de Trabalho Online com Overleaf</h1>
-        <p class="lead">Para começar a escrever em LaTeX, você precisa de um editor e um compilador. Antigamente, isso
-          exigia a instalação de um software pesado chamado "distribuição TeX". Hoje, podemos contornar isso usando uma
-          plataforma online gratuita e poderosa chamada Overleaf.</p>
+        <h1>Aula 2: Seu Ambiente de Trabalho e a Estrutura Mínima de um Documento</h1>
+        
+        <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(34, 211, 238, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: var(--accent); margin-top: 0;">Bem-vindo(a) de volta!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Na aula anterior, falamos sobre a filosofia do LaTeX como uma "planta baixa" para o seu texto. Mas onde nós desenhamos essa planta?</p>
+          <p style="color: var(--muted); font-style: italic;">Antigamente, o processo era complexo, envolvendo instalação de programas, compilação via linha de comando e geração de arquivos intermediários. Era um ciclo de "editar, compilar, visualizar" que exigia certa configuração. Hoje, temos uma ferramenta que simplifica tudo isso: <strong>o Overleaf</strong>.</p>
+        </div>
 
-        <section id="embasamento-teorico">
-          <h2>1. Embasamento Teórico</h2>
+        <section id="ambiente-overleaf">
+          <h2>1. O Ambiente de Trabalho: Overleaf</h2>
+          
           <div class="theory-box">
-            <p>O Overleaf é um editor de LaTeX online que funciona diretamente no seu navegador. Ele combina um editor
-              de código-fonte, um visualizador de PDF em tempo real e ferramentas de colaboração. Para um curso de
-              autoaprendizagem, ele é a ferramenta ideal, pois elimina qualquer barreira técnica de instalação e permite
-              que você se concentre 100% na aprendizagem da linguagem LaTeX.</p>
+            <h3 style="margin-top: 0; color: var(--accent);">Pense no Overleaf como um estúdio de arquitetura completo e online</h3>
+            
+            <p><strong>Por que vamos usá-lo?</strong></p>
+            <ul>
+              <li><strong>Zero Instalação:</strong> Você não precisa instalar nada no seu computador. Tudo funciona no seu navegador.</li>
+              <li><strong>Tudo em Um:</strong> Ele combina um editor de texto para o seu código, um compilador que transforma seu código em um documento e um visualizador de PDF que mostra o resultado em tempo real.</li>
+              <li><strong>Colaboração:</strong> Excelente para trabalhos em equipe, permitindo que você e seu orientador trabalhem no mesmo arquivo simultaneamente.</li>
+              <li><strong>Perfeito para Aprendizado:</strong> Elimina qualquer barreira técnica de instalação e permite que você se concentre 100% na aprendizagem da linguagem LaTeX.</li>
+            </ul>
           </div>
-        </section>
 
-        <section id="apresentacao-conteudo">
-          <h2>2. Apresentação do Conteúdo</h2>
-          <p>Nesta aula, vamos criar uma conta no Overleaf e iniciar nosso primeiro projeto. Este será o nosso
-            "laboratório" para todas as atividades práticas do curso.</p>
-        </section>
-
-        <section id="desenvolvimento">
-          <h2>3. Desenvolvimento do Conteúdo: Passo a Passo</h2>
-
+          <h3>Vamos entrar no nosso estúdio:</h3>
+          
           <div class="step">
-            <h4>Passo 1: Acessar o site</h4>
-            <p>Abra seu navegador de internet e acesse o site oficial do Overleaf em <a href="https://www.overleaf.com"
-                target="_blank">www.overleaf.com</a>.</p>
+            <h4>Passo 1: Acessar o Site</h4>
+            <p>Abra seu navegador e acesse <a href="https://www.overleaf.com" target="_blank" style="color: var(--accent); font-weight: 600;">www.overleaf.com</a></p>
           </div>
 
           <div class="step">
-            <h4>Passo 2: Registrar-se</h4>
-            <p>Na página inicial, procure o botão de registro ("Sign Up" ou "Register"). Você pode criar uma conta
-              usando seu e-mail ou vincular a uma conta existente do Google ou ORCID, o que é muito comum no meio
-              acadêmico.</p>
+            <h4>Passo 2: Criar sua Conta</h4>
+            <p>Na página inicial, procure o botão <strong>"Sign Up"</strong> ou <strong>"Register"</strong>. Você pode:</p>
+            <ul>
+              <li>Criar uma conta usando seu e-mail</li>
+              <li>Vincular a uma conta existente do <strong>Google</strong> (recomendado)</li>
+              <li>Usar <strong>ORCID</strong> (muito comum no meio acadêmico)</li>
+            </ul>
           </div>
 
           <div class="step">
-            <h4>Passo 3: Criar um Novo Projeto</h4>
-            <p>Após fazer o login, você será direcionado ao seu painel de projetos. Clique no botão "New Project" (Novo
-              Projeto). Várias opções aparecerão. Por enquanto, escolha a mais simples: <strong>"Blank Project" (Projeto em
-              Branco)</strong>.</p>
+            <h4>Passo 3: Criar seu Primeiro Projeto</h4>
+            <p>Após o login, você verá seu painel de projetos. Clique em <strong>"New Project"</strong> (Novo Projeto) e depois em <strong>"Blank Project"</strong> (Projeto em Branco).</p>
           </div>
 
           <div class="step">
             <h4>Passo 4: Nomear seu Projeto</h4>
-            <p>Uma pequena janela pedirá um nome para o seu projeto. Digite algo como
-              <strong>"CursoLaTeX-Modulo1"</strong> e clique em "Create" (Criar). Evite usar espaços ou caracteres
-              especiais no nome do projeto para garantir portabilidade.</p>
+            <p>Dê um nome ao seu projeto, como <strong>"Meu-Primeiro-Documento"</strong> e clique em <strong>"Create"</strong>. 💡 <em>Evite espaços ou caracteres especiais no nome para garantir portabilidade.</em></p>
           </div>
 
           <div class="step">
             <h4>Passo 5: Conhecendo a Interface</h4>
-            <p>Seu projeto será criado e a tela será dividida em três partes principais:</p>
+            <p>Pronto! Você está diante da interface padrão do Overleaf:</p>
+            <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+              <ul style="margin: 0;">
+                <li><strong>À Esquerda (Painel de Arquivos):</strong> A lista de arquivos do seu projeto (por enquanto, só <code>main.tex</code>).</li>
+                <li><strong>No Centro (Editor de Código):</strong> É aqui que vamos escrever nossa "planta baixa". O Overleaf já preenche com um modelo básico.</li>
+                <li><strong>À Direita (Visualizador PDF):</strong> É aqui que o "prédio" final aparecerá. Para atualizar, clique no botão verde <strong>"Recompile"</strong>.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="estrutura-minima">
+          <h2>2. A Estrutura Mínima: A Viga Mestra de Todo Documento</h2>
+          
+          <p>Ao criar o projeto, o Overleaf já nos dá um código básico. Vamos apagar tudo e começar do zero para entender cada peça.</p>
+          
+          <div class="theory-box">
+            <p><strong>Todo e qualquer documento LaTeX</strong>, não importa o tamanho ou complexidade, precisa ter a seguinte estrutura mínima:</p>
+          </div>
+
+          <div style="background: #282c34; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace;">
+            <div style="color: #c3e88d;"><span style="color: #82aaff;">\\documentclass</span>{<span style="color: #c3e88d;">article</span>}</div>
+            <div style="margin: 1rem 0;"></div>
+            <div style="color: #82aaff;">\\begin{<span style="color: #c3e88d;">document</span>}</div>
+            <div style="margin: 0.5rem 0;"></div>
+            <div style="color: #ffffff; padding-left: 1rem;">Aqui escrevemos o nosso texto.</div>
+            <div style="margin: 0.5rem 0;"></div>
+            <div style="color: #82aaff;">\\end{<span style="color: #c3e88d;">document</span>}</div>
+          </div>
+
+          <h3>Vamos dissecar essa estrutura fundamental:</h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 2rem 0;">
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">\documentclass{article}</h4>
+              <p>Este é o <strong>primeiro comando obrigatório</strong>. Ele define o tipo de documento que estamos criando. Existem várias "classes":</p>
+              <ul>
+                <li><strong>article:</strong> Para textos curtos, como artigos, relatórios pequenos, listas de exercícios. É o que usaremos agora.</li>
+                <li><strong>report:</strong> Para documentos mais longos, com vários capítulos, como um TCC.</li>
+                <li><strong>book:</strong> Para livros completos.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">O Preâmbulo (A Sala de Controle)</h4>
+              <p>O espaço entre <code>\documentclass</code> e <code>\begin{document}</code> é chamado de <strong>preâmbulo</strong>. É uma das partes mais importantes do seu documento.</p>
+              <p>Pense nele como a <em>sala de controle</em> onde você define:</p>
+              <ul>
+                <li>Pacotes que adicionam funcionalidades (inserir figuras, usar acentos)</li>
+                <li>Configurações de margens</li>
+                <li>Definições globais do documento</li>
+              </ul>
+              <p><em>Por enquanto, nosso preâmbulo está vazio, mas isso vai mudar!</em></p>
+            </div>
+
+            <div style="background: var(--panel); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent); margin-top: 0;">\begin{document} e \end{document}</h4>
+              <p>Estes dois comandos formam um <strong>ambiente</strong>. Tudo o que estiver dentro será o <em>conteúdo visível</em> do seu documento:</p>
+              <ul>
+                <li>Texto</li>
+                <li>Figuras</li>
+                <li>Tabelas</li>
+                <li>Equações</li>
+              </ul>
+              <p><strong>Importante:</strong> Tudo que estiver depois de <code>\end{document}</code> será completamente ignorado pelo compilador.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="primeira-compilacao">
+          <h2>3. Compilação do Primeiro Documento</h2>
+          
+          <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.03)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin: 1.5rem 0;">
+            <h3 style="color: var(--accent); margin-top: 0;">Agora, vamos fazer a mágica acontecer!</h3>
+            
+            <ol style="font-size: 1.1rem; line-height: 1.8;">
+              <li>Dentro do ambiente <code>document</code>, <strong>apague o texto padrão</strong> e escreva algo como: 
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-style: italic;">
+                  "Meu primeiro parágrafo em LaTeX. É mais fácil do que eu pensava!"
+                </div>
+              </li>
+              
+              <li>No canto superior direito do editor, clique no botão verde <strong>"Recompile"</strong> 
+                <span style="color: var(--muted);">(ou use o atalho Ctrl+Enter / Cmd+Enter)</span>
+              </li>
+              
+              <li><strong>Observe a mágica:</strong> Em segundos, o painel da direita é atualizado e exibe um documento PDF com seu texto, perfeitamente formatado!</li>
+            </ol>
+            
+            <p style="background: rgba(34, 211, 238, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1.5rem; text-align: center; font-weight: 600;">
+              Você acabou de completar seu primeiro ciclo de <em>"editar e compilar"</em>!
+            </p>
+          </div>
+        </section>
+
+        <section id="embasamento-teorico">
+          <h2>4. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>O Overleaf revolucionou o aprendizado de LaTeX ao eliminar as barreiras técnicas que existiam no passado. Antigamente, trabalhar com LaTeX requeria:</p>
             <ul>
-              <li><strong>À Esquerda (Painel de Arquivos):</strong> Mostra os arquivos do seu projeto. Inicialmente,
-                haverá apenas um: <code>main.tex</code>.</li>
-              <li><strong>No Centro (Editor de Código):</strong> É aqui que você vai escrever seu código LaTeX. O
-                Overleaf já preenche com um modelo básico.</li>
-              <li><strong>À Direita (Visualizador de PDF):</strong> Mostra o resultado final do seu código compilado.
-                Para atualizar, clique no botão verde "Recompile".</li>
+              <li>Instalação de uma "distribuição TeX" completa (vários GBs de dados)</li>
+              <li>Configuração de editores especializados</li>
+              <li>Conhecimento de linha de comando</li>
+              <li>Gerenciamento manual de arquivos auxiliares (.aux, .log, .toc, etc.)</li>
+            </ul>
+            
+            <p>Hoje, o Overleaf fornece um ambiente integrado que:</p>
+            <ul>
+              <li><strong>Simplifica o fluxo de trabalho:</strong> Editor + Compilador + Visualizador em uma única interface</li>
+              <li><strong>Oferece colaboração em tempo real:</strong> Perfeito para trabalhos acadêmicos com orientadores</li>
+              <li><strong>Mantém histórico de versões:</strong> Você nunca perde seu trabalho</li>
+              <li><strong>Funciona em qualquer dispositivo:</strong> Apenas um navegador web é necessário</li>
             </ul>
           </div>
         </section>
 
+        <section id="conclusao">
+          <h2>5. Conclusão da Aula 2</h2>
+          
+          <div style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.03)); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 12px 12px 0;">
+            <p><strong>Hoje você aprendeu a navegar no seu ambiente de trabalho</strong>, o Overleaf, e entendeu a <em>estrutura sagrada e imutável</em> de qualquer documento LaTeX: o comando <code>\documentclass</code>, o preâmbulo e o ambiente <code>document</code>.</p>
+            
+            <p><strong>Você já é capaz de criar um documento válido e vê-lo ganhar vida!</strong></p>
+          </div>
+        </section>
+
         <section id="atividade">
-          <h2>4. Atividade Prática</h2>
+          <h2>6. Atividade Prática (Mão na Massa - 10 minutos)</h2>
           <div class="activity-box">
-            <p>Sua tarefa para esta aula é colocar a teoria em prática. Siga os passos abaixo:</p>
-            <ol>
-              <li>Acesse <a href="https://www.overleaf.com" target="_blank">www.overleaf.com</a> e crie sua conta
-                gratuita.</li>
-              <li>Crie um novo projeto em branco com o nome "Meus-Primeiros-Passos-LaTeX".</li>
-              <li>Localize o editor de código no centro e o botão "Recompile" acima do visualizador de PDF.</li>
-              <li>Não altere nada no código ainda. Apenas clique em "Recompile" e observe o PDF que é gerado à direita.
+            <h3 style="margin-top: 0;">Missão: Dominar a Estrutura Básica</h3>
+            
+            <p><strong>No seu projeto "Meu-Primeiro-Documento" no Overleaf:</strong></p>
+            
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Limpe o código</strong> deixando apenas a estrutura mínima que aprendemos:
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
+                  \documentclass{article}<br>
+                  <br>
+                  \begin{document}<br>
+                  <br>
+                  \end{document}
+                </div>
+              </li>
+              
+              <li><strong>No preâmbulo</strong> (entre as duas linhas em branco), adicione um comentário explicando o que é aquela área. Use o caractere <code>%</code>:
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 0.8rem; margin: 0.5rem 0; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #6c757d;">
+                  % Esta é a área do preâmbulo - aqui ficam as configurações
+                </div>
+              </li>
+              
+              <li><strong>Dentro do ambiente document</strong>, escreva <em>dois parágrafos distintos</em>. 
+                <br><span style="color: var(--muted);">Lembre-se: para criar um novo parágrafo, basta deixar uma linha em branco entre eles.</span>
+              </li>
+              
+              <li><strong>No segundo parágrafo</strong>, use uma quebra de linha (<code>\\</code>) no meio de uma frase.</li>
+              
+              <li><strong>Recompile seu documento</strong> e observe o resultado no PDF:
+                <ul>
+                  <li>Os dois parágrafos</li>
+                  <li>O recuo (indentação) do segundo parágrafo</li>
+                  <li>O efeito da quebra de linha</li>
+                </ul>
               </li>
             </ol>
-            <p>Parabéns! Você acabou de preparar seu ambiente de trabalho e compilar seu primeiro documento. Na próxima
-              aula, vamos entender o que significa o código que já está lá.</p>
+            
+            <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: var(--accent);">Parabéns! Você acabou de:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Preparar seu ambiente de trabalho</li>
+                <li>Entender a estrutura básica do LaTeX</li>
+                <li>Compilar seu primeiro documento</li>
+                <li>Experimentar parágrafos e quebras de linha</li>
+              </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Na próxima aula, vamos aprofundar ainda mais essa estrutura!</p>
+            </div>
           </div>
         </section>
       </article>

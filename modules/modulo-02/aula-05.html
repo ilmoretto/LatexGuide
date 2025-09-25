@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 2 — Aula 5: Acentuação e Símbolos Internacionais</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box, .activity-box {
+      border-left: 4px solid #a855f7;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(168, 85, 247, 0.08);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+    .code-block {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .code-block pre { margin: 0; }
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #a855f7;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .package-demo {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .package-demo h4 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .symbols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .symbol-item {
+      background: var(--panel);
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .symbol-item code {
+      background: #282c34;
+      color: #61afef;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .symbol-result {
+      font-size: 1.2em;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 5: Acentuação e Símbolos Internacionais</h1>
+        
+        <section>
+          <h2>1. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>O TeX, em sua origem, foi criado em um contexto onde o inglês e o conjunto de caracteres ASCII eram o padrão. Para que ele pudesse entender e exibir corretamente caracteres de outras línguas, como os acentos do português (<code>á</code>, <code>ã</code>, <code>ç</code>), foram criados "pacotes" — extensões que ensinam novas habilidades ao LaTeX. Os pacotes <code>inputenc</code> e <code>babel</code> são essenciais e praticamente obrigatórios para qualquer pessoa que escreva em português, pois eles cuidam da codificação de entrada e das regras de hifenização e terminologia do idioma.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>2. Apresentação do Conteúdo</h2>
+          <p>Nesta aula, vamos entender a função dos pacotes e como usar os dois pacotes mais importantes para a língua portuguesa: <code>inputenc</code> e <code>babel</code>. Também veremos como inserir símbolos e caracteres especiais que não estão no teclado.</p>
+        </section>
+
+        <section>
+          <h2>3. Desenvolvimento do Conteúdo</h2>
+          
+          <h3>Carregando Pacotes no Preâmbulo</h3>
+          <p>Pacotes são adicionados no preâmbulo do documento usando o comando <code>\usepackage[opções]{nome-do-pacote}</code>.</p>
+          
+          <div class="package-demo">
+            <h4>Pacote <code>inputenc</code> (Input Encoding):</h4>
+            <p>Este pacote diz ao LaTeX como interpretar os caracteres que você digita no teclado. A codificação <code>UTF-8</code> é o padrão universal hoje e permite o uso de acentos e símbolos de praticamente qualquer idioma diretamente no código.</p>
+            <p><strong>Uso:</strong> <code>\usepackage[utf8]{inputenc}</code></p>
+            <p><em>Sem esta linha, digitar "coração" no código resultaria em erro ou em caracteres estranhos no PDF.</em></p>
+          </div>
+
+          <div class="package-demo">
+            <h4>Pacote <code>babel</code> (Language Support):</h4>
+            <p>Este pacote adapta o LaTeX às convenções de um idioma específico. Quando ativado para o português do Brasil, ele:</p>
+            <ul>
+              <li>Traduz termos automáticos (ex: "Contents" vira "Sumário", "Chapter" vira "Capítulo").</li>
+              <li>Aplica as regras corretas de hifenização para palavras em português.</li>
+              <li>Ajusta a formatação de datas.</li>
+            </ul>
+            <p><strong>Uso:</strong> <code>\usepackage[brazil]{babel}</code></p>
+          </div>
+
+          <h3>Inserindo Símbolos Especiais do LaTeX</h3>
+          <p>Como vimos no Módulo 1, alguns caracteres são "reservados" pelo LaTeX para executar comandos. Para exibi-los no texto, você precisa usar um comando específico:</p>
+          
+          <div class="symbols-grid">
+            <div class="symbol-item">
+              <code>\%</code>
+              <div class="symbol-result">%</div>
+            </div>
+            <div class="symbol-item">
+              <code>\$</code>
+              <div class="symbol-result">$</div>
+            </div>
+            <div class="symbol-item">
+              <code>\&</code>
+              <div class="symbol-result">&</div>
+            </div>
+            <div class="symbol-item">
+              <code>\_</code>
+              <div class="symbol-result">_</div>
+            </div>
+            <div class="symbol-item">
+              <code>\{</code>
+              <div class="symbol-result">{</div>
+            </div>
+            <div class="symbol-item">
+              <code>\}</code>
+              <div class="symbol-result">}</div>
+            </div>
+          </div>
+
+          <h3>Exemplo de Preâmbulo Completo para Português</h3>
+          <div class="code-block">
+            <button class="copy-button" aria-label="Copiar código">Copiar</button>
+            <pre><code>\documentclass[12pt, a4paper]{article}
+
+% --- PACOTES ESSENCIAIS PARA PORTUGUÊS ---
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\title{Documento em Português}
+\author{João da Silva}
+
+\begin{document}
+    \maketitle
+    
+    \section{Acentuação e Símbolos}
+    
+    Graças ao pacote inputenc, a palavra "coração" é escrita corretamente. 
+    O pacote babel garante que a hifenização de palavras como "extraordinariamente"
+    esteja correta.
+    
+    Precisamos pagar uma taxa de 50\%. O preço é R\$ 10,00.
+    Os símbolos reservados incluem chaves \{ e \}.
+    
+\end{document}</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. Atividade Prática</h2>
+          <div class="activity-box">
+            <ol>
+              <li>Verifique se o seu projeto no Overleaf já possui as linhas <code>\usepackage[utf8]{inputenc}</code> e <code>\usepackage[brazil]{babel}</code> no preâmbulo. Se não tiver, adicione-as.</li>
+              <li>Escreva um novo parágrafo contendo palavras com diferentes tipos de acentos do português (agudo, crase, circunflexo, til, cedilha). Ex: "Ação, pêssego, à, guaraná, tradição."</li>
+              <li>Recompile e confirme que todos os acentos aparecem corretamente no PDF.</li>
+              <li>Crie uma pequena lista explicando o propósito de 3 símbolos especiais, exibindo o próprio símbolo na explicação. Por exemplo: "O símbolo \% é usado para iniciar comentários no código."</li>
+              <li>Compile o documento final deste módulo. Você agora tem um documento estruturado, com texto formatado e configurado corretamente para o português.</li>
+            </ol>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 2 — Aula 3: Navegação Automática — O Sumário</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box, .activity-box {
+      border-left: 4px solid #a855f7;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(168, 85, 247, 0.08);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+    .code-block {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .code-block pre { margin: 0; }
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #a855f7;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 3: Navegação Automática — O Sumário</h1>
+        <section>
+          <h2>1. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>Uma das funcionalidades mais poderosas e que mais economizam tempo no LaTeX é a sua capacidade de gerar estruturas de navegação automaticamente. O sumário (<em>Table of Contents</em>) não é uma lista que você digita manualmente. Em vez disso, o LaTeX o constrói para você, lendo os comandos de seção (<code>\chapter</code>, <code>\section</code>, etc.) que você já usou no seu documento. Isso garante que o sumário esteja sempre 100% sincronizado com o conteúdo.</p>
+          </div>
+        </section>
+        <section>
+          <h2>2. Apresentação do Conteúdo</h2>
+          <p>Nesta aula, você aprenderá a inserir um sumário automático em seu documento e entenderá o crucial conceito de <strong>compilação múltipla</strong>.</p>
+        </section>
+        <section>
+          <h2>3. Desenvolvimento do Conteúdo</h2>
+          <h3>O Comando <code>\tableofcontents</code></h3>
+          <p>Insira o comando <code>\tableofcontents</code> no local onde deseja que o sumário apareça, geralmente logo após o <code>\maketitle</code>.</p>
+          <div class="code-block"><button class="copy-button" aria-label="Copiar código">Copiar</button><pre><code>...
+\begin{document}
+    \maketitle
+    
+    \tableofcontents
+    
+    \section{Introdução}
+    ...
+\end{document}</code></pre></div>
+          <h3>O Segredo da Compilação Múltipla</h3>
+          <p>Quando você compilar o documento pela primeira vez após adicionar o <code>\tableofcontents</code>, o sumário pode aparecer em branco ou desatualizado. Isso é normal! O LaTeX precisa de duas compilações para atualizar o sumário corretamente.</p>
+          <ol>
+            <li><strong>Primeira Compilação:</strong> O LaTeX lê o documento e salva as informações de seções em um arquivo auxiliar (<code>.toc</code>).</li>
+            <li><strong>Segunda Compilação:</strong> O LaTeX lê o arquivo <code>.toc</code> e monta o sumário.</li>
+          </ol>
+          <p>Sempre que alterar a estrutura de seções, recompilar duas vezes para atualizar o sumário.</p>
+        </section>
+        <section>
+          <h2>4. Atividade Prática</h2>
+          <div class="activity-box">
+            <ol>
+              <li>Abra o projeto da aula anterior no Overleaf, que já contém seções e subseções.</li>
+              <li>Adicione o comando <code>\tableofcontents</code> logo após o <code>\maketitle</code>.</li>
+              <li>Recompile o projeto. Observe o sumário gerado.</li>
+              <li>Adicione uma nova seção: <code>\section{Conclusão}</code> no final do documento.</li>
+              <li>Recompile apenas uma vez. O sumário já incluiu a nova seção?</li>
+              <li>Recompile uma segunda vez. Agora o sumário deve estar atualizado.</li>
+            </ol>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 2 — Aula 4: Estilizando o Texto — Fontes e Tamanhos</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .theory-box, .activity-box {
+      border-left: 4px solid #a855f7;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: rgba(168, 85, 247, 0.08);
+      border-radius: 0 8px 8px 0;
+      color: var(--text);
+    }
+    .code-block {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .code-block pre { margin: 0; }
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #a855f7;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .font-demo {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .font-demo h4 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .size-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 768px) {
+      .size-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 4: Estilizando o Texto — Fontes e Tamanhos</h1>
+        
+        <section>
+          <h2>1. Embasamento Teórico</h2>
+          <div class="theory-box">
+            <p>Embora a filosofia do LaTeX seja focar na estrutura, existem momentos em que é necessário dar ênfase a uma palavra ou trecho específico. O LaTeX oferece um conjunto robusto de comandos para alterar o estilo da fonte (família, peso e forma) e seu tamanho. É crucial entender a diferença entre <strong>comandos</strong> (que afetam apenas o texto dentro de seus argumentos) e <strong>declarações</strong> (que afetam todo o texto subsequente dentro de um escopo). Para o autoestudo, focaremos nos comandos por serem mais seguros e intuitivos.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>2. Apresentação do Conteúdo</h2>
+          <p>Nesta aula, você aprenderá os principais comandos para modificar a aparência do texto. Cobriremos a alteração da forma (itálico, inclinado), do peso (negrito), da família (serifa, sem serifa, monoespaçada) e do tamanho relativo da fonte.</p>
+        </section>
+
+        <section>
+          <h2>3. Desenvolvimento do Conteúdo</h2>
+          
+          <h3>Mudando a Forma e o Peso da Fonte</h3>
+          <p>Estes são os comandos mais comuns para dar destaque ao texto. Eles recebem o texto a ser modificado como um argumento entre chaves <code>{}</code>.</p>
+          
+          <div class="font-demo">
+            <h4>Comandos de Formatação:</h4>
+            <ul>
+              <li><code>\textbf{texto em negrito}</code> → <strong>texto em negrito</strong></li>
+              <li><code>\textit{texto em itálico}</code> → <em>texto em itálico</em></li>
+              <li><code>\texttt{texto monoespaçado}</code> → <span style="font-family: monospace;">texto monoespaçado</span> (ideal para código ou URLs)</li>
+              <li><code>\textsc{Texto em Versalete}</code> → <span style="font-variant: small-caps;">Texto em Versalete</span></li>
+              <li><code>\underline{texto sublinhado}</code> → <u>texto sublinhado</u></li>
+            </ul>
+            <p><strong>Aninhamento:</strong> <code>\textbf{\textit{negrito e itálico}}</code> → <strong><em>negrito e itálico</em></strong></p>
+          </div>
+
+          <h3>Mudando o Tamanho da Fonte</h3>
+          <p>O LaTeX possui comandos para alterar o tamanho da fonte de forma relativa ao tamanho base. Para aplicar a um trecho específico, use: <code>{\comandoDeTamanho texto}</code></p>
+          
+          <div class="size-demo">
+            <div>
+              <h4>Comandos de Tamanho (do menor ao maior):</h4>
+              <ul>
+                <li><code>{\tiny texto muito pequeno}</code></li>
+                <li><code>{\scriptsize texto bem pequeno}</code></li>
+                <li><code>{\footnotesize texto pequeno}</code></li>
+                <li><code>{\small texto um pouco menor}</code></li>
+                <li><code>{\normalsize texto normal}</code></li>
+                <li><code>{\large texto grande}</code></li>
+                <li><code>{\Large texto maior}</code></li>
+                <li><code>{\LARGE texto bem maior}</code></li>
+                <li><code>{\huge texto enorme}</code></li>
+                <li><code>{\Huge texto gigante}</code></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Demonstração Visual:</h4>
+              <div style="line-height: 1.8;">
+                <div style="font-size: 0.6em;">tiny</div>
+                <div style="font-size: 0.7em;">scriptsize</div>
+                <div style="font-size: 0.8em;">footnotesize</div>
+                <div style="font-size: 0.9em;">small</div>
+                <div style="font-size: 1em;">normalsize</div>
+                <div style="font-size: 1.2em;">large</div>
+                <div style="font-size: 1.4em;">Large</div>
+                <div style="font-size: 1.7em;">LARGE</div>
+                <div style="font-size: 2em;">huge</div>
+                <div style="font-size: 2.5em;">Huge</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Exemplo Prático Integrado</h3>
+          <div class="code-block">
+            <button class="copy-button" aria-label="Copiar código">Copiar</button>
+            <pre><code>\documentclass[12pt, a4paper]{article}
+\begin{document}
+
+Este é um texto com tamanho \textbf{normal}.
+
+Para dar ênfase, podemos usar o \textit{itálico}. 
+Para código, usamos o tipo \texttt{monoespaçado}.
+
+Podemos também controlar o tamanho:
+{\small este trecho é um pouco menor.} 
+Este trecho voltou ao normal.
+
+E para grandes destaques:
+{\LARGE CUIDADO!}
+
+\end{document}</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. Atividade Prática</h2>
+          <div class="activity-box">
+            <ol>
+              <li>No seu projeto Overleaf, escolha um dos parágrafos que você já escreveu.</li>
+              <li>Coloque pelo menos uma palavra em <strong>negrito</strong> e outra em <em>itálico</em>.</li>
+              <li>Imagine que você está citando o nome de um software ou um site. Coloque esse nome em <code>fonte monoespaçada</code>.</li>
+              <li>Crie uma nova frase no final do parágrafo. Nela, faça a primeira palavra ser <code>\large</code> e a última <code>\small</code>. Lembre-se de usar as chaves <code>{}</code> para limitar o efeito dos comandos de tamanho.</li>
+              <li>Recompile o documento e verifique se todas as formatações foram aplicadas corretamente. Observe como o texto após o trecho com tamanho modificado retorna automaticamente ao tamanho normal.</li>
+            </ol>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

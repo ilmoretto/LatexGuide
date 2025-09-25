@@ -6,17 +6,22 @@
       "title": "Módulo 1: Fundamentos",
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-01/index.html" },
-        { "title": "Aula 1", "path": "/modules/modulo-01/aula-01.html" },
-        { "title": "Aula 2", "path": "/modules/modulo-01/aula-02.html" },
-        { "title": "Aula 3", "path": "/modules/modulo-01/aula-03.html" },
-        { "title": "Aula 4", "path": "/modules/modulo-01/aula-04.html" }
+        { "title": "A Filosofia do LaTeX", "path": "/modules/modulo-01/aula-01.html" },
+        { "title": "Preparando o Ambiente", "path": "/modules/modulo-01/aula-02.html" },
+        { "title": "A Estrutura Mínima", "path": "/modules/modulo-01/aula-03.html" },
+        { "title": "Parágrafos e Comentários", "path": "/modules/modulo-01/aula-04.html" }
       ]
     },
     {
       "id": "mod-02",
-      "title": "Módulo 2: Intermediário",
+      "title": "Módulo 2: Estrutura e Formatação",
       "pages": [
-        { "title": "Introdução ao Módulo", "path": "/modules/modulo-02/index.html" }
+        { "title": "Apresentação do Módulo", "path": "/modules/modulo-02/index.html" },
+        { "title": "Classes de Documento", "path": "/modules/modulo-02/aula-01.html" },
+        { "title": "Título, Autor e Seções", "path": "/modules/modulo-02/aula-02.html" },
+        { "title": "Navegação Automática", "path": "/modules/modulo-02/aula-03.html" },
+        { "title": "Formatação de Texto", "path": "/modules/modulo-02/aula-04.html" },
+        { "title": "Acentos e Símbolos", "path": "/modules/modulo-02/aula-05.html" }
       ]
     }
   ],
