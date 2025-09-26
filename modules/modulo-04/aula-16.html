@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 16: Figuras Flutuantes - LaTeX Guide</title>
-    <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="../../assets/css/themes.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/css/modules/mod-04/aula-16.css">
-    <script src="../../assets/js/app.js" defer></script>
-</head>
-<body>
-    <div class="container">
-      <nav class="sidebar" aria-label="Menu principal">
-        <div class="logo">
-          <img src="../../assets/img/logo.svg" alt="LaTeX Guide" class="logo-img">
-        </div>
-        
-        <div class="nav-container">
-          <div class="module-nav" id="module-nav">
-            <!-- Navegação será carregada via JavaScript -->
-          </div>
-        </div>
-      </nav>
 
-      <main class="main-content">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 4 — Aula 16: Figuras Flutuantes - A Arte da Diagramação Automática</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-04/aula-16.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
         <header class="lesson-header">
           <h1>Aula 16: Figuras Flutuantes - A Arte da Diagramação Automática</h1>
           <p>Dando inteligência às suas imagens: como o LaTeX pensa como um diagramador profissional</p>
@@ -47,57 +51,17 @@
           <p class="section-intro">Esta é a <strong>pergunta de ouro</strong>. A resposta muda sua relação com o LaTeX para sempre.</p>
 
           <div class="functionality-showcase">
-            <h3>Funcionalidade: O Sistema de Flutuantes</h3>
+            <h3>O Problema que o LaTeX Resolve</h3>
             
-            <div class="concept-grid">
-              <div class="concept-item">
-                <h4>O Problema que o LaTeX Resolve</h4>
-                <p>O maior inimigo de uma página bem diagramada são os <strong>"rios"</strong> (grandes espaços em branco que quebram a mancha de texto). Isso acontece quando um elemento grande é inserido e não há espaço suficiente.</p>
-              </div>
-              
-              <div class="concept-item">
-                <h4>A Solução do LaTeX</h4>
-                <p>Em vez de manter a figura "presa" ao ponto exato do código, o LaTeX a coloca em uma <strong>"fila de espera"</strong> de flutuantes. Ele continua compondo o texto e depois decide o melhor lugar para encaixar os flutuantes pendentes.</p>
-              </div>
-              
-              <div class="concept-item">
-                <h4>Consequência Prática</h4>
-                <p>Seu código <code>\includegraphics</code> pode estar na metade do texto da página 5, mas a figura resultante pode aparecer no topo da página 6. <strong>Isso não é um erro, é o sistema funcionando como projetado!</strong></p>
-              </div>
+            <p><strong>O maior inimigo de uma página bem diagramada são os "rios"</strong> (grandes espaços em branco que quebram a mancha de texto). Isso acontece quando um elemento grande é inserido e não há espaço suficiente.</p>
+            
+            <div class="code-block">
+              <h4>A Solução do LaTeX:</h4>
+              <p>Em vez de manter a figura "presa" ao ponto exato do código, o LaTeX a coloca em uma <strong>"fila de espera"</strong> de flutuantes. Ele continua compondo o texto e depois decide o melhor lugar para encaixar os flutuantes pendentes.</p>
             </div>
-
-            <div class="algorithm-explanation">
-              <h4>Como o Algoritmo Funciona</h4>
-              <div class="algorithm-steps">
-                <div class="step">
-                  <span class="step-number">1</span>
-                  <div class="step-content">
-                    <strong>Encontro do Flutuante</strong>
-                    <p>LaTeX encontra um <code>\begin{figure}</code> no código</p>
-                  </div>
-                </div>
-                <div class="step">
-                  <span class="step-number">2</span>
-                  <div class="step-content">
-                    <strong>Análise de Espaço</strong>
-                    <p>Verifica se há espaço suficiente na posição atual</p>
-                  </div>
-                </div>
-                <div class="step">
-                  <span class="step-number">3</span>
-                  <div class="step-content">
-                    <strong>Fila de Espera</strong>
-                    <p>Se não há espaço, coloca na fila e continua o texto</p>
-                  </div>
-                </div>
-                <div class="step">
-                  <span class="step-number">4</span>
-                  <div class="step-content">
-                    <strong>Melhor Posicionamento</strong>
-                    <p>Ao final da página, encontra o melhor local segundo suas regras estéticas</p>
-                  </div>
-                </div>
-              </div>
+            
+            <div class="result-demo">
+              <p><strong>Consequência Prática:</strong> Seu código <code>\includegraphics</code> pode estar na metade do texto da página 5, mas a figura resultante pode aparecer no topo da página 6. <strong>Isso não é um erro, é o sistema funcionando como projetado!</strong></p>
             </div>
           </div>
         </section>
@@ -108,139 +72,77 @@
           <p class="section-intro">Agora que entendemos a filosofia, vamos dominar a <strong>sintaxe e estrutura</strong> do ambiente figure.</p>
 
           <div class="functionality-showcase">
-            <h3>Funcionalidade: Estrutura Completa do Ambiente figure</h3>
+            <h3>Sintaxe Completa</h3>
             
-            <div class="syntax-showcase">
-              <h4>Sintaxe Completa</h4>
-              <div class="code-block">
-                <code>\begin{figure}[<span class="highlight">especificadores de posicionamento</span>]
-    <span class="comment">% Conteúdo da figura</span>
-\end{figure}</code>
-              </div>
+            <div class="code-block">
+              <pre><code>\begin{figure}[<span style="color: #e74c3c;">especificadores de posicionamento</span>]
+    \centering
+    \includegraphics[width=0.7\textwidth]{minha-figura}
+    \caption{Descrição da minha figura}
+    \label{fig:minha-figura}
+\end{figure}</code></pre>
             </div>
-
-            <div class="components-grid">
-              <div class="component-item">
-                <h4><code>\centering</code></h4>
-                <p><strong>Quase sempre a primeira coisa.</strong> Centraliza a figura horizontalmente. É mais eficiente que o ambiente <code>center</code>, que adiciona espaçamento vertical extra.</p>
-                <div class="usage-example">
-                  <code>\centering</code>
-                </div>
-              </div>
-              
-              <div class="component-item">
-                <h4><code>\includegraphics[...]</code></h4>
-                <p>O comando que de fato insere a imagem, como aprendemos na Aula 15. Todos os parâmetros de dimensionamento se aplicam aqui.</p>
-                <div class="usage-example">
-                  <code>\includegraphics[width=0.7\textwidth]{minha-figura}</code>
-                </div>
-              </div>
-              
-              <div class="component-item">
-                <h4><code>\caption{...}</code></h4>
-                <p><strong>Comando crucial!</strong> É ele que transforma a imagem em "Figura X" e a numera. Sem <code>\caption</code>, o ambiente figure é apenas um contêiner flutuante sem identidade.</p>
-                <div class="usage-example">
-                  <code>\caption{Descrição da minha figura}</code>
-                </div>
-              </div>
-              
-              <div class="component-item">
-                <h4><code>\label{...}</code></h4>
-                <p>A etiqueta para referências cruzadas. <strong>Regra de Ouro:</strong> o <code>\label</code> deve vir imediatamente após o <code>\caption</code>. Se vier antes, o <code>\ref</code> capturará o número da seção, não da figura!</p>
-                <div class="usage-example">
-                  <code>\label{fig:minha-figura}</code>
-                </div>
-              </div>
+            
+            <div class="component-list">
+              <h4>Componentes Essenciais:</h4>
+              <ul>
+                <li><strong><code>\centering</code></strong>: Centraliza a figura horizontalmente</li>
+                <li><strong><code>\includegraphics[...]</code></strong>: Insere a imagem com opções</li>
+                <li><strong><code>\caption{...}</code></strong>: Cria legenda e numeração automática</li>
+                <li><strong><code>\label{...}</code></strong>: Permite referências cruzadas (sempre após caption!)</li>
+              </ul>
             </div>
           </div>
         </section>
 
         <section id="especificadores-posicionamento">
-          <h2>3. Guia Detalhado dos Especificadores de Posicionamento</h2>
+          <h2>3. Guia dos Especificadores de Posicionamento</h2>
           
           <p class="section-intro">Esta é sua forma de <strong>"negociar"</strong> com o algoritmo do LaTeX. Você não manda, você sugere. A ordem das letras importa!</p>
 
           <div class="functionality-showcase">
-            <h3>Funcionalidade: Sistema de Especificadores</h3>
+            <h3>Os 4 Especificadores Principais</h3>
             
-            <div class="specifiers-grid">
-              <div class="specifier-item priority-high">
-                <div class="specifier-header">
-                  <h4><code>h</code> - Here (Aqui)</h4>
-                  <span class="difficulty">Mais Restritiva</span>
-                </div>
-                <p><strong>"Tente encaixar a figura exatamente neste ponto do texto".</strong> O LaTeX só fará isso se houver espaço suficiente imediatamente após a linha em que o ambiente figure é declarado.</p>
-                <div class="usage-note">
-                  <strong>Na prática:</strong> Raramente funciona para figuras de tamanho médio ou grande.
-                </div>
-              </div>
-              
-              <div class="specifier-item priority-medium">
-                <div class="specifier-header">
-                  <h4><code>t</code> - Top (Topo)</h4>
-                  <span class="quality">Uma das Melhores</span>
-                </div>
-                <p><strong>"Coloque esta figura no topo desta página, ou da próxima".</strong> Permite que o texto que vem depois no código flua para baixo e preencha o resto da página.</p>
-                <div class="usage-note">
-                  <strong>Resultado:</strong> Layout limpo e profissional.
-                </div>
-              </div>
-              
-              <div class="specifier-item priority-medium">
-                <div class="specifier-header">
-                  <h4><code>b</code> - Bottom (Base)</h4>
-                  <span class="quality">Boa Opção</span>
-                </div>
-                <p><strong>"Coloque esta figura no final desta página".</strong> Funciona bem quando você quer que o texto apareça antes da figura na página.</p>
-                <div class="usage-note">
-                  <strong>Ideal para:</strong> Figuras que ilustram o texto anterior.
-                </div>
-              </div>
-              
-              <div class="specifier-item priority-low">
-                <div class="specifier-header">
-                  <h4><code>p</code> - Page (Página Dedicada)</h4>
-                  <span class="fallback">Último Recurso</span>
-                </div>
-                <p><strong>"Se a figura for muito grande ou se não houver um bom lugar, coloque-a em uma página dedicada apenas a flutuantes".</strong> Útil para figuras que ocupam a página inteira.</p>
-                <div class="usage-note">
-                  <strong>Quando usar:</strong> Figuras muito grandes ou múltiplas figuras juntas.
-                </div>
-              </div>
-              
-              <div class="specifier-item modifier">
-                <div class="specifier-header">
-                  <h4><code>!</code> - Modificador de Insistência</h4>
-                  <span class="intensifier">Intensificador</span>
-                </div>
-                <p><strong>Não é uma posição, mas um "intensificador".</strong> <code>[!ht]</code> diz: "Eu realmente quero esta figura aqui ou no topo. Relaxe suas regras de 'beleza' para tentar acomodá-la."</p>
-                <div class="usage-note">
-                  <strong>Às vezes:</strong> É exatamente o que falta para fazer uma figura "encaixar".
-                </div>
-              </div>
-            </div>
-
-            <div class="best-practices">
-              <h4>🎯 Boas Práticas de Posicionamento</h4>
-              <div class="practice-grid">
-                <div class="practice-item">
-                  <h5>A Melhor Combinação</h5>
-                  <code>[htbp]</code>
-                  <p>Quase sempre a melhor escolha. Dá ao LaTeX a máxima flexibilidade para encontrar o melhor local.</p>
-                </div>
-                
-                <div class="practice-item">
-                  <h5>Para Figuras Pequenas</h5>
-                  <code>[h!]</code>
-                  <p>Pode funcionar bem para pequenas imagens que você quer junto a um parágrafo específico.</p>
-                </div>
-                
-                <div class="practice-item">
-                  <h5>Quando Tudo Falha</h5>
-                  <code>\clearpage</code>
-                  <p>Força o LaTeX a processar todos os flutuantes na "fila de espera" antes de continuar.</p>
-                </div>
-              </div>
+            <table class="specifiers-table">
+              <thead>
+                <tr>
+                  <th>Especificador</th>
+                  <th>Significado</th>
+                  <th>Quando Usar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>h</code></td>
+                  <td><strong>Here (Aqui)</strong></td>
+                  <td>Figuras pequenas que você quer junto ao texto</td>
+                </tr>
+                <tr>
+                  <td><code>t</code></td>
+                  <td><strong>Top (Topo)</strong></td>
+                  <td>Melhor opção geral - topo da página</td>
+                </tr>
+                <tr>
+                  <td><code>b</code></td>
+                  <td><strong>Bottom (Base)</strong></td>
+                  <td>Final da página - boa para ilustrações</td>
+                </tr>
+                <tr>
+                  <td><code>p</code></td>
+                  <td><strong>Page (Página)</strong></td>
+                  <td>Página dedicada - figuras muito grandes</td>
+                </tr>
+                <tr>
+                  <td><code>!</code></td>
+                  <td><strong>Forçar</strong></td>
+                  <td>"Relaxe as regras estéticas"</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="best-practice">
+              <h4>🎯 A Melhor Combinação</h4>
+              <p><code>[htbp]</code> é quase sempre a melhor escolha. Dá ao LaTeX a máxima flexibilidade para encontrar o melhor local.</p>
             </div>
           </div>
         </section>
@@ -329,63 +231,46 @@ opção \texttt{[b]}, o \LaTeX\ tentará posicioná-la no final desta página.
         </section>
 
         <section id="atividades">
-          <h2>5. Atividades de Autoestudo: Seja o Mestre dos Flutuantes</h2>
+          <h2>5. Atividades Práticas</h2>
           
-          <p class="section-intro">Pratique com exercícios progressivos para dominar completamente o sistema de flutuantes.</p>
+          <p class="section-intro">Pratique com exercícios para dominar o sistema de flutuantes.</p>
 
-          <div class="activity-container">
-            <div class="activity-item">
-              <div class="activity-header">
-                <h3>Exercício 1: Seu Próprio Flutuante</h3>
-                <span class="difficulty-badge beginner">Iniciante</span>
+          <div class="functionality-showcase">
+            <h3>Exercícios Progressivos</h3>
+            
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <h4>🔥 Exercício 1: Seu Próprio Flutuante</h4>
+                <ul>
+                  <li>Pegue o código do exemplo acima</li>
+                  <li>Substitua as imagens de exemplo por imagens suas</li>
+                  <li>Mantenha os mesmos especificadores e observe o resultado</li>
+                </ul>
               </div>
-              <div class="activity-content">
-                <p><strong>Objetivo:</strong> Familiarizar-se com o comportamento básico dos flutuantes.</p>
-                <div class="task-list">
-                  <p>✅ Pegue o código do exemplo acima</p>
-                  <p>✅ Substitua as imagens de exemplo por imagens suas</p>
-                  <p>✅ Mantenha os mesmos especificadores e observe o resultado</p>
-                  <p>✅ Note como as figuras se posicionam independentemente de onde estão no código</p>
-                </div>
+              
+              <div class="exercise-item">
+                <h4>⚡ Exercício 2: Teste de Estresse</h4>
+                <ul>
+                  <li>Mude o especificador da primeira figura de <code>[t]</code> para <code>[h!]</code></li>
+                  <li>Recompile e observe o resultado</li>
+                  <li>Pergunta: O LaTeX conseguiu colocá-la "aqui"? Por que sim ou não?</li>
+                </ul>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>🎯 Exercício 3: O Poder do <code>\clearpage</code></h4>
+                <ul>
+                  <li>Adicione mais duas ou três figuras ao documento</li>
+                  <li>Compile e veja como o LaTeX as organiza</li>
+                  <li>Insira o comando <code>\clearpage</code> e veja a diferença</li>
+                </ul>
               </div>
             </div>
-
-            <div class="activity-item">
-              <div class="activity-header">
-                <h3>Exercício 2: Teste de Estresse</h3>
-                <span class="difficulty-badge intermediate">Intermediário</span>
-              </div>
-              <div class="activity-content">
-                <p><strong>Objetivo:</strong> Entender os limites do especificador <code>[h]</code>.</p>
-                <div class="task-list">
-                  <p>✅ Mude o especificador da primeira figura de <code>[t]</code> para <code>[h!]</code></p>
-                  <p>✅ Recompile e observe o resultado</p>
-                  <p>✅ Pergunta: O LaTeX conseguiu colocá-la "aqui"? Por que sim ou não?</p>
-                  <p>✅ <em>Resposta esperada: Dependerá se havia espaço suficiente naquele ponto exato</em></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="activity-item">
-              <div class="activity-header">
-                <h3>Exercício 3: O Poder do <code>\clearpage</code></h3>
-                <span class="difficulty-badge advanced">Avançado</span>
-              </div>
-              <div class="activity-content">
-                <p><strong>Objetivo:</strong> Dominar o controle manual do fluxo de flutuantes.</p>
-                <div class="task-list">
-                  <p>✅ Adicione mais duas ou três figuras ao documento, mas sem adicionar mais texto</p>
-                  <p>✅ Compile e observe como o LaTeX começa a empilhá-las em uma "página de figuras" (p)</p>
-                  <p>✅ Insira o comando <code>\clearpage</code> no meio do seu código de figuras</p>
-                  <p>✅ Recompile e analise o que o <code>\clearpage</code> fez com o posicionamento</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="reflection-box">
+            
+            <div class="reflection">
               <h4>🤔 Reflexão Crítica</h4>
-              <p><strong>Por que a abordagem "flutuante" do LaTeX é superior à abordagem "fixa" (arrastar e soltar) do Word para documentos longos e sérios como um TCC?</strong></p>
-              <p class="hint"><em>Dica: Pense em consistência, manutenibilidade e qualidade da diagramação ao longo de 100 páginas.</em></p>
+              <p><strong>Por que a abordagem "flutuante" do LaTeX é superior à abordagem "fixa" (arrastar e soltar) do Word para documentos longos?</strong></p>
+              <p><em>Dica: Pense em consistência, manutenibilidade e qualidade da diagramação ao longo de 100 páginas.</em></p>
             </div>
           </div>
         </section>
@@ -433,15 +318,28 @@ opção \texttt{[b]}, o \LaTeX\ tentará posicioná-la no final desta página.
           </div>
         </section>
 
-        <nav class="lesson-nav">
-          <a href="aula-15.html" class="prev-lesson">
-            ← Aula 15: Inserção de Imagens
-          </a>
-          <a href="aula-17.html" class="next-lesson">
-            Aula 17: Tabelas Profissionais →
-          </a>
-        </nav>
-      </main>
-    </div>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>
