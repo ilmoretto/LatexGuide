@@ -1,0 +1,19 @@
+/* =============================================
+   AULA 7 - CLASSES E CONFIGURAÇÕES DE DOCUMENTO (MÓDULO 2)
+   ============================================= */
+
+/* Estilos específicos para a aula 7 do módulo 2 */
+.document-class-showcase {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(147, 51, 234, 0.1) 100%);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+/* Media queries para aula 7 */
+@media (max-width: 768px) {
+    .document-class-showcase {
+        padding: 1.5rem;
+    }
+}

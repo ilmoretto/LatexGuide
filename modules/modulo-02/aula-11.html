@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 2 — Aula 11: Acentos e Caracteres Especiais — Escrevendo sem Medo</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-02/aula-11.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 11: Acentos e Caracteres Especiais — Escrevendo sem Medo</h1>
+
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">🌍 Dominando a Internacionalização!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Chegamos ao final do Módulo 2! Agora vamos aprender a <strong>escrever em qualquer idioma</strong> sem medo de acentos ou caracteres especiais.</p>
+          <p style="color: var(--muted); font-style: italic;">⏱️ <strong>25 minutos</strong> • 🔧 <strong>Intermediário</strong> • 🌎 <strong>Suporte Multilíngue</strong></p>
+        </div>
+
+        <section id="configuracao-utf8">
+          <h2>1. A Era do UTF-8</h2>
+          
+          <div class="theory-box">
+            <p>Antigamente, trabalhar com acentos no LaTeX era um pesadelo. Hoje, com UTF-8, é simples e natural! Vamos aprender a configuração moderna que resolve todos os problemas de caracteres especiais.</p>
+          </div>
+
+          <h3>Configuração Moderna Essencial</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🎯 Template Base para Qualquer Documento</h4>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>\documentclass[12pt]{article}
+
+% Configuração moderna de encoding
+\usepackage[utf8]{inputenc}     % Entrada UTF-8
+\usepackage[T1]{fontenc}        % Saída de fontes
+\usepackage[portuguese]{babel}  % Idioma português
+
+\title{Texto com Acentos}
+\author{Você}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Agora posso escrever naturalmente:
+acentuação, coração, São Paulo, 
+programação, não, João, ação!
+
+\end{document}</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              <p><strong>Resultado:</strong> Todos os acentos aparecem perfeitamente no PDF final!</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="pacotes-essenciais">
+          <h2>2. Os Três Pacotes Essenciais</h2>
+          
+          <h3>inputenc - Entrada de Caracteres</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">📥 Como o LaTeX Interpreta o que Você Digita</h4>
+            <p><strong>Função:</strong> Diz ao LaTeX como interpretar os caracteres que você digita no editor</p>
+            
+            <div class="code-block">
+              <pre><code>\usepackage[utf8]{inputenc}</code></pre>
+            </div>
+            
+            <div class="danger-warning">
+              <p><strong>Sem este pacote:</strong> ã vira ??, ç vira ??, é vira ??</p>
+            </div>
+          </div>
+
+          <h3>fontenc - Saída de Caracteres</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">📤 Como os Caracteres Aparecem no PDF</h4>
+            <p><strong>Função:</strong> Controla como os caracteres são exibidos na saída final</p>
+            
+            <div class="code-block">
+              <pre><code>\usepackage[T1]{fontenc}</code></pre>
+            </div>
+            
+            <div class="tips-warning">
+              <p><strong>Vantagem:</strong> Permite copiar e buscar texto com acentos no PDF gerado</p>
+            </div>
+          </div>
+
+          <h3>babel - Suporte a Idiomas</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🌍 Adaptação às Regras do Idioma</h4>
+            <p><strong>Função:</strong> Adapta o LaTeX às regras tipográficas do idioma escolhido</p>
+            
+            <div class="code-block">
+              <pre><code>\usepackage[portuguese]{babel}  % ou [brazil]
+\usepackage[english]{babel}     % Inglês
+\usepackage[spanish]{babel}     % Espanhol
+\usepackage[french]{babel}      % Francês</code></pre>
+            </div>
+            
+            <div class="tips-warning">
+              <p><strong>Benefícios:</strong> Hifenização correta, datas em português, "Capítulo" ao invés de "Chapter"</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="galeria-acentos">
+          <h2>3. Galeria de Acentos Português</h2>
+          
+          <div class="theory-box">
+            <p>Todos estes caracteres funcionam naturalmente com a configuração UTF-8. Basta digitá-los normalmente!</p>
+          </div>
+          <div class="accent-grid">
+            <div class="accent-card">
+              <div class="accent-display">á é í ó ú</div>
+              <div class="accent-command">Agudos</div>
+              <p>ação, café, país</p>
+            </div>
+            
+            <div class="accent-card">
+              <div class="accent-display">à â ê ô</div>
+              <div class="accent-command">Graves e Circunflexos</div>
+              <p>àquele, você, inglês</p>
+            </div>
+            
+            <div class="accent-card">
+              <div class="accent-display">ã õ</div>
+              <div class="accent-command">Til</div>
+              <p>não, coração, ações</p>
+            </div>
+            
+            <div class="accent-card">
+              <div class="accent-display">ç</div>
+              <div class="accent-command">Cedilha</div>
+              <p>França, raça, preço</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="comandos-escape">
+          <h2>4. Comandos de Escape (Método Antigo)</h2>
+          
+          <div class="theory-box">
+            <p>Ainda é útil conhecer os comandos tradicionais para casos especiais ou quando UTF-8 não estiver disponível.</p>
+          </div>
+
+          <h3>Tabela de Comandos LaTeX</h3>
+          <div class="functionality-showcase">
+            <table class="character-table">
+              <thead>
+                <tr>
+                  <th>Caractere</th>
+                  <th>Comando LaTeX</th>
+                  <th>Exemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>á</td>
+                  <td>\'{a}</td>
+                  <td>a\c{c}\'ao</td>
+                </tr>
+                <tr>
+                  <td>à</td>
+                  <td>\`{a}</td>
+                  <td>\`aquele</td>
+                </tr>
+                <tr>
+                  <td>â</td>
+                  <td>\^{a}</td>
+                  <td>voc\^e</td>
+                </tr>
+                <tr>
+                  <td>ã</td>
+                  <td>\~{a}</td>
+                  <td>n\~ao</td>
+                </tr>
+                <tr>
+                  <td>ç</td>
+                  <td>\c{c}</td>
+                  <td>Fran\c{c}a</td>
+                </tr>
+                <tr>
+                  <td>ü</td>
+                  <td>\"{u}</td>
+                  <td>Br\"uke</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="tips-warning">
+              <p>Use os comandos de escape apenas quando UTF-8 não estiver disponível ou para caracteres muito raros!</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="simbolos-especiais">
+          <h2>5. Caracteres Especiais e Símbolos</h2>
+          
+          <h3>Símbolos Matemáticos e Técnicos</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🔢 Símbolos que Funcionam Diretamente</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>% Símbolos que funcionam direto:
+° (grau), ± (mais-menos), × (multiplicação)
+€ (euro), £ (libra), $ (dólar)
+© (copyright), ® (registrado), ™ (marca)
+
+% Para símbolos matemáticos complexos:
+$\alpha, \beta, \gamma, \delta$
+$\sum, \int, \infty, \partial$
+
+% Exemplo prático:
+A temperatura é 25°C ± 2°C.
+O preço é €15,50 (quinze euros e cinquenta).
+Copyright © 2024 - Todos os direitos reservados®</code></pre>
+            </div>
+            
+            <div class="result-demo">
+              <p>A temperatura é 25°C ± 2°C.<br>
+              O preço é €15,50 (quinze euros e cinquenta).<br>
+              Copyright © 2024 - Todos os direitos reservados®</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="problemas-comuns">
+          <h2>6. Resolvendo Problemas Comuns</h2>
+          
+          <h3>Principais Erros e Soluções</h3>
+          <div class="functionality-showcase">
+            <div class="danger-warning">
+              <p><strong>Erro:</strong> "Package inputenc Error"<br>
+              <strong>Problema:</strong> Arquivo não está em UTF-8<br>
+              <strong>Solução:</strong> No seu editor, salve o arquivo como UTF-8</p>
+            </div>
+            
+            <div class="danger-warning">
+              <p><strong>Problema:</strong> Acentos aparecem estranhos no PDF<br>
+              <strong>Causa:</strong> Falta fontenc<br>
+              <strong>Solução:</strong> Adicione <code>\usepackage[T1]{fontenc}</code></p>
+            </div>
+            
+            <div class="danger-warning">
+              <p><strong>Problema:</strong> "Chapter" ao invés de "Capítulo"<br>
+              <strong>Causa:</strong> Falta babel<br>
+              <strong>Solução:</strong> Adicione <code>\usepackage[portuguese]{babel}</code></p>
+            </div>
+          </div>
+
+          <h3>Template de Segurança</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">💡 Sempre Comece Assim</h4>
+            <div class="code-block">
+              <pre><code>% Template base para qualquer documento:
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="pratica-multilingue">
+          <h2>7. Prática: Documento Multilíngue</h2>
+          
+          <div class="content-box">
+            <p>Vamos criar um documento com diferentes idiomas e caracteres especiais para consolidar o aprendizado.</p>
+          </div>
+
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🌍 Exemplo Prático Completo</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>\documentclass[12pt,a4paper]{article}
+
+% Configuração completa
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese,english,spanish,french]{babel}
+
+\title{Documento Internacional}
+\author{Autor Multilíngue}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Português}
+\selectlanguage{portuguese}
+Este é um texto em português com acentuação correta:
+programação, coração, não, ação, João.
+
+A temperatura em São Paulo é 25°C.
+O preço é R\$ 10,50.
+
+\section{English}
+\selectlanguage{english}
+This is a text in English. Notice how the section
+title automatically changed to "Section" instead
+of "Seção".
+
+\section{Español}
+\selectlanguage{spanish}
+Este es un texto en español con acentos:
+programación, corazón, niño, año.
+
+\section{Français}
+\selectlanguage{french}
+Ceci est un texte en français avec des accents:
+café, hôtel, naïf, Noël.
+
+\end{document}</code></pre>
+            </div>
+            
+            <div class="tips-warning">
+              <p><strong>Observe:</strong> Cada seção muda automaticamente os termos para o idioma correto. "Section" em inglês, "Sección" em espanhol, "Section" em francês!</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo-final">
+          <h2>📋 Resumo da Aula</h2>
+          <div class="summary-grid">
+            <div class="summary-card">
+              <h3>🔤 Codificação</h3>
+              <ul>
+                <li>UTF-8 como padrão</li>
+                <li>inputenc + fontenc + babel</li>
+                <li>Compatibilidade total</li>
+              </ul>
+            </div>
+            
+            <div class="summary-card">
+              <h3>🌍 Multilíngue</h3>
+              <ul>
+                <li>babel para cada idioma</li>
+                <li>Hifenização automática</li>
+                <li>Termos localizados</li>
+              </ul>
+            </div>
+            
+            <div class="summary-card">
+              <h3>✏️ Acentos</h3>
+              <ul>
+                <li>Digitação natural</li>
+                <li>Todos os caracteres especiais</li>
+                <li>Comandos de escape quando necessário</li>
+              </ul>
+            </div>
+            
+            <div class="summary-card">
+              <h3>🔧 Solução de Problemas</h3>
+              <ul>
+                <li>Arquivo em UTF-8</li>
+                <li>Ordem correta dos pacotes</li>
+                <li>Template de segurança</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tips-warning">
+            <p><strong>Parabéns!</strong> Você completou o <strong>Módulo 2</strong> e agora domina os fundamentos da estruturação de documentos LaTeX. No <strong>Módulo 3</strong>, vamos mergulhar no mundo das <strong>Listas e Enumerações</strong>!</p>
+          </div>
+        </section>
+      </article>
+    </main>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+
+</html>

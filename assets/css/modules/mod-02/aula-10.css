@@ -1,0 +1,19 @@
+/* =============================================
+   AULA 10 - MAPAS DO DOCUMENTO - SUMÁRIO E LISTAS (MÓDULO 2)
+   ============================================= */
+
+/* Estilos específicos para a aula 10 do módulo 2 */
+.document-maps-showcase {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(147, 51, 234, 0.1) 100%);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+/* Media queries para aula 10 */
+@media (max-width: 768px) {
+    .document-maps-showcase {
+        padding: 1.5rem;
+    }
+}

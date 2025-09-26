@@ -9,14 +9,29 @@
 /* Importação dos estilos específicos de módulos */
 @import url('./modules/modulo-01.css');
 @import url('./modules/modulo-02.css');
+@import url('./modules/modulo-03.css');
 
-/* Importação dos estilos específicos das aulas */
-@import url('./lessons/aula-01.css');
-@import url('./lessons/aula-02.css');
-@import url('./lessons/aula-03.css');
-@import url('./lessons/aula-04.css');
-@import url('./lessons/aula-05.css');
-@import url('./lessons/aula-06.css');
+/* Importação dos estilos específicos das aulas - Módulo 1 */
+@import url('./modules/mod-01/aula-01.css');
+@import url('./modules/mod-01/aula-02.css');
+@import url('./modules/mod-01/aula-03.css');
+@import url('./modules/mod-01/aula-04.css');
+@import url('./modules/mod-01/aula-05.css');
+
+/* Importação dos estilos específicos das aulas - Módulo 2 */
+@import url('./modules/mod-02/aula-06.css');
+@import url('./modules/mod-02/aula-07.css');
+@import url('./modules/mod-02/aula-08.css');
+@import url('./modules/mod-02/aula-09.css');
+@import url('./modules/mod-02/aula-10.css');
+@import url('./modules/mod-02/aula-11.css');
+
+/* Importação dos estilos específicos das aulas - Módulo 3 */
+@import url('./modules/mod-03/aula-12.css');
+@import url('./modules/mod-03/aula-13.css');
+@import url('./modules/mod-03/aula-14.css');
+@import url('./modules/mod-03/aula-15.css');
+@import url('./modules/mod-03/aula-16.css');
 
 /* =============================================
    ESTILOS GLOBAIS ADICIONAIS

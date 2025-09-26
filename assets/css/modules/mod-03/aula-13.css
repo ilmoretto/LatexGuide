@@ -1,0 +1,29 @@
+/* =============================================
+   AULA 13 - OPERADORES E SÍMBOLOS AVANÇADOS (MÓDULO 3)
+   ============================================= */
+
+/* Estilos específicos para operadores matemáticos avançados */
+.advanced-operators {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(14, 165, 233, 0.1) 100%);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.operator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+/* Media queries para aula 13 */
+@media (max-width: 768px) {
+    .advanced-operators {
+        padding: 1.5rem;
+    }
+    .operator-grid {
+        grid-template-columns: 1fr;
+    }
+}

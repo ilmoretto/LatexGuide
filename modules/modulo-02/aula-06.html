@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 2 — Aula 6: Acentos e Caracteres Especiais — Escrevendo sem Medo</title>
+  <title>Módulo 2 — Aula 6: Classes de Documento — A Fundação do LaTeX</title>
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../assets/css/themes.css">
   <link rel="stylesheet" href="../../assets/css/components.css">
-  <link rel="stylesheet" href="../../assets/css/lessons/aula-06.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-02/aula-06.css">
 </head>
 <body>
   <header class="topbar">
@@ -26,385 +26,234 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <h1>Aula 6: Acentos e Caracteres Especiais — Escrevendo sem Medo</h1>
+        <h1>Aula 6: Classes de Documento — A Fundação do LaTeX</h1>
 
         <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
-          <h2 style="color: #9333ea; margin-top: 0;">🌍 Dominando a Internacionalização!</h2>
-          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Chegamos ao final do Módulo 2! Agora vamos aprender a <strong>escrever em qualquer idioma</strong> sem medo de acentos ou caracteres especiais.</p>
-          <p style="color: var(--muted); font-style: italic;">⏱️ <strong>25 minutos</strong> • 🔧 <strong>Intermediário</strong> • 🌎 <strong>Suporte Multilíngue</strong></p>
+          <h2 style="color: #9333ea; margin-top: 0;">Seja bem-vindo(a) ao Módulo 2!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">No módulo anterior, aprendemos a <strong>linguagem básica da construção</strong>. Agora, vamos estudar as diferentes "plantas baixas" que definem o tipo de obra.</p>
+          <p style="color: var(--muted); font-style: italic;">A escolha da <code>\documentclass</code> não é apenas uma formalidade; é a <strong>decisão arquitetônica mais impactante</strong> que você tomará, determinando o esqueleto, a escala e as capacidades do seu documento.</p>
         </div>
 
-        <section id="configuracao-utf8">
-          <h2>1. A Era do UTF-8</h2>
-          
+        <section id="classes-documento">
+          <h2>1. As Classes de Documento: Definindo a Natureza do Projeto</h2>
+
           <div class="theory-box">
-            <p>Antigamente, trabalhar com acentos no LaTeX era um pesadelo. Hoje, com UTF-8, é simples e natural! Vamos aprender a configuração moderna que resolve todos os problemas de caracteres especiais.</p>
+            <p>Vamos detalhar as três classes fundamentais, explorando suas características e usos ideais, conforme compilado a partir dos manuais técnicos e guias especializados.</p>
           </div>
 
-          <h3>Configuração Moderna Essencial</h3>
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">🎯 Template Base para Qualquer Documento</h4>
-            <div class="code-block">
-              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
-              <pre><code>\documentclass[12pt]{article}
-
-% Configuração moderna de encoding
-\usepackage[utf8]{inputenc}     % Entrada UTF-8
-\usepackage[T1]{fontenc}        % Saída de fontes
-\usepackage[portuguese]{babel}  % Idioma português
-
-\title{Texto com Acentos}
-\author{Você}
-\date{\today}
-
-\begin{document}
-\maketitle
-
-Agora posso escrever naturalmente:
-acentuação, coração, São Paulo, 
-programação, não, João, ação!
-
-\end{document}</code></pre>
-            </div>
+          <h3>Classe article</h3>
+          <div class="class-card">
+            <h4 style="color: #9333ea; margin-top: 0;">Pense na classe article como a planta de um apartamento: autocontido, eficiente e direto ao ponto.</h4>
             
-            <div class="result-demo">
-              <p><strong>Resultado:</strong> Todos os acentos aparecem perfeitamente no PDF final!</p>
-            </div>
-          </div>
-        </section>
+            <p><strong>Uso Ideal:</strong> Artigos científicos para periódicos, ensaios curtos, relatórios de laboratório, listas de exercícios, apresentações de conferência.</p>
 
-        <section id="pacotes-essenciais">
-          <h2>2. Os Três Pacotes Essenciais</h2>
-          
-          <h3>inputenc - Entrada de Caracteres</h3>
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">📥 Como o LaTeX Interpreta o que Você Digita</h4>
-            <p><strong>Função:</strong> Diz ao LaTeX como interpretar os caracteres que você digita no editor</p>
-            
-            <div class="code-block">
-              <pre><code>\usepackage[utf8]{inputenc}</code></pre>
+            <h5>Hierarquia Máxima:</h5>
+            <p>A principal unidade estrutural é a <code>\section</code>. Não há conceito de "capítulo". A hierarquia completa é:</p>
+            <div class="hierarchy-list">
+              <ul>
+                <li>\\section</li>
+                <li style="margin-left: 1rem;">\\subsection</li>
+                <li style="margin-left: 2rem;">\\subsubsection</li>
+                <li style="margin-left: 3rem;">\\paragraph</li>
+                <li style="margin-left: 4rem;">\\subparagraph</li>
+              </ul>
             </div>
-            
-            <div class="danger-warning">
-              <p><strong>Sem este pacote:</strong> ã vira ??, ç vira ??, é vira ??</p>
-            </div>
+
+            <h5>Layout Padrão:</h5>
+            <ul>
+              <li><strong>Título:</strong> O <code>\maketitle</code> coloca o título no topo da primeira página, e o texto do documento começa logo abaixo. Não há uma página de rosto separada por padrão.</li>
+              <li><strong>Impressão:</strong> Configurada para <code>oneside</code> (um lado), o que significa que as margens esquerda e direita são simétricas.</li>
+              <li><strong>Numeração:</strong> Equações, figuras e tabelas são numeradas sequencialmente ao longo de todo o documento (e.g., Equação 1, Equação 2, ...).</li>
+            </ul>
           </div>
 
-          <h3>fontenc - Saída de Caracteres</h3>
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">📤 Como os Caracteres Aparecem no PDF</h4>
-            <p><strong>Função:</strong> Controla como os caracteres são exibidos na saída final</p>
+          <h3>Classe report</h3>
+          <div class="class-card">
+            <h4 style="color: #9333ea; margin-top: 0;">A classe report é como a planta de uma casa: múltiplos cômodos (seções) organizados em andares (capítulos).</h4>
             
-            <div class="code-block">
-              <pre><code>\usepackage[T1]{fontenc}</code></pre>
-            </div>
-            
-            <div class="tips-warning">
-              <p><strong>Vantagem:</strong> Permite copiar e buscar texto com acentos no PDF gerado</p>
-            </div>
+            <p><strong>Uso Ideal:</strong> Trabalhos de Conclusão de Curso (TCCs), dissertações de mestrado, teses de doutorado, relatórios técnicos extensos, documentação de software.</p>
+
+            <h5>Hierarquia Máxima:</h5>
+            <p>A principal unidade é o <code>\chapter</code>. A numeração dos elementos (seções, equações, figuras) é reiniciada a cada capítulo.</p>
+
+            <h5>Layout Padrão:</h5>
+            <ul>
+              <li><strong>Título:</strong> O <code>\maketitle</code> gera uma página de rosto separada.</li>
+              <li><strong>Capítulos:</strong> Cada <code>\chapter</code> inicia automaticamente em uma nova página.</li>
+              <li><strong>Impressão:</strong> Ainda configurada para <code>oneside</code> por padrão, mas frequentemente usada com a opção <code>twoside</code>.</li>
+              <li><strong>Abstract:</strong> Possui um ambiente <code>abstract</code> que gera uma página de resumo separada.</li>
+            </ul>
           </div>
 
-          <h3>babel - Suporte a Idiomas</h3>
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">🌍 Adaptação às Regras do Idioma</h4>
-            <p><strong>Função:</strong> Adapta o LaTeX às regras tipográficas do idioma escolhido</p>
+          <h3>Classe book</h3>
+          <div class="class-card">
+            <h4 style="color: #9333ea; margin-top: 0;">A classe book é a planta de um grande edifício ou de um condomínio, com múltiplas seções organizadas em blocos.</h4>
             
-            <div class="code-block">
-              <pre><code>\usepackage[portuguese]{babel}  % ou [brazil]
-\usepackage[english]{babel}     % Inglês
-\usepackage[spanish]{babel}     % Espanhol
-\usepackage[french]{babel}      % Francês</code></pre>
-            </div>
-            
-            <div class="tips-warning">
-              <p><strong>Benefícios:</strong> Hifenização correta, datas em português, "Capítulo" ao invés de "Chapter"</p>
-            </div>
+            <p><strong>Uso Ideal:</strong> Livros, teses muito longas e complexas.</p>
+
+            <h5>Hierarquia Máxima:</h5>
+            <p>Adiciona um nível acima do capítulo, o <code>\part</code>, para agrupar grandes seções do livro.</p>
+
+            <h5>Layout Padrão:</h5>
+            <ul>
+              <li><strong>Impressão:</strong> Configurada por padrão para <code>twoside</code>, otimizada para impressão frente e verso. As margens internas (medianiz) são menores que as externas.</li>
+              <li><strong>Capítulos:</strong> Não apenas começam em uma nova página, mas por padrão, em uma página ímpar (à direita), deixando uma página em branco se necessário.</li>
+              <li><strong>Elementos Pré-textuais:</strong> Possui comandos específicos como <code>\frontmatter</code>, <code>\mainmatter</code> e <code>\backmatter</code> para controlar a numeração das páginas (romana para o prefácio, arábica para o conteúdo principal, etc.).</li>
+            </ul>
           </div>
         </section>
 
-        <section id="galeria-acentos">
-          <h2>3. Galeria de Acentos Português</h2>
-          
+        <section id="opcoes-classe">
+          <h2>2. As Opções da Classe: Ajustando os Detalhes da Planta</h2>
+
           <div class="theory-box">
-            <p>Todos estes caracteres funcionam naturalmente com a configuração UTF-8. Basta digitá-los normalmente!</p>
-          </div>
-          <div class="accent-grid">
-            <div class="accent-card">
-              <div class="accent-display">á é í ó ú</div>
-              <div class="accent-command">Agudos</div>
-              <p>ação, café, país</p>
-            </div>
-            
-            <div class="accent-card">
-              <div class="accent-display">à â ê ô</div>
-              <div class="accent-command">Graves e Circunflexos</div>
-              <p>àquele, você, inglês</p>
-            </div>
-            
-            <div class="accent-card">
-              <div class="accent-display">ã õ</div>
-              <div class="accent-command">Til</div>
-              <p>não, coração, ações</p>
-            </div>
-            
-            <div class="accent-card">
-              <div class="accent-display">ç</div>
-              <div class="accent-command">Cedilha</div>
-              <p>França, raça, preço</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="comandos-escape">
-          <h2>4. Comandos de Escape (Método Antigo)</h2>
-          
-          <div class="theory-box">
-            <p>Ainda é útil conhecer os comandos tradicionais para casos especiais ou quando UTF-8 não estiver disponível.</p>
+            <p>As opções, passadas entre colchetes, são os <strong>"ajustes finos"</strong> do seu projeto. Vamos ver exemplos práticos para as mais importantes.</p>
           </div>
 
-          <h3>Tabela de Comandos LaTeX</h3>
-          <div class="functionality-showcase">
-            <table class="character-table">
-              <thead>
-                <tr>
-                  <th>Caractere</th>
-                  <th>Comando LaTeX</th>
-                  <th>Exemplo</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>á</td>
-                  <td>\'{a}</td>
-                  <td>a\c{c}\'ao</td>
-                </tr>
-                <tr>
-                  <td>à</td>
-                  <td>\`{a}</td>
-                  <td>\`aquele</td>
-                </tr>
-                <tr>
-                  <td>â</td>
-                  <td>\^{a}</td>
-                  <td>voc\^e</td>
-                </tr>
-                <tr>
-                  <td>ã</td>
-                  <td>\~{a}</td>
-                  <td>n\~ao</td>
-                </tr>
-                <tr>
-                  <td>ç</td>
-                  <td>\c{c}</td>
-                  <td>Fran\c{c}a</td>
-                </tr>
-                <tr>
-                  <td>ü</td>
-                  <td>\"{u}</td>
-                  <td>Br\"uke</td>
-                </tr>
-              </tbody>
-            </table>
-            
-            <div class="tips-warning">
-              <p>Use os comandos de escape apenas quando UTF-8 não estiver disponível ou para caracteres muito raros!</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">10pt, 11pt, 12pt</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[12pt]{article}</code></p>
+              <p><strong>Efeito:</strong> Define a fonte base do corpo do texto para 12 pontos, tornando a leitura mais confortável em muitos casos. Títulos e outros elementos serão redimensionados proporcionalmente.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">a4paper</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[a4paper]{report}</code></p>
+              <p><strong>Efeito:</strong> Configura as dimensões da página para o padrão A4 (210mm x 297mm), o mais comum no Brasil e na Europa. Sem isso, o padrão é o letterpaper americano.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">twoside</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[twoside]{report}</code></p>
+              <p><strong>Efeito:</strong> Informa ao LaTeX para formatar o documento para impressão frente e verso. O resultado mais visível são as margens assimétricas (a margem interna é menor) e os cabeçalhos que podem ser diferentes para páginas pares e ímpares.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">twocolumn</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[twocolumn]{article}</code></p>
+              <p><strong>Efeito:</strong> Formata todo o corpo do documento em um layout de duas colunas, comum em artigos científicos e newsletters. O LaTeX gerencia o fluxo de texto entre as colunas automaticamente.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">landscape</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[landscape]{article}</code></p>
+              <p><strong>Efeito:</strong> Inverte as dimensões de altura e largura da página, criando um layout em modo paisagem. Ideal para apresentar tabelas muito largas ou figuras panorâmicas.</p>
+            </div>
+
+            <div class="option-card">
+              <h4 style="color: #9333ea; margin-top: 0;">titlepage</h4>
+              <p><strong>Exemplo:</strong> <code>\documentclass[titlepage]{article}</code></p>
+              <p><strong>Efeito:</strong> Força a classe <code>article</code> (que normalmente não o faz) a criar uma página de título separada para as informações do <code>\maketitle</code>. O texto principal começará na página seguinte.</p>
             </div>
           </div>
         </section>
 
-        <section id="simbolos-especiais">
-          <h2>5. Caracteres Especiais e Símbolos</h2>
-          
-          <h3>Símbolos Matemáticos e Técnicos</h3>
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">🔢 Símbolos que Funcionam Diretamente</h4>
-            
-            <div class="code-block">
-              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
-              <pre><code>% Símbolos que funcionam direto:
-° (grau), ± (mais-menos), × (multiplicação)
-€ (euro), £ (libra), $ (dólar)
-© (copyright), ® (registrado), ™ (marca)
+        <section id="exemplo-pratico">
+          <h2>3. Exemplo Prático Combinado</h2>
 
-% Para símbolos matemáticos complexos:
-$\alpha, \beta, \gamma, \delta$
-$\sum, \int, \infty, \partial$
+          <p>Vamos criar um pequeno documento usando a classe <code>report</code> e algumas opções para ver o efeito combinado. Este exemplo demonstra como a escolha da classe e das opções define fundamentalmente o resultado.</p>
 
-% Exemplo prático:
-A temperatura é 25°C ± 2°C.
-O preço é €15,50 (quinze euros e cinquenta).
-Copyright © 2024 - Todos os direitos reservados®</code></pre>
-            </div>
-            
-            <div class="result-demo">
-              <p>A temperatura é 25°C ± 2°C.<br>
-              O preço é €15,50 (quinze euros e cinquenta).<br>
-              Copyright © 2024 - Todos os direitos reservados®</p>
-            </div>
+          <h3>Código-Fonte (main.tex)</h3>
+
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar Código</button>
+            <pre style="margin: 0; white-space: pre-wrap;"><code><span style="color: #546e7a;">% Classe 'report', fonte 12pt, papel A4, layout frente e verso.</span>
+<span style="color: #82aaff;">\\documentclass</span><span style="color: #c3e88d;">[12pt, a4paper, twoside]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">report</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[utf8]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">inputenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[T1]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">fontenc</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\usepackage</span><span style="color: #c3e88d;">[brazil]</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">babel</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\title</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Relatório Abrangente Sobre a Tipografia Digital</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\author</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Equipe LaTeX</span><span style="color: #ffffff;">}</span>
+<span style="color: #82aaff;">\\date</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Setembro de 2025</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #546e7a;">% A opção 'titlepage' é padrão no 'report', então o título terá sua própria página.</span>
+<span style="color: #82aaff;">\\maketitle</span>
+
+<span style="color: #546e7a;">% O ambiente 'abstract' também gera uma página separada no 'report'.</span>
+<span style="color: #82aaff;">\\begin</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abstract</span><span style="color: #ffffff;">}</span>
+    Este é o resumo do nosso relatório, apresentando os principais pontos 
+    que serão discutidos nos capítulos a seguir.
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">abstract</span><span style="color: #ffffff;">}</span>
+
+<span style="color: #82aaff;">\\tableofcontents</span>
+
+<span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Era do TeX</span><span style="color: #ffffff;">}</span>
+Como a classe é 'report', este capítulo iniciará uma nova página. A numeração das seções
+será vinculada a este capítulo.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">O Problema da Qualidade</span><span style="color: #ffffff;">}</span>
+Donald Knuth estava insatisfeito com a qualidade tipográfica da época.
+
+<span style="color: #82aaff;">\\chapter</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">A Chegada do LaTeX</span><span style="color: #ffffff;">}</span>
+<span style="color: #546e7a;">% Como a opção 'twoside' está ativa, o LaTeX pode deixar a página 4 em branco</span>
+<span style="color: #546e7a;">% para garantir que este capítulo comece em uma página ímpar (página 5).</span>
+Este segundo capítulo também iniciará em uma nova página.
+
+<span style="color: #82aaff;">\\section</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">Simplificando o Processo</span><span style="color: #ffffff;">}</span>
+Leslie Lamport criou macros para facilitar o uso do TeX.
+
+<span style="color: #82aaff;">\\end</span><span style="color: #ffffff;">{</span><span style="color: #c3e88d;">document</span><span style="color: #ffffff;">}</span></code></pre>
+          </div>
+
+          <h3>O que observar ao compilar este código:</h3>
+
+          <div class="example-result">
+            <ol style="line-height: 1.8;">
+              <li><strong>Página 1 (Folha de Rosto):</strong> O título estará sozinho em uma página.</li>
+              
+              <li><strong>Página 2 (Resumo):</strong> O conteúdo do ambiente <code>abstract</code> terá sua própria página.</li>
+              
+              <li><strong>Página 3 (Sumário):</strong> O sumário será gerado aqui.</li>
+              
+              <li><strong>Página 4 (Pode estar em branco):</strong> Se a opção <code>openright</code> (padrão em <code>book</code> e às vezes em <code>report</code> com <code>twoside</code>) estiver ativa, esta página pode ser deixada em branco para que o próximo capítulo comece na página 5 (uma página da direita).</li>
+              
+              <li><strong>Página 5 (Capítulo 1):</strong> O primeiro capítulo começa aqui.</li>
+              
+              <li><strong>Página 7 (Capítulo 2):</strong> O segundo capítulo também começa em uma nova página (e também em uma página ímpar).</li>
+              
+              <li><strong>Margens:</strong> Ao visualizar o PDF, você notará que as margens não são iguais. Nas páginas ímpares, a margem esquerda será maior; nas páginas pares, a direita será maior, preparando o documento para encadernação.</li>
+            </ol>
           </div>
         </section>
 
-        <section id="problemas-comuns">
-          <h2>6. Resolvendo Problemas Comuns</h2>
-          
-          <h3>Principais Erros e Soluções</h3>
-          <div class="functionality-showcase">
-            <div class="danger-warning">
-              <p><strong>Erro:</strong> "Package inputenc Error"<br>
-              <strong>Problema:</strong> Arquivo não está em UTF-8<br>
-              <strong>Solução:</strong> No seu editor, salve o arquivo como UTF-8</p>
-            </div>
-            
-            <div class="danger-warning">
-              <p><strong>Problema:</strong> Acentos aparecem estranhos no PDF<br>
-              <strong>Causa:</strong> Falta fontenc<br>
-              <strong>Solução:</strong> Adicione <code>\usepackage[T1]{fontenc}</code></p>
-            </div>
-            
-            <div class="danger-warning">
-              <p><strong>Problema:</strong> "Chapter" ao invés de "Capítulo"<br>
-              <strong>Causa:</strong> Falta babel<br>
-              <strong>Solução:</strong> Adicione <code>\usepackage[portuguese]{babel}</code></p>
-            </div>
-          </div>
+        <section id="atividade">
+          <h2>4. Atividade Prática (Seja o Arquiteto - 20 minutos)</h2>
+          <div class="activity-box">
+            <h3 style="margin-top: 0;">Missão: Experimentar com Classes e Opções</h3>
 
-          <h3>Template de Segurança</h3>
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">💡 Sempre Comece Assim</h4>
-            <div class="code-block">
-              <pre><code>% Template base para qualquer documento:
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[portuguese]{babel}</code></pre>
-            </div>
-          </div>
-        </section>
+            <ol style="font-size: 1.05rem; line-height: 1.7;">
+              <li><strong>Use o código do Exemplo Prático Combinado</strong> acima.</li>
 
-        <section id="pratica-multilingue">
-          <h2>7. Prática: Documento Multilíngue</h2>
-          
-          <div class="content-box">
-            <p>Vamos criar um documento com diferentes idiomas e caracteres especiais para consolidar o aprendizado.</p>
-          </div>
+              <li><strong>Experimento 1:</strong> Mude a classe de <code>report</code> para <code>book</code>. Recompile. Quais diferenças sutis você nota? 
+                <br><span style="color: var(--muted); font-style: italic;">(Dica: olhe a numeração das páginas pré-textuais e o texto nos cabeçalhos, se houver)</span>
+              </li>
 
-          <div class="functionality-showcase">
-            <h4 style="color: #9333ea; margin-top: 0;">🌍 Exemplo Prático Completo</h4>
-            
-            <div class="code-block">
-              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
-              <pre><code>\documentclass[12pt,a4paper]{article}
+              <li><strong>Experimento 2:</strong> Volte a classe para <code>report</code>. Remova a opção <code>twoside</code>. Recompile. O que aconteceu com as margens das páginas?</li>
 
-% Configuração completa
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[portuguese,english,spanish,french]{babel}
+              <li><strong>Experimento 3:</strong> Mantenha a classe <code>report</code> e a opção <code>twoside</code>. Adicione a opção <code>twocolumn</code>. Recompile. Observe como o LaTeX refaz todo o layout do seu relatório complexo para um formato de duas colunas, mantendo a estrutura de capítulos e seções.</li>
+            </ol>
 
-\title{Documento Internacional}
-\author{Autor Multilíngue}
-\date{\today}
-
-\begin{document}
-\maketitle
-
-\section{Português}
-\selectlanguage{portuguese}
-Este é um texto em português com acentuação correta:
-programação, coração, não, ação, João.
-
-A temperatura em São Paulo é 25°C.
-O preço é R\$ 10,50.
-
-\section{English}
-\selectlanguage{english}
-This is a text in English. Notice how the section
-title automatically changed to "Section" instead
-of "Seção".
-
-\section{Español}
-\selectlanguage{spanish}
-Este es un texto en español con acentos:
-programación, corazón, niño, año.
-
-\section{Français}
-\selectlanguage{french}
-Ceci est un texte en français avec des accents:
-café, hôtel, naïf, Noël.
-
-\end{document}</code></pre>
-            </div>
-            
-            <div class="tips-warning">
-              <p><strong>Observe:</strong> Cada seção muda automaticamente os termos para o idioma correto. "Section" em inglês, "Sección" em espanhol, "Section" em francês!</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="resumo-final">
-          <h2>📋 Resumo da Aula</h2>
-          <div class="summary-grid">
-            <div class="summary-card">
-              <h3>🔤 Codificação</h3>
-              <ul>
-                <li>UTF-8 como padrão</li>
-                <li>inputenc + fontenc + babel</li>
-                <li>Compatibilidade total</li>
+            <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.3); padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem;">
+              <p style="margin: 0; font-weight: 600; color: #9333ea;">Com este conhecimento detalhado, você agora pode:</p>
+              <ul style="margin: 0.5rem 0 0 0;">
+                <li>Tomar decisões informadas sobre a melhor estrutura para qualquer tipo de documento</li>
+                <li>Compreender como as opções de classe afetam o layout final</li>
+                <li>Escolher between article, report e book com base nas necessidades específicas</li>
+                <li>Aplicar opções como twoside, twocolumn e titlepage estrategicamente</li>
               </ul>
+              <p style="margin: 1rem 0 0 0; font-style: italic; color: var(--muted);">Está pronto(a) para a próxima aula, onde vamos focar nos detalhes da página de rosto e na formatação dos títulos?</p>
             </div>
-            
-            <div class="summary-card">
-              <h3>🌍 Multilíngue</h3>
-              <ul>
-                <li>babel para cada idioma</li>
-                <li>Hifenização automática</li>
-                <li>Termos localizados</li>
-              </ul>
-            </div>
-            
-            <div class="summary-card">
-              <h3>✏️ Acentos</h3>
-              <ul>
-                <li>Digitação natural</li>
-                <li>Todos os caracteres especiais</li>
-                <li>Comandos de escape quando necessário</li>
-              </ul>
-            </div>
-            
-            <div class="summary-card">
-              <h3>🔧 Solução de Problemas</h3>
-              <ul>
-                <li>Arquivo em UTF-8</li>
-                <li>Ordem correta dos pacotes</li>
-                <li>Template de segurança</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tips-warning">
-            <p><strong>Parabéns!</strong> Você completou o <strong>Módulo 2</strong> e agora domina os fundamentos da estruturação de documentos LaTeX. No <strong>Módulo 3</strong>, vamos mergulhar no mundo das <strong>Listas e Enumerações</strong>!</p>
           </div>
         </section>
       </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
     </main>
   </div>
-  <script src="../../assets/js/main.js"></script>
-  <script src="../../assets/js/search.js"></script>
-  <script>
-    function copyToClipboard(button) {
-      const codeBlock = button.nextElementSibling;
-      const text = codeBlock.textContent;
-      
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = button.textContent;
-        button.textContent = '✅ Copiado!';
-        button.style.background = '#27ae60';
-        
-        setTimeout(() => {
-          button.textContent = originalText;
-          button.style.background = ''; // Volta ao estilo padrão do tema
-        }, 2000);
-      });
-    }
-  </script>
+  <script src="../../assets/js/app.js" defer></script>
 </body>
 </html>

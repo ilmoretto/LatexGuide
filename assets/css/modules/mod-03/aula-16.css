@@ -1,0 +1,61 @@
+/* =============================================
+   AULA 16 - TEOREMAS E DEMONSTRAÇÕES (MÓDULO 3)
+   ============================================= */
+
+/* Estilos específicos para teoremas e demonstrações */
+.theorem-showcase {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(14, 165, 233, 0.1) 100%);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.theorem-box {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.theorem-box::before {
+    content: "Teorema";
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: var(--bg);
+    padding: 0 8px;
+    font-size: 0.85rem;
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.proof-box {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.proof-box::before {
+    content: "Demonstração";
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: var(--bg);
+    padding: 0 8px;
+    font-size: 0.85rem;
+    color: #a855f7;
+    font-weight: 600;
+}
+
+/* Media queries para aula 16 */
+@media (max-width: 768px) {
+    .theorem-showcase {
+        padding: 1.5rem;
+    }
+}

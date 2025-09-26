@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 3 — Aula 12: A Linguagem Universal da Matemática</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-03/aula-12.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+
+    <main class="content">
+      <article class="page">
+        <header class="lesson-header">
+          <h1>A Linguagem Universal da Matemática</h1>
+          <p>Escrevendo suas primeiras equações com elegância e precisão</p>
+        </header>
+
+        <!-- Introdução -->
+        <section class="functionality-showcase">
+          <h2>🌟 Onde a Magia Acontece</h2>
+          <p>
+            Olá! Seja muito bem-vindo(a) ao <strong>coração do LaTeX</strong>. Se os módulos anteriores construíram a casa, 
+            agora vamos mobiliá-la com a ferramenta mais poderosa e elegante que este sistema oferece: 
+            <em>a composição matemática</em>.
+          </p>
+          <p>
+            Por que isso é tão importante? Porque a matemática é uma <strong>linguagem universal</strong>, 
+            e a clareza na sua apresentação não é um luxo, é uma necessidade. Em qualquer outra ferramenta, 
+            escrever uma fração complexa ou uma integral é um exercício de paciência e, muitas vezes, 
+            o resultado é esteticamente pobre.
+          </p>
+          <p>
+            Aqui, você vai descobrir que escrever matemática pode ser tão <strong>lógico e fluido</strong> 
+            quanto escrever um parágrafo. Nesta primeira aula, vamos aprender a "conversar" em matemática 
+            com o LaTeX, dominando os blocos de construção essenciais.
+          </p>
+        </section>
+
+        <!-- Conteúdo Principal -->
+        <section>
+          <h2>📚 Do Básico ao Essencial</h2>
+          
+          <!-- Os Dois Mundos -->
+          <div class="math-showcase">
+            <h3>1. Os Dois Mundos: Matemática no Texto e Matemática em Destaque</h3>
+            <p>
+              A primeira grande regra é que o LaTeX opera em <strong>dois modos distintos</strong>. 
+              Para escrever qualquer coisa matemática, você precisa sinalizar que está entrando 
+              em um "ambiente matemático".
+            </p>
+            
+            <div class="math-comparison">
+              <div class="math-example">
+                <h4>🔤 Matemática em Linha (Inline)</h4>
+                <p>Para fórmulas que <strong>fluem com o texto</strong>.</p>
+                <div class="code-input">
+A lei de Ohm afirma que a tensão $V$ é igual ao produto da corrente $I$ pela resistência $R$, ou seja, $V=IR$.
+                </div>
+                <div class="math-output">
+                  A lei de Ohm afirma que a tensão <span class="inline-math"><em>V</em></span> é igual ao produto da corrente <span class="inline-math"><em>I</em></span> pela resistência <span class="inline-math"><em>R</em></span>, ou seja, <span class="inline-math"><em>V</em> = <em>I</em><em>R</em></span>.
+                </div>
+                <p><strong>Sintaxe:</strong> Envolva a fórmula em <code>$ ... $</code></p>
+              </div>
+              
+              <div class="math-example">
+                <h4>🎯 Matemática em Destaque (Display)</h4>
+                <p>Para fórmulas que <strong>merecem o palco principal</strong>.</p>
+                <div class="code-input">
+A equação quadrática geral é fundamental na álgebra:
+\[ ax^2 + bx + c = 0 \]
+As soluções para $x$ dependem dos coeficientes.
+                </div>
+                <div class="math-output">
+                  A equação quadrática geral é fundamental na álgebra:
+                  <div class="display-math">
+                    <em>ax</em>² + <em>bx</em> + <em>c</em> = 0
+                  </div>
+                  As soluções para <span class="inline-math"><em>x</em></span> dependem dos coeficientes.
+                </div>
+                <p><strong>Sintaxe:</strong> Envolva a fórmula em <code>\[ ... \]</code></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Regra Importante -->
+          <div class="important-rule">
+            <p>
+              <strong>O que observar:</strong> A equação em destaque é centralizada em sua própria linha, 
+              com espaçamento vertical antes e depois, separando-a claramente do texto. 
+              Já a matemática em linha se integra perfeitamente ao parágrafo sem alterar o espaçamento das linhas.
+            </p>
+          </div>
+
+          <!-- Os Tijolos Fundamentais -->
+          <div class="math-showcase">
+            <h3>2. Os Tijolos Fundamentais: Sobrescritos, Subscritos, Frações e Raízes</h3>
+            
+            <h4>🔺 Sobrescritos (Potências) com ^ e Subscritos (Índices) com _</h4>
+            <div class="important-rule">
+              <strong>REGRA DE OURO:</strong> Se o expoente ou índice tiver mais de um caractere, 
+              agrupe-o com chaves <code>{}</code>. Esquecer isso causará 90% dos seus primeiros erros!
+            </div>
+            
+            <div class="symbol-table">
+              <thead>
+                <tr>
+                  <th>Resultado</th>
+                  <th>Código LaTeX</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="symbol-cell"><em>x</em>²</td>
+                  <td class="code-cell">$x^2$</td>
+                  <td class="name-cell">Potência simples</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell">10²³</td>
+                  <td class="code-cell">$10^{23}$</td>
+                  <td class="name-cell">Potência com múltiplos dígitos</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell">10²3</td>
+                  <td class="code-cell">$10^23$ ❌</td>
+                  <td class="name-cell">ERRO COMUM!</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell"><em>v</em><sub>f</sub></td>
+                  <td class="code-cell">$v_f$</td>
+                  <td class="name-cell">Índice simples</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell"><em>x</em><sub>final</sub></td>
+                  <td class="code-cell">$x_{final}$</td>
+                  <td class="name-cell">Índice com múltiplos caracteres</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell"><em>A</em><sub>i</sub><sup>j+1</sup></td>
+                  <td class="code-cell">$A_{i}^{j+1}$</td>
+                  <td class="name-cell">Combinando ambos</td>
+                </tr>
+              </tbody>
+            </div>
+
+            <h4>➗ Frações com \frac{...}{...}</h4>
+            <p>
+              O comando <code>\frac</code> aceita dois argumentos obrigatórios: o numerador e o denominador, 
+              cada um em seu próprio par de chaves.
+            </p>
+            <div class="code-input">
+A definição de velocidade média é a razão entre o deslocamento e o tempo:
+\[ v_m = \frac{\Delta s}{\Delta t} \]
+            </div>
+            <div class="math-output">
+              A definição de velocidade média é a razão entre o deslocamento e o tempo:
+              <div class="display-math">
+                <em>v</em><sub>m</sub> = <sup>Δ<em>s</em></sup>⁄<sub>Δ<em>t</em></sub>
+              </div>
+            </div>
+
+            <h4>√ Raízes com \sqrt</h4>
+            <p>
+              O comando <code>\sqrt</code> aceita um argumento opcional entre colchetes <code>[]</code> 
+              para o índice da raiz. Se omitido, assume raiz quadrada.
+            </p>
+            <div class="symbol-table">
+              <thead>
+                <tr>
+                  <th>Resultado</th>
+                  <th>Código LaTeX</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="symbol-cell">√(<em>b</em>² - 4<em>ac</em>)</td>
+                  <td class="code-cell">$\sqrt{b^2 - 4ac}$</td>
+                  <td class="name-cell">Raiz quadrada</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell">³√<em>V</em></td>
+                  <td class="code-cell">$\sqrt[3]{V}$</td>
+                  <td class="name-cell">Raiz cúbica</td>
+                </tr>
+                <tr>
+                  <td class="symbol-cell">ⁿ√(³√(<em>x</em>²+<em>y</em>²))</td>
+                  <td class="code-cell">$\sqrt[n]{\sqrt[3]{x^2+y^2}}$</td>
+                  <td class="name-cell">Raízes aninhadas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Alfabeto Grego -->
+          <div class="math-showcase">
+            <h3>3. O Alfabeto da Ciência: Letras Gregas</h3>
+            <p>
+              É impossível fazer ciência sem o alfabeto grego. Em LaTeX, usá-lo é trivial: 
+              você simplesmente digita o nome da letra como um comando.
+            </p>
+            
+            <div class="greek-showcase">
+              <div class="greek-letter">
+                <div class="greek-symbol">α</div>
+                <div class="greek-command">\alpha</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">β</div>
+                <div class="greek-command">\beta</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">γ</div>
+                <div class="greek-command">\gamma</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">δ</div>
+                <div class="greek-command">\delta</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">λ</div>
+                <div class="greek-command">\lambda</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">π</div>
+                <div class="greek-command">\pi</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">σ</div>
+                <div class="greek-command">\sigma</div>
+              </div>
+              <div class="greek-letter">
+                <div class="greek-symbol">Ω</div>
+                <div class="greek-command">\Omega</div>
+              </div>
+            </div>
+            
+            <div class="code-input">
+O comprimento de onda ($\lambda$) de uma onda é inversamente proporcional à sua frequência ($f$). A famosa relação de Euler, $e^{i\pi} + 1 = 0$, usa a letra $\pi$.
+            </div>
+            <div class="math-output">
+              O comprimento de onda (<span class="inline-math">λ</span>) de uma onda é inversamente proporcional 
+              à sua frequência (<span class="inline-math"><em>f</em></span>). A famosa relação de Euler, 
+              <span class="inline-math"><em>e</em><sup><em>i</em>π</sup> + 1 = 0</span>, usa a letra 
+              <span class="inline-math">π</span>.
+            </div>
+          </div>
+        </section>
+
+        <!-- Exercícios Práticos -->
+        <section>
+          <h2>✏️ Atividades de Autoestudo</h2>
+          <p>
+            Agora é sua vez de praticar! A melhor maneira de aprender é fazendo. 
+            Tente não olhar a resposta antes de tentar!
+          </p>
+
+          <div class="exercise-container">
+            <h4><span class="exercise-number">1</span>Física Básica</h4>
+            <div class="exercise-content">
+              <p>
+                Escreva a Segunda Lei de Newton (Força é igual a massa vezes aceleração) em modo de destaque. 
+                As variáveis são F, m e a.
+              </p>
+              <details>
+                <summary>💡 Dica</summary>
+                <p>Use <code>\[ F = ma \]</code> para o modo de destaque.</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="exercise-container">
+            <h4><span class="exercise-number">2</span>Índices e Potências</h4>
+            <div class="exercise-content">
+              <p>
+                A energia cinética (E<sub>k</sub>) de um objeto é dada pela fórmula (1/2)mv². 
+                Escreva esta fórmula em modo de destaque. Preste atenção na fração, no subscrito e no expoente.
+              </p>
+              <details>
+                <summary>💡 Dica</summary>
+                <p>Use <code>\[ E_k = \frac{1}{2}mv^2 \]</code></p>
+              </details>
+            </div>
+          </div>
+
+          <div class="exercise-container">
+            <h4><span class="exercise-number">3</span>Geometria Analítica</h4>
+            <div class="exercise-content">
+              <p>
+                A equação de uma elipse centrada na origem é (x²/a²) + (y²/b²) = 1. 
+                Tente escrever essa equação em modo de destaque. Você precisará de frações, variáveis e expoentes.
+              </p>
+              <details>
+                <summary>💡 Dica</summary>
+                <p>Use <code>\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \]</code></p>
+              </details>
+            </div>
+          </div>
+
+          <div class="reflection-box">
+            <h4>💭 Reflexão</h4>
+            <p>
+              <strong>Qual a diferença visual entre a fração <code>$\frac{1}{2}$</code> (em linha) e 
+              <code>\[ \frac{1}{2} \]</code> (em destaque)?</strong>
+            </p>
+            <p>
+              Compile as duas e observe. Por que você acha que o LaTeX faz essa distinção? 
+              (Dica: pense na legibilidade e no espaçamento das linhas do parágrafo).
+            </p>
+          </div>
+        </section>
+
+        <!-- Resumo da Aula -->
+        <div class="lesson-summary">
+          <h2>📝 Resumo da Aula</h2>
+          <p><strong>Parabéns!</strong> Você dominou os fundamentos da escrita matemática em LaTeX. Hoje, você aprendeu:</p>
+          <ul>
+            <li>A diferença crucial entre o modo matemático em linha e o modo de destaque</li>
+            <li>A sintaxe para os "tijolos" essenciais: sobrescritos (^), subscritos (_), frações (\frac) e raízes (\sqrt)</li>
+            <li>A regra de ouro de agrupar com chaves {} argumentos com mais de um caractere</li>
+            <li>Como invocar letras gregas usando seus nomes como comandos</li>
+          </ul>
+          <p>
+            Com esta base, você já é capaz de escrever uma quantidade enorme de expressões matemáticas 
+            de forma clara e profissional. Na próxima aula, vamos expandir nosso vocabulário para incluir 
+            operadores mais complexos (como integrais e somatórios), delimitadores inteligentes e 
+            o alinhamento de múltiplas equações.
+          </p>
+          <p><strong>Pronto para o próximo desafio?</strong> 🚀</p>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+
+</html>

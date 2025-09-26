@@ -1,0 +1,28 @@
+/* =============================================
+   AULA 14 - ALINHAMENTO E MÚLTIPLAS EQUAÇÕES (MÓDULO 3)
+   ============================================= */
+
+/* Estilos específicos para alinhamento de equações */
+.equation-alignment {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(14, 165, 233, 0.1) 100%);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.align-demo {
+    background: rgba(14, 165, 233, 0.05);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Media queries para aula 14 */
+@media (max-width: 768px) {
+    .equation-alignment {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,37 @@
+/* =============================================
+   AULA 15 - MATRIZES E SISTEMAS (MÓDULO 3)
+   ============================================= */
+
+/* Estilos específicos para matrizes e sistemas lineares */
+.matrix-showcase {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(14, 165, 233, 0.1) 100%);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.matrix-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.matrix-demo {
+    background: rgba(14, 165, 233, 0.05);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Media queries para aula 15 */
+@media (max-width: 768px) {
+    .matrix-showcase {
+        padding: 1.5rem;
+    }
+    .matrix-examples {
+        grid-template-columns: 1fr;
+    }
+}

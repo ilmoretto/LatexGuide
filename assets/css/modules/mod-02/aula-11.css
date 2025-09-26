@@ -1,0 +1,19 @@
+/* =============================================
+   AULA 11 - PALETA DO TIPÓGRAFO - ESTILOS E TAMANHOS (MÓDULO 2)
+   ============================================= */
+
+/* Estilos específicos para a aula 11 do módulo 2 */
+.typography-showcase {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(147, 51, 234, 0.1) 100%);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+/* Media queries para aula 11 */
+@media (max-width: 768px) {
+    .typography-showcase {
+        padding: 1.5rem;
+    }
+}

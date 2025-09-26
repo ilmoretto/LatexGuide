@@ -1,0 +1,337 @@
+/* =============================================
+   AULA 12 - A LINGUAGEM UNIVERSAL DA MATEMÁTICA (MÓDULO 3)
+   ============================================= */
+
+/* Estilos específicos para conteúdo matemático */
+
+/* Container para exemplos matemáticos */
+.math-showcase {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(34, 211, 238, 0.05) 100%);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.math-showcase::before {
+    content: "🔢 Exemplo Matemático";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Comparação lado a lado */
+.math-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.math-example {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.math-example:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(34, 211, 238, 0.1);
+    transform: translateY(-2px);
+}
+
+.math-example h4 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.math-example .code-input {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    border-left: 3px solid var(--accent);
+    position: relative;
+}
+
+.math-example .math-output {
+    background: rgba(34, 211, 238, 0.05);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+}
+
+/* Destaque para fórmulas inline vs display */
+.inline-math {
+    background: rgba(147, 51, 234, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    font-family: 'Times New Roman', serif;
+}
+
+.display-math {
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Tabela de símbolos */
+.symbol-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background: var(--panel);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.symbol-table th,
+.symbol-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.symbol-table th {
+    background: linear-gradient(135deg, var(--accent) 0%, #0ea5e9 100%);
+    color: white;
+    font-weight: 600;
+}
+
+.symbol-table .symbol-cell {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.symbol-table .code-cell {
+    font-family: 'Courier New', monospace;
+    background: rgba(34, 211, 238, 0.05);
+    color: var(--text);
+}
+
+.symbol-table .name-cell {
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* Exercícios práticos */
+.exercise-container {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.exercise-container::before {
+    content: "✏️ Exercício Prático";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 0.9rem;
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+.exercise-number {
+    background: #f59e0b;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.exercise-content {
+    margin-left: 3rem;
+}
+
+/* Regras importantes destacadas */
+.important-rule {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+    border: 2px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.important-rule::before {
+    content: "⚠️ REGRA IMPORTANTE";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 0.85rem;
+    color: #ef4444;
+    font-weight: bold;
+}
+
+/* Alfabeto grego showcase */
+.greek-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.greek-letter {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.greek-letter:hover {
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(34, 211, 238, 0.1);
+}
+
+.greek-symbol {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-family: 'Times New Roman', serif;
+}
+
+.greek-command {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: rgba(34, 211, 238, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* Reflexão e insights */
+.reflection-box {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.reflection-box::before {
+    content: "💭 Reflexão";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 0.9rem;
+    color: #a855f7;
+    font-weight: 700;
+}
+
+/* Resumo da aula */
+.lesson-summary {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.lesson-summary::before {
+    content: "📝 Resumo da Aula";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 0.9rem;
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.lesson-summary ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.lesson-summary li {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.lesson-summary li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #22c55e;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    .math-comparison {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .math-showcase {
+        padding: 1.5rem;
+    }
+    
+    .greek-showcase {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .exercise-content {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    
+    .symbol-table {
+        font-size: 0.9rem;
+    }
+    
+    .symbol-table th,
+    .symbol-table td {
+        padding: 0.8rem 0.5rem;
+    }
+}

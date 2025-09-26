@@ -6,11 +6,11 @@
       "title": "Módulo 1: Fundamentos",
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-01/index.html" },
-        { "title": "A Filosofia do LaTeX", "path": "/modules/modulo-01/aula-01.html" },
-        { "title": "Preparando o Ambiente", "path": "/modules/modulo-01/aula-02.html" },
-        { "title": "A Estrutura Mínima", "path": "/modules/modulo-01/aula-03.html" },
-        { "title": "Parágrafos e Comentários", "path": "/modules/modulo-01/aula-04.html" },
-        { "title": "Compilando Documentos", "path": "/modules/modulo-01/aula-05.html" }
+        { "title": "Aula 1: A Filosofia do LaTeX", "path": "/modules/modulo-01/aula-01.html" },
+        { "title": "Aula 2: Preparando o Ambiente", "path": "/modules/modulo-01/aula-02.html" },
+        { "title": "Aula 3: A Estrutura Mínima", "path": "/modules/modulo-01/aula-03.html" },
+        { "title": "Aula 4: Parágrafos e Comentários", "path": "/modules/modulo-01/aula-04.html" },
+        { "title": "Aula 5: Compilando Documentos", "path": "/modules/modulo-01/aula-05.html" }
       ]
     },
     {
@@ -18,12 +18,24 @@
       "title": "Módulo 2: Estrutura e Formatação Essencial do Texto",
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-02/index.html" },
-        { "title": "Classes e Configurações de Documento", "path": "/modules/modulo-02/aula-01.html" },
-        { "title": "Estrutura Hierárquica do Documento", "path": "/modules/modulo-02/aula-02.html" },
-        { "title": "Formatação e Estilos de Texto", "path": "/modules/modulo-02/aula-03.html" },
-        { "title": "Os Mapas do Documento - Sumário e Listas Automáticas", "path": "/modules/modulo-02/aula-04.html" },
-        { "title": "A Paleta do Tipógrafo - Estilos e Tamanhos de Fonte", "path": "/modules/modulo-02/aula-05.html" },
-        { "title": "Acentos e Caracteres Especiais - Escrevendo sem Medo", "path": "/modules/modulo-02/aula-06.html" }
+        { "title": "Aula 6: Classes e Configurações de Documento", "path": "/modules/modulo-02/aula-06.html" },
+        { "title": "Aula 7: Estrutura Hierárquica do Documento", "path": "/modules/modulo-02/aula-07.html" },
+        { "title": "Aula 8: Formatação e Estilos de Texto", "path": "/modules/modulo-02/aula-08.html" },
+        { "title": "Aula 9: Os Mapas do Documento - Sumário e Listas Automáticas", "path": "/modules/modulo-02/aula-09.html" },
+        { "title": "Aula 10: A Paleta do Tipógrafo - Estilos e Tamanhos de Fonte", "path": "/modules/modulo-02/aula-10.html" },
+        { "title": "Aula 11: Acentos e Caracteres Especiais - Escrevendo sem Medo", "path": "/modules/modulo-02/aula-11.html" }
+      ]
+    },
+    {
+      "id": "mod-03",
+      "title": "Módulo 3: O Poder da Matemática",
+      "pages": [
+        { "title": "Apresentação do Módulo", "path": "/modules/modulo-03/index.html" },
+        { "title": "Aula 12: A Linguagem Universal da Matemática", "path": "/modules/modulo-03/aula-12.html" },
+        { "title": "Aula 13: Operadores e Símbolos Avançados", "path": "/modules/modulo-03/aula-02.html" },
+        { "title": "Aula 14: Alinhamento e Múltiplas Equações", "path": "/modules/modulo-03/aula-03.html" },
+        { "title": "Aula 15: Matrizes e Sistemas", "path": "/modules/modulo-03/aula-04.html" },
+        { "title": "Aula 16: Teoremas e Demonstrações", "path": "/modules/modulo-03/aula-05.html" }
       ]
     }
   ],
