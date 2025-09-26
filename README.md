@@ -31,6 +31,7 @@ Scripts locais:
 - Procura por títulos de aulas e nomes de módulos a partir de `data/modules.json`.
 - Navegação por teclado: setas para cima/baixo, Enter para acessar, Esc para fechar.
 - Botão "Repositório" na topbar leva para este GitHub.
+- Dropdown de navegação (nav picker) na topbar: selecione módulos/aulas diretamente; a página atual aparece selecionada.
 - Para expandir a busca ao conteúdo das páginas, considere:
   - Manter um índice JSON com trechos/keywords por página, ou
   - Coletar conteúdo via fetch e indexar (cuidado com CORS e performance).
