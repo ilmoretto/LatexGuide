@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 5 — Aula 20: BibTeX - A Arte de Gerenciar Referências</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-05/aula-20.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 20: BibTeX - A Arte de Gerenciar Referências</h1>
+          <p>Da lista manual ao banco de dados inteligente: revolução na gestão bibliográfica</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>📚 Da Lista Manual ao Banco de Dados Inteligente</h2>
+          <p>Se há uma tarefa que personifica o sofrimento acadêmico, é a <strong>gestão manual de referências bibliográficas</strong>. Formatar cada entrada, garantir a ordem correta, adicionar ou remover uma citação e ter que reajustar tudo... é um processo tedioso e extremamente propenso a erros.</p>
+          
+          <p>O LaTeX oferece uma <strong>solução revolucionária</strong> para isso, baseada em um princípio poderoso: a <strong>separação total entre os dados das referências e a sua apresentação</strong> (formatação). Você criará uma única base de dados com todas as referências que já usou na vida e, a cada novo documento, apenas "chamará" as que precisa.</p>
+          
+          <p>Nesta aula, vamos dominar o <strong>BibTeX</strong>, o sistema de gerenciamento bibliográfico parceiro do LaTeX. Esta ferramenta, uma vez aprendida, <strong>se tornará uma das suas mais valiosas na vida acadêmica</strong>.</p>
+          
+          <div class="meta-info">
+            <strong>40 minutos</strong> • <strong>Intermediário</strong> • <strong>Bibliografia e Organização</strong>
+          </div>
+        </div>
+
+        <section id="metodo-comparison">
+          <h2>1. O Método Antigo vs. o Novo: <code>thebibliography</code> vs. BibTeX</h2>
+          
+          <p class="section-intro">É importante entender o método "manual" para <strong>apreciar a genialidade do BibTeX</strong>.</p>
+
+          <div class="method-comparison">
+            <div class="old-method">
+              <h3>❌ O Método Manual (thebibliography)</h3>
+              <p>Como a Apostila de LaTeX (UFF) e Uma Introdução ao LaTeX - Doherty Andrade mostram, é possível criar uma bibliografia diretamente no seu arquivo <code>.tex</code>.</p>
+              
+              <div class="method-details">
+                <h4>Como funciona:</h4>
+                <ul>
+                  <li>Você usa o ambiente <code>\begin{thebibliography}{&lt;num&gt;}</code></li>
+                  <li>Cada referência é um <code>\bibitem{&lt;chave&gt;}</code></li>
+                  <li>Você formata <strong>manualmente</strong> cada detalhe</li>
+                </ul>
+              </div>
+
+              <div class="problems-list">
+                <h4>🚨 Problemas Críticos:</h4>
+                <ul>
+                  <li><strong>Formatação manual:</strong> Itálico em títulos, negrito em volumes, pontuação específica</li>
+                  <li><strong>Ordem manual:</strong> Manter ordem alfabética ou de citação manualmente</li>
+                  <li><strong>Mudança de estilo:</strong> De ABNT para Vancouver = reformatar tudo à mão</li>
+                  <li><strong>Escalabilidade:</strong> Impraticável para muitas referências</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="new-method">
+              <h3>✅ A Filosofia BibTeX: "Dados Primeiro, Formatação Depois"</h3>
+              <p>BibTeX <strong>muda o jogo</strong>. O processo se divide em duas partes independentes:</p>
+              
+              <div class="bibtex-flow">
+                <div class="flow-step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h4>📊 O Banco de Dados (.bib)</h4>
+                    <p>Um arquivo de texto simples, separado, onde você armazena os <strong>dados brutos</strong> de suas referências de forma estruturada.</p>
+                  </div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h4>📝 O Documento (.tex)</h4>
+                    <p>No seu documento principal, você apenas <strong>cita as referências</strong> usando uma chave única e define o estilo. O BibTeX faz o resto.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="advantages">
+                <h4>🎯 Vantagens Revolucionárias:</h4>
+                <ul>
+                  <li><strong>Reutilização:</strong> Uma única base para todos os seus projetos</li>
+                  <li><strong>Automação:</strong> Formatação e ordenação automáticas</li>
+                  <li><strong>Flexibilidade:</strong> Mude o estilo com um comando</li>
+                  <li><strong>Precisão:</strong> Zero erros de formatação manual</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="bib-anatomy">
+          <h2>2. Anatomia do Arquivo .bib: Sua Biblioteca Pessoal</h2>
+          
+          <p class="section-intro">Este é um arquivo de texto que você cria (ex: <code>minhas_referencias.bib</code>) e que conterá <strong>todas as referências do seu projeto</strong>. Cada entrada tem uma estrutura clara.</p>
+
+          <div class="functionality-showcase">
+            <h3>Estrutura de uma Entrada:</h3>
+            
+            <div class="structure-diagram">
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>@&lt;tipo&gt;{&lt;chave_de_citacao&gt;,
+&lt;campo1&gt; = {&lt;valor1&gt;},
+&lt;campo2&gt; = {&lt;valor2&gt;},
+...
+}</code></pre>
+              </div>
+            </div>
+
+            <div class="structure-explanation">
+              <div class="explanation-item">
+                <h4>1. Tipo de Entrada (@&lt;tipo&gt;)</h4>
+                <p>Informa ao BibTeX a <strong>natureza da publicação</strong>. Os tipos mais comuns:</p>
+                
+                <div class="entry-types">
+                  <div class="type-item">
+                    <code>@article</code>
+                    <span>Um artigo de um periódico ou revista</span>
+                  </div>
+                  <div class="type-item">
+                    <code>@book</code>
+                    <span>Um livro</span>
+                  </div>
+                  <div class="type-item">
+                    <code>@inproceedings</code>
+                    <span>Um artigo em anais de congresso</span>
+                  </div>
+                  <div class="type-item">
+                    <code>@phdthesis</code>
+                    <span>Uma tese de doutorado</span>
+                  </div>
+                  <div class="type-item">
+                    <code>@mastersthesis</code>
+                    <span>Uma dissertação de mestrado</span>
+                  </div>
+                  <div class="type-item">
+                    <code>@misc</code>
+                    <span>"Miscelânea" - sites, notas técnicas, etc.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="explanation-item">
+                <h4>2. Chave de Citação (&lt;chave_de_citacao&gt;)</h4>
+                <p>Um <strong>identificador único</strong> que você criará para chamar a referência no texto. Não pode haver chaves repetidas!</p>
+                
+                <div class="best-practices">
+                  <h5>🎯 Boas Práticas:</h5>
+                  <p>Crie um padrão consistente. Uma ótima sugestão é <strong>AutorAno</strong>:</p>
+                  <ul>
+                    <li><code>Einstein1905</code></li>
+                    <li><code>Knuth1984</code></li>
+                    <li><code>Darwin1859</code></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="explanation-item">
+                <h4>3. Campos e Valores (&lt;campo&gt; = {&lt;valor&gt;})</h4>
+                <p>Aqui ficam os <strong>metadados</strong> da publicação.</p>
+                
+                <div class="fields-info">
+                  <h5>Campos Essenciais:</h5>
+                  <ul>
+                    <li><strong>Obrigatórios:</strong> <code>author</code>, <code>title</code>, <code>year</code></li>
+                    <li><strong>Específicos:</strong> <code>journal</code>, <code>volume</code>, <code>number</code>, <code>pages</code>, <code>publisher</code>, <code>address</code></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="syntax-rules">
+            <h3>📝 Regras de Sintaxe Importantes:</h3>
+            
+            <div class="rules-grid">
+              <div class="rule-item">
+                <h4>👥 Autores</h4>
+                <p>Separe múltiplos autores com a palavra <code>and</code>:</p>
+                <div class="code-example">
+                  <code>author = {Alpher, Ralph A. and Bethe, Hans and Gamow, George}</code>
+                </div>
+              </div>
+              
+              <div class="rule-item">
+                <h4>🔤 Protegendo Maiúsculas</h4>
+                <p>BibTeX tende a colocar títulos em minúsculas. Proteja palavras importantes com <code>{}</code>:</p>
+                <div class="code-example">
+                  <code>title = {A Brief History of the {M}iocene}</code>
+                </div>
+              </div>
+              
+              <div class="rule-item">
+                <h4>📄 Valores</h4>
+                <p>Envolva os valores em chaves <code>{...}</code> ou aspas <code>"..."</code>. Chaves são mais seguras:</p>
+                <div class="code-example">
+                  <code>publisher = {Addison-Wesley}</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-pratico">
+          <h2>3. Exemplo Prático: Criando um Arquivo .bib</h2>
+          
+          <p class="section-intro">Vamos criar um arquivo chamado <code>referencias.bib</code> com três entradas de tipos diferentes para ver como tudo funciona na prática.</p>
+
+          <div class="complete-example">
+            <div class="file-content">
+              <div class="file-header">
+                <span class="filename">referencias.bib</span>
+                <span class="file-type">Arquivo de Bibliografia</span>
+              </div>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>@book{Knuth1984,
+  author    = {Donald E. Knuth},
+  title     = {The TeXbook},
+  publisher = {Addison-Wesley},
+  year      = {1984},
+  address   = {Reading, Massachusetts},
+}
+
+@article{Einstein1905,
+  author  = {Albert Einstein},
+  title   = {{Zur Elektrodynamik bewegter Körper}}, % Título com letra maiúscula protegida
+  journal = {Annalen der Physik},
+  volume  = {17},
+  number  = {10},
+  pages   = {891--921},
+  year    = {1905},
+}
+
+@misc{WikiLatex,
+  author        = {Wikipedia},
+  title         = {LaTeX --- Wikipedia{,} The Free Encyclopedia},
+  year          = {2023},
+  howpublished  = {\url{https://en.wikipedia.org/wiki/LaTeX}},
+  note          = {Acessado em 25 de setembro de 2025}, % Campo 'note' é útil
+}</code></pre>
+              </div>
+            </div>
+
+            <div class="example-analysis">
+              <h4>🔍 Análise do Exemplo:</h4>
+              <div class="analysis-grid">
+                <div class="analysis-item">
+                  <h5>📖 @book (Knuth1984)</h5>
+                  <ul>
+                    <li><strong>Essenciais:</strong> author, title, publisher, year</li>
+                    <li><strong>Opcional:</strong> address (local da editora)</li>
+                    <li><strong>Chave:</strong> Autor + ano para fácil identificação</li>
+                  </ul>
+                </div>
+                
+                <div class="analysis-item">
+                  <h5>📄 @article (Einstein1905)</h5>
+                  <ul>
+                    <li><strong>Específicos:</strong> journal, volume, number, pages</li>
+                    <li><strong>Proteção:</strong> {Zur} mantém maiúscula alemã</li>
+                    <li><strong>Páginas:</strong> -- (dois hífens) para intervalo</li>
+                  </ul>
+                </div>
+                
+                <div class="analysis-item">
+                  <h5>🌐 @misc (WikiLatex)</h5>
+                  <ul>
+                    <li><strong>Flexível:</strong> Para fontes que não se encaixam</li>
+                    <li><strong>howpublished:</strong> \url{} para links</li>
+                    <li><strong>note:</strong> Informações adicionais</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="important-note">
+              <h4>📌 Nota Importante:</h4>
+              <p>Para o comando <code>\url</code> funcionar, é preciso carregar o pacote <code>hyperref</code> ou <code>url</code> no preâmbulo do seu arquivo <code>.tex</code>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="ferramentas">
+          <h2>4. Ferramentas de Gerenciamento: Simplificando o Processo</h2>
+          
+          <p class="section-intro">Manter um arquivo <code>.bib</code> grande manualmente pode ser cansativo. <strong>Ferramentas externas são suas melhores amigas</strong>.</p>
+
+          <div class="tools-showcase">
+            <div class="tool-item">
+              <div class="tool-icon">🔧</div>
+              <h3>JabRef</h3>
+              <p>Um programa <strong>gratuito</strong> (escrito em Java) projetado especificamente para gerenciar arquivos <code>.bib</code>.</p>
+              
+              <div class="tool-features">
+                <h4>Recursos:</h4>
+                <ul>
+                  <li>Interface gráfica intuitiva</li>
+                  <li>Evita erros de sintaxe</li>
+                  <li>Busca automática de metadados</li>
+                  <li>Organização por categorias</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="tool-item">
+              <div class="tool-icon">📚</div>
+              <h3>Zotero / Mendeley</h3>
+              <p>Gerenciadores de referência populares que podem <strong>exportar suas bibliotecas</strong> para o formato <code>.bib</code>.</p>
+              
+              <div class="tool-features">
+                <h4>Vantagens:</h4>
+                <ul>
+                  <li>Captura referências diretamente do navegador</li>
+                  <li>Organização automática</li>
+                  <li>Sincronização em nuvem</li>
+                  <li>Integração com LaTeX</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow-suggestion">
+            <h4>💡 Workflow Sugerido:</h4>
+            <ol>
+              <li><strong>Captura:</strong> Use Zotero/Mendeley para coletar referências</li>
+              <li><strong>Organização:</strong> Exporte para .bib e organize no JabRef</li>
+              <li><strong>Uso:</strong> Cite no LaTeX usando as chaves criadas</li>
+              <li><strong>Manutenção:</strong> Mantenha um arquivo .bib mestre</li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="atividades">
+          <h2>5. Atividades de Autoestudo: Construa sua Própria Biblioteca</h2>
+          
+          <p class="section-intro">Pratique criando sua própria base de dados bibliográfica com exercícios progressivos.</p>
+
+          <div class="functionality-showcase">
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <h4>📁 Exercício 1: Seu Primeiro .bib</h4>
+                <p><strong>Objetivo:</strong> Criar a estrutura básica do arquivo de bibliografia.</p>
+                <div class="exercise-steps">
+                  <ol>
+                    <li>No seu projeto Overleaf, clique em <strong>"New File"</strong> (Novo Arquivo)</li>
+                    <li>Crie um arquivo chamado <code>minha_bibliografia.bib</code></li>
+                    <li>Verifique se o arquivo aparece na árvore de arquivos do projeto</li>
+                  </ol>
+                </div>
+                <div class="hint">
+                  <strong>Dica:</strong> O arquivo .bib pode ter qualquer nome, mas mantenha consistência nos seus projetos.
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>📚 Exercício 2: Adicionando Entradas</h4>
+                <p><strong>Objetivo:</strong> Popular o arquivo com referências reais.</p>
+                <div class="sub-exercises">
+                  <h5>Passo A: Entradas Básicas</h5>
+                  <ul>
+                    <li>Copie e cole as três entradas do exemplo (<code>@book</code>, <code>@article</code>, <code>@misc</code>) para dentro do seu arquivo</li>
+                    <li>Compile e verifique se não há erros de sintaxe</li>
+                  </ul>
+                  
+                  <h5>Passo B: Sua Própria Referência</h5>
+                  <ul>
+                    <li><strong>Adicione uma quarta entrada:</strong> encontre os dados do seu livro favorito (ou do principal livro-texto de uma matéria que você gosta)</li>
+                    <li>Crie uma entrada <code>@book</code> para ele</li>
+                    <li>Crie sua própria chave de citação (ex: <code>Tolkien1954</code>)</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>🤔 Exercício 3: Reflexão e Análise</h4>
+                <p><strong>Objetivo:</strong> Compreender as diferenças entre tipos de entrada.</p>
+                <div class="reflection-questions">
+                  <h5>Perguntas para Reflexão:</h5>
+                  <ol>
+                    <li>Quais campos são <strong>comuns</strong> a <code>@book</code> e <code>@article</code>?</li>
+                    <li>Quais são <strong>únicos</strong> de cada um?</li>
+                    <li>Por que você acha que um <code>@article</code> precisa dos campos <code>journal</code>, <code>volume</code> e <code>pages</code>, enquanto um <code>@book</code> não?</li>
+                  </ol>
+                </div>
+                <div class="expected-insights">
+                  <h5>💡 Insights Esperados:</h5>
+                  <ul>
+                    <li><strong>Comuns:</strong> author, title, year (essenciais para qualquer publicação)</li>
+                    <li><strong>Únicos @book:</strong> publisher, address (editora e local)</li>
+                    <li><strong>Únicos @article:</strong> journal, volume, pages (localização dentro da revista)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo">
+          <h2>6. Resumo Final da Aula</h2>
+          
+          <div class="lesson-completion">
+            <h3>🎉 Parabéns!</h3>
+            <p>Você acaba de dar o <strong>passo mais importante para uma vida acadêmica organizada</strong>. A criação manual de listas de referências ficou para trás.</p>
+          </div>
+          
+          <div class="summary-points">
+            <div class="summary-point">
+              <div class="point-number">1</div>
+              <div class="point-content">
+                <h4>Filosofia BibTeX</h4>
+                <p>A <strong>filosofia fundamental do BibTeX</strong>: separar os dados (<code>.bib</code>) da formatação (<code>.tex</code>).</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">2</div>
+              <div class="point-content">
+                <h4>Estrutura de Entrada</h4>
+                <p>A <strong>estrutura de uma entrada BibTeX</strong>: <code>@tipo{chave, campos...}</code>.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">3</div>
+              <div class="point-content">
+                <h4>Tipos e Campos</h4>
+                <p>Os <strong>tipos de entrada e campos mais comuns</strong> para livros, artigos e outras fontes.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">4</div>
+              <div class="point-content">
+                <h4>Boas Práticas</h4>
+                <p>As <strong>boas práticas</strong> para preencher os campos e nomear as chaves de citação.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="achievement-box">
+            <h4>🏆 Você Agora Tem:</h4>
+            <p>Um <strong>"banco de dados" de referências</strong> estruturado e reutilizável. Sua biblioteca pessoal está nascendo!</p>
+          </div>
+
+          <div class="next-lesson-preview">
+            <h4>🔜 Próxima Aula</h4>
+            <p>Na próxima aula, vamos aprender a <strong>"sacar" informações desse banco</strong>, citando-as no seu texto e compilando tudo para gerar uma lista de referências automática e perfeitamente formatada. Pronto(a) para conectar tudo?</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

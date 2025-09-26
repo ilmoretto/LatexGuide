@@ -1,0 +1,1067 @@
+/* ==========================================================================
+   AULA 20: BibTeX - A ARTE DE GERENCIAR REFERÊNCIAS
+   Estilos específicos para a aula de gerenciamento bibliográfico com BibTeX
+   ========================================================================== */
+
+/* ---- HEADER DA LIÇÃO ---- */
+.lesson-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  border-radius: 16px;
+  color: var(--text-on-accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.lesson-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="bibliography" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M5,5 L25,5 M5,10 L20,10 M5,15 L22,15 M5,20 L18,20" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/><circle cx="5" cy="25" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23bibliography)"/></svg>') repeat;
+  opacity: 0.3;
+}
+
+.lesson-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.lesson-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+/* ---- INTRO BOX ---- */
+.intro-box {
+  background: var(--surface-secondary);
+  border: 2px solid var(--accent-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.intro-box h2 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.intro-box p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.intro-box p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.intro-box strong {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.intro-box code {
+  background: var(--surface-code);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.meta-info {
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+/* ---- SEÇÃO INTRO ---- */
+.section-intro {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--surface-tertiary);
+  border-left: 4px solid var(--accent-secondary);
+  border-radius: 0 8px 8px 0;
+}
+
+.section-intro strong {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.section-intro code {
+  background: var(--surface-code);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+/* ---- COMPARAÇÃO DE MÉTODOS ---- */
+.method-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.old-method,
+.new-method {
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid;
+}
+
+.old-method {
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+  border-color: #ef4444;
+}
+
+.new-method {
+  background: linear-gradient(135deg, #f0fdf4, #bbf7d0);
+  border-color: #22c55e;
+}
+
+.old-method h3 {
+  color: #dc2626;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.new-method h3 {
+  color: #16a34a;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.method-details h4,
+.problems-list h4 {
+  color: #991b1b;
+  margin: 1.5rem 0 1rem 0;
+  font-size: 1rem;
+}
+
+.method-details ul,
+.problems-list ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.method-details li,
+.problems-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: #7f1d1d;
+}
+
+.method-details code,
+.problems-list code {
+  background: rgba(127, 29, 29, 0.2);
+  color: #991b1b;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- FLUXO BIBTEX ---- */
+.bibtex-flow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  background: var(--surface-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  color: var(--accent-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.step-content p {
+  margin: 0;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.flow-arrow {
+  font-size: 2rem;
+  color: var(--accent-secondary);
+  font-weight: bold;
+}
+
+.advantages {
+  margin: 1.5rem 0;
+}
+
+.advantages h4 {
+  color: #15803d;
+  margin: 1.5rem 0 1rem 0;
+  font-size: 1rem;
+}
+
+.advantages ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.advantages li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: #166534;
+}
+
+/* ---- FUNCIONALIDADES ---- */
+.functionality-showcase {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.functionality-showcase h3 {
+  color: var(--accent-primary);
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.functionality-showcase h3::before {
+  content: '📝';
+  font-size: 1.2rem;
+}
+
+/* ---- DIAGRAMA DE ESTRUTURA ---- */
+.structure-diagram {
+  margin: 1.5rem 0;
+}
+
+.structure-explanation {
+  margin: 2rem 0;
+}
+
+.explanation-item {
+  background: var(--surface-tertiary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.explanation-item h4 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.explanation-item p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* ---- TIPOS DE ENTRADA ---- */
+.entry-types {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.type-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  align-items: center;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.8rem;
+}
+
+.type-item code {
+  background: var(--surface-code);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  justify-self: start;
+}
+
+.type-item span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ---- BOAS PRÁTICAS ---- */
+.best-practices {
+  background: var(--surface-primary);
+  border: 1px solid var(--accent-secondary);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.best-practices h5 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.best-practices p {
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.best-practices ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.best-practices li {
+  margin-bottom: 0.4rem;
+}
+
+.best-practices code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- INFORMAÇÕES DE CAMPOS ---- */
+.fields-info {
+  background: var(--surface-primary);
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.fields-info h5 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.fields-info ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.fields-info li {
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.fields-info code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- REGRAS DE SINTAXE ---- */
+.syntax-rules {
+  background: var(--surface-tertiary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.syntax-rules h3 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.rule-item {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.rule-item h4 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.rule-item p {
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.code-example {
+  background: var(--surface-code);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.3;
+  overflow-x: auto;
+}
+
+/* ---- BLOCOS DE CÓDIGO ---- */
+.code-block {
+  position: relative;
+  background: var(--surface-code);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1.5rem;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  overflow-x: auto;
+}
+
+.code-block code {
+  color: var(--text-primary);
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.copy-btn:hover {
+  background: var(--accent-secondary);
+  transform: translateY(-1px);
+}
+
+/* ---- CONTEÚDO DE ARQUIVOS ---- */
+.file-content {
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-code);
+}
+
+.file-header {
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filename {
+  font-family: var(--font-mono);
+}
+
+.file-type {
+  opacity: 0.8;
+  font-size: 0.8rem;
+}
+
+/* ---- EXEMPLO COMPLETO ---- */
+.complete-example {
+  background: var(--surface-secondary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.example-analysis {
+  margin: 2rem 0;
+  background: var(--surface-tertiary);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.example-analysis h4 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.analysis-item {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.analysis-item h5 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.analysis-item ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.analysis-item li {
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.analysis-item code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.25rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* ---- NOTA IMPORTANTE ---- */
+.important-note {
+  background: linear-gradient(135deg, #fef3c7, #fcd34d);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.important-note h4 {
+  color: #92400e;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.important-note p {
+  color: #78350f;
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.important-note code {
+  background: rgba(146, 64, 14, 0.2);
+  color: #78350f;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+/* ---- FERRAMENTAS ---- */
+.tools-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.tool-item {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tool-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tool-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tool-item h3 {
+  color: var(--accent-primary);
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.tool-item p {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.tool-features {
+  text-align: left;
+}
+
+.tool-features h4 {
+  color: var(--accent-primary);
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+}
+
+.tool-features ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.tool-features li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.tool-features code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- WORKFLOW SUGERIDO ---- */
+.workflow-suggestion {
+  background: var(--surface-tertiary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.workflow-suggestion h4 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.workflow-suggestion ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.workflow-suggestion li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ---- EXERCÍCIOS ---- */
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.exercise-item {
+  background: var(--surface-tertiary);
+  border: 2px solid var(--accent-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.exercise-item h4 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.exercise-item p {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.exercise-steps ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.exercise-steps li {
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.exercise-steps code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.hint {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1px solid #0ea5e9;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.hint strong {
+  color: #0369a1;
+}
+
+/* ---- SUB-EXERCÍCIOS ---- */
+.sub-exercises {
+  margin: 1rem 0;
+}
+
+.sub-exercises h5 {
+  color: var(--accent-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.sub-exercises ul {
+  margin: 0.5rem 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.sub-exercises li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.sub-exercises code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- REFLEXÃO ---- */
+.reflection-questions {
+  background: var(--surface-primary);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.reflection-questions h5 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.reflection-questions ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.reflection-questions li {
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.reflection-questions code {
+  background: var(--surface-code);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.expected-insights {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid #22c55e;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.expected-insights h5 {
+  color: #15803d;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.expected-insights ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.expected-insights li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: #166534;
+}
+
+.expected-insights code {
+  background: rgba(21, 128, 61, 0.2);
+  color: #15803d;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- RESUMO DA AULA ---- */
+.lesson-completion {
+  text-align: center;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-on-accent);
+  padding: 2rem;
+  border-radius: 16px;
+  margin: 2rem 0;
+}
+
+.lesson-completion h3 {
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.lesson-completion p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* ---- PONTOS DO RESUMO ---- */
+.summary-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.summary-point {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1rem;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  align-items: start;
+}
+
+.point-number {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.point-content h4 {
+  color: var(--accent-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.point-content p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.point-content code {
+  background: var(--surface-code);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* ---- CAIXA DE CONQUISTA ---- */
+.achievement-box {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border: 2px solid #22c55e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.achievement-box h4 {
+  color: #15803d;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.achievement-box p {
+  color: #166534;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.achievement-box strong {
+  color: #14532d;
+}
+
+/* ---- PREVIEW DA PRÓXIMA AULA ---- */
+.next-lesson-preview {
+  background: var(--surface-secondary);
+  border: 2px solid var(--accent-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.next-lesson-preview h4 {
+  color: var(--accent-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.next-lesson-preview p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.next-lesson-preview strong {
+  color: var(--accent-primary);
+}
+
+/* ---- RESPONSIVIDADE ---- */
+@media (max-width: 768px) {
+  .lesson-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .lesson-header p {
+    font-size: 1rem;
+  }
+  
+  .method-comparison {
+    grid-template-columns: 1fr;
+  }
+  
+  .bibtex-flow {
+    flex-direction: column;
+  }
+  
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .rules-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tools-showcase {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-point {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .point-number {
+    justify-self: center;
+  }
+  
+  .file-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
