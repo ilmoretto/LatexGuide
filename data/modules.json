@@ -43,7 +43,8 @@
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-04/index.html" },
         { "title": "Aula 15: O Mundo das Figuras - Inserindo e Controlando Imagens", "path": "/modules/modulo-04/aula-15.html" },
         { "title": "Aula 16: Figuras Flutuantes - A Arte da Diagramação Automática", "path": "/modules/modulo-04/aula-16.html" },
-        { "title": "Aula 17: A Arte de Organizar Dados - Tabelas com tabular", "path": "/modules/modulo-04/aula-17.html" }
+        { "title": "Aula 17: A Arte de Organizar Dados - Tabelas com tabular", "path": "/modules/modulo-04/aula-17.html" },
+        { "title": "Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas", "path": "/modules/modulo-04/aula-18.html" }
       ]
     }
   ],

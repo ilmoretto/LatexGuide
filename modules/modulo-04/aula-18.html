@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 4 — Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-04/aula-18.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas</h1>
+          <p>Da organização à conexão da informação: documentos dinâmicos e inteligentes</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>🔗 Da Organização à Conexão da Informação</h2>
+          <p>Na aula anterior, você construiu sua primeira tabela com o ambiente <code>tabular</code>. Agora, vamos <strong>elevar nossas habilidades a um nível profissional</strong>. Primeiro, vamos quebrar as restrições de uma grade simples, mesclando colunas e controlando o fluxo de texto.</p>
+          
+          <p>Depois, vamos desvendar o <strong>sistema de referências cruzadas</strong>. Esta é a "cola" que une seu documento. Com ele, você nunca mais terá que se preocupar em atualizar manualmente "Figura 3" ou "Seção 5.2". <strong>Você criará um documento dinâmico e "inteligente"</strong>, onde todas as partes se comunicam.</p>
+          
+          <p>Esta é a culminação do nosso estudo sobre elementos visuais e um passo fundamental para a automação de trabalhos acadêmicos.</p>
+          
+          <div class="meta-info">
+            <strong>40 minutos</strong> • <strong>Avançado</strong> • <strong>Tabelas Complexas e Automação</strong>
+          </div>
+        </div>
+
+        <section id="tabelas-avancadas">
+          <h2>1. Tabelas Avançadas: Quebrando a Grade</h2>
+          
+          <p class="section-intro">Às vezes, uma grade simples não é suficiente. Precisamos de títulos que abranjam várias colunas ou de células que contenham parágrafos inteiros de texto.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Mesclar Colunas (\multicolumn)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Permite que uma única célula se estenda por múltiplas colunas.</p>
+                <p>É essencial para criar cabeçalhos hierárquicos ou agrupar dados sob um título comum.</p>
+                <p><code>\multicolumn{&lt;num&gt;}{&lt;alinhamento&gt;}{&lt;texto&gt;}</code></p>
+              </div>
+            </div>
+
+            <div class="parameters-explanation">
+              <h4 style="color: var(--accent-primary);">Parâmetros do \multicolumn:</h4>
+              <ul>
+                <li><strong>&lt;num&gt;:</strong> O número de colunas que a célula irá ocupar</li>
+                <li><strong>&lt;alinhamento&gt;:</strong> A especificação do alinhamento (l, c, r) e das linhas verticais (|) apenas para esta célula mesclada</li>
+                <li><strong>&lt;texto&gt;:</strong> O conteúdo da célula</li>
+              </ul>
+            </div>
+
+            <div class="multicolumn-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático Mínimo:</h4>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\begin{tabular}{|l|c|c|}
+\hline
+\multicolumn{3}{|c|}{Avaliação Semestral} \\ % Ocupa 3 colunas, centro, com bordas
+\hline
+Aluno & Nota 1 & Nota 2 \\
+\hline
+Maria & 8.5 & 9.0 \\
+\hline
+\end{tabular}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Células com Quebra de Linha (Coluna p)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>O especificador <code>p{&lt;largura&gt;}</code> cria uma coluna com largura fixa, onde o texto se comporta como um mini-parágrafo.</p>
+                <p>Para incluir descrições longas ou explicações dentro de uma tabela sem criar uma coluna excessivamente larga.</p>
+                <p><code>\begin{tabular}{ |l|p{5cm}| }</code> (Segunda coluna com 5cm de largura)</p>
+              </div>
+            </div>
+
+            <div class="paragraph-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático Mínimo:</h4>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\begin{tabular}{|c|p{6cm}|}
+\hline
+Termo & Definição \\
+\hline
+\LaTeX & Um sistema de composição de textos de alta qualidade, 
+         ideal para documentos científicos e técnicos. \\
+\hline
+\end{tabular}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Linhas Horizontais Parciais (\cline)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Desenha uma linha horizontal que abrange apenas um intervalo específico de colunas.</p>
+                <p>Para criar subdivisões visuais dentro da tabela sem usar uma linha completa.</p>
+                <p><code>\cline{&lt;col-inicio&gt;-&lt;col-fim&gt;}</code></p>
+              </div>
+            </div>
+
+            <div class="cline-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático Mínimo:</h4>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{Medidas} \\
+\cline{2-3} % Linha apenas sob as colunas 2 e 3
+ & Grupo A & Grupo B \\
+\hline
+Teste 1 & 15 & 18 \\
+\hline
+\end{tabular}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="referencias-cruzadas">
+          <h2>2. O Sistema Nervoso do Documento: <code>\label</code>, <code>\ref</code> e <code>\pageref</code></h2>
+          
+          <p class="section-intro">Este sistema é o que torna um documento LaTeX <strong>dinâmico e imune a erros de numeração</strong>.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Rotular Elementos (\label)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Associa um nome único e invisível (uma "etiqueta") a qualquer elemento que o LaTeX numera automaticamente.</p>
+                <p>Para criar um ponto de ancoragem que pode ser chamado de qualquer lugar do texto.</p>
+                <p><code>\label{&lt;prefixo&gt;:&lt;nome_da_etiqueta&gt;}</code></p>
+              </div>
+            </div>
+
+            <div class="naming-conventions">
+              <h4 style="color: var(--accent-primary);">🎯 Boas Práticas de Nomenclatura (CRUCIAL):</h4>
+              <p>Use prefixos para evitar confusão e organizar suas etiquetas!</p>
+              
+              <table class="conventions-table">
+                <thead>
+                  <tr>
+                    <th>Prefixo</th>
+                    <th>Elemento</th>
+                    <th>Exemplo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>sec:</code></td>
+                    <td>Seções</td>
+                    <td><code>\label{sec:introducao}</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>fig:</code></td>
+                    <td>Figuras</td>
+                    <td><code>\label{fig:grafico_resultados}</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tab:</code></td>
+                    <td>Tabelas</td>
+                    <td><code>\label{tab:dados_brutos}</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>eq:</code></td>
+                    <td>Equações</td>
+                    <td><code>\label{eq:bhaskara}</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="golden-rule">
+              <h4>🏆 Lembre-se da Regra de Ouro:</h4>
+              <p>Para figuras e tabelas, coloque o <code>\label</code> <strong>sempre depois</strong> do <code>\caption</code>.</p>
+            </div>
+          </div>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Referenciar Elementos (\ref e \pageref)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Insere o número do elemento rotulado no texto.</p>
+                <p>Automatiza completamente as referências. Se você inserir uma nova figura, todas as chamadas são atualizadas automaticamente!</p>
+                <p><code>\ref{&lt;prefixo&gt;:&lt;nome_da_etiqueta&gt;}</code></p>
+              </div>
+            </div>
+
+            <div class="reference-commands">
+              <h4 style="color: var(--accent-primary);">Comandos de Referência:</h4>
+              <ul>
+                <li><strong><code>\ref{...}</code>:</strong> Insere o número do elemento</li>
+                <li><strong><code>\pageref{...}</code>:</strong> Insere o número da página onde o elemento está</li>
+              </ul>
+            </div>
+
+            <div class="reference-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático Mínimo:</h4>
+              <div class="example-comparison">
+                <div class="code-section">
+                  <h5>Código:</h5>
+                  <code>Como discutido na Seção~\ref{sec:metodologia} (página~\pageref{sec:metodologia}), os resultados são mostrados na Figura~\ref{fig:resultados}.</code>
+                </div>
+                <div class="result-section">
+                  <h5>Resultado:</h5>
+                  <p>Como discutido na Seção 2.1 (página 5), os resultados são mostrados na Figura 3.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="tilde-tip">
+              <h4>💡 Dica do Tilde (~):</h4>
+              <p>O <code>~</code> é um "espaço inquebrável". Usá-lo antes de <code>\ref</code> (como em <code>Figura~\ref{...}</code>) impede que a palavra "Figura" fique no final de uma linha e o número "3" no começo da próxima.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>3. Exemplo Prático Completo: Relatório com Tabela Complexa e Referências Cruzadas</h2>
+          
+          <p class="section-intro">Este exemplo final do módulo une tudo: uma tabela complexa dentro de um ambiente <code>table</code> flutuante, com legenda e rótulo, e referências cruzadas.</p>
+
+          <div class="complete-example">
+            <h3>Código Completo do Relatório</h3>
+            
+            <div class="code-container">
+              <div class="code-header">
+                <span class="filename">main.tex</span>
+                <span class="file-type">LaTeX Document</span>
+              </div>
+              <div class="code-content">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+\title{Relatório Final do Projeto Ômega}
+\author{A. Cientista}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Metodologia Aplicada}
+\label{sec:metodologia}
+A metodologia seguiu os padrões internacionais de pesquisa. 
+Os dados foram coletados e depois processados conforme descrito
+na Tabela~\ref{tab:resumo_fases}, localizada na 
+página~\pageref{tab:resumo_fases}.
+
+\section{Resultados e Discussão}
+Os resultados foram promissores.
+
+% --- INÍCIO DO AMBIENTE FLUTUANTE DA TABELA ---
+\begin{table}[htbp]
+    \centering % Centraliza a tabela na página
+
+    % A legenda vem PRIMEIRO (para referências corretas), e depois o rótulo
+    \caption{Resumo das fases, responsáveis e prazos do projeto.}
+    \label{tab:resumo_fases}
+
+    \begin{tabular}{|l|p{4cm}|c|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Cronograma do Projeto Ômega}} \\
+        \hline
+        \textbf{Fase} & \textbf{Descrição das Atividades} & \textbf{Responsável} \\
+        \hline \hline
+        Fase 1: Coleta & Coleta de dados brutos em campo e laboratório. 
+                         Esta fase foi a mais demorada. & Equipe A \\
+        \hline
+        Fase 2: Análise & Processamento dos dados e análise estatística. & Equipe B \\
+        \hline
+        Fase 3: Relatório & \multicolumn{2}{c|}{Redação do relatório final (Ambas as equipes)} \\
+        \hline
+    \end{tabular}
+\end{table}
+% --- FIM DO AMBIENTE FLUTUANTE DA TABELA ---
+
+\end{document}</code></pre>
+              </div>
+            </div>
+
+            <div class="code-analysis">
+              <h4>🔍 Análise do Código:</h4>
+              <div class="analysis-grid">
+                <div class="analysis-item">
+                  <h5>Ambiente <code>table</code></h5>
+                  <p>Torna a tabela flutuante, permitindo posicionamento inteligente e adição de legenda.</p>
+                </div>
+                <div class="analysis-item">
+                  <h5>Ordem: Caption → Label</h5>
+                  <p>A legenda vem antes do rótulo para que as referências funcionem corretamente.</p>
+                </div>
+                <div class="analysis-item">
+                  <h5>Recursos Avançados</h5>
+                  <p>Combina <code>\multicolumn</code>, coluna <code>p{}</code> e referências cruzadas.</p>
+                </div>
+                <div class="analysis-item">
+                  <h5>Referências Dinâmicas</h5>
+                  <p>Usa <code>~\ref{}</code> e <code>\pageref{}</code> para referências automáticas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="atividades">
+          <h2>4. Atividades de Autoestudo: Construa e Conecte</h2>
+          
+          <p class="section-intro">Pratique com exercícios que consolidam tabelas avançadas e referências cruzadas.</p>
+
+          <div class="functionality-showcase">
+            <h3>Exercícios Progressivos</h3>
+            
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <h4>📊 Exercício 1: Tabela Complexa</h4>
+                <p><strong>Objetivo:</strong> Dominar recursos avançados de tabelas.</p>
+                <ul>
+                  <li>Crie uma tabela 3x3</li>
+                  <li>No cabeçalho, use <code>\multicolumn</code> para que uma célula ocupe as colunas 2 e 3 com o título "Dados Quantitativos"</li>
+                  <li>Use <code>\cline{2-3}</code> para desenhar uma linha apenas sob este título</li>
+                </ul>
+                <div class="hint">
+                  <strong>Dica:</strong> Lembre-se de que <code>\multicolumn{2}{c|}{Dados Quantitativos}</code> ocupará 2 colunas.
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>🔗 Exercício 2: Seu Documento Dinâmico</h4>
+                <p><strong>Objetivo:</strong> Criar um sistema completo de referências cruzadas.</p>
+                <div class="sub-exercises">
+                  <h5>Passo 1: Preparação</h5>
+                  <ul>
+                    <li>Pegue um documento anterior que tenha pelo menos duas seções e uma figura</li>
+                    <li>Adicione <code>\label</code> a cada seção e à figura (lembre-se: <code>\label</code> depois de <code>\caption</code>!)</li>
+                    <li>Use os prefixos <code>sec:</code> e <code>fig:</code></li>
+                  </ul>
+                  
+                  <h5>Passo 2: Criação de Referências</h5>
+                  <ul>
+                    <li>No texto da primeira seção, escreva um parágrafo fazendo referência à segunda seção e à figura</li>
+                    <li>Use <code>\ref</code> e <code>\pageref</code></li>
+                  </ul>
+                  
+                  <h5>Passo 3: Teste de Estresse</h5>
+                  <ul>
+                    <li>Mova a segunda seção (com todo o seu conteúdo) para <strong>antes</strong> da primeira</li>
+                    <li>Recompile <strong>duas vezes</strong></li>
+                    <li>As suas referências foram atualizadas automaticamente?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="double-compile-note">
+              <h4>⚠️ Por que Compilar Duas Vezes?</h4>
+              <p>O LaTeX precisa de duas passadas para resolver todas as referências cruzadas. Na primeira passada, ele coleta as informações dos <code>\label</code>. Na segunda, ele resolve os <code>\ref</code>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo-modulo">
+          <h2>5. Resumo Final do Módulo</h2>
+          
+          <div class="module-completion">
+            <h3>🎉 Missão Cumprida!</h3>
+            <p>Você concluiu o <strong>Módulo 4</strong> com um domínio impressionante de elementos visuais.</p>
+          </div>
+          
+          <div class="summary-points">
+            <div class="summary-point">
+              <div class="point-number">1</div>
+              <div class="point-content">
+                <h4>Domínio de Imagens</h4>
+                <p>Inserir, dimensionar, rotacionar e recortar imagens com o pacote <code>graphicx</code>.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">2</div>
+              <div class="point-content">
+                <h4>Figuras Flutuantes</h4>
+                <p>Transformar imagens em figuras flutuantes com o ambiente <code>figure</code>, adicionando legendas e posicionamento inteligente.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">3</div>
+              <div class="point-content">
+                <h4>Tabelas Completas</h4>
+                <p>Construir tabelas simples e complexas com <code>tabular</code>, <code>\multicolumn</code>, <code>p{}</code> e <code>\cline</code>.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">4</div>
+              <div class="point-content">
+                <h4>Referências Dinâmicas</h4>
+                <p>Usar o sistema de <code>\label</code> e <code>\ref</code> para criar referências cruzadas dinâmicas, tornando seu documento robusto e profissional.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="achievement-box">
+            <h4>🏆 Você Agora Tem:</h4>
+            <p>Todas as ferramentas necessárias para criar a maioria dos documentos acadêmicos e técnicos. Seus documentos são <strong>à prova de erros de numeração</strong> e têm aparência verdadeiramente profissional.</p>
+          </div>
+
+          <div class="next-module-preview">
+            <h4>🔜 Próximo Módulo</h4>
+            <p>No <strong>Módulo 5</strong>, vamos focar em como gerenciar projetos realmente grandes e criar bibliografias profissionais. Preparado(a) para levar seus documentos LaTeX ao próximo nível?</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>
