@@ -1,465 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 6: Acentos e Caracteres Especiais - Escrevendo sem Medo</title>
-    <link rel="stylesheet" href="../../assets/css/styles.css">
-    <style>
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .course-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .course-header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-
-        .subtitle {
-            margin: 0.5rem 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .lesson-info {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .lesson-info span {
-            background: rgba(255,255,255,0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .lesson-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 2rem 0;
-            gap: 1rem;
-        }
-
-        .nav-btn {
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-btn:hover {
-            background: #5a6fd8;
-            transform: translateY(-2px);
-        }
-
-        .nav-btn.prev::before {
-            content: '← ';
-        }
-
-        .nav-btn.next::after {
-            content: ' →';
-        }
-
-        .lesson-content {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .intro-section {
-            margin-bottom: 3rem;
-        }
-
-        .learning-objectives {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .objective {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-        }
-
-        .objective h3 {
-            color: #667eea;
-            margin: 0 0 1rem 0;
-        }
-
-        .content-section {
-            margin: 3rem 0;
-        }
-
-        .content-section h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .code-block {
-            background: #2d3748;
-            color: #e2e8f0;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            position: relative;
-            overflow-x: auto;
-        }
-
-        .code-block pre {
-            margin: 0;
-            font-family: 'Courier New', monospace;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: background 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: #5a6fd8;
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .summary-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .summary-card h3 {
-            color: #667eea;
-            margin: 0 0 1rem 0;
-        }
-
-        .lesson-footer {
-            background: #2c3e50;
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .footer-btn {
-            background: #34495e;
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .footer-btn:hover {
-            background: #4a5f7a;
-        }
-
-        .footer-btn.prev::before {
-            content: '← ';
-        }
-
-        .footer-btn.next::after {
-            content: ' →';
-        }
-
-        .accent-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .accent-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .accent-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .accent-display {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-            font-family: 'Times New Roman', serif;
-        }
-        
-        .accent-command {
-            background: rgba(255,255,255,0.2);
-            padding: 0.3rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            margin: 0.2rem 0;
-        }
-        
-        .package-demo {
-            background: linear-gradient(135deg, #a8e6cf 0%, #88d8a3 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            border-left: 5px solid #2ecc71;
-        }
-        
-        .encoding-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 1.5rem 0;
-        }
-        
-        .encoding-method {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .encoding-method h4 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        
-        .character-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .character-table th, .character-table td {
-            padding: 0.8rem;
-            text-align: center;
-            border-bottom: 1px solid #ecf0f1;
-        }
-        
-        .character-table th {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            font-weight: 600;
-        }
-        
-        .character-table td:first-child {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        .character-table td:nth-child(2) {
-            font-family: 'Courier New', monospace;
-            background: #f8f9fa;
-            font-size: 0.9rem;
-        }
-        
-        .character-table td:nth-child(3) {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .warning-box h3 {
-            color: white;
-            margin-top: 0;
-        }
-        
-        .tip-box {
-            background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .tip-box h3 {
-            color: white;
-            margin-top: 0;
-        }
-        
-        .practice-section {
-            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            color: #2c3e50;
-        }
-
-        .practice-section h2 {
-            color: #27ae60 !important;
-            border-bottom: 3px solid #27ae60 !important;
-        }
-        
-        .unicode-demo {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-        }
-
-        .unicode-demo h3 {
-            color: white;
-            margin-top: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 0.5rem;
-            }
-
-            .course-header {
-                padding: 1.5rem 1rem;
-            }
-
-            .course-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .lesson-nav {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .lesson-content {
-                padding: 1.5rem 1rem;
-            }
-
-            .learning-objectives {
-                grid-template-columns: 1fr;
-            }
-
-            .lesson-info {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .encoding-comparison {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .accent-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .summary-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 2 — Aula 6: Acentos e Caracteres Especiais — Escrevendo sem Medo</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/lessons/aula-06.css">
 </head>
 <body>
-    <div class="container">
-        <header class="course-header">
-            <h1>🌍 Aula 6: Acentos e Caracteres Especiais</h1>
-            <p class="subtitle">Escrevendo sem Medo em Qualquer Idioma</p>
-            <div class="lesson-info">
-                <span class="module">Módulo 2</span>
-                <span class="duration">⏱️ 25 minutos</span>
-                <span class="difficulty">🔧 Intermediário</span>
-            </div>
-        </header>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <h1>Aula 6: Acentos e Caracteres Especiais — Escrevendo sem Medo</h1>
 
-        <nav class="lesson-nav">
-            <a href="aula-05.html" class="nav-btn prev">← Aula 5: Paleta Tipográfica</a>
-            <a href="index.html" class="nav-btn">📚 Módulo 2</a>
-            <a href="../modulo-03/index.html" class="nav-btn next">Módulo 3 →</a>
-        </nav>
+        <div style="background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05)); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center;">
+          <h2 style="color: #9333ea; margin-top: 0;">🌍 Dominando a Internacionalização!</h2>
+          <p style="font-size: 1.1rem; color: var(--text); line-height: 1.7;">Chegamos ao final do Módulo 2! Agora vamos aprender a <strong>escrever em qualquer idioma</strong> sem medo de acentos ou caracteres especiais.</p>
+          <p style="color: var(--muted); font-style: italic;">⏱️ <strong>25 minutos</strong> • 🔧 <strong>Intermediário</strong> • 🌎 <strong>Suporte Multilíngue</strong></p>
+        </div>
 
-        <main class="lesson-content">
-            <section class="intro-section">
-                <h2>🎯 O Que Vamos Aprender</h2>
-                <div class="learning-objectives">
-                    <div class="objective">
-                        <h3>🔤 Codificação de Caracteres</h3>
-                        <p>Entender UTF-8 e como configurar corretamente</p>
-                    </div>
-                    <div class="objective">
-                        <h3>🌎 Suporte a Idiomas</h3>
-                        <p>Usar o pacote babel para diferentes línguas</p>
-                    </div>
-                    <div class="objective">
-                        <h3>✏️ Acentos e Símbolos</h3>
-                        <p>Escrever qualquer caractere especial com confiança</p>
-                    </div>
-                    <div class="objective">
-                        <h3>🔧 Solução de Problemas</h3>
-                        <p>Resolver erros comuns de caracteres</p>
-                    </div>
-                </div>
-            </section>
+        <section id="configuracao-utf8">
+          <h2>1. A Era do UTF-8</h2>
+          
+          <div class="theory-box">
+            <p>Antigamente, trabalhar com acentos no LaTeX era um pesadelo. Hoje, com UTF-8, é simples e natural! Vamos aprender a configuração moderna que resolve todos os problemas de caracteres especiais.</p>
+          </div>
 
-            <section class="content-section">
-                <h2>📖 A Era do UTF-8</h2>
-                <p>Antigamente, trabalhar com acentos no LaTeX era um pesadelo. Hoje, com UTF-8, é simples e natural!</p>
-                
-                <div class="package-demo">
-                    <h3>🎯 Configuração Moderna Essencial</h3>
-                    <div class="code-block">
-                        <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
-                        <pre><code>\documentclass[12pt]{article}
+          <h3>Configuração Moderna Essencial</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🎯 Template Base para Qualquer Documento</h4>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>\documentclass[12pt]{article}
 
 % Configuração moderna de encoding
 \usepackage[utf8]{inputenc}     % Entrada UTF-8
@@ -478,137 +65,163 @@ acentuação, coração, São Paulo,
 programação, não, João, ação!
 
 \end{document}</code></pre>
-                    </div>
-                    <p><strong>💡 Resultado:</strong> Todos os acentos aparecem perfeitamente!</p>
-                </div>
-            </section>
+            </div>
+            
+            <div class="result-demo">
+              <p><strong>Resultado:</strong> Todos os acentos aparecem perfeitamente no PDF final!</p>
+            </div>
+          </div>
+        </section>
 
-            <section class="content-section">
-                <h2>🔤 Os Três Pacotes Essenciais</h2>
-                
-                <div class="encoding-comparison">
-                    <div class="encoding-method">
-                        <h4>📥 inputenc</h4>
-                        <p><strong>O que faz:</strong> Diz ao LaTeX como interpretar os caracteres que você digita</p>
-                        <div class="code-block">
-                            <pre><code>\usepackage[utf8]{inputenc}</code></pre>
-                        </div>
-                        <p><em>Sem isso:</em> ã vira ??, ç vira ??, é vira ??</p>
-                    </div>
-                    
-                    <div class="encoding-method">
-                        <h4>📤 fontenc</h4>
-                        <p><strong>O que faz:</strong> Controla como os caracteres são exibidos na saída</p>
-                        <div class="code-block">
-                            <pre><code>\usepackage[T1]{fontenc}</code></pre>
-                        </div>
-                        <p><em>Vantagem:</em> Permite copiar e buscar texto com acentos no PDF</p>
-                    </div>
-                </div>
-                
-                <div class="encoding-method" style="margin: 1rem 0;">
-                    <h4>🌍 babel</h4>
-                    <p><strong>O que faz:</strong> Adapta o LaTeX às regras do idioma escolhido</p>
-                    <div class="code-block">
-                        <pre><code>\usepackage[portuguese]{babel}  % ou [brazil]
+        <section id="pacotes-essenciais">
+          <h2>2. Os Três Pacotes Essenciais</h2>
+          
+          <h3>inputenc - Entrada de Caracteres</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">📥 Como o LaTeX Interpreta o que Você Digita</h4>
+            <p><strong>Função:</strong> Diz ao LaTeX como interpretar os caracteres que você digita no editor</p>
+            
+            <div class="code-block">
+              <pre><code>\usepackage[utf8]{inputenc}</code></pre>
+            </div>
+            
+            <div class="danger-warning">
+              <p><strong>Sem este pacote:</strong> ã vira ??, ç vira ??, é vira ??</p>
+            </div>
+          </div>
+
+          <h3>fontenc - Saída de Caracteres</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">📤 Como os Caracteres Aparecem no PDF</h4>
+            <p><strong>Função:</strong> Controla como os caracteres são exibidos na saída final</p>
+            
+            <div class="code-block">
+              <pre><code>\usepackage[T1]{fontenc}</code></pre>
+            </div>
+            
+            <div class="tips-warning">
+              <p><strong>Vantagem:</strong> Permite copiar e buscar texto com acentos no PDF gerado</p>
+            </div>
+          </div>
+
+          <h3>babel - Suporte a Idiomas</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🌍 Adaptação às Regras do Idioma</h4>
+            <p><strong>Função:</strong> Adapta o LaTeX às regras tipográficas do idioma escolhido</p>
+            
+            <div class="code-block">
+              <pre><code>\usepackage[portuguese]{babel}  % ou [brazil]
 \usepackage[english]{babel}     % Inglês
 \usepackage[spanish]{babel}     % Espanhol
 \usepackage[french]{babel}      % Francês</code></pre>
-                    </div>
-                    <p><em>Benefícios:</em> Hifenização correta, datas em português, "Capítulo" ao invés de "Chapter"</p>
-                </div>
-            </section>
+            </div>
+            
+            <div class="tips-warning">
+              <p><strong>Benefícios:</strong> Hifenização correta, datas em português, "Capítulo" ao invés de "Chapter"</p>
+            </div>
+          </div>
+        </section>
 
-            <section class="content-section">
-                <h2>✏️ Galeria de Acentos Português</h2>
-                <p>Todos estes caracteres funcionam naturalmente com a configuração UTF-8:</p>
-                
-                <div class="accent-grid">
-                    <div class="accent-card">
-                        <div class="accent-display">á é í ó ú</div>
-                        <div class="accent-command">Agudos</div>
-                        <p>ação, café, país</p>
-                    </div>
-                    
-                    <div class="accent-card">
-                        <div class="accent-display">à â ê ô</div>
-                        <div class="accent-command">Graves e Circunflexos</div>
-                        <p>àquele, você, inglês</p>
-                    </div>
-                    
-                    <div class="accent-card">
-                        <div class="accent-display">ã õ</div>
-                        <div class="accent-command">Til</div>
-                        <p>não, coração, ações</p>
-                    </div>
-                    
-                    <div class="accent-card">
-                        <div class="accent-display">ç</div>
-                        <div class="accent-command">Cedilha</div>
-                        <p>França, raça, preço</p>
-                    </div>
-                </div>
-            </section>
+        <section id="galeria-acentos">
+          <h2>3. Galeria de Acentos Português</h2>
+          
+          <div class="theory-box">
+            <p>Todos estes caracteres funcionam naturalmente com a configuração UTF-8. Basta digitá-los normalmente!</p>
+          </div>
+          <div class="accent-grid">
+            <div class="accent-card">
+              <div class="accent-display">á é í ó ú</div>
+              <div class="accent-command">Agudos</div>
+              <p>ação, café, país</p>
+            </div>
+            
+            <div class="accent-card">
+              <div class="accent-display">à â ê ô</div>
+              <div class="accent-command">Graves e Circunflexos</div>
+              <p>àquele, você, inglês</p>
+            </div>
+            
+            <div class="accent-card">
+              <div class="accent-display">ã õ</div>
+              <div class="accent-command">Til</div>
+              <p>não, coração, ações</p>
+            </div>
+            
+            <div class="accent-card">
+              <div class="accent-display">ç</div>
+              <div class="accent-command">Cedilha</div>
+              <p>França, raça, preço</p>
+            </div>
+          </div>
+        </section>
 
-            <section class="content-section">
-                <h2>🔧 Comandos de Escape (Método Antigo)</h2>
-                <p>Ainda é útil conhecer os comandos tradicionais para casos especiais:</p>
-                
-                <table class="character-table">
-                    <thead>
-                        <tr>
-                            <th>Caractere</th>
-                            <th>Comando LaTeX</th>
-                            <th>Exemplo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>á</td>
-                            <td>\'{a}</td>
-                            <td>a\c{c}\'ao</td>
-                        </tr>
-                        <tr>
-                            <td>à</td>
-                            <td>\`{a}</td>
-                            <td>\`aquele</td>
-                        </tr>
-                        <tr>
-                            <td>â</td>
-                            <td>\^{a}</td>
-                            <td>voc\^e</td>
-                        </tr>
-                        <tr>
-                            <td>ã</td>
-                            <td>\~{a}</td>
-                            <td>n\~ao</td>
-                        </tr>
-                        <tr>
-                            <td>ç</td>
-                            <td>\c{c}</td>
-                            <td>Fran\c{c}a</td>
-                        </tr>
-                        <tr>
-                            <td>ü</td>
-                            <td>\"{u}</td>
-                            <td>Br\"uke</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="tip-box">
-                    <p><strong>💡 Dica:</strong> Use os comandos de escape apenas quando UTF-8 não estiver disponível ou para caracteres muito raros!</p>
-                </div>
-            </section>
+        <section id="comandos-escape">
+          <h2>4. Comandos de Escape (Método Antigo)</h2>
+          
+          <div class="theory-box">
+            <p>Ainda é útil conhecer os comandos tradicionais para casos especiais ou quando UTF-8 não estiver disponível.</p>
+          </div>
 
-            <section class="content-section">
-                <h2>🚀 Caracteres Especiais e Símbolos</h2>
-                
-                <div class="unicode-demo">
-                    <h3>🔢 Símbolos Matemáticos e Técnicos</h3>
-                    <div class="code-block">
-                        <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
-                        <pre><code>% Símbolos que funcionam direto:
+          <h3>Tabela de Comandos LaTeX</h3>
+          <div class="functionality-showcase">
+            <table class="character-table">
+              <thead>
+                <tr>
+                  <th>Caractere</th>
+                  <th>Comando LaTeX</th>
+                  <th>Exemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>á</td>
+                  <td>\'{a}</td>
+                  <td>a\c{c}\'ao</td>
+                </tr>
+                <tr>
+                  <td>à</td>
+                  <td>\`{a}</td>
+                  <td>\`aquele</td>
+                </tr>
+                <tr>
+                  <td>â</td>
+                  <td>\^{a}</td>
+                  <td>voc\^e</td>
+                </tr>
+                <tr>
+                  <td>ã</td>
+                  <td>\~{a}</td>
+                  <td>n\~ao</td>
+                </tr>
+                <tr>
+                  <td>ç</td>
+                  <td>\c{c}</td>
+                  <td>Fran\c{c}a</td>
+                </tr>
+                <tr>
+                  <td>ü</td>
+                  <td>\"{u}</td>
+                  <td>Br\"uke</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="tips-warning">
+              <p>Use os comandos de escape apenas quando UTF-8 não estiver disponível ou para caracteres muito raros!</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="simbolos-especiais">
+          <h2>5. Caracteres Especiais e Símbolos</h2>
+          
+          <h3>Símbolos Matemáticos e Técnicos</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🔢 Símbolos que Funcionam Diretamente</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>% Símbolos que funcionam direto:
 ° (grau), ± (mais-menos), × (multiplicação)
 € (euro), £ (libra), $ (dólar)
 © (copyright), ® (registrado), ™ (marca)
@@ -621,50 +234,66 @@ $\sum, \int, \infty, \partial$
 A temperatura é 25°C ± 2°C.
 O preço é €15,50 (quinze euros e cinquenta).
 Copyright © 2024 - Todos os direitos reservados®</code></pre>
-                    </div>
-                </div>
-            </section>
+            </div>
+            
+            <div class="result-demo">
+              <p>A temperatura é 25°C ± 2°C.<br>
+              O preço é €15,50 (quinze euros e cinquenta).<br>
+              Copyright © 2024 - Todos os direitos reservados®</p>
+            </div>
+          </div>
+        </section>
 
-            <section class="content-section">
-                <h2>🔍 Resolvendo Problemas Comuns</h2>
-                
-                <div class="warning-box">
-                    <h3>⚠️ Erro: "Package inputenc Error"</h3>
-                    <p><strong>Problema:</strong> Arquivo não está em UTF-8</p>
-                    <p><strong>Solução:</strong> No seu editor, salve o arquivo como UTF-8</p>
-                </div>
-                
-                <div class="warning-box">
-                    <h3>⚠️ Acentos aparecem estranhos no PDF</h3>
-                    <p><strong>Problema:</strong> Falta fontenc</p>
-                    <p><strong>Solução:</strong> Adicione <code>\usepackage[T1]{fontenc}</code></p>
-                </div>
-                
-                <div class="warning-box">
-                    <h3>⚠️ "Chapter" ao invés de "Capítulo"</h3>
-                    <p><strong>Problema:</strong> Falta babel</p>
-                    <p><strong>Solução:</strong> Adicione <code>\usepackage[portuguese]{babel}</code></p>
-                </div>
-                
-                <div class="tip-box">
-                    <h3>💡 Template de Segurança</h3>
-                    <div class="code-block">
-                        <pre><code>% Sempre comece seus documentos assim:
+        <section id="problemas-comuns">
+          <h2>6. Resolvendo Problemas Comuns</h2>
+          
+          <h3>Principais Erros e Soluções</h3>
+          <div class="functionality-showcase">
+            <div class="danger-warning">
+              <p><strong>Erro:</strong> "Package inputenc Error"<br>
+              <strong>Problema:</strong> Arquivo não está em UTF-8<br>
+              <strong>Solução:</strong> No seu editor, salve o arquivo como UTF-8</p>
+            </div>
+            
+            <div class="danger-warning">
+              <p><strong>Problema:</strong> Acentos aparecem estranhos no PDF<br>
+              <strong>Causa:</strong> Falta fontenc<br>
+              <strong>Solução:</strong> Adicione <code>\usepackage[T1]{fontenc}</code></p>
+            </div>
+            
+            <div class="danger-warning">
+              <p><strong>Problema:</strong> "Chapter" ao invés de "Capítulo"<br>
+              <strong>Causa:</strong> Falta babel<br>
+              <strong>Solução:</strong> Adicione <code>\usepackage[portuguese]{babel}</code></p>
+            </div>
+          </div>
+
+          <h3>Template de Segurança</h3>
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">💡 Sempre Comece Assim</h4>
+            <div class="code-block">
+              <pre><code>% Template base para qualquer documento:
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[portuguese]{babel}</code></pre>
-                    </div>
-                </div>
-            </section>
+            </div>
+          </div>
+        </section>
 
-            <section class="practice-section">
-                <h2>🎯 Prática: Documento Multilíngue</h2>
-                <p>Vamos criar um documento com diferentes idiomas e caracteres especiais:</p>
-                
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
-                    <pre><code>\documentclass[12pt,a4paper]{article}
+        <section id="pratica-multilingue">
+          <h2>7. Prática: Documento Multilíngue</h2>
+          
+          <div class="content-box">
+            <p>Vamos criar um documento com diferentes idiomas e caracteres especiais para consolidar o aprendizado.</p>
+          </div>
+
+          <div class="functionality-showcase">
+            <h4 style="color: #9333ea; margin-top: 0;">🌍 Exemplo Prático Completo</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>\documentclass[12pt,a4paper]{article}
 
 % Configuração completa
 \usepackage[utf8]{inputenc}
@@ -700,127 +329,82 @@ programación, corazón, niño, año.
 \section{Français}
 \selectlanguage{french}
 Ceci est un texte en français avec des accents:
-français, café, hôtel, naïve.
-
-\section{Símbolos Especiais}
-\selectlanguage{portuguese}
-% Volta para português
-
-Símbolos matemáticos: ±, ×, ÷, °, ≤, ≥
-Moedas: €, $, £, ¥
-Outros: ©, ®, ™, §, ¶
+café, hôtel, naïf, Noël.
 
 \end{document}</code></pre>
-                </div>
-                
-                <p><strong>🎯 Exercício:</strong> Compile este documento e observe como:</p>
-                <ul>
-                    <li>Todos os acentos aparecem corretamente</li>
-                    <li>As palavras "Section", "Seção", "Sección" mudam automaticamente</li>
-                    <li>A hifenização respeita as regras de cada idioma</li>
-                    <li>Os símbolos especiais funcionam perfeitamente</li>
-                </ul>
-            </section>
-
-            <section class="content-section">
-                <h2>🏆 Resumo da Aula</h2>
-                <div class="summary-grid">
-                    <div class="summary-card">
-                        <h3>🔑 Configuração Essencial</h3>
-                        <ul>
-                            <li><code>inputenc[utf8]</code> - entrada</li>
-                            <li><code>fontenc[T1]</code> - saída</li>
-                            <li><code>babel</code> - idioma</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <h3>✅ O Que Funciona Direto</h3>
-                        <ul>
-                            <li>Todos os acentos portugueses</li>
-                            <li>Símbolos °, ±, ×, €, $, ©</li>
-                            <li>Caracteres especiais comuns</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <h3>🛠️ Comandos de Backup</h3>
-                        <ul>
-                            <li><code>\'{a}</code> para á</li>
-                            <li><code>\~{a}</code> para ã</li>
-                            <li><code>\c{c}</code> para ç</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <h3>🔧 Solução de Problemas</h3>
-                        <ul>
-                            <li>Arquivo em UTF-8</li>
-                            <li>Ordem correta dos pacotes</li>
-                            <li>Template de segurança</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="content-section">
-                <h2>🚀 Próximos Passos</h2>
-                <p>Parabéns! Você completou o <strong>Módulo 2</strong> e agora domina:</p>
-                <ul>
-                    <li>✅ Classes de documento e configurações</li>
-                    <li>✅ Estrutura hierárquica do documento</li>
-                    <li>✅ Formatação e estilos de texto</li>
-                    <li>✅ Navegação automática (sumários, listas)</li>
-                    <li>✅ Tipografia e controle de fontes</li>
-                    <li>✅ Acentos e caracteres especiais</li>
-                </ul>
-                
-                <div class="tip-box">
-                    <p><strong>🎯 No Módulo 3:</strong> Vamos mergulhar no mundo das <strong>Listas e Enumerações</strong>, aprendendo a organizar informações de forma clara e profissional!</p>
-                </div>
-            </section>
-        </main>
-
-        <footer class="lesson-footer">
-            <div class="footer-nav">
-                <a href="aula-05.html" class="footer-btn prev">← Aula 5: Paleta Tipográfica</a>
-                <a href="../modulo-03/index.html" class="footer-btn next">Módulo 3: Listas →</a>
             </div>
-            <p>&copy; 2024 Curso de LaTeX. Transformando ideias em documentos profissionais.</p>
-        </footer>
-    </div>
-
-    <script>
-        function copyToClipboard(button) {
-            const codeBlock = button.nextElementSibling;
-            const text = codeBlock.textContent;
             
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.textContent;
-                button.textContent = '✅ Copiado!';
-                button.style.background = '#27ae60';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '';
-                }, 2000);
-            });
-        }
+            <div class="tips-warning">
+              <p><strong>Observe:</strong> Cada seção muda automaticamente os termos para o idioma correto. "Section" em inglês, "Sección" em espanhol, "Section" em francês!</p>
+            </div>
+          </div>
+        </section>
 
-        // Adicionar efeito de hover nos cards de acentos
-        document.addEventListener('DOMContentLoaded', function() {
-            const accentCards = document.querySelectorAll('.accent-card');
+        <section id="resumo-final">
+          <h2>📋 Resumo da Aula</h2>
+          <div class="summary-grid">
+            <div class="summary-card">
+              <h3>🔤 Codificação</h3>
+              <ul>
+                <li>UTF-8 como padrão</li>
+                <li>inputenc + fontenc + babel</li>
+                <li>Compatibilidade total</li>
+              </ul>
+            </div>
             
-            accentCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        });
-    </script>
+            <div class="summary-card">
+              <h3>🌍 Multilíngue</h3>
+              <ul>
+                <li>babel para cada idioma</li>
+                <li>Hifenização automática</li>
+                <li>Termos localizados</li>
+              </ul>
+            </div>
+            
+            <div class="summary-card">
+              <h3>✏️ Acentos</h3>
+              <ul>
+                <li>Digitação natural</li>
+                <li>Todos os caracteres especiais</li>
+                <li>Comandos de escape quando necessário</li>
+              </ul>
+            </div>
+            
+            <div class="summary-card">
+              <h3>🔧 Solução de Problemas</h3>
+              <ul>
+                <li>Arquivo em UTF-8</li>
+                <li>Ordem correta dos pacotes</li>
+                <li>Template de segurança</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tips-warning">
+            <p><strong>Parabéns!</strong> Você completou o <strong>Módulo 2</strong> e agora domina os fundamentos da estruturação de documentos LaTeX. No <strong>Módulo 3</strong>, vamos mergulhar no mundo das <strong>Listas e Enumerações</strong>!</p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/search.js"></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#27ae60';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = ''; // Volta ao estilo padrão do tema
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>

@@ -228,8 +228,49 @@
     });
   }
 
+  // Funcionalidade de mudança de tema
+  function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle?.querySelector('.theme-icon');
+    const themeText = themeToggle?.querySelector('.theme-text');
+    
+    console.log('InitThemeToggle called:', { themeToggle, themeIcon, themeText });
+    
+    if (!themeToggle) {
+      console.log('Theme toggle button not found');
+      return;
+    }
+    
+    // Verificar tema salvo no localStorage ou usar padrão escuro
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    console.log('Saved theme:', savedTheme);
+    setTheme(savedTheme);
+    
+    function setTheme(theme) {
+      console.log('Setting theme to:', theme);
+      if (theme === 'light') {
+        document.documentElement.classList.add('light-theme');
+        if (themeIcon) themeIcon.textContent = '☀️';
+        if (themeText) themeText.textContent = 'Claro';
+      } else {
+        document.documentElement.classList.remove('light-theme');
+        if (themeIcon) themeIcon.textContent = '🌙';
+        if (themeText) themeText.textContent = 'Escuro';
+      }
+      localStorage.setItem('theme', theme);
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      console.log('Theme toggle clicked');
+      const isLight = document.documentElement.classList.contains('light-theme');
+      console.log('Current theme is light:', isLight);
+      setTheme(isLight ? 'dark' : 'light');
+    });
+  }
+
   async function init(){
     initSidebarToggle();
+    initThemeToggle();
     try{
       const data = await loadData();
       buildSidebar(data);

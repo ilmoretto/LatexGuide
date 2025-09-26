@@ -6,7 +6,9 @@
   <title>Curso de LaTeX — Do Básico à Publicação Acadêmica</title>
 
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- CSS modular otimizado -->
+  <link rel="stylesheet" href="assets/css/themes.css">
+  <link rel="stylesheet" href="assets/css/components.css">
   
   <!-- Estilos adicionais para a página de início -->
   <style>
@@ -68,6 +70,10 @@
       <img src="assets/img/logo.svg" alt="" class="brand__logo">
       <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
     </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
   </header>
 
   <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
