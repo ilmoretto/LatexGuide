@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 5 — Aula 19: Arquitetura de Grandes Projetos com \input e \include</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-05/aula-19.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 19: Arquitetura de Grandes Projetos com <code>\input</code> e <code>\include</code></h1>
+          <p>Do rascunho à obra-prima modular: pensando como um engenheiro de software</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>🏗️ Do Rascunho à Obra-Prima Modular</h2>
+          <p><strong>Bem-vindo(a) ao Módulo 5!</strong> Até agora, todos os nossos projetos viveram confortavelmente dentro de um único arquivo <code>main.tex</code>. Isso é perfeito para artigos e relatórios curtos.</p>
+          
+          <p>Mas o que acontece quando seu projeto cresce para um <strong>TCC, uma dissertação ou um livro</strong> com dezenas ou centenas de páginas? O arquivo <code>main.tex</code> se torna um monstro: difícil de navegar, lento para compilar e um pesadelo para depurar.</p>
+          
+          <p>Nesta aula, você aprenderá a <strong>pensar como um engenheiro de software</strong>, quebrando um projeto complexo em partes menores, lógicas e gerenciáveis. Vamos dominar os comandos <code>\input</code> e <code>\include</code>, as duas ferramentas que permitem criar uma arquitetura de projeto <strong>limpa, eficiente e escalável</strong>.</p>
+          
+          <div class="meta-info">
+            <strong>35 minutos</strong> • <strong>Intermediário</strong> • <strong>Organização e Arquitetura</strong>
+          </div>
+        </div>
+
+        <section id="filosofia-modular">
+          <h2>1. A Filosofia Modular: Dividir para Conquistar</h2>
+          
+          <p class="section-intro">O princípio é simples: em vez de um arquivo gigante, teremos um <strong>arquivo mestre</strong> (ainda chamado de <code>main.tex</code>) que é, na verdade, um "orquestrador". Ele contém apenas o preâmbulo e um esqueleto que "chama" os arquivos de conteúdo.</p>
+
+          <div class="philosophy-showcase">
+            <h3>🎯 Vantagens Imediatas:</h3>
+            
+            <div class="advantages-grid">
+              <div class="advantage-item">
+                <div class="advantage-icon">📁</div>
+                <h4>Organização</h4>
+                <p>Você sabe exatamente onde está cada parte do seu trabalho (ex: <code>introducao.tex</code>, <code>capitulo_metodologia.tex</code>).</p>
+              </div>
+              
+              <div class="advantage-item">
+                <div class="advantage-icon">🎯</div>
+                <h4>Foco</h4>
+                <p>Você pode se concentrar em escrever um capítulo de cada vez, sem a distração do resto do documento.</p>
+              </div>
+              
+              <div class="advantage-item">
+                <div class="advantage-icon">👥</div>
+                <h4>Colaboração</h4>
+                <p>Diferentes pessoas podem trabalhar em diferentes arquivos de capítulo simultaneamente.</p>
+              </div>
+              
+              <div class="advantage-item">
+                <div class="advantage-icon">⚡</div>
+                <h4>Velocidade</h4>
+                <p>Como veremos, é possível compilar apenas a parte em que você está trabalhando, tornando o processo muito mais rápido.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="input-command">
+          <h2>2. A Ferramenta de Inclusão Direta: <code>\input</code></h2>
+          
+          <p class="section-intro">Pense no <code>\input</code> como um <strong>"copiar e colar" literal e direto</strong> no nível do código.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Inserir um Arquivo (\input)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>O comando <code>\input{&lt;nome_do_arquivo&gt;}</code> se comporta como se o conteúdo do arquivo tivesse sido digitado exatamente naquele ponto.</p>
+                <p>Perfeito para inserir trechos que não representam uma grande divisão lógica ou que precisam ser reutilizados em múltiplos locais.</p>
+                <p><code>\input{preambulo_customizado}</code> ou <code>\input{capitulos/capitulo1}</code> (Sim, você pode usar subpastas!)</p>
+              </div>
+            </div>
+
+            <div class="input-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático Mínimo (Preâmbulo Modular):</h4>
+              
+              <div class="file-structure">
+                <h5>📁 Estrutura de Arquivos:</h5>
+                <div class="file-tree">
+                  <div class="file-item">
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">main.tex</span>
+                  </div>
+                  <div class="file-item">
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">meus_pacotes.tex</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">main.tex</span>
+                  <span class="file-type">Arquivo Principal</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\documentclass{article}
+\input{meus_pacotes} % Chama o arquivo de pacotes
+\begin{document}
+...
+\end{document}</code></pre>
+                </div>
+              </div>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">meus_pacotes.tex</span>
+                  <span class="file-type">Arquivo de Configuração</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>% Este arquivo contém meus pacotes favoritos
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-characteristic">
+              <h4>🔑 Característica Chave:</h4>
+              <p><code>\input</code> <strong>não força nenhuma quebra de página</strong>. A inserção é "invisível" e contínua.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="include-command">
+          <h2>3. A Ferramenta Inteligente para Capítulos: <code>\include</code></h2>
+          
+          <p class="section-intro">O <code>\include</code> é a <strong>ferramenta profissional</strong> para gerenciar os capítulos e as grandes seções de um documento.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Inserir um Bloco Estrutural (\include)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>O comando <code>\include{&lt;nome_do_arquivo&gt;}</code> faz duas coisas: executa um <code>\clearpage</code> e insere o conteúdo.</p>
+                <p>Semanticamente correto para capítulos e grandes seções, que devem sempre começar em uma nova página. Seu verdadeiro poder está na parceria com o <code>\includeonly</code>.</p>
+                <p><code>\include{capitulos/introducao}</code></p>
+              </div>
+            </div>
+
+            <div class="include-behavior">
+              <h4 style="color: var(--accent-primary);">🔄 Comportamento do \include:</h4>
+              <ol>
+                <li><strong>Força uma nova página</strong> (<code>\clearpage</code>)</li>
+                <li><strong>Insere o conteúdo</strong> do arquivo especificado</li>
+                <li><strong>Cria arquivos auxiliares</strong> para otimização (.aux)</li>
+                <li><strong>Permite compilação seletiva</strong> com <code>\includeonly</code></li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="includeonly-superpower">
+          <h2>4. O Superpoder: Compilação Seletiva com <code>\includeonly</code></h2>
+          
+          <p class="section-intro">Esta é, sem dúvida, uma das funcionalidades <strong>mais subestimadas e poderosas</strong> do LaTeX para projetos grandes.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Compilar Apenas o Essencial (\includeonly)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Um comando que deve ser colocado no preâmbulo para listar quais dos arquivos chamados com <code>\include</code> devem ser efetivamente renderizados.</p>
+                <p>Imagine sua tese com 200 páginas e 5 capítulos, mas você está trabalhando apenas no Capítulo 4. Compilar apenas ele: de 30s para 2s!</p>
+                <p><code>\includeonly{&lt;arquivo1&gt;,&lt;arquivo2&gt;,...}</code> (sem espaços e sem a extensão .tex)</p>
+              </div>
+            </div>
+
+            <div class="magic-explanation">
+              <h4>✨ A Mágica:</h4>
+              <p>Mesmo compilando apenas um capítulo, o LaTeX <strong>mantém toda a numeração</strong> de páginas, figuras, tabelas e referências do documento inteiro corretas! Ele lê os arquivos auxiliares (.aux) dos outros capítulos sem processar seu conteúdo.</p>
+            </div>
+
+            <div class="performance-comparison">
+              <h4>⚡ Comparação de Performance:</h4>
+              <div class="comparison-grid">
+                <div class="comparison-item slow">
+                  <h5>❌ Compilação Completa</h5>
+                  <ul>
+                    <li>200 páginas processadas</li>
+                    <li>⏱️ ~30 segundos</li>
+                    <li>Uso intensivo de CPU</li>
+                    <li>Dificulta o fluxo de trabalho</li>
+                  </ul>
+                </div>
+                <div class="comparison-item fast">
+                  <h5>✅ Com \includeonly</h5>
+                  <ul>
+                    <li>Apenas 1 capítulo processado</li>
+                    <li>⚡ ~2 segundos</li>
+                    <li>CPU livre para outras tarefas</li>
+                    <li>Fluxo de trabalho ágil</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>5. Exemplo Prático Completo: Arquitetura de uma Dissertação</h2>
+          
+          <p class="section-intro">Vamos montar a estrutura de arquivos para uma dissertação fictícia e ver como todos os comandos trabalham juntos.</p>
+
+          <div class="complete-example">
+            <h3>📁 Estrutura de Arquivos no Overleaf:</h3>
+            
+            <div class="project-structure">
+              <div class="folder-tree">
+                <div class="folder-item">
+                  <span class="folder-icon">📁</span>
+                  <span class="folder-name">projeto_dissertacao/</span>
+                  <div class="folder-children">
+                    <div class="file-item">
+                      <span class="file-icon">📄</span>
+                      <span class="file-name">main.tex</span>
+                    </div>
+                    <div class="file-item">
+                      <span class="file-icon">📚</span>
+                      <span class="file-name">referencias.bib</span>
+                    </div>
+                    <div class="folder-item">
+                      <span class="folder-icon">📁</span>
+                      <span class="folder-name">capitulos/</span>
+                      <div class="folder-children">
+                        <div class="file-item">
+                          <span class="file-icon">📄</span>
+                          <span class="file-name">introducao.tex</span>
+                        </div>
+                        <div class="file-item">
+                          <span class="file-icon">📄</span>
+                          <span class="file-name">metodologia.tex</span>
+                        </div>
+                        <div class="file-item">
+                          <span class="file-icon">📄</span>
+                          <span class="file-name">conclusao.tex</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="files-content">
+              <h3>📝 Conteúdo dos Arquivos:</h3>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">main.tex</span>
+                  <span class="file-type">O Orquestrador</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\documentclass[12pt, a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+% --- COMPILAÇÃO SELETIVA ---
+% Para trabalhar apenas na introdução e conclusão, descomente a linha abaixo:
+% \includeonly{capitulos/introducao, capitulos/conclusao}
+
+\title{O Impacto do LaTeX na Sanidade Mental Acadêmica}
+\author{Eu Mesmo}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% --- Chamada dos Capítulos ---
+\include{capitulos/introducao}
+\include{capitulos/metodologia}
+\include{capitulos/conclusao}
+
+\end{document}</code></pre>
+                </div>
+              </div>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">capitulos/introducao.tex</span>
+                  <span class="file-type">Capítulo 1</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\chapter{Introdução}
+\label{chap:introducao}
+
+Este é o início do meu trabalho. O LaTeX é uma ferramenta poderosa
+para documentos longos.</code></pre>
+                </div>
+              </div>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">capitulos/metodologia.tex</span>
+                  <span class="file-type">Capítulo 2</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\chapter{Metodologia}
+\label{chap:metodologia}
+
+Neste capítulo, descrevemos os métodos utilizados. Como podemos ver no
+Capítulo~\ref{chap:introducao}, a base deste trabalho é sólida.</code></pre>
+                </div>
+              </div>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">capitulos/conclusao.tex</span>
+                  <span class="file-type">Capítulo 3</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\chapter{Conclusão}
+\label{chap:conclusao}
+
+Concluímos, portanto, que usar \texttt{\textbackslash includeonly} é
+essencial para a produtividade.</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="atividades">
+          <h2>6. Atividades de Autoestudo: Construa seu Próprio Projeto Modular</h2>
+          
+          <p class="section-intro">Pratique com exercícios progressivos que consolidam a arquitetura modular de projetos.</p>
+
+          <div class="functionality-showcase">
+            <h3>Exercícios Progressivos</h3>
+            
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <h4>🏗️ Exercício 1: Montando a Estrutura</h4>
+                <p><strong>Objetivo:</strong> Criar a estrutura completa do projeto modular.</p>
+                <div class="exercise-steps">
+                  <ol>
+                    <li>Crie a estrutura de arquivos do exemplo acima no Overleaf</li>
+                    <li>Crie uma pasta <code>capitulos</code> e, dentro dela, crie os três arquivos <code>.tex</code></li>
+                    <li>Copie e cole o conteúdo de cada arquivo correspondente</li>
+                  </ol>
+                </div>
+                <div class="hint">
+                  <strong>Dica:</strong> No Overleaf, use "New Folder" para criar a pasta <code>capitulos</code> e "New File" para cada arquivo <code>.tex</code>.
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>📖 Exercício 2: Compilação Completa</h4>
+                <p><strong>Objetivo:</strong> Verificar se a estrutura modular funciona corretamente.</p>
+                <div class="exercise-steps">
+                  <ol>
+                    <li>Compile o <code>main.tex</code></li>
+                    <li>Verifique se o PDF contém: página de título, sumário e todos os três capítulos</li>
+                    <li>Cada capítulo deve iniciar em uma nova página</li>
+                    <li>As referências cruzadas devem funcionar</li>
+                  </ol>
+                </div>
+                <div class="expected-result">
+                  <strong>Resultado Esperado:</strong> PDF com ~4 páginas, numeração correta e referências funcionais.
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>⚡ Exercício 3: O Poder do \includeonly</h4>
+                <p><strong>Objetivo:</strong> Experimentar a compilação seletiva.</p>
+                <div class="sub-exercises">
+                  <h5>Passo A: Ativando a Compilação Seletiva</h5>
+                  <ol>
+                    <li>No <code>main.tex</code>, descomente a linha <code>\includeonly{capitulos/introducao, capitulos/conclusao}</code></li>
+                    <li>Recompile o projeto</li>
+                  </ol>
+                  
+                  <h5>Passo B: Análise do Resultado</h5>
+                  <ol>
+                    <li>Analise o PDF resultante. O que aconteceu?</li>
+                    <li>Você deve ver: página de título, sumário, capítulo 1 (Introdução) e capítulo 3 (Conclusão)</li>
+                    <li>O capítulo 2 (Metodologia) não foi renderizado</li>
+                  </ol>
+                  
+                  <h5>Passo C: A Mágica da Numeração</h5>
+                  <p><strong>O mais importante:</strong> A numeração dos capítulos (1 e 3) e das páginas está correta, como se o capítulo 2 ainda estivesse lá! Esta é a magia do <code>\includeonly</code>.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="troubleshooting">
+              <h4>🔧 Resolução de Problemas:</h4>
+              <ul>
+                <li><strong>Referências quebradas?</strong> Compile duas vezes para resolver as referências cruzadas</li>
+                <li><strong>\includeonly não funciona?</strong> Certifique-se de que não há espaços após as vírgulas</li>
+                <li><strong>Arquivos não encontrados?</strong> Verifique se os caminhos estão corretos (sem extensão .tex no \include)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo">
+          <h2>7. Resumo Final da Aula</h2>
+          
+          <div class="lesson-completion">
+            <h3>🎉 Missão Cumprida!</h3>
+            <p>Hoje você deu o <strong>passo mais importante</strong> para gerenciar documentos de grande escala.</p>
+          </div>
+          
+          <div class="summary-points">
+            <div class="summary-point">
+              <div class="point-number">1</div>
+              <div class="point-content">
+                <h4>Filosofia Modular</h4>
+                <p>Adotar uma filosofia modular, separando seu projeto em um arquivo mestre e múltiplos arquivos de conteúdo.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">2</div>
+              <div class="point-content">
+                <h4>Comandos de Inclusão</h4>
+                <p>Usar <code>\input</code> para inclusões diretas e <code>\include</code> para as grandes divisões estruturais como capítulos.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">3</div>
+              <div class="point-content">
+                <h4>Superpoder da Compilação Seletiva</h4>
+                <p>Desbloquear o superpoder da compilação seletiva com <code>\includeonly</code>, uma técnica que vai economizar horas de trabalho.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="next-lesson-preview">
+            <h4>🔜 Próxima Aula</h4>
+            <p>Com essa habilidade de arquitetura de projetos, você está pronto para o próximo desafio: <strong>gerenciar o conteúdo intelectual do seu trabalho</strong>. Na próxima aula, mergulharemos no <strong>BibTeX</strong> para criar uma base de dados bibliográfica robusta e reutilizável.</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

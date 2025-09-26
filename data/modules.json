@@ -46,6 +46,14 @@
         { "title": "Aula 17: A Arte de Organizar Dados - Tabelas com tabular", "path": "/modules/modulo-04/aula-17.html" },
         { "title": "Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas", "path": "/modules/modulo-04/aula-18.html" }
       ]
+    },
+    {
+      "id": "mod-05",
+      "title": "Módulo 5: Documentos Longos e Bibliografia",
+      "pages": [
+        { "title": "Apresentação do Módulo", "path": "/modules/modulo-05/index.html" },
+        { "title": "Aula 19: Arquitetura de Grandes Projetos com \\input e \\include", "path": "/modules/modulo-05/aula-19.html" }
+      ]
     }
   ],
   "extra": [
