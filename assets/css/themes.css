@@ -7,10 +7,10 @@
 
   /* Cores principais - Tema escuro */
   --bg: #0f172a;
-  --panel: #0b1220;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --border: #1f2937;
+  --panel: #0a1220;
+  --text: #e8eaee;
+  --muted: #a0aec0; /* ligeiramente mais claro para contraste sobre fundos escuros */
+  --border: #273244;
   --accent: #22d3ee;
   --primary: #60a5fa;
 
@@ -32,7 +32,7 @@
 
   /* Efeitos */
   --radius: 12px;
-  --shadow: 0 8px 24px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.3);
+  --shadow: 0 8px 24px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.35);
 
   /* Gradientes por módulo (fallbacks) */
   --mod-grad-a: #22d3ee; /* fallback start */
@@ -50,16 +50,16 @@
 
   /* Cores principais - Tema claro */
   --bg: #ffffff;
-  --panel: #f8fafc;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --panel: #f9fafb;
+  --text: #0f172a;
+  --muted: #475569; /* mais escuro para melhor contraste sobre branco */
+  --border: #d8dee9;
   --accent: #0ea5e9;
   --primary: #3b82f6;
 
-  /* Variáveis para blocos de código no tema claro */
-  --code-bg: #f8f9fa;
-  --code-text: #2d3748;
+  /* Variáveis para blocos de código no tema claro (mantemos fundo escuro para legibilidade das cores de sintaxe) */
+  --code-bg: #282c34;
+  --code-text: #e2e8f0;
   --code-comment: #718096;
 
   /* Sombras mais suaves no tema claro */

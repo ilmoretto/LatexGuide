@@ -235,7 +235,7 @@ body {
   top: var(--topbar-h); 
   left: 0; 
   z-index: 60;
-  width: var(--sidebar-w);
+  width: min(var(--sidebar-w), 86vw);
   height: calc(100dvh - var(--topbar-h));
   overflow: auto;
   padding: var(--space-4);
@@ -433,6 +433,11 @@ body {
   background: #e2e8f0;
 }
 
+@media (max-width: 640px) {
+  .pager { flex-direction: column; }
+  .pager a { padding: .9rem 1rem; }
+}
+
 /* =============================================
    COMPONENTES EDUCACIONAIS BASE
    ============================================= */
@@ -541,6 +546,16 @@ body {
   .topbar-actions { flex: 1 1 100%; order: 10; }
   .search { flex: 1 1 100%; }
   .gh-btn { white-space: nowrap; }
+  .content { padding: var(--space-4) var(--space-4); }
+  .topbar { gap: var(--space-3); padding: var(--space-2) var(--space-3); }
+  .theme-toggle .theme-text { display: none; } /* mantém ícone + aria-label */
+  .accent-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .brand__title { font-size: .95rem; }
+  .icon-btn { padding: .45rem .6rem; }
+  .theme-toggle { padding: .45rem .6rem; }
 }
 
 /* =============================================
