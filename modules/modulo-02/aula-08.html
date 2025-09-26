@@ -216,57 +216,69 @@
             </div>
 
             <h4 style="color: #9333ea; margin-top: 1.5rem;">Os 10 Caracteres Especiais:</h4>
-            <div class="special-chars-grid">
-              <div class="char-card">
-                <div class="char-symbol">$</div>
-                <p><code>\\$</code></p>
-                <p>Modo matemático</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">&</div>
-                <p><code>\\&</code></p>
-                <p>Separador de colunas</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">%</div>
-                <p><code>\\%</code></p>
-                <p>Comentário</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">#</div>
-                <p><code>\\#</code></p>
-                <p>Parâmetro de macro</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">^</div>
-                <p><code>\\^{}</code></p>
-                <p>Sobrescrito</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">_</div>
-                <p><code>\\_</code></p>
-                <p>Subscrito</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">{</div>
-                <p><code>\\{</code></p>
-                <p>Início de grupo</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">}</div>
-                <p><code>\\}</code></p>
-                <p>Fim de grupo</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">~</div>
-                <p><code>\\~{}</code></p>
-                <p>Espaço não quebrável</p>
-              </div>
-              <div class="char-card">
-                <div class="char-symbol">\\</div>
-                <p><code>\\textbackslash</code></p>
-                <p>Comando LaTeX</p>
-              </div>
+            <div style="overflow-x:auto">
+              <table class="table" aria-describedby="desc-especiais">
+                <caption id="desc-especiais" style="text-align:left; color: var(--muted); padding-bottom: .5rem;">Símbolos reservados no LaTeX, sua forma de escape e uso típico.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Símbolo</th>
+                    <th scope="col">Como escrever no LaTeX</th>
+                    <th scope="col">Uso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>$</strong></td>
+                    <td><code>\\$</code></td>
+                    <td>Modo matemático</td>
+                  </tr>
+                  <tr>
+                    <td><strong>&amp;</strong></td>
+                    <td><code>\\&amp;</code></td>
+                    <td>Separador de colunas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>%</strong></td>
+                    <td><code>\\%</code></td>
+                    <td>Comentário</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#</strong></td>
+                    <td><code>\\#</code></td>
+                    <td>Parâmetro de macro</td>
+                  </tr>
+                  <tr>
+                    <td><strong>^</strong></td>
+                    <td><code>\\^{}</code></td>
+                    <td>Sobrescrito</td>
+                  </tr>
+                  <tr>
+                    <td><strong>_</strong></td>
+                    <td><code>\\_</code></td>
+                    <td>Subscrito</td>
+                  </tr>
+                  <tr>
+                    <td><strong>{</strong></td>
+                    <td><code>\\{</code></td>
+                    <td>Início de grupo</td>
+                  </tr>
+                  <tr>
+                    <td><strong>}</strong></td>
+                    <td><code>\\}</code></td>
+                    <td>Fim de grupo</td>
+                  </tr>
+                  <tr>
+                    <td><strong>~</strong></td>
+                    <td><code>\\~{}</code></td>
+                    <td>Espaço não quebrável</td>
+                  </tr>
+                  <tr>
+                    <td><strong>\\</strong></td>
+                    <td><code>\\textbackslash</code></td>
+                    <td>Comando LaTeX</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <h4 style="color: #9333ea; margin-top: 1.5rem;">Exemplo Mínimo (consolidado):</h4>

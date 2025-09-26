@@ -271,6 +271,30 @@ body {
 
 .page h1 { margin-top: 0; }
 
+/* Tabelas base (semânticas e responsivas) */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.table thead th {
+  text-align: left;
+  background: linear-gradient(180deg, #0e1b33, #0a1426);
+  color: var(--text);
+  padding: .75rem .9rem;
+  border-bottom: 1px solid var(--border);
+}
+:root.light-theme .table thead th {
+  background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+}
+.table td { padding: .65rem .9rem; border-bottom: 1px solid var(--border); }
+.table tbody tr:hover { background: rgba(34,211,238,.06); }
+.table tbody tr:last-child td { border-bottom: 0; }
+
 /* =============================================
    NAVEGAÇÃO LATERAL
    ============================================= */
