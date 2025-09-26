@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 4 — Aula 15: O Mundo das Figuras - Inserindo e Controlando Imagens</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-04/aula-15.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 15: O Mundo das Figuras - Inserindo e Controlando Imagens</h1>
+          <p>Do pixel ao profissional: dominando imagens em documentos LaTeX</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>Dando Vida Visual aos Seus Documentos</h2>
+          <p>Bem-vindo(a) ao Módulo 4! Um documento, por mais bem escrito que seja, muitas vezes precisa de <strong>elementos visuais para ilustrar conceitos</strong>, apresentar dados ou simplesmente quebrar a monotonia do texto. Figuras, gráficos e diagramas são essenciais na comunicação acadêmica e técnica.</p>
+          
+          <p>Nesta aula, vamos dominar a <strong>arte de inserir imagens</strong> em seus documentos LaTeX. Vamos começar do zero, aprendendo o comando mais fundamental, e avançar para técnicas de manipulação avançada como redimensionamento preciso, rotação e até mesmo <strong>recorte</strong>, tudo isso usando o poderoso pacote <code>graphicx</code>.</p>
+          
+          <p>Ao final desta aula, você terá <strong>controle total sobre qualquer imagem</strong> que desejar incluir em seu trabalho.</p>
+          
+          <div class="meta-info">
+            <strong>45 minutos</strong> • <strong>Do Básico ao Avançado</strong> • <strong>Elementos Visuais</strong>
+          </div>
+        </div>
+
+        <section id="pacote-graphicx">
+          <h2>1. A Ferramenta Essencial: O Pacote <code>graphicx</code></h2>
+          
+          <p class="section-intro">Antes de qualquer coisa, precisamos carregar nossa <strong>caixa de ferramentas</strong>. O <code>graphicx</code> (com um 'x' no final) é o pacote moderno e padrão para a inclusão de imagens.</p>
+
+          <div class="functionality-box">
+            <h3>Funcionalidade: Carregar o Pacote de Gráficos</h3>
+            
+            <div class="concept-grid">
+              <div class="concept-item">
+                <h4>O quê?</h4>
+                <p>O <code>graphicx</code> é um pacote que permite inserir imagens de diversos formatos e manipulá-las com precisão profissional.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>Por quê?</h4>
+                <p>Ele fornece o comando <code>\includegraphics</code> e um conjunto robusto de opções para manipular as imagens. <strong>Sem ele, o LaTeX não sabe o que fazer com um arquivo de imagem.</strong></p>
+              </div>
+              
+              <div class="concept-item concept-how">
+                <h4>Como?</h4>
+                <p>Adicione <code>\usepackage{graphicx}</code> no preâmbulo do seu documento.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Formatos de Imagem Suportados</h3>
+          
+          <div class="formats-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Formato</th>
+                  <th>Extensão</th>
+                  <th>Melhor Para</th>
+                  <th>Compilador</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>PDF</strong></td>
+                  <td>.pdf</td>
+                  <td>Gráficos vetoriais, diagramas</td>
+                  <td>pdflatex, lualatex</td>
+                </tr>
+                <tr>
+                  <td><strong>PNG</strong></td>
+                  <td>.png</td>
+                  <td>Capturas de tela, transparências</td>
+                  <td>pdflatex, lualatex</td>
+                </tr>
+                <tr>
+                  <td><strong>JPG</strong></td>
+                  <td>.jpg, .jpeg</td>
+                  <td>Fotografias</td>
+                  <td>pdflatex, lualatex</td>
+                </tr>
+                <tr>
+                  <td><strong>EPS</strong></td>
+                  <td>.eps</td>
+                  <td>Gráficos científicos legados</td>
+                  <td>latex + dvips</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tip-box">
+            <h4>Dica de Organização</h4>
+            <p>É uma excelente prática criar uma subpasta chamada <strong>figuras</strong> (ou <strong>images</strong>) no seu projeto Overleaf e colocar todos os seus arquivos de imagem dentro dela. Isso mantém seu projeto organizado e facilita a manutenção.</p>
+          </div>
+        </section>
+
+        <section id="comando-includegraphics">
+          <h2>2. O Comando Fundamental: <code>\includegraphics</code></h2>
+          
+          <p class="section-intro">Este é o único comando que você precisa para, de fato, inserir uma imagem. O comando <code>\includegraphics</code> coloca o conteúdo de um arquivo de imagem no ponto exato onde o comando é chamado.</p>
+
+          <h3>Sintaxe Básica</h3>
+          
+          <div class="syntax-box">
+            <div class="syntax-item">
+              <strong>Forma Simples:</strong> <code>\includegraphics{nome-do-arquivo}</code>
+            </div>
+            <div class="syntax-item">
+              <strong>Com Opções:</strong> <code>\includegraphics[opções]{caminho/para/imagem.extensão}</code>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Mínimo (A imagem em tamanho original)</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>Aqui está o logo da nossa universidade: \includegraphics{logo.png}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong>
+              <p>O arquivo logo.png aparecerá no texto. Se for uma imagem grande, ela provavelmente vai "estourar" a margem e desconfigurar o layout. <strong>Isso nos leva à necessidade de opções.</strong></p>
+            </div>
+            
+            <div class="observation">
+              <h5>O que observar?</h5>
+              <p>Note que <strong>não incluímos a extensão</strong> do arquivo. O LaTeX escolhe automaticamente o formato mais adequado disponível. Com organização: <code>\includegraphics{figuras/logo.png}</code></p>
+            </div>
+          </div>
+
+          <h3>Nível Básico: Dimensionamento Proporcional</h3>
+          <p class="section-intro">Quase nunca queremos a imagem em seu tamanho original. Os comandos de dimensionamento são as opções mais utilizadas.</p>
+          
+          <div class="functionality-box">
+            <h3>Funcionalidade: Controlar o Tamanho da Imagem</h3>
+            
+            <div class="options-grid">
+              <div class="option-item">
+                <h4><code>width=</code></h4>
+                <p>Define a largura da imagem. O LaTeX automaticamente ajusta a altura para manter a proporção. <strong>Esta é a opção mais comum e segura.</strong></p>
+                <div class="option-example">
+                  <code>width=0.5\textwidth</code><br>
+                  <code>width=8cm</code>
+                </div>
+              </div>
+              
+              <div class="option-item">
+                <h4><code>height=</code></h4>
+                <p>Define a altura. O LaTeX ajusta a largura proporcionalmente.</p>
+                <div class="option-example">
+                  <code>height=6cm</code><br>
+                  <code>height=0.3\textheight</code>
+                </div>
+              </div>
+              
+              <div class="option-item">
+                <h4><code>scale=</code></h4>
+                <p>Redimensiona a imagem por um fator. <code>scale=0.5</code> reduz a imagem para 50% de seu tamanho original.</p>
+                <div class="option-example">
+                  <code>scale=0.8</code><br>
+                  <code>scale=1.5</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático com width</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\includegraphics[width=5cm]{figuras/grafico.jpg}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong> A imagem será renderizada com exatamente 5cm de largura.
+            </div>
+          </div>
+
+          <h3>A Unidade de Medida Relativa: <code>\textwidth</code></h3>
+          
+          <div class="tip-box">
+            <h4>A Maneira Profissional</h4>
+            <p>Definir uma largura fixa como 5cm pode ser problemático se as margens do documento mudarem. Uma abordagem muito mais robusta é usar a unidade relativa <code>\textwidth</code>, que representa a largura total da mancha de texto.</p>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Imagem com 80% da largura do texto)</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\includegraphics[width=0.8\textwidth]{figuras/grafico.jpg}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong> A imagem ocupará 80% da largura do texto, não importa qual seja a configuração das margens. <strong>Esta é a maneira profissional de dimensionar imagens.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="nivel-intermediario">
+          <h2>3. Nível Intermediário: Rotação e Distorção</h2>
+          
+          <h3>Funcionalidade: Girar a Imagem (angle)</h3>
+          <p class="section-intro">A opção <code>angle</code> aceita um valor em graus para rotacionar a imagem no sentido anti-horário.</p>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Girar 45 graus)</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\includegraphics[width=4cm, angle=45]{figuras/seta.png}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong> A imagem seta.png aparecerá com 4cm de largura e girada em 45°.
+            </div>
+          </div>
+
+          <h3>Funcionalidade: Dimensionamento Não Proporcional (Distorção)</h3>
+          <p class="section-intro">Especificando <code>width</code> e <code>height</code> simultaneamente.</p>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Esticar uma imagem)</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\includegraphics[width=8cm, height=3cm]{figuras/logo.png}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong> A imagem será forçada a ter 8cm de largura e 3cm de altura, o que provavelmente irá distorcê-la.
+            </div>
+          </div>
+
+          <div class="warning-box">
+            <h4>Armadilha Comum</h4>
+            <p>Use isso com extremo cuidado! <strong>Distorcer imagens é considerado uma má prática de design</strong> na maioria dos casos. Use apenas quando tiver um motivo muito específico.</p>
+          </div>
+        </section>
+
+        <section id="nivel-avancado">
+          <h2>4. Nível Avançado: Recortando Imagens com <code>trim</code> e <code>clip</code></h2>
+          
+          <p class="section-intro">Esta é uma técnica incrivelmente poderosa que permite usar apenas uma parte de uma imagem, <strong>sem precisar de um editor de imagens externo</strong>.</p>
+
+          <div class="functionality-box">
+            <h3>Funcionalidade: Recortar ("Cropar") uma Imagem</h3>
+            
+            <div class="concept-grid">
+              <div class="concept-item">
+                <h4>O quê?</h4>
+                <p>A opção <code>trim</code> permite remover faixas das bordas da imagem. A opção <code>clip</code> efetivamente aplica o corte.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>Por quê?</h4>
+                <p>Para focar em um detalhe específico de uma imagem maior ou para remover margens brancas indesejadas.</p>
+              </div>
+              
+              <div class="concept-item concept-how">
+                <h4>Como?</h4>
+                <p><code>\includegraphics[trim={esquerda inferior direita superior}, clip]{...}</code></p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Sintaxe do Trim</h3>
+          
+          <div class="syntax-box">
+            <div class="syntax-item">
+              <strong>Ordem das medidas:</strong> esquerda, inferior, direita, superior
+            </div>
+            <div class="syntax-item">
+              <strong>Separador:</strong> As quatro medidas são separadas por espaços
+            </div>
+            <div class="syntax-item">
+              <strong>Obrigatório:</strong> <code>clip=true</code> (ou apenas <code>clip</code>) para efetivar o corte
+            </div>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Removendo Bordas)</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\includegraphics[trim={1cm 2cm 1cm 2cm}, clip, width=0.5\textwidth]{figuras/pagina_escaneada.jpg}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong> A imagem pagina_escaneada.jpg será mostrada com 1cm cortado da esquerda, 2cm de baixo, 1cm da direita e 2cm de cima, e o resultado final será redimensionado para ocupar 50% da largura do texto.
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <h4>Dica de Experimentação</h4>
+            <p>Para encontrar os valores ideais de <code>trim</code>, comece com valores pequenos e vá ajustando gradualmente. É um processo de tentativa e erro, mas o resultado vale a pena!</p>
+          </div>
+        </section>
+        <section id="ambiente-figure">
+          <h2>5. O Ambiente <code>figure</code>: Profissionalismo Total</h2>
+          
+          <p class="section-intro">Inserir uma imagem diretamente no texto é útil, mas documentos profissionais exigem mais: <strong>numeração automática</strong>, <strong>legendas descritivas</strong> e <strong>referências cruzadas</strong>. Para isso, usamos o ambiente <code>figure</code>.</p>
+
+          <div class="functionality-box">
+            <h3>Funcionalidade: Figuras Profissionais com Legendas</h3>
+            
+            <div class="concept-grid">
+              <div class="concept-item">
+                <h4>O quê?</h4>
+                <p>O ambiente <code>figure</code> cria um "container" para imagens com numeração automática e legendas.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>Por quê?</h4>
+                <p>Permite <strong>referências cruzadas</strong> ("veja a Figura 3"), <strong>listas automáticas de figuras</strong> e <strong>posicionamento inteligente</strong>.</p>
+              </div>
+              
+              <div class="concept-item concept-how">
+                <h4>Como?</h4>
+                <p><code>\begin{figure}...\end{figure}</code> com <code>\caption{}</code> para legendas e <code>\label{}</code> para referências.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Estrutura Básica</h3>
+          
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+            <pre><code>\begin{figure}[posição]
+    \centering
+    \includegraphics[opções]{arquivo}
+    \caption{Descrição da figura}
+    \label{fig:identificador}
+\end{figure}</code></pre>
+          </div>
+
+          <h3>Anatomia de uma Figura Profissional</h3>
+          
+          <div class="anatomy-explanation">
+            <div class="anatomy-item">
+              <h4><code>\centering</code></h4>
+              <p>Centraliza a imagem no ambiente figure</p>
+            </div>
+            <div class="anatomy-item">
+              <h4><code>\caption{}</code></h4>
+              <p>Adiciona uma legenda numerada automaticamente</p>
+            </div>
+            <div class="anatomy-item">
+              <h4><code>\label{}</code></h4>
+              <p>Cria um "nome" interno para referência cruzada</p>
+            </div>
+            <div class="anatomy-item">
+              <h4><code>[posição]</code></h4>
+              <p>Controla onde o LaTeX pode posicionar a figura</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Completo: Figura Profissional</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\documentclass{article}
+\usepackage{graphicx}
+\usepackage[brazil]{babel}
+
+\begin{document}
+
+\section{Metodologia}
+
+O experimento foi conduzido conforme mostrado na Figura \ref{fig:setup}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{setup-experimental.pdf}
+    \caption{Configuração experimental utilizada no estudo. 
+             A amostra foi posicionada no centro do dispositivo 
+             para garantir medições precisas.}
+    \label{fig:setup}
+\end{figure}
+
+Como pode ser observado na Figura \ref{fig:setup}, o arranjo 
+experimental permite controle total das variáveis.
+
+\end{document}</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado no PDF:</strong>
+              <div class="pdf-simulation">
+                <h2>1 Metodologia</h2>
+                <p>O experimento foi conduzido conforme mostrado na Figura 1.</p>
+                <div class="figure-box">
+                  <div class="image-placeholder">[Imagem do Setup Experimental]</div>
+                  <p class="caption"><strong>Figura 1:</strong> Configuração experimental utilizada no estudo. A amostra foi posicionada no centro do dispositivo para garantir medições precisas.</p>
+                </div>
+                <p>Como pode ser observado na Figura 1, o arranjo experimental permite controle total das variáveis.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>6. Exemplo Prático Completo: Montando um Painel de Imagens</h2>
+          
+          <p class="section-intro">Vamos criar um exemplo que utiliza <strong>todas as técnicas aprendidas</strong> para montar um pequeno painel descritivo, mostrando o poder da manipulação de imagens diretamente no LaTeX.</p>
+
+          <div class="complete-example">
+            <h3>Código-Fonte (main.tex)</h3>
+            
+            <div class="code-block full-document">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\documentclass[a4paper, 11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+\title{Manual de Manipulação de Imagens}
+\author{Artista Digital}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Técnicas de Apresentação Visual}
+
+\subsection{Dimensionamento Relativo}
+A imagem a seguir está dimensionada para ocupar 50\% da largura total do texto, 
+garantindo que ela se adapte a qualquer layout de página.
+
+\includegraphics[width=0.5\textwidth]{example-image-a} % Usando imagem de exemplo
+
+\subsection{Rotação e Efeitos}
+Podemos rotacionar imagens para criar efeitos dinâmicos. A imagem a seguir
+está rotacionada em -30 graus (sentido horário).
+
+\includegraphics[width=3cm, angle=-30]{example-image-b}
+
+\subsection{Recorte para Foco}
+A técnica de recorte é poderosa. A imagem original completa é a da esquerda. 
+Usando \texttt{trim} e \texttt{clip}, podemos focar apenas no quadrado 
+central, como visto na imagem da direita.
+
+\includegraphics[height=3cm]{example-image-c}
+\hspace{1cm} % Adiciona um espaço horizontal de 1cm
+\includegraphics[trim={3cm 2cm 3cm 2cm}, clip, height=3cm]{example-image-c}
+
+\end{document}</code></pre>
+            </div>
+            
+            <div class="note-box">
+              <h4>Nota Importante</h4>
+              <p>O Overleaf e a maioria das distribuições LaTeX incluem imagens de exemplo como <code>example-image-a</code>. Você pode usar este código diretamente para testar as funcionalidades!</p>
+            </div>
+          </div>
+        </section>
+          <h2>5. Exemplo Prático Completo: Relatório com Múltiplas Figuras</h2>
+          
+          <div class="complete-example">
+            <h3>Projeto: Relatório de Análise de Dados</h3>
+            
+            <div class="code-block full-document">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+
+\title{Análise de Desempenho Computacional}
+\author{Equipe de Pesquisa}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\listoffigures % Lista automática de figuras
+
+\section{Introdução}
+
+Este relatório apresenta os resultados da análise de desempenho 
+de diferentes algoritmos de processamento de dados. As Figuras 
+\ref{fig:setup} e \ref{fig:resultados} mostram os principais achados.
+
+\section{Metodologia}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{configuracao-teste.pdf}
+    \caption{Configuração do ambiente de teste utilizado. 
+             O sistema foi executado em uma máquina dedicada 
+             para garantir medições precisas.}
+    \label{fig:setup}
+\end{figure}
+
+O ambiente de teste, mostrado na Figura \ref{fig:setup}, foi 
+cuidadosamente configurado para minimizar interferências externas.
+
+\section{Resultados}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{grafico-performance.pdf}
+    \caption{Comparação de desempenho entre os três algoritmos testados. 
+             O Algoritmo C mostrou-se superiore em todos os cenários avaliados.}
+    \label{fig:resultados}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth, angle=0]{memoria-uso.pdf}
+    \caption{Análise do uso de memória durante a execução. 
+             Note o pico de consumo no Algoritmo B aos 30 segundos.}
+    \label{fig:memoria}
+\end{figure}
+
+Os resultados apresentados nas Figuras \ref{fig:resultados} e 
+\ref{fig:memoria} demonstram claramente a superioridade do 
+Algoritmo C tanto em velocidade quanto em eficiência de memória.
+
+\section{Conclusões}
+
+Com base nos dados visuais apresentados, recomendamos a adoção 
+do Algoritmo C para aplicações de produção.
+
+\end{document}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Solucionando Problemas Comuns</h2>
+          
+          <div class="problems-grid">
+            <div class="problem-item">
+              <h4>"File not found"</h4>
+              <div class="problem-solution">
+                <p><strong>Problema:</strong> LaTeX não encontra o arquivo de imagem</p>
+                <p><strong>Solução:</strong> Verifique o caminho do arquivo e se a extensão está correta</p>
+              </div>
+            </div>
+            
+            <div class="problem-item">
+              <h4>Figura em página separada</h4>
+              <div class="problem-solution">
+                <p><strong>Problema:</strong> Figura aparece longe do texto</p>
+                <p><strong>Solução:</strong> Use <code>[ht]</code> ou <code>[H]</code> com pacote <code>float</code></p>
+              </div>
+            </div>
+            
+            <div class="problem-item">
+              <h4>Imagem muito grande</h4>
+              <div class="problem-solution">
+                <p><strong>Problema:</strong> Imagem não cabe na página</p>
+                <p><strong>Solução:</strong> Use <code>width=0.8\textwidth</code> ou <code>scale=0.7</code></p>
+              </div>
+            </div>
+            
+            <div class="problem-item">
+              <h4>Legenda muito longa</h4>
+              <div class="problem-solution">
+                <p><strong>Problema:</strong> Legenda ocupa muitas linhas</p>
+                <p><strong>Solução:</strong> Use <code>\caption[curta]{legenda completa}</code></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exercicios">
+          <h2>Atividades de Autoestudo: Seja o Diretor de Arte</h2>
+          
+          <div class="exercises-grid">
+            <div class="exercise-item">
+              <h3>Exercício 1 (Seu Logo)</h3>
+              <p>Encontre uma imagem de um logo online, faça o upload para a pasta <strong>figuras</strong> do seu projeto. Insira-a no documento três vezes, usando as três técnicas de dimensionamento:</p>
+              <ul>
+                <li>Com <code>width=4cm</code></li>
+                <li>Com <code>height=2cm</code></li>
+                <li>Com <code>scale=0.25</code></li>
+              </ul>
+              <p><strong>Observe as diferenças.</strong></p>
+              
+              <details class="solution">
+                <summary>Ver Estrutura Sugerida</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+                  <pre><code>\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\section{Testando Dimensionamento}
+
+Logo com largura fixa:
+\includegraphics[width=4cm]{figuras/meu-logo.png}
+
+Logo com altura fixa:
+\includegraphics[height=2cm]{figuras/meu-logo.png}
+
+Logo redimensionado proporcionalmente:
+\includegraphics[scale=0.25]{figuras/meu-logo.png}
+
+\end{document}</code></pre>
+                </div>
+              </details>
+            </div>
+            
+            <div class="exercise-item">
+              <h3>Exercício 2 (Retrato Inclinado)</h3>
+              <p>Insira uma foto sua ou uma imagem qualquer. Dimensione-a para ter 30% da largura do texto (<code>width=0.3\textwidth</code>) e aplique uma leve rotação de <code>angle=5</code> graus, para dar um efeito de <strong>"foto jogada sobre a mesa"</strong>.</p>
+              
+              <details class="solution">
+                <summary>Ver Dica</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+                  <pre><code>\includegraphics[width=0.3\textwidth, angle=5]{figuras/minha-foto.jpg}</code></pre>
+                </div>
+              </details>
+            </div>
+            
+            <div class="exercise-item challenge">
+              <h3>Exercício 3 (Desafio do Recorte)</h3>
+              <p>Pegue a imagem do exercício anterior e use <code>trim</code> e <code>clip</code> para recortá-la de forma a mostrar apenas o seu rosto (ou o objeto principal da imagem). <strong>Você terá que experimentar com os quatro valores do trim até acertar.</strong></p>
+              
+              <div class="hint">
+                <strong>Dica:</strong> Comece com valores pequenos como <code>trim={0.5cm 0.5cm 0.5cm 0.5cm}</code> e vá ajustando.
+              </div>
+              
+              <details class="solution">
+                <summary>Ver Exemplo</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+                  <pre><code>\includegraphics[trim={2cm 1cm 2cm 3cm}, clip, width=0.3\textwidth, angle=5]{figuras/minha-foto.jpg}</code></pre>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo-final">
+          <h2>Resumo Final da Aula</h2>
+          
+          <div class="congratulations-box">
+            <h3>Parabéns! Você agora tem um conhecimento profundo sobre a inserção e manipulação de imagens.</h3>
+          </div>
+          
+          <div class="summary-points">
+            <div class="summary-point">
+              <div class="point-number">1</div>
+              <div class="point-content">
+                <h4>Fundamentos</h4>
+                <p>Carregar e usar o pacote <code>graphicx</code>.</p>
+              </div>
+            </div>
+            
+            <div class="summary-point">
+              <div class="point-number">2</div>
+              <div class="point-content">
+                <h4>Organização</h4>
+                <p>Inserir imagens com <code>\includegraphics</code> e organizá-las em pastas.</p>
+              </div>
+            </div>
+            
+            <div class="summary-point">
+              <div class="point-number">3</div>
+              <div class="point-content">
+                <h4>Dimensionamento</h4>
+                <p>Dimensionar imagens de forma fixa e, mais importante, de forma relativa à largura do texto.</p>
+              </div>
+            </div>
+            
+            <div class="summary-point">
+              <div class="point-number">4</div>
+              <div class="point-content">
+                <h4>Efeitos</h4>
+                <p>Rotacionar imagens para criar layouts dinâmicos.</p>
+              </div>
+            </div>
+            
+            <div class="summary-point">
+              <div class="point-number">5</div>
+              <div class="point-content">
+                <h4>Técnica Avançada</h4>
+                <p>Recortar imagens diretamente no LaTeX, uma técnica avançada que economiza muito tempo de edição.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="next-step">
+            <h4>Próximo Destino</h4>
+            <p>Com este domínio, você está pronto para a próxima etapa: aprender a transformar essas imagens em <strong>"figuras" acadêmicas completas</strong>, com legendas, numeração e posicionamento inteligente.</p>
+            <p><strong>Podemos avançar para a Aula 16 sobre Tabelas Estruturadas?</strong></p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -35,6 +35,16 @@
         { "title": "Aula 13: Operadores, Delimitadores e Alinhamento", "path": "/modules/modulo-03/aula-13.html" },
         { "title": "Aula 14: Estruturas Tabulares - Matrizes e Vetores", "path": "/modules/modulo-03/aula-14.html" }
       ]
+    },
+    {
+      "id": "mod-04",
+      "title": "Módulo 4: Elementos Visuais - Figuras e Tabelas",
+      "pages": [
+        { "title": "Apresentação do Módulo", "path": "/modules/modulo-04/index.html" },
+        { "title": "Aula 15: O Mundo das Figuras - Inserindo e Controlando Imagens", "path": "/modules/modulo-04/aula-15.html" },
+        { "title": "Aula 16: Tabelas Estruturadas - Do Simples ao Profissional", "path": "/modules/modulo-04/aula-16.html" },
+        { "title": "Aula 17: Elementos Flutuantes - Posicionamento Inteligente", "path": "/modules/modulo-04/aula-17.html" }
+      ]
     }
   ],
   "extra": [

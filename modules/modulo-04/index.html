@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 4: Elementos Visuais - Figuras e Tabelas</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="module-header">
+          <div class="module-badge">Módulo 4</div>
+          <h1>Elementos Visuais - Figuras e Tabelas</h1>
+          <p class="module-subtitle">Transformando dados em comunicação visual efetiva</p>
+        </header>
+
+        <div class="module-intro">
+          <h2>Da Abstração à Visualização</h2>
+          <p>Até agora, trabalhamos principalmente com <strong>texto e fórmulas</strong> — elementos que fluem de forma linear no documento. Mas a comunicação científica e acadêmica moderna exige muito mais: <strong>figuras que ilustram conceitos</strong>, <strong>tabelas que organizam dados</strong> e <strong>elementos visuais que tornam a informação acessível</strong>.</p>
+          
+          <p>Neste módulo, você aprenderá a dominar os <strong>elementos visuais do LaTeX</strong>, desde inserir uma simples imagem até criar tabelas complexas com formatação profissional. Mais importante ainda, entenderá como o LaTeX gerencia esses elementos de forma inteligente através do sistema de <strong>"floats" (elementos flutuantes)</strong>.</p>
+        </div>
+
+        <section class="module-overview">
+          <h2>O que Você Aprenderá</h2>
+          
+          <div class="learning-cards">
+            <div class="learning-card">
+              <div class="card-icon">🖼️</div>
+              <h3>Controle Total sobre Figuras</h3>
+              <p>Inserir, redimensionar, posicionar e legendar imagens com precisão profissional usando o ambiente <code>figure</code> e o pacote <code>graphicx</code>.</p>
+            </div>
+            
+            <div class="learning-card">
+              <div class="card-icon">📊</div>
+              <h3>Tabelas Estruturadas</h3>
+              <p>Criar tabelas desde as mais simples até as mais complexas, com controle total sobre alinhamento, bordas, mesclagem de células e formatação.</p>
+            </div>
+            
+            <div class="learning-card">
+              <div class="card-icon">🎯</div>
+              <h3>Posicionamento Inteligente</h3>
+              <p>Entender e controlar o sistema de elementos flutuantes do LaTeX, garantindo que suas figuras e tabelas apareçam nos lugares mais apropriados.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-roadmap">
+          <h2>Jornada do Módulo</h2>
+          
+          <div class="lesson-path">
+            <div class="lesson-step">
+              <div class="step-number">15</div>
+              <div class="step-content">
+                <h3>O Mundo das Figuras</h3>
+                <p><strong>Inserindo e Controlando Imagens</strong></p>
+                <p>Domine o pacote <code>graphicx</code>, aprenda a inserir imagens, controlar tamanho e rotação, e entenda o ambiente <code>figure</code> com legendas e referências cruzadas.</p>
+                <div class="step-duration">45 min • Fundamental</div>
+              </div>
+            </div>
+            
+            <div class="lesson-step">
+              <div class="step-number">16</div>
+              <div class="step-content">
+                <h3>Tabelas Estruturadas</h3>
+                <p><strong>Do Simples ao Profissional</strong></p>
+                <p>Explore o ambiente <code>tabular</code> em profundidade, desde tabelas básicas até estruturas complexas com mesclagem de células e formatação avançada.</p>
+                <div class="step-duration">50 min • Intermediário</div>
+              </div>
+            </div>
+            
+            <div class="lesson-step">
+              <div class="step-number">17</div>
+              <div class="step-content">
+                <h3>Elementos Flutuantes</h3>
+                <p><strong>Posicionamento Inteligente</strong></p>
+                <p>Entenda como o LaTeX gerencia o posicionamento automático de figuras e tabelas, e aprenda a controlar esse comportamento quando necessário.</p>
+                <div class="step-duration">40 min • Avançado</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="prerequisites">
+          <h2>Pré-requisitos</h2>
+          <div class="prereq-grid">
+            <div class="prereq-item">
+              <h4>📝 Módulos Anteriores</h4>
+              <p>Conclusão dos <strong>Módulos 1-3</strong>, especialmente o conhecimento sobre ambientes e comandos básicos.</p>
+            </div>
+            <div class="prereq-item">
+              <h4>🎯 Conceitos-Chave</h4>
+              <p>Familiaridade com <strong>ambientes LaTeX</strong>, <strong>comandos com parâmetros</strong> e <strong>referências cruzadas</strong>.</p>
+            </div>
+            <div class="prereq-item">
+              <h4>⚡ Ferramentas</h4>
+              <p>Alguns <strong>arquivos de imagem</strong> para praticar (PNG, JPG ou PDF) e acesso a um compilador LaTeX.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-preview">
+          <h2>Prévia: O Que Você Será Capaz de Criar</h2>
+          
+          <div class="preview-showcase">
+            <div class="showcase-item">
+              <h4>📊 Relatório com Figuras e Tabelas</h4>
+              <p>Um documento profissional combinando texto, gráficos, tabelas de dados e referências cruzadas automáticas.</p>
+            </div>
+            
+            <div class="showcase-item">
+              <h4>📈 Apresentação de Resultados</h4>
+              <p>Tabelas complexas com dados estatísticos, figuras lado a lado e controle preciso de posicionamento.</p>
+            </div>
+            
+            <div class="showcase-item">
+              <h4>📋 Documento Técnico</h4>
+              <p>Estruturas visuais profissionais com numeração automática, listas de figuras e tabelas, e formatação consistente.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="getting-started">
+          <h2>Começando Sua Jornada Visual</h2>
+          <p>Este módulo marca uma <strong>transição importante</strong> no seu aprendizado: você sairá do mundo puramente textual e entrará no universo da <strong>comunicação visual científica</strong>. Prepare-se para descobrir como o LaTeX torna simples o que seria complexo em outros editores.</p>
+          
+          <div class="start-action">
+            <p><strong>Preparado(a)?</strong> Vamos começar explorando como inserir e controlar imagens de forma profissional!</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+
+</html>

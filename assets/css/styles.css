@@ -10,6 +10,7 @@
 @import url('./modules/modulo-01.css');
 @import url('./modules/modulo-02.css');
 @import url('./modules/modulo-03.css');
+@import url('./modules/modulo-04.css');
 
 /* Importação dos estilos específicos das aulas - Módulo 1 */
 @import url('./modules/mod-01/aula-01.css');
@@ -30,8 +31,11 @@
 @import url('./modules/mod-03/aula-12.css');
 @import url('./modules/mod-03/aula-13.css');
 @import url('./modules/mod-03/aula-14.css');
-@import url('./modules/mod-03/aula-15.css');
-@import url('./modules/mod-03/aula-16.css');
+
+/* Importação dos estilos específicos das aulas - Módulo 4 */
+@import url('./modules/mod-04/aula-15.css');
+@import url('./modules/mod-04/aula-16.css');
+@import url('./modules/mod-04/aula-17.css');
 
 /* =============================================
    ESTILOS GLOBAIS ADICIONAIS
