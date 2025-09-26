@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-BR" x-data="{ activeCard: null, completedLessons: [] }" x-init="completedLessons = JSON.parse(localStorage.getItem('completedLessons') || '[]')">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 5: Documentos Longos e Bibliografia</title>
+  <meta name="base-path" content="">
+  <title>Módulo 5 — Documentos Longos e Bibliografia</title>
+
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <!-- CSS modular otimizado -->
   <link rel="stylesheet" href="../../assets/css/themes.css">
   <link rel="stylesheet" href="../../assets/css/components.css">
-  <link rel="stylesheet" href="../../assets/css/modules/mod-05/module-intro.css">
+  <link rel="stylesheet" href="../../assets/css/modules/modulo-05.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  
+  <style>
+    .module-hero {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .module-hero h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-hero p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 
 <body>
@@ -29,174 +98,72 @@
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <header class="module-header">
-          <div class="module-number">Módulo 5</div>
+        <header class="module-hero">
+          <div class="module-badge">Módulo 5</div>
           <h1>Documentos Longos e Bibliografia</h1>
-          <p class="module-subtitle">Da arquitetura modular à gestão intelectual: construindo projetos profissionais</p>
+          <p>Da arquitetura modular à gestão intelectual: construindo projetos profissionais</p>
         </header>
 
-        <div class="module-overview">
-          <div class="overview-card">
-            <h2>🚀 Beira do Profissionalismo</h2>
-            <p>Você chegou ao ponto de virada do curso. Até agora, dominamos a sintaxe, a formatação, elementos visuais e matemática. Mas documentos reais — teses, dissertações, livros — exigem algo mais: <strong>arquitetura</strong> e <strong>gestão de conhecimento</strong>.</p>
-            
-            <p>Neste módulo, você aprenderá a pensar como um <strong>engenheiro de software de documentos</strong>, construindo projetos escaláveis, modulares e intelectualmente rigorosos.</p>
-          </div>
+        <div class="module-intro">
+          <h2>🚀 Beira do Profissionalismo</h2>
+          <p>Você chegou ao ponto de virada do curso. Até agora, dominamos a sintaxe, a formatação, elementos visuais e matemática. Mas documentos reais — teses, dissertações, livros — exigem algo mais: <strong>arquitetura</strong> e <strong>gestão de conhecimento</strong>.</p>
+          
+          <p>Neste módulo, você aprenderá a pensar como um <strong>engenheiro de software de documentos</strong>, construindo projetos escaláveis, modulares e intelectualmente rigorosos.</p>
         </div>
+
+        <section class="module-overview">
+          <div class="overview-card">
+            <h2>🏗️ Arquitetura de Documentos</h2>
+            <p>Aprenda a <strong>estruturar projetos complexos</strong> usando <code>\input</code> e <code>\include</code>, criando sistemas modulares que crescem sem se tornarem ingerenciáveis.</p>
+            
+            <p>Domine o <code>\includeonly</code> para <strong>compilação seletiva</strong> e desenvolvimento ágil de grandes projetos acadêmicos.</p>
+          </div>
+        </section>
 
         <section class="learning-path">
           <h2>🗺️ Jornada de Aprendizado</h2>
           
           <div class="path-timeline">
-            <div class="timeline-item">
-              <div class="timeline-marker">1</div>
-              <div class="timeline-content">
+            <div class="timeline-step">
+              <div class="step-badge">19</div>
+              <div class="step-info">
                 <h3>Arquitetura de Grandes Projetos</h3>
-                <p>Dominar <code>\input</code> e <code>\include</code> para criar estruturas modulares. Descobrir o superpoder do <code>\includeonly</code> para compilação seletiva.</p>
-                <div class="timeline-skills">
-                  <span class="skill-tag">Modularização</span>
-                  <span class="skill-tag">Organização</span>
-                  <span class="skill-tag">Produtividade</span>
-                </div>
+                <p class="step-title"><strong>Com \input e \include</strong></p>
+                <p class="step-description">Aprenda a dividir documentos longos em módulos organizados, usando <code>\input</code> para inclusão simples e <code>\include</code> para compilação otimizada. Domine o <code>\includeonly</code> para desenvolvimento ágil.</p>
+                <div class="step-complexity">60 min • Arquitetural</div>
               </div>
             </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker">2</div>
-              <div class="timeline-content">
-                <h3>Bibliografia com BibTeX</h3>
-                <p>Criar bases de dados bibliográficas reutilizáveis e gerar referências automáticas com estilos profissionais.</p>
-                <div class="timeline-skills">
-                  <span class="skill-tag">BibTeX</span>
-                  <span class="skill-tag">Bibliografia</span>
-                  <span class="skill-tag">Citações</span>
-                </div>
+            
+            <div class="timeline-step">
+              <div class="step-badge">20</div>
+              <div class="step-info">
+                <h3>BibTeX</h3>
+                <p class="step-title"><strong>A Arte de Gerenciar Referências</strong></p>
+                <p class="step-description">Construa bancos de dados bibliográficos profissionais, entenda formatos de entrada, explore ferramentas de gestão e configure estilos de citação para diferentes áreas acadêmicas.</p>
+                <div class="step-complexity">50 min • Fundamental</div>
               </div>
             </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker">3</div>
-              <div class="timeline-content">
-                <h3>Projetos Colaborativos</h3>
-                <p>Estratégias para trabalho em equipe, controle de versão e manutenção de projetos complexos.</p>
-                <div class="timeline-skills">
-                  <span class="skill-tag">Colaboração</span>
-                  <span class="skill-tag">Versionamento</span>
-                  <span class="skill-tag">Manutenção</span>
-                </div>
+            
+            <div class="timeline-step">
+              <div class="step-badge">21</div>
+              <div class="step-info">
+                <h3>Citações e Compilação</h3>
+                <p class="step-title"><strong>Gerando a Bibliografia</strong></p>
+                <p class="step-description">Complete o workflow: desde a criação de arquivos <code>.bib</code> até a geração automática de bibliografias formatadas, passando pelo ciclo de compilação LaTeX-BibTeX-LaTeX.</p>
+                <div class="step-complexity">55 min • Integrador</div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="skills-matrix">
-          <h2>🎯 Competências Desenvolvidas</h2>
-          
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h3>🏗️ Arquitetura</h3>
-              <ul>
-                <li>Estruturas modulares</li>
-                <li>Separação de responsabilidades</li>
-                <li>Otimização de compilação</li>
-                <li>Organização hierárquica</li>
-              </ul>
-            </div>
-            
-            <div class="skill-category">
-              <h3>📚 Gestão Bibliográfica</h3>
-              <ul>
-                <li>Bases de dados .bib</li>
-                <li>Estilos de citação</li>
-                <li>Referências automáticas</li>
-                <li>Integração com ferramentas</li>
-              </ul>
-            </div>
-            
-            <div class="skill-category">
-              <h3>⚡ Produtividade</h3>
-              <ul>
-                <li>Compilação seletiva</li>
-                <li>Workflows eficientes</li>
-                <li>Automação de tarefas</li>
-                <li>Debugging avançado</li>
-              </ul>
-            </div>
-            
-            <div class="skill-category">
-              <h3>👥 Colaboração</h3>
-              <ul>
-                <li>Projetos multi-autor</li>
-                <li>Controle de versão</li>
-                <li>Padrões de equipe</li>
-                <li>Documentação técnica</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="practical-outcomes">
-          <h2>🏆 Resultados Práticos</h2>
-          
-          <div class="outcomes-showcase">
-            <div class="outcome-item">
-              <div class="outcome-icon">📖</div>
-              <h3>Dissertações e Teses</h3>
-              <p>Estrutura profissional com capítulos modulares, compilação otimizada e bibliografia automatizada.</p>
-            </div>
-            
-            <div class="outcome-item">
-              <div class="outcome-icon">📄</div>
-              <h3>Artigos Científicos</h3>
-              <p>Workflow ágil para submissões, com referências precisas e formatação adaptável a diferentes journals.</p>
-            </div>
-            
-            <div class="outcome-item">
-              <div class="outcome-icon">📚</div>
-              <h3>Livros e Manuais</h3>
-              <p>Projetos de larga escala com estrutura hierárquica clara e sistema de compilação inteligente.</p>
-            </div>
-            
-            <div class="outcome-item">
-              <div class="outcome-icon">👥</div>
-              <h3>Projetos Colaborativos</h3>
-              <p>Documentos multi-autor com conflitos mínimos e integração perfeita entre diferentes contribuições.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="module-commitment">
-          <h2>⏱️ Compromisso e Dedicação</h2>
-          
-          <div class="commitment-details">
-            <div class="time-investment">
-              <h3>📅 Cronograma</h3>
-              <ul>
-                <li><strong>3 aulas intensivas</strong></li>
-                <li><strong>~2 horas</strong> de conteúdo total</li>
-                <li><strong>6-8 horas</strong> de prática recomendada</li>
-                <li><strong>Projeto final</strong> integrador</li>
-              </ul>
-            </div>
-            
-            <div class="difficulty-level">
-              <h3>🎯 Nível de Dificuldade</h3>
-              <div class="difficulty-bar">
-                <div class="difficulty-fill" style="width: 75%"></div>
-              </div>
-              <p><strong>Intermediário-Avançado:</strong> Conceitos sofisticados que exigem prática consistente.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="prerequisites">
-          <h2>✅ Pré-requisitos Essenciais</h2>
+        <section class="prerequisites-section">
+          <h2>📋 Pré-requisitos para o Sucesso</h2>
           
           <div class="prereq-checklist">
             <div class="prereq-item completed">
               <div class="check-icon">✅</div>
               <div>
-                <h4>Fundamentos Sólidos</h4>
+                <h4>Base Sólida Completa</h4>
                 <p>Domínio completo dos Módulos 1-4: sintaxe básica, estruturação, matemática e elementos visuais.</p>
               </div>
             </div>
@@ -236,6 +203,7 @@
                     <li>Referências manuais propensas a erros</li>
                     <li>Recompilações demoradas</li>
                     <li>Dificuldade para colaborar</li>
+                    <li>Bibliografia inconsistente</li>
                   </ul>
                 </div>
                 
@@ -246,6 +214,7 @@
                     <li>Bibliografia automatizada e precisa</li>
                     <li>Compilação otimizada e ágil</li>
                     <li>Colaboração sem conflitos</li>
+                    <li>Referências profissionais</li>
                   </ul>
                 </div>
               </div>
@@ -258,7 +227,7 @@
           <p>Este módulo vai elevar definitivamente a qualidade dos seus documentos LaTeX. Você deixará de ser apenas um usuário para se tornar um <strong>arquiteto de documentos</strong>.</p>
           
           <div class="cta-buttons">
-            <a href="aula-19.html" class="cta-primary">Começar Aula 1 →</a>
+            <a href="aula-19.html" class="cta-primary">Começar Aula 19 →</a>
             <a href="#" class="cta-secondary">Ver Cronograma Completo</a>
           </div>
         </div>

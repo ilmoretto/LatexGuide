@@ -1,13 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-BR" x-data="{ activeCard: null, completedLessons: [] }" x-init="completedLessons = JSON.parse(localStorage.getItem('completedLessons') || '[]')">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Módulo 4: Elementos Visuais - Figuras e Tabelas</title>
+  <meta name="base-path" content="">
+  <title>Módulo 4 — Elementos Visuais</title>
+
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <!-- CSS modular otimizado -->
   <link rel="stylesheet" href="../../assets/css/themes.css">
   <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/modulo-04.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  
+  <style>
+    .module-hero {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .module-hero h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, var(--primary), #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-hero p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .module-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), #22c55e);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 
 <body>
@@ -18,16 +88,20 @@
       <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
       <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
     </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
   </header>
   <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
   <div class="layout">
     <main class="content">
       <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
       <article class="page">
-        <header class="module-header">
+        <header class="module-hero">
           <div class="module-badge">Módulo 4</div>
-          <h1>Elementos Visuais - Figuras e Tabelas</h1>
-          <p class="module-subtitle">Transformando dados em comunicação visual efetiva</p>
+          <h1>Elementos Visuais</h1>
+          <p>Transformando dados em comunicação visual efetiva através de figuras, tabelas e elementos flutuantes profissionais</p>
         </header>
 
         <div class="module-intro">
@@ -58,6 +132,12 @@
               <h3>Posicionamento Inteligente</h3>
               <p>Entender e controlar o sistema de elementos flutuantes do LaTeX, garantindo que suas figuras e tabelas apareçam nos lugares mais apropriados.</p>
             </div>
+            
+            <div class="learning-card">
+              <div class="card-icon">🔗</div>
+              <h3>Referências Cruzadas</h3>
+              <p>Dominar o sistema <code>\label</code> e <code>\ref</code> para criar referências automáticas e profissionais a figuras, tabelas e seções.</p>
+            </div>
           </div>
         </section>
 
@@ -78,20 +158,30 @@
             <div class="lesson-step">
               <div class="step-number">16</div>
               <div class="step-content">
-                <h3>Tabelas Estruturadas</h3>
-                <p><strong>Do Simples ao Profissional</strong></p>
-                <p>Explore o ambiente <code>tabular</code> em profundidade, desde tabelas básicas até estruturas complexas com mesclagem de células e formatação avançada.</p>
-                <div class="step-duration">50 min • Intermediário</div>
+                <h3>Figuras Flutuantes</h3>
+                <p><strong>A Arte da Diagramação Automática</strong></p>
+                <p>Entenda como o LaTeX gerencia o posicionamento automático de figuras e aprenda a controlar esse comportamento quando necessário.</p>
+                <div class="step-duration">40 min • Intermediário</div>
               </div>
             </div>
             
             <div class="lesson-step">
               <div class="step-number">17</div>
               <div class="step-content">
-                <h3>Elementos Flutuantes</h3>
-                <p><strong>Posicionamento Inteligente</strong></p>
-                <p>Entenda como o LaTeX gerencia o posicionamento automático de figuras e tabelas, e aprenda a controlar esse comportamento quando necessário.</p>
-                <div class="step-duration">40 min • Avançado</div>
+                <h3>A Arte de Organizar Dados</h3>
+                <p><strong>Tabelas com tabular</strong></p>
+                <p>Explore o ambiente <code>tabular</code> em profundidade, desde tabelas básicas até estruturas complexas com alinhamento preciso.</p>
+                <div class="step-duration">50 min • Intermediário</div>
+              </div>
+            </div>
+            
+            <div class="lesson-step">
+              <div class="step-number">18</div>
+              <div class="step-content">
+                <h3>Tabelas Avançadas</h3>
+                <p><strong>A Magia das Referências Cruzadas</strong></p>
+                <p>Técnicas avançadas de formatação de tabelas, mesclagem de células e referências automáticas para criar documentos verdadeiramente profissionais.</p>
+                <div class="step-duration">55 min • Avançado</div>
               </div>
             </div>
           </div>
