@@ -65,24 +65,27 @@
 
     // Container de busca (reutiliza se já existir na página)
     let search = topbar.querySelector('.search');
-    let inputEl, boxEl, listEl;
+    let inputEl, boxEl, listEl, statusEl;
     if (!search) {
       search = document.createElement('div');
       search.className = 'search';
       search.innerHTML = `
         <label class="sr-only" for="searchInput">Pesquisar no curso</label>
-        <input id="searchInput" class="search__input" type="search" placeholder="Buscar aulas..." autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="searchResults" aria-haspopup="listbox" />
-        <div id="searchResultsBox" class="search__resultsbox" role="listbox" aria-label="Resultados da busca">
-          <ul id="searchResults" class="search__results"></ul>
-        </div>`;
+        <input id="searchInput" class="search__input" type="search" placeholder="Buscar aulas..." autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="searchResults" aria-haspopup="listbox" role="combobox" />
+        <div id="searchResultsBox" class="search__resultsbox" aria-label="Resultados da busca">
+          <ul id="searchResults" class="search__results" role="listbox" aria-label="Resultados da busca"></ul>
+        </div>
+        <div id="searchStatus" class="sr-only" aria-live="polite"></div>`;
       inputEl = search.querySelector('#searchInput');
       boxEl = search.querySelector('#searchResultsBox');
       listEl = search.querySelector('#searchResults');
+      statusEl = search.querySelector('#searchStatus');
     } else {
       // Ajusta classes/atributos para padronizar
       inputEl = search.querySelector('#searchInput') || search.querySelector('input[type="search"]');
       boxEl = search.querySelector('#searchResultsBox') || search.querySelector('.search__results, .results');
       listEl = search.querySelector('#searchResults') || (boxEl ? boxEl.querySelector('ul') : null);
+      statusEl = search.querySelector('#searchStatus');
 
       if (inputEl) {
         inputEl.classList.add('search__input');
@@ -90,22 +93,33 @@
         inputEl.setAttribute('aria-expanded', inputEl.getAttribute('aria-expanded') || 'false');
         inputEl.setAttribute('aria-controls','searchResults');
         inputEl.setAttribute('aria-haspopup','listbox');
+        inputEl.setAttribute('role','combobox');
       }
       if (boxEl) {
         boxEl.id = 'searchResultsBox';
         boxEl.classList.add('search__resultsbox');
-        boxEl.setAttribute('role','listbox');
         boxEl.setAttribute('aria-label','Resultados da busca');
       }
       if (listEl) {
         listEl.id = 'searchResults';
         listEl.classList.add('search__results');
+        listEl.setAttribute('role','listbox');
+        listEl.setAttribute('aria-label','Resultados da busca');
       } else if (boxEl) {
         const ul = document.createElement('ul');
         ul.id = 'searchResults';
         ul.className = 'search__results';
+        ul.setAttribute('role','listbox');
+        ul.setAttribute('aria-label','Resultados da busca');
         boxEl.appendChild(ul);
         listEl = ul;
+      }
+      if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.id = 'searchStatus';
+        statusEl.className = 'sr-only';
+        statusEl.setAttribute('aria-live','polite');
+        search.appendChild(statusEl);
       }
     }
 
@@ -184,9 +198,10 @@
     // Se Fuse.js estiver presente e search.js for usado, não duplicar
     if (window.Fuse) return;
     const indexItems = buildIndexItems(data);
-    const input = document.getElementById('searchInput');
-    const box = document.getElementById('searchResultsBox');
-    const list = document.getElementById('searchResults');
+  const input = document.getElementById('searchInput');
+  const box = document.getElementById('searchResultsBox');
+  const list = document.getElementById('searchResults');
+  const status = document.getElementById('searchStatus');
     if(!input || !box || !list) return;
 
     let activeIndex = -1; // para navegação por teclado
@@ -195,7 +210,9 @@
       list.innerHTML = '';
       box.classList.remove('is-open');
       input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
       activeIndex = -1;
+      if (status) status.textContent = '';
     }
 
     function render(results){
@@ -203,17 +220,20 @@
       if(!results.length){ clear(); return; }
       box.classList.add('is-open');
       input.setAttribute('aria-expanded', 'true');
-      results.slice(0, 12).forEach((item, i)=>{
+      const slice = results.slice(0, 12);
+      slice.forEach((item, i)=>{
         const li = document.createElement('li');
         li.role = 'option';
         const a = document.createElement('a');
         a.href = BASE_PATH + item.path;
         a.className = 'search__result';
+        a.id = `search-result-${i}`;
         a.innerHTML = `<div class="search__item-title">${item.title}</div>`+
                       `<div class="search__item-sub">${item.moduleTitle}</div>`;
         li.appendChild(a);
         list.appendChild(li);
       });
+      if (status) status.textContent = `${slice.length} resultado${slice.length>1?'s':''}`;
     }
 
     function performSearch(q){
@@ -237,7 +257,13 @@
         e.preventDefault();
         const dir = e.key === 'ArrowDown' ? 1 : -1;
         activeIndex = (activeIndex + dir + items.length) % items.length;
-        items.forEach((el, idx)=> el.classList.toggle('is-active', idx === activeIndex));
+        items.forEach((el, idx)=> {
+          const isActive = idx === activeIndex;
+          el.classList.toggle('is-active', isActive);
+          const parentLi = el.parentElement;
+          if (parentLi) parentLi.setAttribute('aria-selected', String(isActive));
+        });
+        input.setAttribute('aria-activedescendant', items[activeIndex].id);
         items[activeIndex]?.scrollIntoView({ block: 'nearest' });
       } else if(e.key === 'Enter'){
         e.preventDefault();
@@ -396,13 +422,25 @@
     const sidebar = $('#sidebar');
     if(!btn || !sidebar) return;
 
+    // Permitir foco programático no sidebar para acessibilidade
+    if (!sidebar.hasAttribute('tabindex')) sidebar.setAttribute('tabindex','-1');
+
     const wide = window.matchMedia('(min-width: 1536px)');
 
     function setOpen(open){
       const isOverlay = !wide.matches;
       sidebar.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
       document.body.style.overflow = (open && isOverlay) ? 'hidden' : '';
+      // Gerenciar foco quando abre/fecha como overlay
+      if (isOverlay) {
+        if (open) {
+          sidebar.focus();
+        } else {
+          btn.focus();
+        }
+      }
     }
 
     btn.addEventListener('click', ()=>{
@@ -511,6 +549,7 @@
         icon.textContent = '🌙';
         text.textContent = 'Escuro';
       }
+      themeToggle.setAttribute('aria-pressed', String(isLight));
     }
 
     // Função para alternar tema
@@ -551,6 +590,19 @@
     initToggle();
     initCopyButtons();
     initThemeToggle();
+    // Skip link para acessibilidade
+    (function ensureSkipLink(){
+      if (!document.querySelector('.skip-link')){
+        const a = document.createElement('a');
+        a.href = '#content';
+        a.className = 'skip-link';
+        a.textContent = 'Pular para o conteúdo';
+        document.body.prepend(a);
+      }
+      // Garantir que main tenha id="content"
+      const main = document.querySelector('main');
+      if (main && !main.id) main.id = 'content';
+    })();
     // Insere busca e botão do repositório na topbar (independente do carregamento de dados)
     buildTopbarExtras();
     try{
