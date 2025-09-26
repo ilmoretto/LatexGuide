@@ -53,7 +53,8 @@
       "pages": [
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-05/index.html" },
         { "title": "Aula 19: Arquitetura de Grandes Projetos com \\input e \\include", "path": "/modules/modulo-05/aula-19.html" },
-        { "title": "Aula 20: BibTeX - A Arte de Gerenciar Referências", "path": "/modules/modulo-05/aula-20.html" }
+        { "title": "Aula 20: BibTeX - A Arte de Gerenciar Referências", "path": "/modules/modulo-05/aula-20.html" },
+        { "title": "Aula 21: Citando, Compilando e Gerando a Bibliografia", "path": "/modules/modulo-05/aula-21.html" }
       ]
     }
   ],

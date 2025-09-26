@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 5 — Aula 21: Citando, Compilando e Gerando a Bibliografia</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-05/aula-21.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 21: Citando, Compilando e Gerando a Bibliografia</h1>
+          <p>O diálogo entre o texto e as referências: conectando tudo na prática</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>🔗 O Diálogo entre o Texto e as Referências</h2>
+          <p>Nas últimas duas aulas, construímos o <strong>"prédio"</strong> (nossa estrutura de arquivos .tex) e a <strong>"biblioteca"</strong> (nosso arquivo .bib). Agora, vamos construir a <strong>ponte que liga os dois</strong>.</p>
+          
+          <p>Nesta aula, você aprenderá o <strong>fluxo de trabalho completo</strong> para inserir citações no seu texto e gerar uma lista de referências automática e perfeitamente formatada.</p>
+          
+          <p>O que vamos aprender hoje é um <strong>processo, um ritual de compilação</strong>. Pode parecer complexo no início, mas é a mecânica por trás da magia do BibTeX. Dominar este fluxo significa que você poderá <strong>mudar seu estilo de citação</strong> (de ABNT para APA, de numérico para autor-data) com a alteração de uma única linha de código!</p>
+          
+          <div class="meta-info">
+            <strong>45 minutos</strong> • <strong>Intermediário-Avançado</strong> • <strong>Citações e Compilação</strong>
+          </div>
+        </div>
+
+        <section id="connecting-library">
+          <h2>1. Conectando a Biblioteca ao Documento: <code>\bibliographystyle</code> e <code>\bibliography</code></h2>
+          
+          <p class="section-intro">Antes de poder citar, você precisa dizer ao seu documento <code>.tex</code> duas coisas: <strong>como formatar as referências</strong> e <strong>onde encontrá-las</strong>. Estes dois comandos geralmente são colocados no final do seu documento.</p>
+
+          <div class="connection-diagram">
+            <div class="connection-step">
+              <div class="step-icon">📖</div>
+              <h3>Documento .tex</h3>
+              <p>Seu texto principal com citações</p>
+            </div>
+            <div class="connection-arrow">→</div>
+            <div class="connection-step">
+              <div class="step-icon">⚙️</div>
+              <h3>Comandos de Conexão</h3>
+              <p>\bibliographystyle + \bibliography</p>
+            </div>
+            <div class="connection-arrow">→</div>
+            <div class="connection-step">
+              <div class="step-icon">📚</div>
+              <h3>Arquivo .bib</h3>
+              <p>Sua biblioteca de referências</p>
+            </div>
+          </div>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Definir o Estilo de Formatação (\bibliographystyle)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Carrega um arquivo de estilo (<code>.bst</code>) que contém as regras de formatação (e.g., "Autor (Ano)" ou "[1]", ordem alfabética vs. ordem de citação, etc.).</p>
+                <p>É o que permite a <strong>flexibilidade total</strong>. Apenas mudando o estilo aqui, todo o documento se adapta.</p>
+                <p><code>\bibliographystyle{&lt;nome_do_estilo&gt;}</code></p>
+              </div>
+            </div>
+
+            <div class="styles-showcase">
+              <h4 style="color: var(--accent-primary);">📋 Estilos Padrão Comuns:</h4>
+              
+              <div class="styles-grid">
+                <div class="style-item">
+                  <h5><code>plain</code></h5>
+                  <p>Numérico ([1], [2], [3]...), ordenado <strong>alfabeticamente</strong></p>
+                  <div class="style-example">Knuth [1] demonstrou...</div>
+                </div>
+                
+                <div class="style-item">
+                  <h5><code>unsrt</code></h5>
+                  <p>Numérico, mas ordenado pela <strong>ordem de citação</strong> no texto</p>
+                  <div class="style-example">Knuth [1] demonstrou...</div>
+                </div>
+                
+                <div class="style-item">
+                  <h5><code>alpha</code></h5>
+                  <p>Citações com a <strong>sigla do autor e ano</strong> (ex: [Knu84])</p>
+                  <div class="style-example">Knuth [Knu84] demonstrou...</div>
+                </div>
+                
+                <div class="style-item">
+                  <h5><code>abbrev</code></h5>
+                  <p>Numérico, mas com <strong>nomes e revistas abreviados</strong></p>
+                  <div class="style-example">Knuth [1] demonstrou...</div>
+                </div>
+              </div>
+              
+              <div class="advanced-styles-note">
+                <h4>💡 Dica para ABNT:</h4>
+                <p>Para ABNT, usaremos estilos customizados como <code>abntex2-alf</code> ou <code>abntex2-num</code>, que veremos em módulos futuros.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Apontar para a Base de Dados (\bibliography)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Diz ao BibTeX qual arquivo <code>.bib</code> deve ser consultado e efetivamente <strong>imprime a lista de referências</strong> no documento.</p>
+                <p>É a <strong>conexão direta</strong> com sua biblioteca pessoal de referências.</p>
+                <p><code>\bibliography{&lt;nome_do_arquivo_bib_sem_a_extensao&gt;}</code></p>
+              </div>
+            </div>
+
+            <div class="bibliography-example">
+              <h4 style="color: var(--accent-primary);">Exemplo:</h4>
+              <p>Se seu arquivo se chama <code>minhas_referencias.bib</code>, você usará:</p>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\bibliography{minhas_referencias}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="citing-text">
+          <h2>2. Citando no Texto: O Comando <code>\cite</code></h2>
+          
+          <p class="section-intro">Com a conexão feita, <strong>citar no texto se torna trivial</strong>. O comando <code>\cite</code> é sua ferramenta principal para isso.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Inserir Citações (\cite)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Insere uma citação no texto, formatada de acordo com o <code>\bibliographystyle</code>.</p>
+                <p>Várias formas de uso, dependendo da necessidade.</p>
+              </div>
+            </div>
+
+            <div class="cite-variations">
+              <h4 style="color: var(--accent-primary);">🎯 Variações do \cite:</h4>
+              
+              <div class="cite-types">
+                <div class="cite-type">
+                  <h5>Citação Única</h5>
+                  <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                    <pre><code>\cite{&lt;chave_de_citacao&gt;}</code></pre>
+                  </div>
+                  <p><strong>Exemplo:</strong> <code>\cite{Knuth1984}</code></p>
+                </div>
+                
+                <div class="cite-type">
+                  <h5>Múltiplas Citações</h5>
+                  <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                    <pre><code>\cite{Einstein1905, Knuth1984}</code></pre>
+                  </div>
+                  <p><strong>Separação:</strong> Use vírgulas entre as chaves</p>
+                </div>
+                
+                <div class="cite-type">
+                  <h5>Citação com Detalhes</h5>
+                  <div class="code-block">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                    <pre><code>\cite[p.~123]{Knuth1984}
+\cite[ver Teorema 3]{Einstein1905}</code></pre>
+                  </div>
+                  <p><strong>Nota:</strong> Adicione detalhes entre colchetes</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cite-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático Mínimo:</h4>
+              
+              <div class="example-comparison">
+                <div class="code-section">
+                  <h5>Código:</h5>
+                  <code>...como foi provado por Knuth \cite[Cap.~3]{Knuth1984}.</code>
+                </div>
+                
+                <div class="results-section">
+                  <h5>Resultados:</h5>
+                  <div class="result-item">
+                    <span class="style-name">plain:</span>
+                    <span class="result-text">...como foi provado por Knuth [1].</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="style-name">alpha:</span>
+                    <span class="result-text">...como foi provado por Knuth [Knu84].</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Incluir Todas as Referências (\nocite)</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p><code>\nocite{*}</code> é um comando especial que instrui o BibTeX a <strong>incluir todas as entradas</strong> do seu arquivo .bib na lista de referências.</p>
+                <p>Útil para gerar uma bibliografia geral ou uma lista de "leitura recomendada".</p>
+                <p><code>\nocite{*}</code> - Geralmente colocado perto do <code>\bibliography</code></p>
+              </div>
+            </div>
+
+            <div class="nocite-note">
+              <h4>⚠️ Uso com Cuidado:</h4>
+              <p>Use <code>\nocite{*}</code> apenas quando realmente quiser incluir <strong>todas</strong> as referências do seu arquivo .bib, mesmo as não citadas no texto.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="compilation-cycle">
+          <h2>3. O Ciclo de Compilação: A Mágica em Quatro Passos</h2>
+          
+          <p class="section-intro">Este é o conceito <strong>mais técnico, mas mais importante</strong> da aula. Por que precisamos compilar várias vezes? Porque o LaTeX e o BibTeX são <strong>programas separados</strong> que se comunicam através de arquivos auxiliares.</p>
+
+          <div class="compilation-flow">
+            <h3>🔄 O Diálogo entre LaTeX e BibTeX:</h3>
+            
+            <div class="compilation-steps">
+              <div class="compilation-step">
+                <div class="step-header">
+                  <div class="step-number">1</div>
+                  <h4>Primeira Compilação (pdflatex main.tex)</h4>
+                </div>
+                <div class="step-content">
+                  <div class="step-dialogue">
+                    <strong>LaTeX diz:</strong> "Olá, mundo! Estou lendo main.tex. Opa, encontrei um <code>\cite{Knuth1984}</code>. Eu ainda não sei o que é isso, então vou colocar um <strong>[?]</strong> no lugar e vou anotar 'Preciso da referência Knuth1984' em um arquivo de recados chamado <code>main.aux</code>."
+                  </div>
+                  <div class="step-files">
+                    <span class="file-created">📄 Cria: main.aux</span>
+                    <span class="status-warning">Status: Citações aparecem como [?]</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compilation-step">
+                <div class="step-header">
+                  <div class="step-number">2</div>
+                  <h4>Execução do BibTeX (bibtex main)</h4>
+                </div>
+                <div class="step-content">
+                  <div class="step-dialogue">
+                    <strong>BibTeX diz:</strong> "Deixe-me ver esse arquivo de recados, <code>main.aux</code>. Ah, o LaTeX precisa da referência Knuth1984. Vou procurar no arquivo <code>minhas_referencias.bib</code> que ele me indicou. Encontrei! Vou formatá-la de acordo com o estilo <code>plain</code> e escrever o resultado em um novo arquivo, <code>main.bbl</code>."
+                  </div>
+                  <div class="step-files">
+                    <span class="file-created">📄 Cria: main.bbl</span>
+                    <span class="status-info">Status: Bibliografia formatada pronta</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compilation-step">
+                <div class="step-header">
+                  <div class="step-number">3</div>
+                  <h4>Segunda Compilação (pdflatex main.tex)</h4>
+                </div>
+                <div class="step-content">
+                  <div class="step-dialogue">
+                    <strong>LaTeX diz:</strong> "Vou compilar de novo. Ah, agora existe um arquivo <code>main.bbl</code>! Vou pegá-lo e inserir a lista de referências formatada onde encontrei o <code>\bibliography</code>. Agora eu sei que Knuth1984 corresponde ao número <strong>[1]</strong>. Vou anotar isso no <code>main.aux</code>."
+                  </div>
+                  <div class="step-files">
+                    <span class="file-updated">📄 Atualiza: main.aux</span>
+                    <span class="status-info">Status: Lista de referências inserida</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compilation-step">
+                <div class="step-header">
+                  <div class="step-number">4</div>
+                  <h4>Terceira Compilação (pdflatex main.tex)</h4>
+                </div>
+                <div class="step-content">
+                  <div class="step-dialogue">
+                    <strong>LaTeX diz:</strong> "Última vez, prometo! Vou ler o <code>main.aux</code> atualizado. Agora sim, sei que <code>\cite{Knuth1984}</code> é <strong>[1]</strong>. Vou substituir todos os <strong>[?]</strong> pelos números corretos."
+                  </div>
+                  <div class="step-files">
+                    <span class="file-final">📄 Final: main.pdf</span>
+                    <span class="status-success">Status: ✅ Documento completo!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="overleaf-tip">
+            <h4>💡 Como fazer no Overleaf?</h4>
+            <p>O Overleaf geralmente <strong>detecta o uso do BibTeX</strong> e faz esse ciclo para você automaticamente. Se as citações aparecerem como <strong>[?]</strong>, procure no menu de recompilação a opção <strong>"Recompile from scratch"</strong> (Recompilar do zero) ou verifique o log de erros.</p>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>4. Exemplo Prático Completo: Montando um Artigo com Citações</h2>
+          
+          <p class="section-intro">Vamos ver tudo funcionando juntos em um exemplo real e completo.</p>
+
+          <div class="complete-example">
+            <h3>📁 Estrutura de Arquivos:</h3>
+            
+            <div class="project-structure">
+              <div class="folder-tree">
+                <div class="folder-item">
+                  <span class="folder-icon">📁</span>
+                  <span class="folder-name">projeto_bibliografia/</span>
+                  <div class="folder-children">
+                    <div class="file-item">
+                      <span class="file-icon">📄</span>
+                      <span class="file-name">main.tex</span>
+                    </div>
+                    <div class="file-item">
+                      <span class="file-icon">📚</span>
+                      <span class="file-name">referencias.bib</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="files-content">
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">referencias.bib</span>
+                  <span class="file-type">Conteúdo da aula anterior</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>@book{Knuth1984,
+  author    = {Donald E. Knuth},
+  title     = {The TeXbook},
+  publisher = {Addison-Wesley},
+  year      = {1984},
+  address   = {Reading, Massachusetts},
+}
+
+@article{Einstein1905,
+  author  = {Albert Einstein},
+  title   = {{Zur Elektrodynamik bewegter Körper}},
+  journal = {Annalen der Physik},
+  volume  = {17},
+  number  = {10},
+  pages   = {891--921},
+  year    = {1905},
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="file-content">
+                <div class="file-header">
+                  <span class="filename">main.tex</span>
+                  <span class="file-type">Documento Principal</span>
+                </div>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+\title{A Arte da Bibliografia Automática}
+\author{Pesquisador Eficiente}
+
+\begin{document}
+\maketitle
+
+\section{Contextualização}
+A tipografia digital foi revolucionada pelo trabalho de Knuth \cite{Knuth1984}.
+Paralelamente, a física moderna foi fundada sobre os pilares do trabalho 
+de Einstein em 1905 \cite{Einstein1905}. Múltiplas citações 
+podem ser agrupadas \cite{Knuth1984, Einstein1905}.
+
+\section{Conclusão}
+O uso de Bib\TeX\ é essencial.
+
+\bibliographystyle{plain} % Estilo: numérico, alfabético
+\bibliography{referencias} % Nome do arquivo .bib
+
+\end{document}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="example-analysis">
+              <h4>🔍 Análise do Exemplo:</h4>
+              <div class="analysis-points">
+                <div class="analysis-point">
+                  <h5>📖 Estrutura do Documento</h5>
+                  <ul>
+                    <li>Preâmbulo com pacotes essenciais</li>
+                    <li>Seções com citações integradas ao texto</li>
+                    <li>Comandos de bibliografia no final</li>
+                  </ul>
+                </div>
+                <div class="analysis-point">
+                  <h5>🎯 Tipos de Citação</h5>
+                  <ul>
+                    <li>Citação única: <code>\cite{Knuth1984}</code></li>
+                    <li>Citação com data: contexto específico</li>
+                    <li>Múltiplas citações agrupadas</li>
+                  </ul>
+                </div>
+                <div class="analysis-point">
+                  <h5>⚙️ Configuração Bibliografia</h5>
+                  <ul>
+                    <li><code>\bibliographystyle{plain}</code> - estilo numérico</li>
+                    <li><code>\bibliography{referencias}</code> - fonte dos dados</li>
+                    <li>Ordem alfabética automática</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="atividades">
+          <h2>5. Atividades de Autoestudo: Conecte seu Trabalho</h2>
+          
+          <p class="section-intro">Pratique o fluxo completo de citações e bibliografia com exercícios progressivos.</p>
+
+          <div class="functionality-showcase">
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <h4>🔧 Exercício 1: Seu Primeiro Documento com BibTeX</h4>
+                <p><strong>Objetivo:</strong> Montar a estrutura completa e funcional.</p>
+                <div class="exercise-steps">
+                  <ol>
+                    <li>Monte a estrutura de arquivos do exemplo acima no Overleaf</li>
+                    <li>Crie o <code>referencias.bib</code> com as duas entradas</li>
+                    <li>Crie o <code>main.tex</code> com o código completo</li>
+                    <li>Verifique se ambos os arquivos estão na raiz do projeto</li>
+                  </ol>
+                </div>
+                <div class="hint">
+                  <strong>Dica:</strong> Certifique-se de que o nome no <code>\bibliography{referencias}</code> corresponde exatamente ao arquivo <code>referencias.bib</code>.
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>⚙️ Exercício 2: Compilação e Verificação</h4>
+                <p><strong>Objetivo:</strong> Entender o processo de compilação.</p>
+                <div class="exercise-steps">
+                  <ol>
+                    <li>Compile o projeto (pode ser necessário compilar mais de uma vez)</li>
+                    <li>Verifique se as citações <strong>[?]</strong> são substituídas por <strong>[1]</strong> e <strong>[2]</strong></li>
+                    <li>Confirme se a lista de "Referências" aparece no final</li>
+                    <li>Observe a formatação e ordenação alfabética</li>
+                  </ol>
+                </div>
+                <div class="troubleshooting">
+                  <h5>🔧 Se aparecer [?]:</h5>
+                  <ul>
+                    <li>Use "Recompile from scratch" no Overleaf</li>
+                    <li>Verifique o log de compilação</li>
+                    <li>Confirme os nomes dos arquivos</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>🎨 Exercício 3: Mudança de Estilo</h4>
+                <p><strong>Objetivo:</strong> Experimentar diferentes estilos de citação.</p>
+                <div class="sub-exercises">
+                  <h5>Passo A: Estilo unsrt</h5>
+                  <ul>
+                    <li>No <code>main.tex</code>, mude <code>\bibliographystyle{plain}</code> para <code>\bibliographystyle{unsrt}</code></li>
+                    <li>Recompile e observe as mudanças</li>
+                    <li><strong>O que aconteceu?</strong> A ordem deve inverter (Knuth [1], Einstein [2])</li>
+                  </ul>
+                  
+                  <h5>Passo B: Estilo alpha</h5>
+                  <ul>
+                    <li>Agora tente <code>\bibliographystyle{alpha}</code></li>
+                    <li>Como as citações no texto mudaram?</li>
+                    <li>Deve aparecer [Knu84] e [Ein05]</li>
+                  </ul>
+                </div>
+                <div class="reflection">
+                  <h5>💭 Reflexão:</h5>
+                  <p>Por que separar o .bib do .tex é uma estratégia tão poderosa para um pesquisador que vai escrever múltiplos artigos ao longo da carreira?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo-modulo">
+          <h2>6. Resumo Final do Módulo</h2>
+          
+          <div class="module-completion">
+            <h3>🎉 Parabéns!</h3>
+            <p>Você concluiu o <strong>Módulo 5</strong> e dominou duas das técnicas mais avançadas e produtivas do LaTeX!</p>
+          </div>
+          
+          <div class="module-summary">
+            <h4>🎯 Neste módulo, você aprendeu a:</h4>
+            
+            <div class="summary-achievements">
+              <div class="achievement-item">
+                <div class="achievement-icon">🏗️</div>
+                <h5>Gerenciamento Modular</h5>
+                <p>Gerenciar projetos longos de forma modular com <code>\input</code> e <code>\include</code>.</p>
+              </div>
+              
+              <div class="achievement-item">
+                <div class="achievement-icon">⚡</div>
+                <h5>Compilação Otimizada</h5>
+                <p>Acelerar seu fluxo de trabalho com a compilação seletiva de <code>\includeonly</code>.</p>
+              </div>
+              
+              <div class="achievement-item">
+                <div class="achievement-icon">📚</div>
+                <h5>Base Bibliográfica</h5>
+                <p>Criar e manter uma base de dados bibliográfica robusta com o arquivo <code>.bib</code>.</p>
+              </div>
+              
+              <div class="achievement-item">
+                <div class="achievement-icon">🔗</div>
+                <h5>Bibliografia Automática</h5>
+                <p>Conectar sua bibliografia ao seu texto, citar fontes e gerar uma lista de referências 100% automática e facilmente customizável.</p>
+              </div>
+              
+              <div class="achievement-item">
+                <div class="achievement-icon">🔄</div>
+                <h5>Ciclo de Compilação</h5>
+                <p>Entender o ciclo de compilação necessário para fazer a mágica acontecer.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="transformation-statement">
+            <h4>🚀 Sua Transformação:</h4>
+            <p>Você não é mais apenas um usuário de LaTeX; você é um <strong>gerente de projetos de documentos complexos</strong>. Dominou tanto a arquitetura quanto o conteúdo intelectual dos seus trabalhos.</p>
+          </div>
+
+          <div class="next-module-preview">
+            <h4>🔜 Próximo Passo</h4>
+            <p>Agora estamos prontos para a etapa de <strong>personalização fina</strong>. Podemos prosseguir para o <strong>Módulo 6: Personalização e Automação</strong>?</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>
