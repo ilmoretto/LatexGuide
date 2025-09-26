@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 16: Figuras Flutuantes - LaTeX Guide</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/themes.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/modules/mod-04/aula-16.css">
+    <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+      <nav class="sidebar" aria-label="Menu principal">
+        <div class="logo">
+          <img src="../../assets/img/logo.svg" alt="LaTeX Guide" class="logo-img">
+        </div>
+        
+        <div class="nav-container">
+          <div class="module-nav" id="module-nav">
+            <!-- Navegação será carregada via JavaScript -->
+          </div>
+        </div>
+      </nav>
+
+      <main class="main-content">
+        <header class="lesson-header">
+          <h1>Aula 16: Figuras Flutuantes - A Arte da Diagramação Automática</h1>
+          <p>Dando inteligência às suas imagens: como o LaTeX pensa como um diagramador profissional</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>🎨 Dando Inteligência às Suas Imagens</h2>
+          <p>Na aula anterior, aprendemos a inserir imagens — um ato puramente técnico. Contudo, <strong>um documento profissional não é uma simples colagem de texto e imagens</strong>. É um sistema dinâmico onde o fluxo de leitura deve ser prioridade.</p>
+          
+          <p>É aqui que entra um dos conceitos mais geniais (e, para iniciantes, mais enigmáticos) do LaTeX: o <strong>ambiente flutuante</strong>. Imagine que você está diagramando uma revista. Você não coloca uma foto gigante no meio de uma coluna e deixa o resto da página em branco. Você move a foto para o topo, deixa o texto fluir. <strong>O LaTeX faz exatamente isso para você, agindo como um diagramador profissional.</strong></p>
+          
+          <div class="meta-info">
+            ⏱️ <strong>45 minutos</strong> • 🎯 <strong>Avançado</strong> • 🎨 <strong>Diagramação Profissional</strong>
+          </div>
+        </div>
+
+        <section id="filosofia-float">
+          <h2>1. A Filosofia do "Float": Por que minhas figuras não ficam ONDE EU QUERO?</h2>
+          
+          <p class="section-intro">Esta é a <strong>pergunta de ouro</strong>. A resposta muda sua relação com o LaTeX para sempre.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: O Sistema de Flutuantes</h3>
+            
+            <div class="concept-grid">
+              <div class="concept-item">
+                <h4>O Problema que o LaTeX Resolve</h4>
+                <p>O maior inimigo de uma página bem diagramada são os <strong>"rios"</strong> (grandes espaços em branco que quebram a mancha de texto). Isso acontece quando um elemento grande é inserido e não há espaço suficiente.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>A Solução do LaTeX</h4>
+                <p>Em vez de manter a figura "presa" ao ponto exato do código, o LaTeX a coloca em uma <strong>"fila de espera"</strong> de flutuantes. Ele continua compondo o texto e depois decide o melhor lugar para encaixar os flutuantes pendentes.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>Consequência Prática</h4>
+                <p>Seu código <code>\includegraphics</code> pode estar na metade do texto da página 5, mas a figura resultante pode aparecer no topo da página 6. <strong>Isso não é um erro, é o sistema funcionando como projetado!</strong></p>
+              </div>
+            </div>
+
+            <div class="algorithm-explanation">
+              <h4>Como o Algoritmo Funciona</h4>
+              <div class="algorithm-steps">
+                <div class="step">
+                  <span class="step-number">1</span>
+                  <div class="step-content">
+                    <strong>Encontro do Flutuante</strong>
+                    <p>LaTeX encontra um <code>\begin{figure}</code> no código</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <span class="step-number">2</span>
+                  <div class="step-content">
+                    <strong>Análise de Espaço</strong>
+                    <p>Verifica se há espaço suficiente na posição atual</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <span class="step-number">3</span>
+                  <div class="step-content">
+                    <strong>Fila de Espera</strong>
+                    <p>Se não há espaço, coloca na fila e continua o texto</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <span class="step-number">4</span>
+                  <div class="step-content">
+                    <strong>Melhor Posicionamento</strong>
+                    <p>Ao final da página, encontra o melhor local segundo suas regras estéticas</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ambiente-figure">
+          <h2>2. O Ambiente <code>figure</code>: O Contêiner Inteligente</h2>
+          
+          <p class="section-intro">Agora que entendemos a filosofia, vamos dominar a <strong>sintaxe e estrutura</strong> do ambiente figure.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Estrutura Completa do Ambiente figure</h3>
+            
+            <div class="syntax-showcase">
+              <h4>Sintaxe Completa</h4>
+              <div class="code-block">
+                <code>\begin{figure}[<span class="highlight">especificadores de posicionamento</span>]
+    <span class="comment">% Conteúdo da figura</span>
+\end{figure}</code>
+              </div>
+            </div>
+
+            <div class="components-grid">
+              <div class="component-item">
+                <h4><code>\centering</code></h4>
+                <p><strong>Quase sempre a primeira coisa.</strong> Centraliza a figura horizontalmente. É mais eficiente que o ambiente <code>center</code>, que adiciona espaçamento vertical extra.</p>
+                <div class="usage-example">
+                  <code>\centering</code>
+                </div>
+              </div>
+              
+              <div class="component-item">
+                <h4><code>\includegraphics[...]</code></h4>
+                <p>O comando que de fato insere a imagem, como aprendemos na Aula 15. Todos os parâmetros de dimensionamento se aplicam aqui.</p>
+                <div class="usage-example">
+                  <code>\includegraphics[width=0.7\textwidth]{minha-figura}</code>
+                </div>
+              </div>
+              
+              <div class="component-item">
+                <h4><code>\caption{...}</code></h4>
+                <p><strong>Comando crucial!</strong> É ele que transforma a imagem em "Figura X" e a numera. Sem <code>\caption</code>, o ambiente figure é apenas um contêiner flutuante sem identidade.</p>
+                <div class="usage-example">
+                  <code>\caption{Descrição da minha figura}</code>
+                </div>
+              </div>
+              
+              <div class="component-item">
+                <h4><code>\label{...}</code></h4>
+                <p>A etiqueta para referências cruzadas. <strong>Regra de Ouro:</strong> o <code>\label</code> deve vir imediatamente após o <code>\caption</code>. Se vier antes, o <code>\ref</code> capturará o número da seção, não da figura!</p>
+                <div class="usage-example">
+                  <code>\label{fig:minha-figura}</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="especificadores-posicionamento">
+          <h2>3. Guia Detalhado dos Especificadores de Posicionamento</h2>
+          
+          <p class="section-intro">Esta é sua forma de <strong>"negociar"</strong> com o algoritmo do LaTeX. Você não manda, você sugere. A ordem das letras importa!</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Sistema de Especificadores</h3>
+            
+            <div class="specifiers-grid">
+              <div class="specifier-item priority-high">
+                <div class="specifier-header">
+                  <h4><code>h</code> - Here (Aqui)</h4>
+                  <span class="difficulty">Mais Restritiva</span>
+                </div>
+                <p><strong>"Tente encaixar a figura exatamente neste ponto do texto".</strong> O LaTeX só fará isso se houver espaço suficiente imediatamente após a linha em que o ambiente figure é declarado.</p>
+                <div class="usage-note">
+                  <strong>Na prática:</strong> Raramente funciona para figuras de tamanho médio ou grande.
+                </div>
+              </div>
+              
+              <div class="specifier-item priority-medium">
+                <div class="specifier-header">
+                  <h4><code>t</code> - Top (Topo)</h4>
+                  <span class="quality">Uma das Melhores</span>
+                </div>
+                <p><strong>"Coloque esta figura no topo desta página, ou da próxima".</strong> Permite que o texto que vem depois no código flua para baixo e preencha o resto da página.</p>
+                <div class="usage-note">
+                  <strong>Resultado:</strong> Layout limpo e profissional.
+                </div>
+              </div>
+              
+              <div class="specifier-item priority-medium">
+                <div class="specifier-header">
+                  <h4><code>b</code> - Bottom (Base)</h4>
+                  <span class="quality">Boa Opção</span>
+                </div>
+                <p><strong>"Coloque esta figura no final desta página".</strong> Funciona bem quando você quer que o texto apareça antes da figura na página.</p>
+                <div class="usage-note">
+                  <strong>Ideal para:</strong> Figuras que ilustram o texto anterior.
+                </div>
+              </div>
+              
+              <div class="specifier-item priority-low">
+                <div class="specifier-header">
+                  <h4><code>p</code> - Page (Página Dedicada)</h4>
+                  <span class="fallback">Último Recurso</span>
+                </div>
+                <p><strong>"Se a figura for muito grande ou se não houver um bom lugar, coloque-a em uma página dedicada apenas a flutuantes".</strong> Útil para figuras que ocupam a página inteira.</p>
+                <div class="usage-note">
+                  <strong>Quando usar:</strong> Figuras muito grandes ou múltiplas figuras juntas.
+                </div>
+              </div>
+              
+              <div class="specifier-item modifier">
+                <div class="specifier-header">
+                  <h4><code>!</code> - Modificador de Insistência</h4>
+                  <span class="intensifier">Intensificador</span>
+                </div>
+                <p><strong>Não é uma posição, mas um "intensificador".</strong> <code>[!ht]</code> diz: "Eu realmente quero esta figura aqui ou no topo. Relaxe suas regras de 'beleza' para tentar acomodá-la."</p>
+                <div class="usage-note">
+                  <strong>Às vezes:</strong> É exatamente o que falta para fazer uma figura "encaixar".
+                </div>
+              </div>
+            </div>
+
+            <div class="best-practices">
+              <h4>🎯 Boas Práticas de Posicionamento</h4>
+              <div class="practice-grid">
+                <div class="practice-item">
+                  <h5>A Melhor Combinação</h5>
+                  <code>[htbp]</code>
+                  <p>Quase sempre a melhor escolha. Dá ao LaTeX a máxima flexibilidade para encontrar o melhor local.</p>
+                </div>
+                
+                <div class="practice-item">
+                  <h5>Para Figuras Pequenas</h5>
+                  <code>[h!]</code>
+                  <p>Pode funcionar bem para pequenas imagens que você quer junto a um parágrafo específico.</p>
+                </div>
+                
+                <div class="practice-item">
+                  <h5>Quando Tudo Falha</h5>
+                  <code>\clearpage</code>
+                  <p>Força o LaTeX a processar todos os flutuantes na "fila de espera" antes de continuar.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-pratico">
+          <h2>4. Exemplo Prático Detalhado: Cenários de Posicionamento</h2>
+          
+          <p class="section-intro">Vamos analisar um código que ilustra como diferentes especificadores podem afetar o resultado final.</p>
+
+          <div class="complete-example">
+            <h3>Código Completo: Estudo sobre Flutuantes</h3>
+            
+            <div class="code-container">
+              <div class="code-header">
+                <span class="filename">main.tex</span>
+                <span class="file-type">LaTeX Document</span>
+              </div>
+              <div class="code-content">
+                <pre><code>\documentclass[a4paper]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lipsum} % Pacote para gerar texto de preenchimento
+
+\title{Estudo sobre Flutuantes}
+\author{Diagramador LaTeX}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Análise de Posicionamento de Figuras}
+
+\lipsum[1] % Gera um parágrafo de texto falso.
+
+Aqui no meio do texto, nós inserimos o código para a Figura~\ref{fig:topo}.
+Como usamos a opção \texttt{[t]}, o \LaTeX\ tentará movê-la para o topo
+desta página.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image-a}
+    \caption{Uma figura posicionada no topo da página.}
+    \label{fig:topo}
+\end{figure}
+
+\lipsum[2] % Gera mais um parágrafico.
+
+Agora, inserimos o código para a Figura~\ref{fig:final}. Como usamos a 
+opção \texttt{[b]}, o \LaTeX\ tentará posicioná-la no final desta página.
+
+\begin{figure}[b]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image-b}
+    \caption{Uma figura posicionada na base da página.}
+    \label{fig:final}
+\end{figure}
+
+\lipsum[3-4] % Gera mais dois parágrafos para preencher a página.
+
+\end{document}</code></pre>
+              </div>
+            </div>
+
+            <div class="observation-points">
+              <h4>📋 O que Observar ao Compilar</h4>
+              <div class="observation-grid">
+                <div class="observation-item">
+                  <h5>Ordem no Código vs. Ordem no PDF</h5>
+                  <p>O código da Figura 1 (fig:topo) está no meio do primeiro parágrafo, mas no PDF final aparecerá no topo da página, com todo o texto fluindo abaixo.</p>
+                </div>
+                
+                <div class="observation-item">
+                  <h5>Flexibilidade</h5>
+                  <p>O código da Figura 2 (fig:final) está no meio do segundo parágrafo, mas no PDF ela aparecerá no final da página, com o texto preenchendo o espaço acima.</p>
+                </div>
+                
+                <div class="observation-item">
+                  <h5>Referências</h5>
+                  <p>As referências "Figura 1" e "Figura 2" no texto estarão corretas, não importa para onde o LaTeX tenha movido as figuras. <strong>Esta é a essência do sistema.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="atividades">
+          <h2>5. Atividades de Autoestudo: Seja o Mestre dos Flutuantes</h2>
+          
+          <p class="section-intro">Pratique com exercícios progressivos para dominar completamente o sistema de flutuantes.</p>
+
+          <div class="activity-container">
+            <div class="activity-item">
+              <div class="activity-header">
+                <h3>Exercício 1: Seu Próprio Flutuante</h3>
+                <span class="difficulty-badge beginner">Iniciante</span>
+              </div>
+              <div class="activity-content">
+                <p><strong>Objetivo:</strong> Familiarizar-se com o comportamento básico dos flutuantes.</p>
+                <div class="task-list">
+                  <p>✅ Pegue o código do exemplo acima</p>
+                  <p>✅ Substitua as imagens de exemplo por imagens suas</p>
+                  <p>✅ Mantenha os mesmos especificadores e observe o resultado</p>
+                  <p>✅ Note como as figuras se posicionam independentemente de onde estão no código</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-header">
+                <h3>Exercício 2: Teste de Estresse</h3>
+                <span class="difficulty-badge intermediate">Intermediário</span>
+              </div>
+              <div class="activity-content">
+                <p><strong>Objetivo:</strong> Entender os limites do especificador <code>[h]</code>.</p>
+                <div class="task-list">
+                  <p>✅ Mude o especificador da primeira figura de <code>[t]</code> para <code>[h!]</code></p>
+                  <p>✅ Recompile e observe o resultado</p>
+                  <p>✅ Pergunta: O LaTeX conseguiu colocá-la "aqui"? Por que sim ou não?</p>
+                  <p>✅ <em>Resposta esperada: Dependerá se havia espaço suficiente naquele ponto exato</em></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-header">
+                <h3>Exercício 3: O Poder do <code>\clearpage</code></h3>
+                <span class="difficulty-badge advanced">Avançado</span>
+              </div>
+              <div class="activity-content">
+                <p><strong>Objetivo:</strong> Dominar o controle manual do fluxo de flutuantes.</p>
+                <div class="task-list">
+                  <p>✅ Adicione mais duas ou três figuras ao documento, mas sem adicionar mais texto</p>
+                  <p>✅ Compile e observe como o LaTeX começa a empilhá-las em uma "página de figuras" (p)</p>
+                  <p>✅ Insira o comando <code>\clearpage</code> no meio do seu código de figuras</p>
+                  <p>✅ Recompile e analise o que o <code>\clearpage</code> fez com o posicionamento</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="reflection-box">
+              <h4>🤔 Reflexão Crítica</h4>
+              <p><strong>Por que a abordagem "flutuante" do LaTeX é superior à abordagem "fixa" (arrastar e soltar) do Word para documentos longos e sérios como um TCC?</strong></p>
+              <p class="hint"><em>Dica: Pense em consistência, manutenibilidade e qualidade da diagramação ao longo de 100 páginas.</em></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo">
+          <h2>6. Resumo Final da Aula</h2>
+          
+          <div class="summary-points">
+            <div class="summary-point">
+              <div class="point-number">1</div>
+              <div class="point-content">
+                <h4>Filosofia dos Flutuantes</h4>
+                <p>Você entendeu o <strong>porquê</strong> de o LaTeX mover suas imagens, focando na qualidade do layout geral em vez da posição fixa no código.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">2</div>
+              <div class="point-content">
+                <h4>Ambiente figure</h4>
+                <p>Dominou o uso do ambiente <code>figure</code> como um <strong>contêiner inteligente</strong> para suas imagens com numeração automática.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">3</div>
+              <div class="point-content">
+                <h4>Componentes Profissionais</h4>
+                <p>Aprendeu a adicionar <strong>centralização</strong>, <strong>legenda</strong> e <strong>rótulo</strong> na ordem correta para referências cruzadas perfeitas.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">4</div>
+              <div class="point-content">
+                <h4>Especificadores de Posicionamento</h4>
+                <p>Sabe <strong>negociar</strong> com o LaTeX usando <code>[h, t, b, p, !]</code> para guiar a diagramação sem forçar posições inadequadas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="next-lesson-preview">
+            <h4>🔜 Próxima Aula</h4>
+            <p>Este conhecimento é diretamente aplicável à próxima aula sobre <strong>tabelas</strong>, pois o ambiente <code>table</code> é também um ambiente flutuante e se comporta exatamente da mesma maneira. Pronto para aplicar esta lógica ao mundo das tabelas?</p>
+          </div>
+        </section>
+
+        <nav class="lesson-nav">
+          <a href="aula-15.html" class="prev-lesson">
+            ← Aula 15: Inserção de Imagens
+          </a>
+          <a href="aula-17.html" class="next-lesson">
+            Aula 17: Tabelas Profissionais →
+          </a>
+        </nav>
+      </main>
+    </div>
+</body>
+</html>
