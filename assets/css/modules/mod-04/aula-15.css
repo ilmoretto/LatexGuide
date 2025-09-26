@@ -1,5 +1,30 @@
 /* ===== AULA 15: FIGURAS - ESTILOS ESPECÍFICOS ===== */
 
+/* Intro Box com destaque especial */
+.intro-box {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.05));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.intro-box h2 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.meta-info {
+    background: rgba(var(--accent-rgb), 0.1);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
 .formats-table table {
   width: 100%;
   border-collapse: collapse;

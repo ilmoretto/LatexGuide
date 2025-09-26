@@ -1,11 +1,4 @@
-# Curso de LaTeX — Estrutura (HTML/CSS/JS) + Alpine.js, KaTeX e Fuse.js
-
-Esta base fornece:
-- Menu lateral responsivo (Alpine.js controla abrir/fechar).
-- Páginas multi-módulo carregadas via `data/modules.json`.
-- Breadcrumbs, Anterior/Próximo.
-- Busca local (Fuse.js) por títulos de aulas/módulos.
-- Renderização automática de fórmulas (KaTeX).
+# Curso de LaTeX
 
 ## Bibliotecas (via CDN)
 
