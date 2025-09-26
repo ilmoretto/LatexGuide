@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 4 — Aula 17: A Arte de Organizar Dados - Tabelas com tabular</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-04/aula-17.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 17: A Arte de Organizar Dados - Tabelas com <code>tabular</code></h1>
+          <p>Estruturando informações com precisão: do básico ao profissional</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>📊 Estruturando Informações com Precisão</h2>
+          <p>Olá! Depois de dominar as figuras, vamos nos voltar para a outra grande ferramenta visual da escrita acadêmica: <strong>as tabelas</strong>. Enquanto figuras mostram, tabelas organizam e comparam dados de forma concisa e direta.</p>
+          
+          <p>Em editores de texto comuns, criar tabelas pode ser uma tarefa de "clicar e arrastar" que muitas vezes resulta em formatação inconsistente. <strong>No LaTeX, você descreve a estrutura da sua tabela de forma lógica.</strong> O resultado é uma tabela perfeitamente alinhada, com aparência profissional.</p>
+          
+          <p>Nesta aula, vamos dominar o <strong>ambiente <code>tabular</code></strong>, a ferramenta fundamental para a criação de qualquer tipo de tabela.</p>
+          
+          <div class="meta-info">
+            <strong>35 minutos</strong> • <strong>Básico a Intermediário</strong> • <strong>Organização de Dados</strong>
+          </div>
+        </div>
+
+        <section id="ambiente-tabular">
+          <h2>1. O Ambiente <code>tabular</code>: A Grade de Conteúdo</h2>
+          
+          <p class="section-intro">Este é o ambiente que constrói a estrutura de grade da sua tabela. <strong>Importante:</strong> por si só, o <code>tabular</code> não é um ambiente flutuante. Ele se comporta como uma "letra gigante": aparece exatamente onde você o coloca no código.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Criar uma Tabela</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Organiza o conteúdo em uma grade de linhas e colunas.</p>
+                <p>É a base para a apresentação de dados tabulares com alinhamento preciso.</p>
+                <p><code>\begin{tabular}{&lt;especificação das colunas&gt;} ... \end{tabular}</code></p>
+              </div>
+            </div>
+
+            <h4 style="color: var(--accent-primary); margin-top: 2rem;">A Especificação das Colunas: O DNA da Tabela</h4>
+            
+            <div class="column-specs">
+              <table class="specs-table">
+                <thead>
+                  <tr>
+                    <th>Especificador</th>
+                    <th>Função</th>
+                    <th>Exemplo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>l</code></td>
+                    <td><strong>Left:</strong> Alinha à esquerda</td>
+                    <td>Nomes, textos longos</td>
+                  </tr>
+                  <tr>
+                    <td><code>c</code></td>
+                    <td><strong>Center:</strong> Alinha ao centro</td>
+                    <td>Títulos, valores únicos</td>
+                  </tr>
+                  <tr>
+                    <td><code>r</code></td>
+                    <td><strong>Right:</strong> Alinha à direita</td>
+                    <td>Números, valores monetários</td>
+                  </tr>
+                  <tr>
+                    <td><code>|</code></td>
+                    <td><strong>Linha vertical:</strong> Borda entre colunas</td>
+                    <td>Separadores visuais</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="example-spec">
+              <h4>Exemplo de Especificação:</h4>
+              <p><code>{|l|c|r|}</code> define uma tabela com três colunas:</p>
+              <ul>
+                <li>1ª coluna: alinhada à <strong>esquerda</strong></li>
+                <li>2ª coluna: alinhada ao <strong>centro</strong></li>
+                <li>3ª coluna: alinhada à <strong>direita</strong></li>
+                <li>Linhas verticais em todas as bordas e entre colunas</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="sintaxe-interna">
+          <h2>2. Preenchendo a Tabela: A Sintaxe Interna</h2>
+          
+          <p class="section-intro">Dentro do ambiente <code>tabular</code>, dois caracteres especiais governam tudo:</p>
+
+          <div class="functionality-showcase">
+            <h3>Os Comandos Essenciais</h3>
+            
+            <div class="commands-grid">
+              <div class="command-item">
+                <h4><code>&</code> - Separador de Colunas</h4>
+                <p>Pense nele como a tecla "Tab". Ele sinaliza ao LaTeX para <strong>"pular para a próxima coluna"</strong>.</p>
+                <div class="command-example">
+                  <code>Item A & 10 & 1.23</code>
+                </div>
+              </div>
+              
+              <div class="command-item">
+                <h4><code>\\</code> - Finalizador de Linha</h4>
+                <p>Sinaliza o fim de uma linha e o início da próxima. <strong>Não é necessário na última linha</strong> da tabela.</p>
+                <div class="command-example">
+                  <code>Item A & 10 & 1.23 \\</code>
+                </div>
+              </div>
+            </div>
+
+            <div class="syntax-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático (Tabela 3x3):</h4>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\begin{tabular}{ l c r }
+    Item A & 10 & 1.23 \\
+    Item B & 5  & 45.6 \\
+    Item C & 120 & 7.89
+\end{tabular}</code></pre>
+              </div>
+            </div>
+
+            <div class="warning-box">
+              <h4>⚠️ Armadilha Comum</h4>
+              <p>Você precisa ter o <strong>número correto de &</strong>. Se sua tabela tem 3 colunas, cada linha deve conter <strong>2 &</strong> para separar os 3 "blocos" de conteúdo. Um <code>&</code> a mais ou a menos resultará em erro de compilação.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="linhas-horizontais">
+          <h2>3. Adicionando Linhas: <code>\hline</code></h2>
+          
+          <p class="section-intro">Para separar visualmente as linhas, especialmente o cabeçalho, usamos o comando <code>\hline</code>.</p>
+
+          <div class="functionality-showcase">
+            <h3>Funcionalidade: Desenhar Linhas Horizontais</h3>
+            
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin: 1.5rem 0;">
+              <div style="min-width: 100px;">
+                <p><strong>O quê?</strong></p>
+                <p><strong>Por quê?</strong></p>
+                <p><strong>Como?</strong></p>
+              </div>
+              <div>
+                <p>Cria uma linha horizontal que se estende por toda a largura da tabela.</p>
+                <p>Para separar cabeçalhos, agrupar linhas ou fechar a tabela.</p>
+                <p>Simplesmente coloque <code>\hline</code> em uma nova linha no seu código.</p>
+              </div>
+            </div>
+
+            <div class="hline-example">
+              <h4 style="color: var(--accent-primary);">Exemplo Prático (Tabela com Cabeçalho):</h4>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\begin{tabular}{ |l|c| }
+    \hline
+    Produto & Quantidade \\
+    \hline
+    Maçãs & 12 \\
+    Bananas & 6 \\
+    \hline
+\end{tabular}</code></pre>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <h4>💡 Dica de Uso Profissional</h4>
+              <p>Para um visual mais limpo, muitos tipógrafos recomendam usar <strong>menos linhas verticais</strong> (<code>|</code>) e usar <code>\hline</code> apenas para separar o cabeçalho e fechar a tabela, evitando a aparência de "grade de prisão".</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>4. Exemplo Prático Completo: Tabela de Resultados Experimentais</h2>
+          
+          <p class="section-intro">Vamos criar uma tabela completa que resume os resultados de um experimento. Este exemplo utiliza diferentes alinhamentos, linhas e demonstra a estrutura completa.</p>
+
+          <div class="complete-example">
+            <h3>Código Completo</h3>
+            
+            <div class="code-container">
+              <div class="code-header">
+                <span class="filename">main.tex</span>
+                <span class="file-type">LaTeX Document</span>
+              </div>
+              <div class="code-content">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+\title{Organizando Dados com \texttt{tabular}}
+\author{Cientista de Dados}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Resultados Preliminares}
+
+Os resultados do experimento foram coletados e organizados na tabela abaixo.
+Note como o ambiente \texttt{tabular} aparece diretamente no texto. Para 
+centralizá-lo na página, nós o colocamos dentro de um ambiente 
+\texttt{center}.
+
+\begin{center}
+    \begin{tabular}{|l|c|r|}
+        \hline
+        \multicolumn{3}{|c|}{Resultados do Experimento X-42} \\
+        \hline
+        \textbf{Amostra} & \textbf{Medida A (cm)} & \textbf{Medida B (\%)} \\
+        \hline \hline
+        Amostra 1 & 10.3 & 87.5 \\
+        Amostra 2 & 9.8  & 91.2 \\
+        Amostra 3 & 11.1 & 85.4 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+A análise desses dados prossegue na próxima seção.
+
+\end{document}</code></pre>
+              </div>
+            </div>
+
+            <div class="result-simulation">
+              <h4>📋 Resultado Esperado no PDF:</h4>
+              <div class="pdf-preview">
+                <div class="table-preview">
+                  <table class="result-table">
+                    <thead>
+                      <tr>
+                        <th colspan="3">Resultados do Experimento X-42</th>
+                      </tr>
+                      <tr>
+                        <th><strong>Amostra</strong></th>
+                        <th><strong>Medida A (cm)</strong></th>
+                        <th><strong>Medida B (%)</strong></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Amostra 1</td>
+                        <td>10.3</td>
+                        <td>87.5</td>
+                      </tr>
+                      <tr>
+                        <td>Amostra 2</td>
+                        <td>9.8</td>
+                        <td>91.2</td>
+                      </tr>
+                      <tr>
+                        <td>Amostra 3</td>
+                        <td>11.1</td>
+                        <td>85.4</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="analysis-points">
+              <h4>🔍 O que Observar no Resultado:</h4>
+              <ul>
+                <li><strong>Alinhamento:</strong> A primeira coluna está à esquerda (l), a segunda ao centro (c), e a terceira à direita (r)</li>
+                <li><strong>Linhas:</strong> As linhas <code>\hline</code> criaram as divisões horizontais. A linha dupla (<code>\hline\hline</code>) destaca o cabeçalho</li>
+                <li><strong>Aninhamento:</strong> A tabela foi colocada dentro de um ambiente <code>center</code> para ser centralizada na página</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="atividades">
+          <h2>5. Atividades Práticas</h2>
+          
+          <p class="section-intro">Pratique com exercícios progressivos para dominar o ambiente <code>tabular</code>.</p>
+
+          <div class="functionality-showcase">
+            <h3>Exercícios Progressivos</h3>
+            
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <h4>📅 Exercício 1: Horário de Aulas</h4>
+                <p><strong>Objetivo:</strong> Criar uma tabela simples para seu horário de segunda-feira.</p>
+                <ul>
+                  <li>Crie 3 colunas: "Horário", "Disciplina" e "Sala"</li>
+                  <li>Preencha com pelo menos 3 linhas de dados</li>
+                  <li>Use <code>\hline</code> para separar o cabeçalho e fechar a tabela</li>
+                </ul>
+                <div class="hint">
+                  <strong>Dica:</strong> Use especificação <code>{|l|c|c|}</code> para começar.
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>🎯 Exercício 2: Experimentando Alinhamentos</h4>
+                <p><strong>Objetivo:</strong> Entender como diferentes especificadores afetam o visual.</p>
+                <ul>
+                  <li>Pegue a tabela do exercício 1</li>
+                  <li>Tente centralizar todas as colunas: <code>{|c|c|c|}</code></li>
+                  <li>Tente alinhar todas à direita: <code>{|r|r|r|}</code></li>
+                  <li>Remova todas as linhas verticais: <code>{l c r}</code></li>
+                </ul>
+                <div class="observation">
+                  <strong>Observe:</strong> Como essas pequenas mudanças afetam drasticamente a aparência!
+                </div>
+              </div>
+              
+              <div class="exercise-item">
+                <h4>🤔 Exercício 3: Reflexão Crítica</h4>
+                <p><strong>Questão:</strong> Por que o ambiente <code>tabular</code> não é flutuante como o <code>figure</code>?</p>
+                <ul>
+                  <li>Que tipo de problema isso poderia causar em um documento longo?</li>
+                  <li>O que aconteceria se você tentasse colocar uma tabela muito grande no meio de um parágrafo?</li>
+                </ul>
+                <div class="bridge-note">
+                  <strong>Esta pergunta é a ponte perfeita para a próxima aula!</strong> 🌉
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo">
+          <h2>6. Resumo Final da Aula</h2>
+          
+          <div class="summary-points">
+            <div class="summary-point">
+              <div class="point-number">1</div>
+              <div class="point-content">
+                <h4>Ambiente tabular</h4>
+                <p>Você dominou a ferramenta fundamental para organizar dados em LaTeX com precisão e controle total.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">2</div>
+              <div class="point-content">
+                <h4>Especificação de Colunas</h4>
+                <p>Aprendeu a definir número e alinhamento das colunas (<code>l, c, r</code>) e a usar separadores visuais (<code>|</code>).</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">3</div>
+              <div class="point-content">
+                <h4>Sintaxe Interna</h4>
+                <p>Dominou o uso do separador de colunas <code>&</code> e do finalizador de linha <code>\\</code> para construir tabelas.</p>
+              </div>
+            </div>
+
+            <div class="summary-point">
+              <div class="point-number">4</div>
+              <div class="point-content">
+                <h4>Linhas e Estrutura</h4>
+                <p>Sabe adicionar linhas horizontais (<code>\hline</code>) para estruturar visualmente seus dados de forma profissional.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="next-lesson-preview">
+            <h4>🔜 Próxima Aula</h4>
+            <p>Com essa base sólida, você está pronto para o próximo passo: <strong>transformar suas tabelas em elementos flutuantes</strong> com legendas e referências, e aprender a criar estruturas ainda mais complexas com o ambiente <code>table</code>.</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

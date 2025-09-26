@@ -1,0 +1,435 @@
+/* ===== AULA 17: TABELAS COM TABULAR - ESTILOS ESPECÍFICOS ===== */
+
+/* Tabela de especificadores de colunas */
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.specs-table th,
+.specs-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.specs-table th {
+    background: var(--accent-bg);
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.specs-table td:first-child {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.specs-table tr:hover {
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+/* Exemplo de especificação */
+.example-spec {
+    background: rgba(52, 152, 219, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.example-spec h4 {
+    margin: 0 0 1rem 0;
+    color: #3498db;
+}
+
+.example-spec code {
+    background: rgba(52, 152, 219, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.example-spec ul {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.5rem;
+}
+
+.example-spec li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+/* Grid de comandos */
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.command-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.command-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.command-item h4 {
+    margin: 0 0 1rem 0;
+    color: var(--accent-primary);
+    font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.command-example {
+    background: var(--code-bg);
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.9rem;
+    border-left: 3px solid var(--accent);
+}
+
+/* Exemplo de sintaxe */
+.syntax-example {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+/* Caixas de aviso e dicas */
+.warning-box {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05));
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #e74c3c;
+}
+
+.warning-box h4 {
+    margin: 0 0 0.75rem 0;
+    color: #e74c3c;
+}
+
+.tip-box {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05));
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #27ae60;
+}
+
+.tip-box h4 {
+    margin: 0 0 0.75rem 0;
+    color: #27ae60;
+}
+
+/* Exemplo com hline */
+.hline-example {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Exemplo completo */
+.result-simulation {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.result-simulation h4 {
+    margin: 0 0 1.5rem 0;
+    color: var(--accent-primary);
+}
+
+.pdf-preview {
+    background: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    font-family: 'Times New Roman', serif;
+    color: #000;
+}
+
+.table-preview {
+    display: flex;
+    justify-content: center;
+}
+
+.result-table {
+    border-collapse: collapse;
+    font-family: 'Times New Roman', serif;
+    font-size: 1rem;
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid #000;
+    padding: 0.75rem 1rem;
+    text-align: center;
+}
+
+.result-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+.result-table td:first-child {
+    text-align: left;
+}
+
+.result-table td:last-child {
+    text-align: right;
+}
+
+/* Pontos de análise */
+.analysis-points {
+    background: rgba(52, 152, 219, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.analysis-points h4 {
+    margin: 0 0 1rem 0;
+    color: #3498db;
+}
+
+.analysis-points ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.analysis-points li {
+    margin: 0.75rem 0;
+    line-height: 1.6;
+}
+
+/* Exercícios */
+.exercise-list {
+    margin: 2rem 0;
+}
+
+.exercise-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+}
+
+.exercise-item h4 {
+    margin: 0 0 1rem 0;
+    color: var(--accent-primary);
+}
+
+.exercise-item p {
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.exercise-item ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.exercise-item li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.hint {
+    background: rgba(243, 156, 18, 0.1);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-left: 3px solid #f39c12;
+}
+
+.hint strong {
+    color: #f39c12;
+}
+
+.observation {
+    background: rgba(155, 89, 182, 0.1);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-left: 3px solid #9b59b6;
+}
+
+.observation strong {
+    color: #9b59b6;
+}
+
+.bridge-note {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05));
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-left: 3px solid #27ae60;
+    text-align: center;
+}
+
+.bridge-note strong {
+    color: #27ae60;
+}
+
+/* Código container melhorado */
+.code-container {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+}
+
+.filename {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.file-type {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.code-content {
+    position: relative;
+}
+
+.code-content .copy-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.code-content .copy-btn:hover {
+    transform: translateY(-2px);
+}
+
+.code-content pre {
+    margin: 0;
+    padding: 2rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+/* Pontos de resumo */
+.summary-points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.summary-point {
+    display: flex;
+    align-items: flex-start;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.point-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.point-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--accent-primary);
+}
+
+.point-content p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.next-lesson-preview {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.05));
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.next-lesson-preview h4 {
+    margin: 0 0 1rem 0;
+    color: #3498db;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .commands-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .specs-table th,
+    .specs-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .code-content .copy-btn {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 1rem;
+        display: block;
+        width: fit-content;
+    }
+}
