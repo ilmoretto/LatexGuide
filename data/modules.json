@@ -33,9 +33,7 @@
         { "title": "Apresentação do Módulo", "path": "/modules/modulo-03/index.html" },
         { "title": "Aula 12: A Linguagem Universal da Matemática", "path": "/modules/modulo-03/aula-12.html" },
         { "title": "Aula 13: Operadores, Delimitadores e Alinhamento", "path": "/modules/modulo-03/aula-13.html" },
-        { "title": "Aula 14: Estruturas Tabulares - Matrizes e Vetores", "path": "/modules/modulo-03/aula-14.html" },
-        { "title": "Aula 15: Matrizes e Sistemas", "path": "/modules/modulo-03/aula-04.html" },
-        { "title": "Aula 16: Teoremas e Demonstrações", "path": "/modules/modulo-03/aula-05.html" }
+        { "title": "Aula 14: Estruturas Tabulares - Matrizes e Vetores", "path": "/modules/modulo-03/aula-14.html" }
       ]
     }
   ],
