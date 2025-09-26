@@ -3,7 +3,7 @@
    ============================================= */
 
 .module-intro {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, var(--mod-grad-a, #4f46e5) 0%, var(--mod-grad-b, #7c3aed) 100%);
     color: white;
     padding: 3rem 2rem;
     border-radius: 16px;
@@ -46,8 +46,8 @@
 }
 
 .advanced-concepts {
-    background: linear-gradient(135deg, var(--panel) 0%, rgba(79, 70, 229, 0.05) 100%);
-    border: 1px solid rgba(79, 70, 229, 0.2);
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(var(--mod-grad-a-rgb, 79, 70, 229), 0.05) 100%);
+    border: 1px solid rgba(var(--mod-grad-a-rgb, 79, 70, 229), 0.2);
     border-radius: 12px;
     padding: 2rem;
     margin: 2rem 0;
@@ -90,7 +90,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+    background: linear-gradient(90deg, var(--mod-grad-a, #4f46e5), var(--mod-grad-b, #7c3aed), #ec4899);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -168,7 +168,7 @@
     top: 1rem;
     bottom: 1rem;
     width: 2px;
-    background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+    background: linear-gradient(to bottom, var(--mod-grad-a, #4f46e5), var(--mod-grad-b, #7c3aed));
     z-index: 0;
 }
 
@@ -183,7 +183,7 @@
 .step-number {
     width: 3rem;
     height: 3rem;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, var(--mod-grad-a, #4f46e5), var(--mod-grad-b, #7c3aed));
     color: white;
     border-radius: 50%;
     display: flex;

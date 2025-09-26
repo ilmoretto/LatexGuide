@@ -68,16 +68,19 @@
 
 /* Mapeamento de cores por módulo */
 :root[data-module="mod-01"] {
-  --mod-grad-a: #22d3ee; --mod-grad-b: #a855f7;
-  --mod-grad-a-rgb: 34, 211, 238; --mod-grad-b-rgb: 168, 85, 247;
+  /* Módulo 1: Roxo/Azul conforme estilos atuais */
+  --mod-grad-a: #667eea; --mod-grad-b: #764ba2;
+  --mod-grad-a-rgb: 102, 126, 234; --mod-grad-b-rgb: 118, 75, 162;
 }
 :root[data-module="mod-02"] {
-  --mod-grad-a: #3b82f6; --mod-grad-b: #22d3ee;
-  --mod-grad-a-rgb: 59, 130, 246; --mod-grad-b-rgb: 34, 211, 238;
+  /* Módulo 2: Índigo/Violeta conforme estilos atuais */
+  --mod-grad-a: #4f46e5; --mod-grad-b: #7c3aed;
+  --mod-grad-a-rgb: 79, 70, 229; --mod-grad-b-rgb: 124, 58, 237;
 }
 :root[data-module="mod-03"] {
-  --mod-grad-a: #f59e0b; --mod-grad-b: #10b981;
-  --mod-grad-a-rgb: 245, 158, 11; --mod-grad-b-rgb: 16, 185, 129;
+  /* Módulo 3: Ciano/Azul conforme estilos atuais */
+  --mod-grad-a: #0ea5e9; --mod-grad-b: #3b82f6;
+  --mod-grad-a-rgb: 14, 165, 233; --mod-grad-b-rgb: 59, 130, 246;
 }
 :root[data-module="mod-04"] {
   --mod-grad-a: #22c55e; --mod-grad-b: #3b82f6;
