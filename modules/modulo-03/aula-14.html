@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 3 — Aula 14: Estruturas Tabulares - Matrizes e Vetores</title>
+  <link rel="icon" href="../../assets/img/logo.sv            <div class="code-block full-document">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\documentclass[a4paper, 12pt]{article}type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../asset              <div class="hint">
+                <strong>Dica:</strong> A especificação das colunas será algo como <code>{ccc|c}</code>.
+              </div>
+              
+              <details class="solution">
+                <summary>Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>dules/mod-03/aula-14.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 14: Estruturas Tabulares - Matrizes e Vetores</h1>
+          <p>Organizando elementos em linhas e colunas: da ferramenta geral aos atalhos elegantes</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>Organizando Elementos em Linhas e Colunas</h2>
+          <p>Olá e bem-vindo(a) à nossa última aula sobre matemática em LaTeX! Até agora, lidamos com expressões que fluem de forma linear ou se desenvolvem verticalmente. <strong>Mas e quando a informação é inerentemente bidimensional, como em uma matriz ou um vetor?</strong></p>
+          
+          <p>Nesta aula, você aprenderá a usar os ambientes que permitem organizar elementos em uma <strong>grade de linhas e colunas</strong>. Vamos começar com o ambiente <code>array</code>, a ferramenta mais fundamental e flexível, e depois veremos os atalhos específicos para matrizes que tornam o processo muito mais rápido e elegante.</p>
+          
+          <p>Ao final, você será capaz de criar <strong>qualquer tipo de matriz ou sistema de equações</strong> com total controle sobre o alinhamento e os delimitadores.</p>
+          
+          <div class="meta-info">
+            <strong>40 minutos</strong> • <strong>Avançado</strong> • <strong>Álgebra Linear</strong>
+          </div>
+        </div>
+
+        <section id="ambiente-array">
+          <h2>1. O Bloco de Construção Universal: O Ambiente <code>array</code></h2>
+          
+          <p class="section-intro">Pense no <code>array</code> como uma versão <strong>"modo matemático"</strong> do ambiente <code>tabular</code> que veremos no módulo de tabelas. Ele é a base para criar qualquer estrutura em grade dentro de uma equação.</p>
+
+          <div class="functionality-box">
+            <h3>Funcionalidade: Criar Grades Matemáticas</h3>
+            
+            <div class="concept-grid">
+              <div class="concept-item">
+                <h4>O quê?</h4>
+                <p>O ambiente <code>array</code> permite organizar elementos em <strong>linhas e colunas</strong>.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>Por quê?</h4>
+                <p>É a ferramenta mais flexível para criar estruturas tabulares personalizadas, como matrizes com linhas divisórias ou sistemas de equações.</p>
+              </div>
+              
+              <div class="concept-item concept-how">
+                <h4>Como?</h4>
+                <ul>
+                  <li>O ambiente é iniciado com <code>\begin{array}{&lt;especificação das colunas&gt;}</code> e terminado com <code>\end{array}</code>.</li>
+                  <li><strong>Especificação das colunas:</strong> Uma série de letras que definem o alinhamento de cada coluna</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <h3>Especificação das Colunas</h3>
+          
+          <div class="alignment-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Alinhamento</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>c</code></td>
+                  <td>Centro</td>
+                  <td>Coluna centralizada</td>
+                </tr>
+                <tr>
+                  <td><code>l</code></td>
+                  <td>Esquerda</td>
+                  <td>Coluna alinhada à esquerda (<em>left</em>)</td>
+                </tr>
+                <tr>
+                  <td><code>r</code></td>
+                  <td>Direita</td>
+                  <td>Coluna alinhada à direita (<em>right</em>)</td>
+                </tr>
+                <tr>
+                  <td><code>|</code></td>
+                  <td>Divisor</td>
+                  <td>Insere uma linha vertical entre as colunas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Sintaxe Interna</h3>
+          
+          <div class="syntax-rules">
+            <div class="rule-item">
+              <strong><code>&</code></strong> → Separar os elementos de uma coluna para a outra
+            </div>
+            <div class="rule-item">
+              <strong><code>\\</code></strong> → Terminar uma linha e começar a próxima
+            </div>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Sistema de Equações)</h4>
+            <p>O <code>array</code> é uma alternativa ao <code>align</code> para escrever sistemas de equações, especialmente quando se usa uma chave <code>\left\{</code>.</p>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\[
+\left\{
+  \begin{array}{rcr} % Coluna Direita, Centro, Direita
+     2x + 3y &=& 7 \\
+     -x + y &=& 1
+  \end{array}
+\right.
+\]</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong>
+              <div class="math-display">
+                {<br>
+                &nbsp;&nbsp;2x + 3y = 7<br>
+                &nbsp;&nbsp;-x + y = 1
+              </div>
+            </div>
+            
+            <div class="observation">
+              <h5>O que observar?</h5>
+              <p>O <code>{rcr}</code> define o alinhamento: os coeficientes (<code>2x</code>, <code>-x</code>, etc.) ficam à direita, os sinais de <code>=</code> ficam no centro, e os resultados (<code>7</code>, <code>1</code>) ficam à direita. <code>\left\{</code> e <code>\right.</code> criam o contêiner.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="atalhos-matrizes">
+          <h2>2. Atalhos para Matrizes: Os Ambientes <code>pmatrix</code>, <code>bmatrix</code> e Outros</h2>
+          
+          <p class="section-intro">Escrever <code>\left( \begin{array}{...} ... \end{array} \right)</code> toda vez que você precisa de uma matriz é repetitivo. Para isso, o pacote <code>amsmath</code> (que o Overleaf carrega por padrão) oferece <strong>atalhos maravilhosos</strong>.</p>
+
+          <div class="functionality-box">
+            <h3>Funcionalidade: Criar Matrizes com Delimitadores Automáticos</h3>
+            
+            <div class="concept-grid">
+              <div class="concept-item">
+                <h4>O quê?</h4>
+                <p>São ambientes que já incluem os delimitadores, simplificando muito a escrita de matrizes.</p>
+              </div>
+              
+              <div class="concept-item">
+                <h4>Por quê?</h4>
+                <p>Eles são mais rápidos de digitar, o código fica mais limpo e garantem <strong>consistência visual</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Os Ambientes Principais</h3>
+          
+          <div class="matrix-environments">
+            <div class="matrix-env-item">
+              <h4><code>pmatrix</code></h4>
+              <p>Para matrizes com <strong>parênteses</strong> ( )</p>
+              <div class="matrix-preview">( )</div>
+            </div>
+            
+            <div class="matrix-env-item">
+              <h4><code>bmatrix</code></h4>
+              <p>Para matrizes com <strong>colchetes</strong> [ ]</p>
+              <div class="matrix-preview">[ ]</div>
+            </div>
+            
+            <div class="matrix-env-item">
+              <h4><code>vmatrix</code></h4>
+              <p>Para <strong>determinantes</strong>, com barras simples | |</p>
+              <div class="matrix-preview">| |</div>
+            </div>
+            
+            <div class="matrix-env-item">
+              <h4><code>Vmatrix</code></h4>
+              <p>Para <strong>normas</strong>, com barras duplas || ||</p>
+              <div class="matrix-preview">|| ||</div>
+            </div>
+            
+            <div class="matrix-env-item">
+              <h4><code>matrix</code></h4>
+              <p>Não adiciona nenhum delimitador (útil para criar matrizes personalizadas com <code>\left</code> e <code>\right</code>)</p>
+              <div class="matrix-preview">⬜</div>
+            </div>
+          </div>
+
+          <div class="usage-tip">
+            <h4>Como usar?</h4>
+            <p>A sintaxe interna é a mesma do <code>array</code>: use <code>&</code> para separar colunas e <code>\\</code> para separar linhas. A especificação do alinhamento <strong>não é necessária</strong>; por padrão, as matrizes são centralizadas.</p>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Matriz de Rotação 2D)</h4>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>A matriz de rotação $R(\theta)$ em 2D é dada por:
+\[
+R(\theta) = 
+\begin{pmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta &  \cos\theta
+\end{pmatrix}
+\]</code></pre>
+            </div>
+            
+            <div class="result-display">
+              <strong>Resultado:</strong>
+              <div class="math-display matrix-result">
+                R(θ) = <div class="matrix-visual">
+                  <div class="matrix-row">cos θ&nbsp;&nbsp;&nbsp;-sin θ</div>
+                  <div class="matrix-row">sin θ&nbsp;&nbsp;&nbsp;&nbsp;cos θ</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="observation">
+              <h5>O que observar?</h5>
+              <p>Compare a simplicidade deste código com o que seria necessário usando <code>array</code> (<code>\left( \begin{array}{cc} ... \end{array} \right)</code>). É muito mais limpo e direto.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="pontos-matrizes">
+          <h2>3. Pontos em Matrizes: <code>\ldots</code>, <code>\vdots</code> e <code>\ddots</code></h2>
+          
+          <p class="section-intro">Para matrizes genéricas de tamanho <em>n×m</em>, precisamos usar reticências. Existem comandos específicos para cada direção.</p>
+
+          <div class="dots-grid">
+            <div class="dot-item">
+              <h4><code>\ldots</code></h4>
+              <div class="dot-visual">⋯</div>
+              <p>Pontos horizontais</p>
+            </div>
+            
+            <div class="dot-item">
+              <h4><code>\vdots</code></h4>
+              <div class="dot-visual vertical">⋮</div>
+              <p>Pontos verticais</p>
+            </div>
+            
+            <div class="dot-item">
+              <h4><code>\ddots</code></h4>
+              <div class="dot-visual diagonal">⋱</div>
+              <p>Pontos diagonais</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="exemplo-completo">
+          <h2>4. Exemplo Prático Completo: Multiplicação de Vetor por Matriz</h2>
+          
+          <p class="section-intro">Vamos criar um exemplo que usa uma matriz genérica 3×3, um vetor coluna e a representação da multiplicação entre eles. Este exemplo <strong>consolida todos os conceitos da aula</strong>.</p>
+
+          <div class="complete-example">
+            <h3>Código-Fonte (main.tex)</h3>
+            
+            <div class="code-block full-document">
+              <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+              <pre><code>\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath} % Boa prática incluir explicitamente
+
+\title{Álgebra Linear em \LaTeX}
+\author{Estudante Avançado}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Representação de Matrizes e Vetores}
+
+Em álgebra linear, um sistema de equações pode ser representado de forma 
+compacta pela multiplicação de uma matriz de coeficientes $A$ por um vetor 
+de variáveis $x$, resultando em um vetor de constantes $b$.
+
+A forma geral é $Ax = b$. Para um sistema 3x3, temos:
+\[
+\begin{pmatrix}
+    a_{11} & a_{12} & a_{13} \\
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33}
+\end{pmatrix}
+\begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+    b_1 \\ b_2 \\ b_3
+\end{pmatrix}
+\]
+
+Para uma matriz genérica de tamanho $m \times n$, usamos reticências 
+para indicar a generalização:
+\[
+A = 
+\begin{bmatrix}
+    a_{11} & a_{12} & \ldots & a_{1n} \\
+    a_{21} & a_{22} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{bmatrix}
+\]
+Isso ilustra o poder e a clareza da composição matemática em \LaTeX.
+
+\end{document}</code></pre>
+            </div>
+
+            <h3>Resultado Esperado no PDF</h3>
+            
+            <div class="pdf-preview">
+              <div class="pdf-header">
+                <h1>Álgebra Linear em LaTeX</h1>
+                <p class="author">Estudante Avançado</p>
+                <p class="date">26 de setembro de 2025</p>
+              </div>
+              
+              <div class="pdf-section">
+                <h2>1 Representação de Matrizes e Vetores</h2>
+                <p>Em álgebra linear, um sistema de equações pode ser representado de forma compacta pela multiplicação de uma matriz de coeficientes A por um vetor de variáveis x, resultando em um vetor de constantes b.</p>
+                
+                <p>A forma geral é Ax = b. Para um sistema 3x3, temos:</p>
+                
+                <div class="math-equation">
+                  <div class="matrix-multiplication">
+                    <div class="matrix-group">
+                      <div class="matrix-paren">(</div>
+                      <div class="matrix-content">
+                        <div class="matrix-row">a₁₁&nbsp;&nbsp;a₁₂&nbsp;&nbsp;a₁₃</div>
+                        <div class="matrix-row">a₂₁&nbsp;&nbsp;a₂₂&nbsp;&nbsp;a₂₃</div>
+                        <div class="matrix-row">a₃₁&nbsp;&nbsp;a₃₂&nbsp;&nbsp;a₃₃</div>
+                      </div>
+                      <div class="matrix-paren">)</div>
+                    </div>
+                    
+                    <div class="matrix-group">
+                      <div class="matrix-paren">(</div>
+                      <div class="matrix-content vector">
+                        <div class="matrix-row">x₁</div>
+                        <div class="matrix-row">x₂</div>
+                        <div class="matrix-row">x₃</div>
+                      </div>
+                      <div class="matrix-paren">)</div>
+                    </div>
+                    
+                    <div class="equals">=</div>
+                    
+                    <div class="matrix-group">
+                      <div class="matrix-paren">(</div>
+                      <div class="matrix-content vector">
+                        <div class="matrix-row">b₁</div>
+                        <div class="matrix-row">b₂</div>
+                        <div class="matrix-row">b₃</div>
+                      </div>
+                      <div class="matrix-paren">)</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <p>Para uma matriz genérica de tamanho m × n, usamos reticências para indicar a generalização:</p>
+                
+                <div class="math-equation">
+                  <div class="generic-matrix">
+                    <span class="matrix-label">A =</span>
+                    <div class="matrix-group">
+                      <div class="matrix-bracket">[</div>
+                      <div class="matrix-content">
+                        <div class="matrix-row">a₁₁&nbsp;&nbsp;a₁₂&nbsp;&nbsp;⋯&nbsp;&nbsp;a₁ₙ</div>
+                        <div class="matrix-row">a₂₁&nbsp;&nbsp;a₂₂&nbsp;&nbsp;⋯&nbsp;&nbsp;a₂ₙ</div>
+                        <div class="matrix-row">&nbsp;⋮&nbsp;&nbsp;&nbsp;&nbsp;⋮&nbsp;&nbsp;&nbsp;⋱&nbsp;&nbsp;&nbsp;&nbsp;⋮</div>
+                        <div class="matrix-row">aₘ₁&nbsp;&nbsp;aₘ₂&nbsp;&nbsp;⋯&nbsp;&nbsp;aₘₙ</div>
+                      </div>
+                      <div class="matrix-bracket">]</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <p>Isso ilustra o poder e a clareza da composição matemática em LaTeX.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="exercicios">
+          <h2>Atividades de Autoestudo: Construa Suas Próprias Matrizes</h2>
+          
+          <div class="exercises-grid">
+            <div class="exercise-item">
+              <h3>Exercício 1 (Determinante)</h3>
+              <p>Usando o ambiente <code>vmatrix</code>, escreva o determinante de uma matriz 2×2 genérica:</p>
+              
+              <div class="exercise-visual">
+                <div class="determinant-2x2">
+                  |&nbsp;a&nbsp;&nbsp;b&nbsp;|<br>
+                  |&nbsp;c&nbsp;&nbsp;d&nbsp;|
+                </div>
+              </div>
+              
+              <details class="solution">
+                <summary>Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+                  <pre><code>\[
+\begin{vmatrix}
+    a & b \\
+    c & d
+\end{vmatrix}
+\]</code></pre>
+                </div>
+              </details>
+            </div>
+            
+            <div class="exercise-item">
+              <h3>Exercício 2 (Matriz Identidade)</h3>
+              <p>Crie a matriz identidade 3×3 usando o ambiente <code>bmatrix</code>. Lembre-se que ela tem <strong>1 na diagonal principal</strong> e <strong>0 no resto</strong>.</p>
+              
+              <div class="exercise-visual">
+                <div class="identity-matrix">
+                  [&nbsp;1&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;]<br>
+                  [&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;0&nbsp;]<br>
+                  [&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;]
+                </div>
+              </div>
+              
+              <details class="solution">
+                <summary>Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">Copiar</button>
+                  <pre><code>\[
+\begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{bmatrix}
+\]</code></pre>
+                </div>
+              </details>
+            </div>
+            
+            <div class="exercise-item challenge">
+              <h3>Exercício 3 (Desafio com <code>array</code>)</h3>
+              <p>Crie uma <strong>"matriz aumentada"</strong>, usada para resolver sistemas lineares. Ela deve ter uma linha vertical entre a terceira e a quarta coluna. Use o ambiente <code>array</code> e <code>\left[ ... \right]</code>.</p>
+              
+              <div class="exercise-visual">
+                <div class="augmented-matrix">
+                  [&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;|&nbsp;&nbsp;4&nbsp;]<br>
+                  [&nbsp;5&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;|&nbsp;&nbsp;8&nbsp;]<br>
+                  [&nbsp;9&nbsp;&nbsp;10&nbsp;11&nbsp;|&nbsp;12&nbsp;]
+                </div>
+              </div>
+              
+              <div class="hint">
+                <strong>Dica:</strong> A especificação das colunas será algo como <code>{ccc|c}</code>.
+              </div>
+              
+              <details class="solution">
+                <summary>💡 Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\[
+\left[
+\begin{array}{ccc|c}
+    1 & 2 & 3 & 4 \\
+    5 & 6 & 7 & 8 \\
+    9 & 10 & 11 & 12
+\end{array}
+\right]
+\]</code></pre>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="resumo-modulo">
+          <h2>Resumo Final do Módulo</h2>
+          
+          <div class="congratulations-box">
+            <h3>Parabéns! Você concluiu o Módulo 3 e sobreviveu à imersão no mundo matemático do LaTeX!</h3>
+          </div>
+          
+          <div class="module-summary">
+            <p>Neste módulo, você aprendeu <strong>o essencial para se tornar fluente na linguagem matemática</strong>:</p>
+            
+            <div class="summary-points">
+              <div class="summary-point">
+                <div class="point-number">1</div>
+                <div class="point-content">
+                  <h4>Fundamentos</h4>
+                  <p>A diferença fundamental entre os <strong>modos em linha e de destaque</strong>.</p>
+                </div>
+              </div>
+              
+              <div class="summary-point">
+                <div class="point-number">2</div>
+                <div class="point-content">
+                  <h4>Blocos de Construção</h4>
+                  <p>Potências, índices, frações, raízes e <strong>letras gregas</strong>.</p>
+                </div>
+              </div>
+              
+              <div class="summary-point">
+                <div class="point-number">3</div>
+                <div class="point-content">
+                  <h4>Estruturas Avançadas</h4>
+                  <p>A lidar com <strong>grandes operadores</strong>, como integrais e somatórios, e a usar <strong>delimitadores inteligentes</strong> que se adaptam ao seu conteúdo.</p>
+                </div>
+              </div>
+              
+              <div class="summary-point">
+                <div class="point-number">4</div>
+                <div class="point-content">
+                  <h4>Organização</h4>
+                  <p>A organizar e alinhar <strong>múltiplas equações</strong> de forma clara e a construir <strong>matrizes e vetores</strong> com ambientes específicos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="achievement-box">
+            <h4>Você agora tem a capacidade de transcrever a vasta maioria das expressões matemáticas que encontrar em artigos e livros para um documento LaTeX, com uma <strong>qualidade tipográfica impecável</strong>.</h4>
+          </div>
+          
+          <div class="next-module">
+            <h4>Próximo Destino</h4>
+            <p>Estamos prontos para sair do mundo abstrato da matemática e voltar para a organização visual do documento no <strong>Módulo 4: Elementos Visuais - Figuras e Tabelas</strong>?</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>
+
+
+
