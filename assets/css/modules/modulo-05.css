@@ -3,7 +3,7 @@
    ============================================= */
 
 .module-intro {
-    background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, var(--mod-grad-a, #8b5cf6) 0%, var(--mod-grad-b, #06b6d4) 100%);
     color: white;
     padding: 3rem 2rem;
     border-radius: 16px;
@@ -58,8 +58,8 @@
 }
 
 .module-overview {
-    background: linear-gradient(135deg, var(--panel) 0%, rgba(139, 92, 246, 0.05) 100%);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(var(--mod-grad-a-rgb, 139, 92, 246), 0.05) 100%);
+    border: 1px solid rgba(var(--mod-grad-a-rgb, 139, 92, 246), 0.2);
     border-radius: 12px;
     padding: 2rem;
     margin: 2rem 0;
@@ -95,7 +95,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+    background: linear-gradient(90deg, var(--mod-grad-a, #8b5cf6), var(--mod-grad-b, #06b6d4));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -159,7 +159,7 @@
     top: 60px;
     bottom: 60px;
     width: 3px;
-    background: linear-gradient(180deg, #8b5cf6, #06b6d4);
+    background: linear-gradient(180deg, var(--mod-grad-a, #8b5cf6), var(--mod-grad-b, #06b6d4));
     border-radius: 2px;
 }
 
@@ -181,7 +181,7 @@
     top: 0;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    background: linear-gradient(135deg, var(--mod-grad-a, #8b5cf6), var(--mod-grad-b, #06b6d4));
     color: white;
     border-radius: 50%;
     display: flex;

@@ -25,11 +25,13 @@ Scripts locais:
 - Inline: `$a^2 + b^2 = c^2$` ou `\(...\)`.
 - Display: `$$\int_0^1 x^2\,dx = \frac{1}{3}$$` ou `\[...\]`.
 
-## Busca
+## Busca e Navbar
 
-- Campo “Buscar aulas…” na topbar.
-- Procura por títulos de aulas e nomes de módulos definidos em `data/modules.json`.
-- Para buscar também no conteúdo, você pode:
+- Campo “Buscar aulas…” agora integrado na topbar (cliente, sem dependências externas).
+- Procura por títulos de aulas e nomes de módulos a partir de `data/modules.json`.
+- Navegação por teclado: setas para cima/baixo, Enter para acessar, Esc para fechar.
+- Botão "Repositório" na topbar leva para este GitHub.
+- Para expandir a busca ao conteúdo das páginas, considere:
   - Manter um índice JSON com trechos/keywords por página, ou
   - Coletar conteúdo via fetch e indexar (cuidado com CORS e performance).
 

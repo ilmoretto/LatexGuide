@@ -33,6 +33,12 @@
   /* Efeitos */
   --radius: 12px;
   --shadow: 0 8px 24px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.3);
+
+  /* Gradientes por módulo (fallbacks) */
+  --mod-grad-a: #22d3ee; /* fallback start */
+  --mod-grad-b: #60a5fa; /* fallback end */
+  --mod-grad-a-rgb: 34, 211, 238;
+  --mod-grad-b-rgb: 96, 165, 250;
 }
 
 /* =============================================
@@ -58,6 +64,28 @@
 
   /* Sombras mais suaves no tema claro */
   --shadow: 0 8px 24px rgba(0,0,0,.1), 0 2px 6px rgba(0,0,0,.05);
+}
+
+/* Mapeamento de cores por módulo */
+:root[data-module="mod-01"] {
+  --mod-grad-a: #22d3ee; --mod-grad-b: #a855f7;
+  --mod-grad-a-rgb: 34, 211, 238; --mod-grad-b-rgb: 168, 85, 247;
+}
+:root[data-module="mod-02"] {
+  --mod-grad-a: #3b82f6; --mod-grad-b: #22d3ee;
+  --mod-grad-a-rgb: 59, 130, 246; --mod-grad-b-rgb: 34, 211, 238;
+}
+:root[data-module="mod-03"] {
+  --mod-grad-a: #f59e0b; --mod-grad-b: #10b981;
+  --mod-grad-a-rgb: 245, 158, 11; --mod-grad-b-rgb: 16, 185, 129;
+}
+:root[data-module="mod-04"] {
+  --mod-grad-a: #22c55e; --mod-grad-b: #3b82f6;
+  --mod-grad-a-rgb: 34, 197, 94; --mod-grad-b-rgb: 59, 130, 246;
+}
+:root[data-module="mod-05"] {
+  --mod-grad-a: #8b5cf6; --mod-grad-b: #06b6d4;
+  --mod-grad-a-rgb: 139, 92, 246; --mod-grad-b-rgb: 6, 182, 212;
 }
 
 /* Ajustes específicos para modo claro */
