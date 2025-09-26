@@ -39,6 +39,15 @@
   --mod-grad-b: #60a5fa; /* fallback end */
   --mod-grad-a-rgb: 34, 211, 238;
   --mod-grad-b-rgb: 96, 165, 250;
+
+  /* Compat: aliases para tokens antigos usados em CSSs de módulo */
+  --accent-primary: var(--accent);
+  --accent-secondary: var(--primary);
+  --text-secondary: var(--muted);
+  --text-on-accent: #ffffff;
+  --surface-secondary: var(--panel);
+  --surface-tertiary: var(--panel);
+  --surface-code: var(--code-bg);
 }
 
 /* =============================================
@@ -64,6 +73,15 @@
 
   /* Sombras mais suaves no tema claro */
   --shadow: 0 8px 24px rgba(0,0,0,.1), 0 2px 6px rgba(0,0,0,.05);
+
+  /* Compat: aliases para tokens antigos também no tema claro */
+  --accent-primary: var(--accent);
+  --accent-secondary: var(--primary);
+  --text-secondary: var(--muted);
+  --text-on-accent: #ffffff;
+  --surface-secondary: var(--panel);
+  --surface-tertiary: var(--panel);
+  --surface-code: var(--code-bg);
 }
 
 /* Mapeamento de cores por módulo */

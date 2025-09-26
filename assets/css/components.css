@@ -299,6 +299,12 @@ body {
    NAVEGAÇÃO LATERAL
    ============================================= */
 
+
+/* Utilitários de cor de texto (evitam inline style) */
+.text-primary { color: var(--primary) !important; }
+.text-accent { color: var(--accent) !important; }
+.text-muted  { color: var(--muted) !important; }
+.text-accent-primary { color: var(--accent-primary) !important; }
 .section-title {
   margin: .25rem 0 .5rem;
   font-size: .85rem; 
