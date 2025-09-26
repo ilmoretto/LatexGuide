@@ -16,8 +16,7 @@ Links já incluídos nas páginas:
 ```
 
 Scripts locais:
-- `assets/js/main.js`: constrói sidebar, breadcrumbs e pager; emite `course:dataLoaded`.
-- `assets/js/search.js`: cria índice Fuse a partir de `modules.json` e lê do campo de busca.
+- `assets/js/app.js`: orquestra UI (sidebar, breadcrumbs, pager, tema, busca integrada, nav picker, botão do repositório).
 - `assets/js/math.js`: roda `renderMathInElement` no conteúdo `.page`.
 
 ## Como escrever fórmulas
@@ -32,6 +31,7 @@ Scripts locais:
 - Navegação por teclado: setas para cima/baixo, Enter para acessar, Esc para fechar.
 - Botão "Repositório" na topbar leva para este GitHub.
 - Dropdown de navegação (nav picker) na topbar: selecione módulos/aulas diretamente; a página atual aparece selecionada.
+- Link "Pular para o conteúdo" é injetado automaticamente para navegação por teclado.
 - Para expandir a busca ao conteúdo das páginas, considere:
   - Manter um índice JSON com trechos/keywords por página, ou
   - Coletar conteúdo via fetch e indexar (cuidado com CORS e performance).
@@ -46,6 +46,7 @@ Scripts locais:
 - Sirva localmente (Live Server, `python -m http.server`, etc.) para permitir `fetch` do JSON.
 - Edite `data/modules.json` para gerenciar módulos/aulas.
 - Copie um dos templates `.html` ao criar novas aulas.
+ - Removidos scripts legados `assets/js/main.js` e `assets/js/search.js` (não são mais necessários).
 
 ## Dicas
 
