@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 3 — Aula 13: Operadores, Delimitadores e Alinhamento</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/mod-03/aula-13.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false"
+      aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 13: Operadores, Delimitadores e Alinhamento</h1>
+          <p>Organizando a complexidade: da "argamassa" às "vigas de sustentação" da matemática</p>
+        </header>
+
+        <div class="intro-box">
+          <h2>🏗️ Organizando a Complexidade</h2>
+          <p>Se a aula anterior nos deu os <strong>"tijolos"</strong> matemáticos, a aula de hoje nos entrega a <strong>"argamassa"</strong>, as <strong>"vigas de sustentação"</strong> e as <strong>"plantas de montagem"</strong>.</p>
+          
+          <p>Vamos aprender a lidar com expressões que não cabem em uma única linha ou que envolvem múltiplos termos, como somatórios e integrais. Dominar os conceitos desta aula — <strong>grandes operadores</strong>, <strong>delimitadores inteligentes</strong> e <strong>alinhamento de equações</strong> — é o que diferencia a escrita de fórmulas simples da composição de documentos matemáticos verdadeiramente profissionais e legíveis.</p>
+          
+          <div class="meta-info">
+            ⏱️ <strong>35 minutos</strong> • 🔧 <strong>Avançado</strong> • 📐 <strong>Estruturas Complexas</strong>
+          </div>
+        </div>
+
+        <section id="grandes-operadores">
+          <h2>1. Grandes Operadores: A Escala da Matemática</h2>
+          
+          <p class="section-intro">Grandes operadores (<code>\sum</code>, <code>\int</code>, <code>\prod</code>, etc.) são o coração de muitas áreas da matemática. O LaTeX não apenas fornece os símbolos, mas entende sua gramática, especialmente em relação aos seus limites.</p>
+
+          <h3>Comportamento em Linha vs. Destaque (Revisitado)</h3>
+          
+          <div class="theory-box">
+            <p>A distinção é <strong>fundamental</strong>. No modo em linha, o LaTeX prioriza a consistência do espaçamento entre linhas do parágrafo. No modo de destaque, ele prioriza a clareza e a estrutura tradicional da fórmula.</p>
+          </div>
+
+          <h4>📊 Exemplo Comparativo (Somatório)</h4>
+          
+          <div class="comparison-grid">
+            <div class="comparison-item">
+              <h5>Código em Linha:</h5>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>A soma de uma P.G. infinita é $\sum_{k=0}^{\infty} ar^k$.</code></pre>
+              </div>
+              <p class="result"><strong>Resultado em Linha:</strong> A soma de uma P.G. infinita é ∑ₖ₌₀^∞ arᵏ. <em>(Limites ao lado)</em></p>
+            </div>
+            
+            <div class="comparison-item">
+              <h5>Código em Destaque:</h5>
+              <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                <pre><code>A soma de uma P.G. infinita é:
+\[ \sum_{k=0}^{\infty} ar^k = \frac{a}{1-r} \]</code></pre>
+              </div>
+              <p class="result"><strong>Resultado em Destaque:</strong></p>
+              <div class="math-display">
+                ∑<br><sub>k=0</sub><sup>∞</sup> arᵏ = a/(1-r)
+              </div>
+              <p><em>(Limites acima e abaixo, como na notação padrão)</em></p>
+            </div>
+          </div>
+
+          <h3>⚙️ Forçando o Estilo dos Limites</h3>
+          
+          <div class="advanced-tip">
+            <p><strong>E se você precisar que os limites apareçam acima e abaixo, mesmo no modo em linha?</strong> Ou ao lado, mesmo no modo de destaque? Você pode forçar o estilo com <code>\limits</code> e <code>\nolimits</code>.</p>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático <code>\limits</code>:</h4>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>A expressão $\sum\limits_{i=1}^{n} i^2$ ocupa mais espaço vertical.</code></pre>
+            </div>
+            <p class="result"><strong>Resultado:</strong> A expressão ∑<sub>i=1</sub><sup>n</sup> i² ocupa mais espaço vertical.</p>
+            <div class="warning">⚠️ <strong>Cuidado:</strong> Note como isso pode bagunçar o espaçamento do parágrafo, por isso use com cautela.</div>
+          </div>
+
+          <h3>🎯 Refinamentos Tipográficos com Integrais</h3>
+          
+          <p>O pequeno espaço <code>\,</code> antes do diferencial (dx, dt, etc.) é considerada uma <strong>boa prática</strong>. Para integrais duplas ou triplas, existem comandos específicos.</p>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Integrais Múltiplas):</h4>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>O volume $V$ pode ser calculado com a integral tripla:
+\[ V = \iiint_D f(x,y,z) \,dx\,dy\,dz \]</code></pre>
+            </div>
+            <p class="result"><strong>Resultado:</strong></p>
+            <div class="math-display">
+              V = ∭<sub>D</sub> f(x,y,z) dx dy dz
+            </div>
+          </div>
+
+          <div class="reference-table">
+            <h4>📚 Comandos Disponíveis:</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Comando</th>
+                  <th>Símbolo</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>\int</code></td>
+                  <td>∫</td>
+                  <td>Integral simples</td>
+                </tr>
+                <tr>
+                  <td><code>\iint</code></td>
+                  <td>∬</td>
+                  <td>Integral dupla</td>
+                </tr>
+                <tr>
+                  <td><code>\iiint</code></td>
+                  <td>∭</td>
+                  <td>Integral tripla</td>
+                </tr>
+                <tr>
+                  <td><code>\oint</code></td>
+                  <td>∮</td>
+                  <td>Integral de linha fechada</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="delimitadores-inteligentes">
+          <h2>2. Delimitadores Inteligentes: Criando Contêineres Visuais</h2>
+          
+          <p class="section-intro">O par <code>\left</code> e <code>\right</code> é a sua ferramenta para garantir que delimitadores (parênteses, colchetes, chaves, barras) envolvam perfeitamente o seu conteúdo, não importa o quão alto ele seja.</p>
+
+          <div class="syntax-box">
+            <h3>🔧 A Sintaxe Mestra:</h3>
+            <div class="code-block">
+              <pre><code>\left&lt;delimitador&gt; ... \right&lt;delimitador&gt;</code></pre>
+            </div>
+            <p><strong>Lembre-se:</strong> Eles devem ser usados em <strong>pares</strong>.</p>
+          </div>
+
+          <h3>🎨 Quais delimitadores posso usar?</h3>
+          
+          <div class="delimiters-grid">
+            <div class="delimiter-item">
+              <strong>Parênteses:</strong><br>
+              <code>\left(</code> e <code>\right)</code>
+            </div>
+            <div class="delimiter-item">
+              <strong>Colchetes:</strong><br>
+              <code>\left[</code> e <code>\right]</code>
+            </div>
+            <div class="delimiter-item">
+              <strong>Chaves:</strong><br>
+              <code>\left\{</code> e <code>\right\}</code><br>
+              <small>(a chave precisa ser "escapada" com \)</small>
+            </div>
+            <div class="delimiter-item">
+              <strong>Barras de Módulo/Determinante:</strong><br>
+              <code>\left|</code> e <code>\right|</code>
+            </div>
+            <div class="delimiter-item">
+              <strong>Barras Duplas (Norma):</strong><br>
+              <code>\left\|</code> e <code>\right\|</code><br>
+              <small>(<code>\Vert</code> também funciona)</small>
+            </div>
+            <div class="delimiter-item">
+              <strong>Colchetes Angulares:</strong><br>
+              <code>\left\langle</code> e <code>\right\rangle</code>
+            </div>
+          </div>
+
+          <h3>👻 O "Delimitador Invisível"</h3>
+          
+          <div class="advanced-tip">
+            <p>Use <code>\left.</code> ou <code>\right.</code> quando precisar de um delimitador "fantasma" para completar a sintaxe.</p>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático Aprofundado (Definição por Partes)</h4>
+            <p>O "truque" do delimitador invisível (<code>.</code>) é a chave para funções definidas por partes, uma estrutura muito comum.</p>
+            
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>A função sinal, $\text{sgn}(x)$, é definida como:
+\[
+\text{sgn}(x) = \left\{
+  \begin{array}{rl} % 'r' para texto à direita, 'l' para texto à esquerda
+     1, & \text{se } x > 0 \\
+     0, & \text{se } x = 0 \\
+    -1, & \text{se } x < 0
+  \end{array}
+\right.
+\]</code></pre>
+            </div>
+            
+            <div class="breakdown">
+              <h5>🔍 O que está acontecendo aqui?</h5>
+              <ol>
+                <li><code>\left\{</code> abre uma chave esquerda grande.</li>
+                <li>O ambiente <code>array</code> (que veremos em detalhes na próxima aula) cria a estrutura de "tabela" para as condições. <code>{rl}</code> significa "uma coluna alinhada à direita, outra à esquerda".</li>
+                <li><code>\right.</code> fecha o grupo com um delimitador invisível do mesmo tamanho da chave, completando a sintaxe.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="equacoes-alinhadas">
+          <h2>3. Equações Alinhadas: A Coreografia da Matemática</h2>
+          
+          <p class="section-intro">Quando você precisa mostrar os passos de uma derivação, a clareza do alinhamento é tudo. O ambiente <code>align</code> (do pacote <code>amsmath</code>) é a ferramenta padrão para isso.</p>
+
+          <h3>📐 A Gramática do <code>align</code></h3>
+          
+          <div class="grammar-box">
+            <div class="grammar-item">
+              <strong><code>&</code> (Ponto de Alinhamento):</strong>
+              <p>Pense no <code>&</code> como um "ponto de âncora". O LaTeX vai alinhar verticalmente todos os caracteres que vêm imediatamente após cada <code>&</code>. Colocá-lo antes do <code>=</code> garante que os sinais de igualdade fiquem perfeitamente alinhados.</p>
+            </div>
+            
+            <div class="grammar-item">
+              <strong><code>\\</code> (Nova Linha/Equação):</strong>
+              <p>Termina uma linha e começa a próxima.</p>
+            </div>
+            
+            <div class="grammar-item">
+              <strong><code>\nonumber</code> (Suprimir Numeração):</strong>
+              <p>Adicione este comando ao final de qualquer linha (antes de <code>\\</code>) para evitar que ela receba um número.</p>
+            </div>
+          </div>
+
+          <h3>🎯 Versões do Ambiente</h3>
+          
+          <div class="versions-grid">
+            <div class="version-item">
+              <strong><code>align</code></strong>
+              <p>Numera cada linha</p>
+            </div>
+            <div class="version-item">
+              <strong><code>align*</code></strong>
+              <p>Não numera nenhuma linha</p>
+            </div>
+          </div>
+
+          <div class="example-box">
+            <h4>Exemplo Prático (Sistema de Equações):</h4>
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>Podemos resolver o seguinte sistema de equações:
+\begin{align*} % Usando a versão sem numeração
+    2x + 3y &= 7 \\
+    -x + y &= 1
+\end{align*}</code></pre>
+            </div>
+            
+            <p class="result"><strong>Resultado:</strong></p>
+            <div class="math-display aligned">
+              2x + 3y = 7<br>
+              -x + y = 1
+            </div>
+            <p><em>(Observe como os sinais de = estão perfeitamente alinhados)</em></p>
+          </div>
+
+          <h3>🎭 Alinhamento Múltiplo na Mesma Linha</h3>
+          
+          <div class="advanced-tip">
+            <p>Você pode ter múltiplos pontos de alinhamento em cada linha, usando pares de <code>&</code>. O primeiro <code>&</code> é um ponto de alinhamento, o segundo é um separador de colunas, o terceiro é outro ponto de alinhamento, etc.</p>
+          </div>
+
+          <div class="example-box">
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+              <pre><code>\begin{align*}
+    x &= y      &  w &= z      &  u &= v \\
+    x' &= y'    &  w' &= z'    &  u' &= v'
+\end{align*}</code></pre>
+            </div>
+            
+            <p class="result"><strong>Resultado:</strong></p>
+            <div class="math-display multi-aligned">
+              <div class="align-row">
+                <span>x = y</span>
+                <span>w = z</span>
+                <span>u = v</span>
+              </div>
+              <div class="align-row">
+                <span>x' = y'</span>
+                <span>w' = z'</span>
+                <span>u' = v'</span>
+              </div>
+            </div>
+            <p><em>(Observe as três colunas de equações perfeitamente alinhadas)</em></p>
+          </div>
+        </section>
+
+        <section id="exercicios">
+          <h2>🏋️ Atividades de Autoestudo (Nível Avançado)</h2>
+          
+          <div class="exercise-grid">
+            <div class="exercise-item">
+              <h3>Exercício 1 (Somatório e Fração)</h3>
+              <p>Escreva a fórmula para a média aritmética x̄ de n elementos (xᵢ). A fórmula é:</p>
+              <div class="math-display">
+                x̄ = (∑<sub>i=1</sub><sup>n</sup> xᵢ) / n
+              </div>
+              <p><strong>Use:</strong> modo de destaque <code>\[ ... \]</code>, <code>\bar{x}</code>, <code>\sum</code>, <code>\frac</code>.</p>
+              
+              <details class="solution">
+                <summary>💡 Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\[ \bar{x} = \frac{\sum_{i=1}^{n} x_i}{n} \]</code></pre>
+                </div>
+              </details>
+            </div>
+            
+            <div class="exercise-item">
+              <h3>Exercício 2 (Delimitadores e Integrais)</h3>
+              <p>A Normal de uma função de densidade de probabilidade deve ser 1. Escreva a seguinte expressão, que representa a normalização da função de onda em mecânica quântica:</p>
+              <div class="math-display">
+                ∫<sub>-∞</sub><sup>+∞</sup> |ψ(x)|² dx = 1
+              </div>
+              <p><strong>Use:</strong> <code>\int</code>, <code>\left|</code> e <code>\right|</code>, e <code>\psi</code>.</p>
+              
+              <details class="solution">
+                <summary>💡 Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\[ \int_{-\infty}^{+\infty} \left|\psi(x)\right|^2 \,dx = 1 \]</code></pre>
+                </div>
+              </details>
+            </div>
+            
+            <div class="exercise-item">
+              <h3>Exercício 3 (Alinhamento)</h3>
+              <p>Mostre os passos para simplificar a expressão (a-b)(a+b) usando o ambiente <code>align*</code>. Os passos são:</p>
+              <ol>
+                <li>A expressão inicial</li>
+                <li>= a(a+b) - b(a+b)</li>
+                <li>= a² + ab - ba - b²</li>
+                <li>= a² - b²</li>
+              </ol>
+              
+              <details class="solution">
+                <summary>💡 Ver Solução</summary>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyToClipboard(this)">📋 Copiar</button>
+                  <pre><code>\begin{align*}
+    (a-b)(a+b) &= a(a+b) - b(a+b) \\
+               &= a^2 + ab - ba - b^2 \\
+               &= a^2 - b^2
+\end{align*}</code></pre>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="reflexao">
+          <h2>🤔 Reflexão Crítica</h2>
+          
+          <div class="reflection-box">
+            <p><strong>Pergunta:</strong> Por que o ambiente <code>array</code>, usado dentro da definição por partes, precisa ser colocado dentro de um ambiente matemático como <code>\[ ... \]</code>, enquanto o ambiente <code>align</code> já "é" um ambiente matemático e não precisa dos cifrões ou colchetes?</p>
+            
+            <details class="reflection-answer">
+              <summary>💭 Reflexão</summary>
+              <p>O ambiente <code>array</code> é um ambiente de estruturação/tabulação que pode ser usado tanto em contextos matemáticos quanto textuais. Ele precisa do contexto matemático (<code>$...$</code> ou <code>\[...\]</code>) para interpretar símbolos matemáticos corretamente.</p>
+              
+              <p>Já o <code>align</code> é um ambiente matemático nativo - ele próprio estabelece o contexto matemático e automaticamente interpreta fórmulas, símbolos e comandos matemáticos. É como a diferença entre uma "sala de estar" (array) que pode ser usada para qualquer propósito, e um "laboratório" (align) que já vem equipado com tudo necessário para um tipo específico de trabalho.</p>
+            </details>
+          </div>
+        </section>
+
+        <section id="resumo">
+          <h2>📋 Resumo Final da Aula</h2>
+          
+          <div class="summary-grid">
+            <div class="summary-item">
+              <h3>🔢 Grandes Operadores</h3>
+              <p>O uso contextual de <code>\sum</code>, <code>\int</code> e como controlar a posição de seus limites com <code>\limits</code>.</p>
+            </div>
+            
+            <div class="summary-item">
+              <h3>📐 Delimitadores Inteligentes</h3>
+              <p>Usar o poder de <code>\left</code> e <code>\right</code> para criar delimitadores que se adaptam perfeitamente ao seu conteúdo, e o "truque do ponto" para delimitadores unilaterais.</p>
+            </div>
+            
+            <div class="summary-item">
+              <h3>⚖️ Alinhamento de Equações</h3>
+              <p>Organizar e numerar múltiplas linhas de equações com precisão usando os ambientes <code>align</code> e <code>align*</code>, e o poder do <code>&</code> como ponto de alinhamento.</p>
+            </div>
+          </div>
+          
+          <div class="next-lesson">
+            <p><strong>🚀 Com este arsenal, você está preparado para enfrentar desafios de composição matemática muito mais complexos.</strong></p>
+            <p>Na próxima aula, concluiremos o Módulo 3 com matrizes, vetores e outras estruturas tabulares.</p>
+          </div>
+        </section>
+
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  
+  <script src="../../assets/js/app.js" defer></script>
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.nextElementSibling;
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✅ Copiado!';
+        button.style.background = '#22c55e';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

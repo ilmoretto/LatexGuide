@@ -1,29 +1,421 @@
 /* =============================================
-   AULA 13 - OPERADORES E SÍMBOLOS AVANÇADOS (MÓDULO 3)
+   AULA 13 - OPERADORES, DELIMITADORES E ALINHAMENTO (MÓDULO 3)
    ============================================= */
 
-/* Estilos específicos para operadores matemáticos avançados */
-.advanced-operators {
-    background: linear-gradient(135deg, var(--panel) 0%, rgba(14, 165, 233, 0.1) 100%);
-    border: 1px solid rgba(14, 165, 233, 0.3);
-    border-radius: var(--radius);
+/* Intro Box com destaque especial */
+.intro-box {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.05));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: var(--radius-lg);
     padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.intro-box h2 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.meta-info {
+    background: rgba(var(--accent-rgb), 0.1);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* Grid de comparação para exemplos lado a lado */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     margin: 2rem 0;
 }
 
-.operator-grid {
+.comparison-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.comparison-item h5 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.result {
+    background: rgba(var(--success-rgb), 0.1);
+    border-left: 4px solid var(--success);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Caixas de matemática em destaque */
+.math-display {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Latin Modern Math', 'STIX Two Math', 'TeX Gyre Termes Math', serif;
+}
+
+.math-display.aligned {
+    text-align: left;
+    font-family: monospace;
+    line-height: 1.8;
+}
+
+.math-display.multi-aligned {
+    text-align: left;
+}
+
+.align-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 0.5rem 0;
+    font-family: monospace;
+}
+
+/* Grid de delimitadores */
+.delimiters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin: 1.5rem 0;
 }
 
-/* Media queries para aula 13 */
+.delimiter-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-align: center;
+}
+
+.delimiter-item strong {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.delimiter-item small {
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* Caixas de sintaxe */
+.syntax-box {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.syntax-box h3 {
+    color: #3b82f6;
+    margin-top: 0;
+}
+
+/* Caixas de gramática */
+.grammar-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.grammar-item {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: var(--radius);
+}
+
+.grammar-item strong {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Grid de versões */
+.versions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.version-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-align: center;
+}
+
+.version-item strong {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* Breakdown de explicação */
+.breakdown {
+    background: rgba(var(--info-rgb), 0.1);
+    border: 1px solid var(--info);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.breakdown h5 {
+    color: var(--info);
+    margin-top: 0;
+}
+
+.breakdown ol {
+    margin: 1rem 0;
+}
+
+.breakdown li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+/* Grid de exercícios */
+.exercise-grid {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.exercise-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.exercise-item h3 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.exercise-item p {
+    line-height: 1.6;
+}
+
+/* Soluções */
+.solution {
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.solution summary {
+    background: rgba(var(--success-rgb), 0.1);
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: var(--radius) var(--radius) 0 0;
+    font-weight: 500;
+    color: var(--success);
+}
+
+.solution[open] summary {
+    border-radius: var(--radius) var(--radius) 0 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.solution .code-block {
+    margin: 1rem;
+}
+
+/* Caixa de reflexão */
+.reflection-box {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.reflection-answer {
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.reflection-answer summary {
+    background: rgba(var(--accent-rgb), 0.1);
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: var(--radius) var(--radius) 0 0;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.reflection-answer[open] summary {
+    border-bottom: 1px solid var(--border);
+}
+
+.reflection-answer p {
+    padding: 1rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Grid de resumo */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.summary-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.summary-item h3 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+/* Próxima aula */
+.next-lesson {
+    background: rgba(var(--success-rgb), 0.1);
+    border: 1px solid var(--success);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.next-lesson p {
+    margin: 0.5rem 0;
+}
+
+.next-lesson p:first-child {
+    font-weight: 600;
+    color: var(--success);
+}
+
+/* Tabela de referência */
+.reference-table {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.reference-table h4 {
+    color: var(--accent);
+    margin-top: 0;
+}
+
+.reference-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.reference-table th {
+    background: rgba(var(--accent-rgb), 0.1);
+    border: 1px solid var(--border);
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.reference-table td {
+    border: 1px solid var(--border);
+    padding: 0.75rem;
+}
+
+.reference-table td:nth-child(2) {
+    text-align: center;
+    font-family: 'Latin Modern Math', 'STIX Two Math', serif;
+    font-size: 1.2rem;
+}
+
+/* Dicas avançadas */
+.advanced-tip {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(139, 69, 19, 0.05));
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    border-left: 4px solid #8b4513;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.advanced-tip p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Avisos */
+.warning {
+    background: rgba(var(--warning-rgb), 0.1);
+    border: 1px solid var(--warning);
+    border-left: 4px solid var(--warning);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1rem;
+    margin: 1rem 0;
+    color: var(--warning);
+    font-weight: 500;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-    .advanced-operators {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .delimiters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .versions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .align-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .align-row span {
+        margin: 0.2rem 0;
+    }
+    
+    .intro-box {
         padding: 1.5rem;
     }
-    .operator-grid {
-        grid-template-columns: 1fr;
+    
+    .math-display {
+        font-size: 1rem;
+        padding: 1rem;
     }
 }
