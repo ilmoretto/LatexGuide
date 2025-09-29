@@ -115,7 +115,7 @@
 
 .depth-table th {
     background: #9333ea;
-    color: white;
+    color: var(--text-on-accent);
     font-weight: 600;
 }
 

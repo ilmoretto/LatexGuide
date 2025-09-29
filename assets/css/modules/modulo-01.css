@@ -1,10 +1,19 @@
-/* =============================================
+/* =.module-intro {
+    background: linear-gradient(135deg, var(--mod-grad-a) 0%, var(--mod-grad-b) 100%);
+    color: var(--text-on-accent);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}==================================
    MÓDULO 1 - ESTILOS ESPECÍFICOS
    ============================================= */
 
 .module-intro {
     background: linear-gradient(135deg, var(--mod-grad-a, #667eea) 0%, var(--mod-grad-b, #764ba2) 100%);
-    color: white;
+    color: var(--text-on-accent);
     padding: 3rem 2rem;
     border-radius: 16px;
     text-align: center;

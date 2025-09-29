@@ -120,7 +120,7 @@
 
 .symbol-table th {
     background: linear-gradient(135deg, var(--accent) 0%, #0ea5e9 100%);
-    color: white;
+    color: var(--text-on-accent);
     font-weight: 600;
 }
 
@@ -165,7 +165,7 @@
 
 .exercise-number {
     background: #f59e0b;
-    color: white;
+    color: var(--text-on-accent);
     width: 2rem;
     height: 2rem;
     border-radius: 50%;

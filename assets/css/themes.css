@@ -170,6 +170,30 @@
   color: var(--primary);
 }
 
+/* Destaques inline consistentes - tom de azul */
+.highlight, .destaque, em.highlight, strong.highlight {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+:root.light-theme .highlight, 
+:root.light-theme .destaque, 
+:root.light-theme em.highlight, 
+:root.light-theme strong.highlight {
+  color: #0284c7; /* Azul mais escuro para o tema claro */
+}
+
+/* Classes para diferentes tipos de destaque */
+.text-primary { color: var(--primary); }
+.text-accent { color: var(--accent); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--danger); }
+
+/* Ajustes para tema claro */
+:root.light-theme .text-primary { color: #0284c7; }
+:root.light-theme .text-accent { color: #0ea5e9; }
+
 :root.light-theme .search-highlight {
   background: rgba(34, 211, 238, 0.2);
   color: #0e7490;

@@ -44,8 +44,8 @@
         { "title": "Aula 15: O Mundo das Figuras - Inserindo e Controlando Imagens", "path": "/modules/modulo-04/aula-15.html" },
         { "title": "Aula 16: Figuras Flutuantes - A Arte da Diagramação Automática", "path": "/modules/modulo-04/aula-16.html" },
         { "title": "Aula 17: A Arte de Organizar Dados - Tabelas com tabular", "path": "/modules/modulo-04/aula-17.html" },
-        { "title": "Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas", "path": "/modules/modulo-04/aula-18.html" },
-        { "title": "Aula 25: O Controle do Layout – A Geometria da Página (geometry)", "path": "/modules/modulo-04/aula-25.html" }
+        { "title": "Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas", "path": "/modules/modulo-04/aula-18.html" }
+        
       ]
     },
     {
@@ -66,6 +66,7 @@
         { "title": "Aula 22: Macros e \\newcommand", "path": "/modules/modulo-06/aula-22.html" },
         { "title": "Aula 23: Comandos com Argumentos", "path": "/modules/modulo-06/aula-23.html" },
         { "title": "Aula 24: Ambientes com \\newenvironment", "path": "/modules/modulo-06/aula-24.html" },
+        { "title": "Aula 25: O Controle do Layout – A Geometria da Página (geometry)", "path": "/modules/modulo-04/aula-25.html" },
         { "title": "Aula 26: Cabeçalhos, Rodapés e Listas", "path": "/modules/modulo-06/aula-26.html" }
       ]
     }

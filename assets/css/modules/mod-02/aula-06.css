@@ -12,7 +12,7 @@
 
 .accent-card {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    color: var(--text-on-accent);
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
@@ -145,7 +145,7 @@
 
 .character-table th {
     background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-    color: white;
+    color: var(--text-on-accent);
     font-weight: 600;
     position: relative;
 }
