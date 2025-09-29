@@ -3,8 +3,8 @@
    ============================================= */
 
 .module-intro {
-    background: linear-gradient(135deg, var(--mod-grad-a, #8b5cf6) 0%, var(--mod-grad-b, #06b6d4) 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--mod-grad-a) 0%, var(--mod-grad-b) 100%);
+    color: var(--text-on-accent);
     padding: 3rem 2rem;
     border-radius: 16px;
     text-align: center;
@@ -58,8 +58,8 @@
 }
 
 .module-overview {
-    background: linear-gradient(135deg, var(--panel) 0%, rgba(var(--mod-grad-a-rgb, 139, 92, 246), 0.05) 100%);
-    border: 1px solid rgba(var(--mod-grad-a-rgb, 139, 92, 246), 0.2);
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(var(--mod-grad-a-rgb), 0.05) 100%);
+    border: 1px solid rgba(var(--mod-grad-a-rgb), 0.2);
     border-radius: 12px;
     padding: 2rem;
     margin: 2rem 0;
@@ -74,7 +74,7 @@
     background: var(--bg);
     padding: 0 12px;
     font-size: 0.9rem;
-    color: #8b5cf6;
+    color: var(--mod-grad-a);
     font-weight: 700;
 }
 
@@ -95,7 +95,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--mod-grad-a, #8b5cf6), var(--mod-grad-b, #06b6d4));
+    background: linear-gradient(90deg, var(--mod-grad-a), var(--mod-grad-b));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -159,7 +159,7 @@
     top: 60px;
     bottom: 60px;
     width: 3px;
-    background: linear-gradient(180deg, var(--mod-grad-a, #8b5cf6), var(--mod-grad-b, #06b6d4));
+    background: linear-gradient(180deg, var(--mod-grad-a), var(--mod-grad-b));
     border-radius: 2px;
 }
 
@@ -181,15 +181,15 @@
     top: 0;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--mod-grad-a, #8b5cf6), var(--mod-grad-b, #06b6d4));
-    color: white;
+    background: linear-gradient(135deg, var(--mod-grad-a), var(--mod-grad-b));
+    color: var(--text-on-accent);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 1.2rem;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(var(--mod-grad-a-rgb), 0.3);
 }
 
 .step-info {
@@ -243,8 +243,8 @@
 .step-complexity {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
-    color: #8b5cf6;
+    background: linear-gradient(135deg, rgba(var(--mod-grad-a-rgb), 0.1), rgba(var(--mod-grad-b-rgb), 0.1));
+    color: var(--mod-grad-a);
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -283,14 +283,14 @@
 }
 
 .prereq-item.completed {
-    border-color: #22c55e;
-    background: linear-gradient(135deg, var(--bg), rgba(34, 197, 94, 0.05));
+    border-color: var(--success);
+    background: linear-gradient(135deg, var(--bg), rgba(var(--success-rgb), 0.05));
 }
 
 .prereq-item:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow);
-    border-color: #8b5cf6;
+    border-color: var(--mod-grad-a);
 }
 
 .check-icon {
@@ -313,8 +313,8 @@
 
 /* ---- MOTIVAÇÃO E BOOST ---- */
 .motivation-boost {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.05));
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: linear-gradient(135deg, rgba(var(--mod-grad-a-rgb), 0.05), rgba(var(--mod-grad-b-rgb), 0.05));
+    border: 1px solid rgba(var(--mod-grad-a-rgb), 0.2);
     border-radius: 16px;
     padding: 2rem;
     margin: 3rem 0;
@@ -333,18 +333,18 @@
 
 .inspiration-quote {
     background: var(--panel);
-    border-left: 4px solid #8b5cf6;
+    border-left: 4px solid var(--mod-grad-a);
     padding: 1.5rem;
     border-radius: 0 8px 8px 0;
     margin: 2rem 0;
     font-style: italic;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--text-primary);
+    color: var(--text);
 }
 
 .inspiration-quote strong {
-    color: #8b5cf6;
+    color: var(--mod-grad-a);
     font-style: normal;
 }
 
@@ -368,11 +368,11 @@
 }
 
 .before {
-    border-left: 4px solid #ef4444;
+    border-left: 4px solid var(--danger);
 }
 
 .after {
-    border-left: 4px solid #22c55e;
+    border-left: 4px solid var(--success);
 }
 
 .before h4,
@@ -382,11 +382,11 @@
 }
 
 .before h4 {
-    color: #ef4444;
+    color: var(--danger);
 }
 
 .after h4 {
-    color: #22c55e;
+    color: var(--success);
 }
 
 .before ul,
@@ -406,14 +406,14 @@
 }
 
 .after li {
-    color: var(--text-primary);
+    color: var(--text);
 }
 
 /* ---- CALL TO ACTION ---- */
 .call-to-action {
     text-align: center;
-    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-    color: white;
+    background: linear-gradient(135deg, var(--mod-grad-a), var(--mod-grad-b));
+    color: var(--text-on-accent);
     padding: 3rem 2rem;
     border-radius: 16px;
     margin: 3rem 0;
@@ -473,7 +473,7 @@
 
 .cta-primary {
     background: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: var(--text-on-accent);
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -485,7 +485,7 @@
 
 .cta-secondary {
     background: transparent;
-    color: white;
+    color: var(--text-on-accent);
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 

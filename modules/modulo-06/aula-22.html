@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 6 — Aula 22: O Poder das Macros — Automatizando seu Trabalho com \newcommand</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/modulo-06.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 22: O Poder das Macros — Automatizando seu Trabalho com \newcommand</h1>
+          <p>Crie seus próprios comandos para ganhar produtividade, consistência e manutenibilidade.</p>
+        </header>
+        <details class="functionality-showcase toc-nav" aria-label="Neste capítulo">
+          <summary><strong>Neste capítulo</strong></summary>
+          <div class="toc-content">
+            <ul>
+              <li><a href="#prereqs-title">Pré-requisitos</a></li>
+              <li><a href="#intro-ampliada">Introdução ampliada</a></li>
+              <li><a href="#learning-objectives">Objetivos de aprendizado</a></li>
+              <li><a href="#sec-por-que-dry">Por que macros? DRY</a></li>
+              <li><a href="#sec-problema-repeticao">O problema da repetição manual</a></li>
+              <li><a href="#sec-1-newcommand">1) \newcommand — Crie seus próprios comandos</a></li>
+              <li><a href="#sec-2-args">2) Argumentos — Flexibilizando seus comandos</a></li>
+              <li><a href="#sec-3-spacing">3) Espaçamento após comandos — armadilha comum</a></li>
+              <li><a href="#sec-4-renew-provide">4) \renewcommand e \providecommand — quando usar</a></li>
+              <li><a href="#sec-5-erros">5) Erros comuns (e como resolver)</a></li>
+              <li><a href="#sec-6-exercicios">6) Exercícios sugeridos</a></li>
+              <li><a href="#sec-7-encerramento">7) Encerramento</a></li>
+              <li><a href="#sec-8-avaliacao">8) Avaliação rápida</a></li>
+              <li><a href="#sec-9-pratica">9) Prática rápida</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- PRÉ-REQUISITOS (de módulos 1–5, já ensinados) -->
+        <section class="module-overview" aria-labelledby="prereqs-title">
+          <h2 id="prereqs-title" class="text-accent-primary" style="margin-top:0">Pré-requisitos</h2>
+          <ul>
+            <li>Estrutura mínima de um documento: <code>\documentclass</code>, preâmbulo e <code>\begin{document}...\end{document}</code>.</li>
+            <li>Comandos básicos e hierarquia de seções: <code>\section</code>, <code>\subsection</code>, etc.</li>
+            <li>Formatação essencial de texto: <code>\textbf</code>, <code>\textit</code>, <code>\emph</code>, <code>\texttt</code>.</li>
+            <li>Uso de pacotes comuns (quando necessário): <code>amsmath</code>/<code>amssymb</code> para símbolos matemáticos.</li>
+            <li>Noções de referências cruzadas e etiquetas (para exercícios que citam \ref).</li>
+          </ul>
+        </section>
+
+        <!-- OBJETIVOS APROFUNDADOS (ACRESCENTADO) -->
+        <section class="theory-box">
+          <h2 id="intro-ampliada" class="text-accent-primary" style="margin-top:0">Introdução às Macros — visão ampliada</h2>
+          <p><strong>Ao final desta lição detalhada, você será capaz de:</strong></p>
+          <ul>
+            <li>Compreender profundamente o conceito de macro e a filosofia DRY ("Não se Repita").</li>
+            <li>Criar, com confiança, novos comandos para automatizar a inserção de texto e símbolos.</li>
+            <li>Entender a diferença crítica entre <code>\newcommand</code>, <code>\renewcommand</code>, e <code>\providecommand</code>.</li>
+            <li>Dominar a solução para o problema de espaçamento que ocorre após novos comandos.</li>
+            <li>Diagnosticar e corrigir os erros mais comuns relacionados à definição de macros.</li>
+          </ul>
+          <p class="text-muted" style="margin:.5rem 0 0">Pré-requisitos: Conhecimento sólido dos Módulos 1 a 5; um projeto Overleaf ou editor LaTeX local pronto para uso.</p>
+        </section>
+
+        <section class="theory-box">
+          <h2 id="learning-objectives" class="text-accent-primary" style="margin-top:0">Objetivos de aprendizado</h2>
+          <p><strong>Ao final desta lição, você será capaz de:</strong></p>
+          <ul>
+            <li>Entender o conceito de macro e por que ele impulsiona a produtividade.</li>
+            <li>Criar comandos simples como atalhos de texto e símbolos.</li>
+            <li>Desenvolver comandos com um ou mais argumentos.</li>
+            <li>Diferenciar <code>\newcommand</code>, <code>\renewcommand</code> e <code>\providecommand</code>.</li>
+            <li>Identificar e corrigir erros comuns em definição/uso de macros.</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h3 id="sec-por-que-dry">Por que macros? O princípio do <em>DRY</em></h3>
+          <p>Se você precisa repetir “Universidade Federal do Paraná, Setor de Tecnologia” dezenas de vezes, crie um atalho e mantenha tudo consistente. Trocas futuras viram uma simples edição.</p>
+        </section>
+
+        <!-- DRY E MOTIVAÇÃO (ACRESCENTADO) -->
+        <section class="functionality-showcase">
+          <h3 id="sec-problema-repeticao">O problema da repetição manual</h3>
+          <ul>
+            <li><strong>Ineficiência:</strong> desperdício de tempo e esforço.</li>
+            <li><strong>Risco de erro:</strong> inconsistências e typos.</li>
+            <li><strong>Manutenção difícil:</strong> alterações exigem "procurar e substituir" por todo o documento.</li>
+          </ul>
+          <p>A solução é o princípio <strong>DRY</strong>. Em LaTeX, implementamos via <em>macros</em>: atalhos definidos uma única vez e reutilizados com segurança.</p>
+        </section>
+
+        <section>
+          <h2 id="sec-1-newcommand">1) \newcommand — Crie seus próprios comandos</h2>
+          <p><strong>O quê?</strong> Define um novo comando.</p>
+          <p><strong>Como?</strong> <span class="latex-command">\newcommand{\nomeDoNovoComando}{conteudo}</span></p>
+          <ul>
+            <li><code>\nomeDoNovoComando</code>: seu atalho (sempre começa com \). Não pode colidir com comandos existentes.</li>
+            <li><code>conteudo</code>: o texto/código inserido quando o comando é usado.</li>
+            <li><strong>Onde definir?</strong> No preâmbulo, para ficar disponível em todo o documento.</li>
+          </ul>
+
+          <h4 class="text-accent-primary">Exemplo 1 — Atalho para texto longo</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newcommand{\uff}{Universidade Federal Fluminense}
+
+% No Corpo do Documento
+Eu estudo na \uff. A \uff\ é excelente.</code></pre>
+          </div>
+
+          <h4 class="text-accent-primary">Exemplo 2 — Atalho para símbolo matemático</h4>
+          <p class="text-muted">Requer <code>amsmath</code>/<code>amssymb</code>.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newcommand{\R}{\mathbb{R}}
+
+% No Corpo do Documento
+O conjunto dos números reais é denotado por $\R$.</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="sec-2-args">2) Argumentos — Flexibilizando seus comandos</h2>
+          <p><strong>O quê?</strong> Cria comandos com 1 a 9 argumentos.</p>
+          <p><strong>Como?</strong> <span class="latex-command">\newcommand{\nome}[num]{código usando #1, #2, ...}</span></p>
+          <ul>
+            <li><code>[num]</code>: quantos argumentos (1–9).</li>
+            <li><code>#1</code>, <code>#2</code>: placeholders substituídos pelos argumentos.</li>
+          </ul>
+
+          <h4 class="text-accent-primary">Exemplo com 1 argumento</h4>
+          <p class="text-muted">Para usar <code>\textcolor</code>, inclua <code>\usepackage{xcolor}</code> no preâmbulo.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newcommand{\destaque}[1]{\textbf{\textcolor{red}{#1}}}
+
+% No Corpo do Documento
+Atenção: \destaque{Não esqueça a chave!}</code></pre>
+          </div>
+
+          <h4 class="text-accent-primary">Exemplo com 2 argumentos</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newcommand{\avalia}[2]{O aluno #1 recebeu a nota #2.}
+
+% No Corpo do Documento
+\avalia{João Silva}{8.5}</code></pre>
+          </div>
+        </section>
+
+        <!-- ESPAÇOS APÓS COMANDOS (ACRESCENTADO) -->
+        <section>
+          <h2 id="sec-3-spacing">3) Espaçamento após comandos — armadilha comum</h2>
+          <p>O LaTeX consome o espaço imediatamente após um comando com nome de letras.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>Código:   O sistema \LaTeX é incrível.
+Resultado: O sistema LaTeXé incrível.  % espaço "engolido"</code></pre>
+          </div>
+          <p><strong>Soluções:</strong></p>
+          <ul>
+            <li><strong>Barra invertida + espaço:</strong> <code>\LaTeX\ é incrível.</code></li>
+            <li><strong>Chaves vazias:</strong> <code>\LaTeX{} é incrível.</code> (recomendada por legibilidade/robustez)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="sec-4-renew-provide">4) \renewcommand e \providecommand — quando usar</h2>
+          <ul>
+            <li><code>\newcommand</code>: seguro; erra se o comando já existir.</li>
+            <li><code>\renewcommand</code>: redefinir comandos existentes — use com cautela.</li>
+            <li><code>\providecommand</code>: cria apenas se ainda não existir — útil em templates/pacotes.</li>
+          </ul>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% Exemplo (educativo, use com cuidado)
+\renewcommand{\bfseries}{\itshape} % negrito vira itálico em todo o documento</code></pre>
+          </div>
+          <div class="code-block" style="margin-top: .75rem">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% Exemplo de programação defensiva
+\providecommand{\corDestaque}{red}
+% O usuário pode redefinir no preâmbulo dele:
+% \renewcommand{\corDestaque}{blue}</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="sec-5-erros">5) Erros comuns (e como resolver)</h2>
+          <ul>
+            <li><strong>"Control sequence ... already defined."</strong> — você tentou definir com <code>\newcommand</code> algo que já existe. Se quer alterar, use <code>\renewcommand</code>; caso contrário, escolha outro nome.</li>
+            <li><strong>"Runaway argument?"</strong> — geralmente falta fechar uma chave <code>}</code> ao usar o comando.</li>
+            <li><strong>Espaço após comandos</strong> — o LaTeX ignora espaço logo após comandos.
+              <div class="code-block" style="margin-top:.5rem">
+                <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+                <pre><code>Errado: Eu estudo na \uff e gosto.
+Certo:  Eu estudo na \uff{} e gosto.
+Ou:     Eu estudo na \uff\ e gosto.</code></pre>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-6-exercicios">6) Exercícios sugeridos</h2>
+          <ol>
+            <li><strong>Básico:</strong> crie <code>\ie</code> que imprime <em>i.e.,</em> em itálico, seguido de vírgula e espaço.</li>
+            <li><strong>Intermediário:</strong> crie <code>\figref{#1}</code> que retorna <code>Figura~\ref{#1}</code>.</li>
+            <li><strong>Desafio:</strong> crie <code>\revisao{#1}{#2}</code> — #1 sai em azul, #2 vira uma nota de rodapé. Dica: exija <code>xcolor</code> e use <code>\footnote</code> na definição.</li>
+          </ol>
+
+          <!-- DROPDOWNS DE RESOLUÇÃO (ACRESCENTADOS) -->
+          <details>
+            <summary>Ver solução — Exercício Básico</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre><code>% Preâmbulo
+\newcommand{\ie}{\textit{i.e.,\ }}
+
+% Uso
+Isso significa, \ie que ...</code></pre>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ver solução — Exercício Intermediário</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre><code>% Preâmbulo
+\newcommand{\figref}[1]{Figura~\ref{#1}}
+
+% Uso
+...como mostra a \figref{fig:grafico}.</code></pre>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ver solução — Exercício Desafio</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+              <pre><code>% Preâmbulo (requer xcolor)
+\usepackage{xcolor}
+\newcommand{\revisao}[2]{\textcolor{blue}{#1}\footnote{#2}}
+
+% Uso
+\revisao{Esta frase pode ser melhorada}{Comentário: verificar a fonte depois.}</code></pre>
+            </div>
+          </details>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-7-encerramento">7) Encerramento</h2>
+          <p>Você viu como <code>\newcommand</code> eleva a produtividade e a qualidade do documento. Na próxima aula, vamos criar ambientes com <code>\newenvironment</code>.</p>
+        </section>
+
+        <!-- AVALIAÇÃO RÁPIDA (ACRESCENTADA) -->
+        <section class="functionality-showcase">
+          <h2 id="sec-8-avaliacao">8) Avaliação rápida</h2>
+          <ol>
+            <li>
+              Onde as definições de <code>\newcommand</code> devem ser colocadas?
+              <details>
+                <summary>Ver resposta</summary>
+                <p class="text-muted" style="margin-top:.5rem">No preâmbulo do documento, para ficarem disponíveis globalmente.</p>
+              </details>
+            </li>
+            <li>
+              Qual comando você usaria para alterar o que <code>\today</code> faz?
+              <details>
+                <summary>Ver resposta</summary>
+                <p class="text-muted" style="margin-top:.5rem"><code>\renewcommand</code>, pois estamos redefinindo um comando existente.</p>
+              </details>
+            </li>
+            <li>
+              Qual é o problema em <code>\LaTeX é bom</code> e como corrigir?
+              <details>
+                <summary>Ver resposta</summary>
+                <p class="text-muted" style="margin-top:.5rem">O espaço é engolido após o comando. Corrija com <code>\LaTeX{}</code> ou <code>\LaTeX\</code>.</p>
+              </details>
+            </li>
+          </ol>
+        </section>
+
+        <!-- PRÁTICA RÁPIDA: snippet mínimo para Overleaf/local (sem pacotes novos além de amssymb) -->
+        <section class="functionality-showcase">
+          <h2 id="sec-9-pratica">9) Prática rápida</h2>
+          <p>Copie o exemplo mínimo abaixo para testar imediatamente no Overleaf ou no seu ambiente local:</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>\documentclass[a4paper,11pt]{article}
+% Pacote permitido (já usado anteriormente)
+\usepackage{amssymb}
+
+% Definições de comandos desta aula
+\newcommand{\uff}{Universidade Federal Fluminense}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ie}{\textit{i.e.,\ }}
+\newcommand{\figref}[1]{Figura~\ref{#1}}
+
+\begin{document}
+
+Estudo na \uff{}. O conjunto $\R$ é infinito, \ie, não é enumerável.
+
+% Exemplo com dois argumentos
+\newcommand{\avalia}[2]{O aluno #1 recebeu a nota #2.}
+\avalia{João Silva}{8.5}
+
+\end{document}</code></pre>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>
+ 

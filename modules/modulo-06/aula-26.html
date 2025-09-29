@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 6 — Aula 26 (Versão Definitiva): O Acabamento Final – Cabeçalhos, Rodapés, Notas e Listas</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/modulo-06.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 26 (Versão Definitiva): O Acabamento Final – Cabeçalhos, Rodapés, Notas e Listas</h1>
+          <p>Personalize cabeçalhos/rodapés com fancyhdr, use notas de rodapé corretamente e crie listas elegantes com enumitem.</p>
+        </header>
+
+        <details class="functionality-showcase toc-nav" aria-label="Neste capítulo">
+          <summary><strong>Neste capítulo</strong></summary>
+          <div class="toc-content">
+            <ul>
+              <li><a href="#objetivos">Objetivos</a></li>
+              <li><a href="#contexto">Contexto e motivação</a></li>
+              <li><a href="#pagestyle">A Abordagem Padrão: \pagestyle</a></li>
+              <li><a href="#fancyhdr">Ferramenta Profissional: fancyhdr</a></li>
+              <li><a href="#footnote">O Comando Básico: \footnote</a></li>
+              <li><a href="#listas-basicas">Listas: itemize, enumerate, description</a></li>
+              <li><a href="#enumitem">Personalização de listas com enumitem</a></li>
+              <li><a href="#exercicios">Exercícios sugeridos (com soluções)</a></li>
+              <li><a href="#pratica-rapida">Prática rápida</a></li>
+              <li><a href="#resumo-final">Resumo final do módulo</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <section class="theory-box">
+          <h2 id="objetivos" class="text-accent-primary" style="margin-top:0">Ao final desta aula:</h2>
+          <ul>
+            <li>Personalizar completamente cabeçalhos e rodapés usando o pacote <code>fancyhdr</code>.</li>
+            <li>Inserir notas de rodapé de forma correta e entender seu comportamento.</li>
+            <li>Criar e customizar listas (numeradas, com marcadores ou descritivas) para estruturar informações de forma clara e elegante.</li>
+            <li>Domínio das aulas anteriores, especialmente a Aula 4 sobre o layout da página (<em>geometry</em>) e a noção de opções de classe como <code>twoside</code>.</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="contexto">Contexto e motivação</h2>
+          <p>Até agora, focamos no conteúdo principal. Mas o que guia um leitor através de um documento longo? São os pequenos elementos consistentes em cada página: o número da página, o nome do capítulo no topo, uma nota de rodapé esclarecendo um termo. Esses são os elementos de contexto e navegação. Personalizá-los não é apenas uma questão estética; é sobre melhorar a experiência de leitura e atender a requisitos formais de publicação. Um cabeçalho bem-feito constantemente lembra ao leitor onde ele está, enquanto uma lista bem formatada pode transformar um parágrafo denso em uma informação clara e escaneável.</p>
+        </section>
+
+        <section>
+          <h2 id="pagestyle">A Abordagem Padrão: \pagestyle</h2>
+          <p>O LaTeX vem com alguns estilos de página pré-definidos que você pode ativar com <code>\pagestyle{&lt;estilo&gt;}</code> no preâmbulo.</p>
+          <ul>
+            <li><strong>plain:</strong> (Padrão para article e report). Cabeçalho vazio, rodapé com o número da página centralizado.</li>
+            <li><strong>empty:</strong> Cabeçalho e rodapé completamente vazios.</li>
+            <li><strong>headings:</strong> O LaTeX tenta colocar informações úteis no cabeçalho (como nome do capítulo/seção), com rodapé vazio.</li>
+          </ul>
+          <p>Para aplicar um estilo a uma única página (como a página de título), use <code>\thispagestyle{empty}</code>.</p>
+        </section>
+
+        <section>
+          <h2 id="fancyhdr">A Ferramenta Profissional: O Pacote <code>fancyhdr</code></h2>
+          <p>Para um controle total, <strong>fancyhdr</strong> é o padrão ouro.</p>
+          <h3>Configuração Inicial (Preâmbulo):</h3>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\usepackage{fancyhdr}
+\pagestyle{fancy}</code></pre>
+          </div>
+          <p><strong>As Nove Zonas de Conteúdo:</strong> O <code>fancyhdr</code> divide o cabeçalho (head) e o rodapé (foot) em três zonas cada: esquerda (l), centro (c) e direita (r).</p>
+          <p><strong>Comandos Principais:</strong></p>
+          <ul>
+            <li>Para o cabeçalho: <code>\lhead{...}</code>, <code>\chead{...}</code>, <code>\rhead{...}</code></li>
+            <li>Para o rodapé: <code>\lfoot{...}</code>, <code>\cfoot{...}</code>, <code>\rfoot{...}</code></li>
+          </ul>
+          <p><strong>O que colocar dentro?</strong></p>
+          <ul>
+            <li>Texto simples: <code>\rhead{Minha Dissertação}</code></li>
+            <li>Número da página: <code>\thepage</code></li>
+            <li>Marcas automáticas (dependentes de <code>twoside</code>): <code>\leftmark</code> (geralmente o capítulo) e <code>\rightmark</code> (geralmente a seção).</li>
+          </ul>
+          <h3>Exemplo Prático (Cabeçalho de Artigo):</h3>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>% No preâmbulo
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Seu Nome}
+\rhead{Tópico do Artigo}
+\cfoot{\thepage} % Número da página no centro do rodapé</code></pre>
+          </div>
+          <p><strong>Dica para <code>twoside</code>:</strong> O <code>fancyhdr</code> é inteligente. Em documentos <code>twoside</code> (book ou report com a opção), você pode definir cabeçalhos diferentes para páginas pares (Even) e ímpares (Odd).</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\fancyhead[LE,RO]{\thepage} % número da página na posição externa</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="footnote">O Comando Básico: \footnote</h2>
+          <p><strong>O quê?</strong> Cria uma marca numerada no texto e coloca o conteúdo correspondente na base da página.</p>
+          <p><strong>Como?</strong> <code>palavra\footnote{Este é o texto da nota de rodapé.}</code></p>
+          <p><strong>Dica de Uso:</strong> Não deixe espaço entre a palavra e o comando <code>\footnote</code> para garantir que a marca fique colada à palavra.</p>
+          <p><strong>Armadilha Comum:</strong> <code>\footnote</code> é um comando "frágil". Usá-lo dentro de ambientes como <code>caption</code> ou em certos tipos de tabelas pode causar erros. A solução geralmente é usar os comandos <code>\footnotemark</code> (para colocar a marca) e <code>\footnotetext{...}</code> (para definir o texto da nota fora do ambiente problemático).</p>
+        </section>
+
+        <section>
+          <h2 id="listas-basicas">Listas são fundamentais</h2>
+          <p>Listas são fundamentais para quebrar blocos de texto e apresentar informações de forma estruturada.</p>
+          <h3>itemize (Listas com Marcadores):</h3>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\begin{itemize}
+    \item Primeiro item.
+    \item Segundo item.
+\end{itemize}
+
+% Resultado:
+% Primeiro item.
+% Segundo item.</code></pre>
+          </div>
+          <h3>enumerate (Listas Numeradas):</h3>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\begin{enumerate}
+    \item Primeiro passo.
+    \item Segundo passo.
+\end{enumerate}
+
+% Resultado:
+% Primeiro passo.
+% Segundo passo.</code></pre>
+          </div>
+          <h3>description (Listas de Descrição):</h3>
+          <p>Ideal para glossários ou listas de definições.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\begin{description}
+    \item[Macro] Um atalho para um comando maior.
+    \item[Ambiente] Um contêiner que formata um bloco de texto.
+\end{description}
+
+% Resultado:
+% Macro  Um atalho para um comando maior.
+% Ambiente  Um contêiner que formata um bloco de texto.</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="enumitem">Personalização com o Pacote <code>enumitem</code></h2>
+          <p>Para um controle fino sobre espaçamento, marcadores e numeração, o <code>enumitem</code> é essencial.</p>
+          <p><strong>Como?</strong> Você passa opções diretamente para o ambiente.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\usepackage{enumitem}
+...
+\begin{enumerate}[label=(\Roman*)] % Numeração com romanos maiúsculos entre parênteses
+    \item Item I.
+    \item Item II.
+\end{enumerate}</code></pre>
+          </div>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="exercicios">Exercícios Sugeridos (com Soluções)</h2>
+          <h3>Exercício Básico (Cabeçalho Personalizado)</h3>
+          <p><strong>Tarefa:</strong> Crie um documento <code>article</code>. Usando <code>fancyhdr</code>, configure um cabeçalho que mostre seu nome à esquerda, o título do documento à direita, e o número da página no centro do rodapé.</p>
+          <h4>Código de Resolução (Preâmbulo):</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\documentclass{article}
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc} \usepackage[brazil]{babel} \usepackage{lipsum}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{} % Limpa todos os campos do cabeçalho e rodapé
+\lhead{Fulano de Tal}
+\rhead{Meu Primeiro Artigo}
+\cfoot{Página \thepage}
+
+\title{Meu Primeiro Artigo}
+\author{Fulano de Tal}
+\begin{document} \maketitle \lipsum[1] \end{document}</code></pre>
+          </div>
+
+          <h3>Exercício Intermediário (Nota de Rodapé)</h3>
+          <p><strong>Tarefa:</strong> Escreva um parágrafo e, em uma palavra à sua escolha, adicione uma nota de rodapé com uma breve explicação ou uma fonte.</p>
+          <h4>Código de Resolução (Corpo do Documento):</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>O LaTeX\footnote{Pronuncia-se "Lah-Tek" ou "Lei-Tek".} é um sistema poderoso.</code></pre>
+          </div>
+          <p><strong>Resultado Esperado:</strong> A palavra LaTeX¹ aparecerá no texto, e na base da página: ¹Pronuncia-se...</p>
+
+          <h3>Desafio (Lista Customizada)</h3>
+          <p><strong>Tarefa:</strong> Usando o pacote <code>enumitem</code>, crie uma lista numerada onde a numeração seja "Etapa A:", "Etapa B:", etc.</p>
+          <h4>Código de Resolução (Preâmbulo e Corpo):</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>% Preâmbulo
+\usepackage{enumitem}
+
+% Corpo
+\begin{enumerate}[label=Etapa \Alph*:]
+    \item Coleta de dados.
+    \item Análise dos resultados.
+    \item Redação do relatório.
+\end{enumerate}</code></pre>
+          </div>
+          <p><strong>Resultado Esperado:</strong></p>
+          <ul>
+            <li>Etapa A: Coleta de dados.</li>
+            <li>Etapa B: Análise dos resultados.</li>
+            <li>Etapa C: Redação do relatório.</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="pratica-rapida">Prática rápida</h2>
+          <p>Copie o exemplo mínimo abaixo para testar imediatamente no Overleaf ou no seu ambiente local:</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+<pre><code>\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lipsum}
+
+% fancyhdr para cabeçalhos/rodapés
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Seu Nome}
+\rhead{Tópico}
+\cfoot{\thepage}
+
+% enumitem para listas customizadas
+\usepackage{enumitem}
+
+\begin{document}
+
+\section*{Teste de acabamento}
+O LaTeX\footnote{Pronúncia: "Lah-Tek" ou "Lei-Tek".} permite acabamento profissional.
+
+\subsection*{Lista personalizada}
+\begin{enumerate}[label=Etapa \Alph*:]
+  \item Coleta de dados
+  \item Análise dos resultados
+  \item Redação do relatório
+\end{enumerate}
+
+\end{document}</code></pre>
+          </div>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="resumo-final">Resumo Final do Módulo</h2>
+          <p>Com a conclusão desta aula e, consequentemente, do Módulo 6, você deu o passo final de usuário para desenvolvedor. Você não está mais limitado pelos padrões; você agora tem o poder de moldar o LaTeX às suas necessidades precisas. Nós exploramos exaustivamente a criação de macros para automação de comandos, a construção de ambientes para formatar blocos de conteúdo, o controle da geometria da página para atender a padrões rigorosos, e finalmente, a personalização dos elementos de navegação e organização como cabeçalhos, rodapés e listas.</p>
+          <p>Seu conjunto de ferramentas está completo. A partir de agora, o desafio não é mais aprender o comando, mas combinar essas ferramentas de forma criativa para resolver seus próprios problemas de documentação. A sua jornada com LaTeX está apenas começando.</p>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

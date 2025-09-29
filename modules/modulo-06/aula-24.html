@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 6 — Aula 24: Criando Seus Próprios Ambientes com \newenvironment</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/modulo-06.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 24: Criando Seus Próprios Ambientes com \newenvironment</h1>
+          <p>Estruture e formate blocos inteiros de conteúdo de forma consistente e reutilizável.</p>
+        </header>
+
+        <!-- TOC sumário interno -->
+        <details class="functionality-showcase toc-nav" aria-label="Neste capítulo">
+          <summary><strong>Neste capítulo</strong></summary>
+          <div class="toc-content">
+            <ul>
+              <li><a href="#sec-1-diferenca">1) Comando vs Ambiente — quando usar</a></li>
+              <li><a href="#sec-2-sintaxe">2) Sintaxe do \newenvironment</a></li>
+              <li><a href="#sec-3-ex1">3) Exemplo: ambiente resumo</a></li>
+              <li><a href="#sec-4-args">4) Ambientes com argumentos</a></li>
+              <li><a href="#sec-5-praticas">5) Boas práticas e armadilhas</a></li>
+              <li><a href="#sec-6-exercicios">6) Exercícios sugeridos</a></li>
+              <li><a href="#sec-7-avaliacao">7) Avaliação rápida</a></li>
+              <li><a href="#sec-8-resumo">8) Resumo e próximos passos</a></li>
+              <li><a href="#sec-9-pratica">9) Prática rápida</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- PRÉ-REQUISITOS -->
+        <section class="module-overview" aria-labelledby="prereqs-title">
+          <h2 id="prereqs-title" class="text-accent-primary" style="margin-top:0">Pré-requisitos</h2>
+          <ul>
+            <li>Estrutura mínima de documento e comandos básicos (Módulos 1–5).</li>
+            <li>Domínio da Aula 22 (\newcommand) e Aula 23 (argumentos e opcionais).</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-1-diferenca">1) Comando vs Ambiente — quando usar</h2>
+          <ul>
+            <li><strong>Comando (\newcommand):</strong> ideal para ações pontuais/inline. Ex.: \R insere um símbolo; \revisao{texto} aplica estilo a um trecho.</li>
+            <li><strong>Ambiente (\newenvironment):</strong> ideal para <em>blocos</em>. Pense em “entrar em um modo”: aplicar margens, estilos e estruturas que envolvem vários parágrafos.</li>
+          </ul>
+          <p>O ambiente envolve o conteúdo entre <code>\begin{nome}</code> e <code>\end{nome}</code>. Você define o que acontece ao abrir e ao fechar.</p>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-2-sintaxe">2) Sintaxe do \newenvironment</h2>
+          <p><strong>Como?</strong> <span class="latex-command">\newenvironment{nome}{código_início}{código_fim}</span></p>
+          <ul>
+            <li><code>nome</code>: o identificador usado em <code>\begin</code>/<code>\end</code>.</li>
+            <li><code>código_início</code>: comandos aplicados ao abrir.</li>
+            <li><code>código_fim</code>: comandos aplicados ao fechar (geralmente “desfazem”/complementam o início).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="sec-3-ex1">3) Exemplo prático — ambiente resumo</h2>
+          <p>Queremos um bloco com margens recuadas e fonte menor. Podemos aproveitar o ambiente <code>quote</code> do LaTeX.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newenvironment{resumo}
+  {\begin{quote}\small} % Início: entra em 'quote' e muda para 'small'
+  {\end{quote}}         % Fim: fecha 'quote' (small é revertido ao fim do grupo)
+
+% No Corpo do Documento
+\begin{resumo}
+Este é um bloco de texto que será formatado como um resumo,
+com margens recuadas em ambos os lados e com uma fonte
+ligeiramente menor que o texto principal.
+\end{resumo}</code></pre>
+          </div>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-4-args">4) Ambientes com argumentos</h2>
+          <p><strong>Como?</strong> <span class="latex-command">\newenvironment{nome}[num]{código_início_com_#1}{código_fim}</span></p>
+          <p>Os placeholders <code>#1</code>, <code>#2</code>, ... podem aparecer no <em>código de início</em> (e, se necessário, no de fim).</p>
+          <h4 class="text-accent-primary">Exemplo — teorema simples</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newenvironment{teorema}[1]
+  {\par\noindent\textbf{Teorema (#1).}\itshape}
+  {\par}
+
+% No Corpo do Documento
+\begin{teorema}{Pitágoras}
+Em um triângulo retângulo, o quadrado da hipotenusa é igual
+à soma dos quadrados dos catetos.
+\end{teorema}</code></pre>
+          </div>
+          <p class="text-muted">Dica: para numeração automática e estilos avançados, considere pacotes como <code>amsthm</code> ou <code>ntheorem</code>.</p>
+        </section>
+
+        <section>
+          <h2 id="sec-5-praticas">5) Boas práticas e armadilhas</h2>
+          <ul>
+            <li><strong>Balanceamento:</strong> todo <code>\begin</code> deve ter um <code>\end</code> correspondente.</li>
+            <li><strong>Parágrafos:</strong> use <code>\par</code> no fim/início quando precisar garantir espaçamento vertical claro.</li>
+            <li><strong>Ambientes frágeis:</strong> conteúdo “literal” (como <code>verbatim</code>) exige cuidado; prefira pacotes próprios.</li>
+            <li><strong>Nomenclatura:</strong> escolha nomes claros e consistentes (ex.: <code>resumo</code>, <code>teorema</code>, <code>citacao</code>).</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-6-exercicios">6) Exercícios sugeridos</h2>
+          <ol>
+            <li><strong>Básico (citação alinhada):</strong> crie <code>citacao</code> que aplica itálico e alinha à direita.</li>
+            <li><strong>Desafio (título):</strong> crie <code>exemplo{#1}</code> que desenha uma caixa simples com um título “Exemplo: #1”.</li>
+          </ol>
+
+          <!-- Soluções em dropdown -->
+          <details>
+            <summary>Ver solução — Exercício Básico</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <pre><code>% Preâmbulo
+\newenvironment{citacao}
+  {\begin{flushright}\itshape}
+  {\end{flushright}}
+
+% Uso
+\begin{citacao}
+Viver é a coisa mais rara do mundo. A maioria das pessoas apenas existe. \\
+— Oscar Wilde
+\end{citacao}</code></pre>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ver solução — Exercício Desafio</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <pre><code>% Preâmbulo
+\newenvironment{exemplo}[1]
+  {\par\noindent\textbf{Exemplo: #1}\par\medskip\noindent\begin{tabular}{|p{0.9\textwidth}|}\hline}
+  {\\\hline\end{tabular}\par\medskip}
+
+% Uso
+\begin{exemplo}{Cálculo da Média}
+Aqui vai o texto explicando como calcular uma média, com as fórmulas
+matemáticas necessárias.
+\end{exemplo}</code></pre>
+            </div>
+          </details>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-7-avaliacao">7) Avaliação rápida</h2>
+          <ol>
+            <li>
+              Qual é a diferença prática entre <code>\newcommand</code> e <code>\newenvironment</code>?
+              <details>
+                <summary>Ver resposta</summary>
+                <p class="text-muted" style="margin-top:.5rem"><code>\newcommand</code> cria comandos (uso inline/pontual); <code>\newenvironment</code> cria blocos com abertura/fechamento, ideal para formatar seções inteiras.</p>
+              </details>
+            </li>
+            <li>
+              Como definir um ambiente com <strong>um argumento</strong> e usá-lo?
+              <details>
+                <summary>Ver resposta</summary>
+                <div class="code-block" style="margin-top:.5rem">
+                  <pre><code>% Definição
+\newenvironment{rotulo}[1]{\par\noindent\textbf{#1:} }{\par}
+
+% Uso
+\begin{rotulo}{Nota}
+Conteúdo rotulado.
+\end{rotulo}</code></pre>
+                </div>
+              </details>
+            </li>
+            <li>
+              Por que às vezes é útil colocar <code>\par</code> no fim do código de um ambiente?
+              <details>
+                <summary>Ver resposta</summary>
+                <p class="text-muted" style="margin-top:.5rem">Para garantir um término de parágrafo e espaçamento vertical consistente após o bloco.</p>
+              </details>
+            </li>
+          </ol>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-8-resumo">8) Resumo e próximos passos</h2>
+          <ul>
+            <li>Criar ambientes para encapsular formatação de blocos.</li>
+            <li>Adicionar argumentos para customizar títulos e estilos.</li>
+            <li>Evitar armadilhas de balanceamento, parágrafos e ambientes frágeis.</li>
+            <li>Próxima aula: personalização de página com <code>geometry</code>.</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-9-pratica">9) Prática rápida</h2>
+          <p>Exemplo mínimo para testar agora no Overleaf ou local:</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>\documentclass[a4paper,11pt]{article}
+
+% Definições desta aula
+\newenvironment{resumo}{\begin{quote}\small}{\end{quote}}
+\newenvironment{teorema}[1]{\par\noindent\textbf{Teorema (#1).}\itshape}{\par}
+
+\begin{document}
+
+\begin{resumo}
+Um pequeno resumo com recuo e fonte menor.
+\end{resumo}
+
+\begin{teorema}{Pitágoras}
+Em um triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.
+\end{teorema}
+
+\end{document}</code></pre>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

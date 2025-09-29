@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo 6 — Aula 23: Comandos com Argumentos — Criando Funções de Texto</title>
+  <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/themes.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/modules/modulo-06.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="sidebarToggle" class="icon-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+    <div class="brand">
+      <img src="../../assets/img/logo.svg" alt="" class="brand__logo">
+      <span class="brand__title" id="courseTitle">Curso de LaTeX</span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Escuro</span>
+    </button>
+  </header>
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <div class="layout">
+    <main class="content">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="Trilha de navegação"></nav>
+      <article class="page">
+        <header class="lesson-header">
+          <h1>Aula 23: Comandos com Argumentos — Criando Funções de Texto</h1>
+          <p>Transforme macros estáticas em ferramentas dinâmicas com argumentos obrigatórios e opcionais.</p>
+        </header>
+        <details class="functionality-showcase toc-nav" aria-label="Neste capítulo">
+          <summary><strong>Neste capítulo</strong></summary>
+          <div class="toc-content">
+            <ul>
+              <li><a href="#sec-1-def">1) Definir comando com argumentos</a></li>
+              <li><a href="#sec-2-exemplos">2) Exemplos com argumentos obrigatórios</a></li>
+              <li><a href="#sec-3-opcional">3) Argumento opcional — valores padrão</a></li>
+              <li><a href="#sec-4-encad">4) Encadeando macros — componha ferramentas</a></li>
+              <li><a href="#sec-5-erros">5) Erros comuns com argumentos</a></li>
+              <li><a href="#sec-6-exercicios">6) Exercícios sugeridos</a></li>
+              <li><a href="#sec-7-resumo">7) Resumo e próximos passos</a></li>
+              <li><a href="#sec-8-avaliacao">8) Avaliação rápida</a></li>
+              <li><a href="#sec-9-pratica">9) Prática rápida</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- PRÉ-REQUISITOS (de módulos 1–5 + Aula 22) -->
+        <section class="module-overview" aria-labelledby="prereqs-title">
+          <h2 id="prereqs-title" class="text-accent-primary" style="margin-top:0">Pré-requisitos</h2>
+          <ul>
+            <li>Estrutura mínima de um documento: <code>\documentclass</code>, preâmbulo e <code>\begin{document}...\end{document}</code>.</li>
+            <li>Comandos básicos e hierarquia de seções: <code>\section</code>, <code>\subsection</code>, etc.</li>
+            <li>Domínio da Aula 22: sintaxe de <code>\newcommand</code> e filosofia <em>DRY</em>.</li>
+            <li>Pacotes usuais quando necessários: <code>amsmath</code>/<code>amssymb</code> (símbolos e modo matemático) e <code>xcolor</code> (cores).</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 class="text-accent-primary" style="margin-top:0">Motivação — Por que argumentos?</h2>
+          <p>Na aula anterior, criamos <code>\R</code> para gerar o símbolo ℝ. Ótimo! Mas e se quisermos um comando para <em>destacar qualquer palavra</em> ou <em>formatar número + unidade</em> de forma padronizada?</p>
+          <p>É aqui que entram os <strong>argumentos</strong>. Um argumento é uma informação que você passa ao usar o comando. Isso transforma sua macro de um carimbo fixo em uma <strong>função</strong>: ela recebe entradas e produz uma saída formatada. É a diferença entre um atalho e uma ferramenta.</p>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-1-def">1) Definir comando com argumentos</h2>
+          <p><strong>O quê?</strong> Cria um comando que espera receber um número específico de argumentos.</p>
+          <p><strong>Como?</strong> <span class="latex-command">\newcommand{\nome}[num]{código usando #1, #2, ...}</span></p>
+          <ul>
+            <li><code>[num]</code>: número de argumentos (1–9).</li>
+            <li><code>#1</code>, <code>#2</code>, ...: placeholders substituídos pelos argumentos.</li>
+            <li><strong>Uso:</strong> <code>\nome{arg1}{arg2}...</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="sec-2-exemplos">2) Exemplos com argumentos obrigatórios</h2>
+
+          <h3 class="text-accent-primary">Exemplo 1 — Um argumento (destaque)</h3>
+          <p class="text-muted">Requer <code>xcolor</code>.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo (requer xcolor)
+\usepackage{xcolor}
+\newcommand{\termoTecnico}[1]{\textit{\textcolor{blue}{#1}}}
+
+% No Corpo do Documento
+O conceito de \termoTecnico{entropia} é fundamental na termodinâmica.</code></pre>
+          </div>
+
+          <h3 class="text-accent-primary">Exemplo 2 — Dois argumentos (número + unidade)</h3>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+% \mathrm força a fonte romana (não-itálica) no modo matemático
+\newcommand{\unidade}[2]{$#1\,\mathrm{#2}$}
+
+% No Corpo do Documento
+A velocidade foi de \unidade{9.8}{m/s^2}.</code></pre>
+          </div>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-3-opcional">3) Argumento opcional — valores padrão</h2>
+          <p><strong>O quê?</strong> Torna o <em>primeiro</em> argumento opcional; se omitido, usa um valor padrão.</p>
+          <p><strong>Como?</strong> <span class="latex-command">\newcommand{\nome}[num][valor_padrao]{código}</span></p>
+          <ul>
+            <li><code>[num]</code>: total de argumentos (opcionais + obrigatórios).</li>
+            <li><code>[valor_padrao]</code>: valor usado para <code>#1</code> se o usuário não fornecer o opcional.</li>
+            <li><strong>Uso:</strong> <code>\comando[opcional]{obrigatório}</code> — note os colchetes.</li>
+          </ul>
+
+          <h4 class="text-accent-primary">Exemplo — Créditos de imagem</h4>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo
+\newcommand{\creditoFigura}[2][Fonte]{\par\textit{#1: #2.}}
+
+% No Corpo do Documento
+\creditoFigura{Elaborado pelo autor}
+\creditoFigura[Adaptado de]{IBGE (2022)}</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="sec-4-encad">4) Encadeando macros — componha ferramentas</h2>
+          <p>Construa macros a partir de outras para manter o código limpo e fácil de mudar.</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>% No Preâmbulo (requer xcolor)
+\usepackage{xcolor}
+\newcommand{\erro}[1]{\textcolor{red}{#1}}
+\newcommand{\atencao}[1]{\textbf{\erro{#1}}} % \atencao usa \erro
+
+% No Corpo do Documento
+\atencao{Risco de dados serem perdidos!}</code></pre>
+          </div>
+          <p class="text-muted">Vantagem: se decidir que erros são azuis, mude só <code>\erro</code> e o efeito se propaga.</p>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-5-erros">5) Erros comuns com argumentos</h2>
+          <ul>
+            <li><strong>Runaway argument?</strong> — geralmente falta fechar uma <code>}</code>.</li>
+            <li><strong>Número de argumentos incorreto</strong> — conferir <code>[num]</code> e o uso de <code>#1</code>, <code>#2</code>...</li>
+            <li><strong>Dependências</strong> — esqueceu de carregar <code>xcolor</code> para cores ou usou comando específico sem pacote.</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-6-exercicios">6) Exercícios sugeridos</h2>
+          <ol>
+            <li><strong>Básico (um argumento):</strong> crie <code>\email{#1}</code> que formata com <code>\texttt</code>.</li>
+            <li><strong>Intermediário (dois argumentos):</strong> crie <code>\definicao{#1}{#2}</code> — termo em negrito, dois pontos e definição, finalizando o parágrafo.</li>
+            <li><strong>Desafio (argumento opcional):</strong> crie <code>\figuraExterna[opcional]{obrigatório}</code> para referenciar figuras de outras fontes, onde <code>#1</code> (opcional) nomeia o tipo de elemento; <code>#2</code> é a chave de citação.</li>
+          </ol>
+
+          <!-- Soluções em dropdown -->
+          <details>
+            <summary>Ver solução — Exercício Básico</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <pre><code>% Preâmbulo
+\newcommand{\email}[1]{\texttt{#1}}
+
+% Uso
+Meu contato é \email{aluno@exemplo.com}.</code></pre>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ver solução — Exercício Intermediário</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <pre><code>% Preâmbulo
+\newcommand{\definicao}[2]{\noindent\textbf{#1}: #2\par}
+
+% Uso
+\definicao{Macro}{Um atalho que representa um trecho de código maior.}</code></pre>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ver solução — Exercício Desafio</summary>
+            <div class="code-block" style="margin-top:.75rem">
+              <pre><code>% Preâmbulo
+\newcommand{\figuraExterna}[2][Figura]{#1 como visto em \cite{#2}}
+
+% Uso
+Isso foi demonstrado na \figuraExterna{Knuth1984}.
+O gráfico (ver \figuraExterna[Gráfico 3.1]{Knuth1984}) mostra a tendência.</code></pre>
+            </div>
+          </details>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-7-resumo">7) Resumo e próximos passos</h2>
+          <ul>
+            <li>Criar comandos com argumentos obrigatórios para flexibilidade.</li>
+            <li>Adicionar argumentos opcionais com valores padrão.</li>
+            <li>Encadear macros para compor soluções limpas e reaproveitáveis.</li>
+            <li>Próxima aula: <code>\newenvironment</code> — formatação para blocos inteiros.</li>
+          </ul>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-8-avaliacao">8) Avaliação rápida</h2>
+          <ol>
+            <li>
+              Como definir um comando com <strong>dois argumentos</strong> e usá-lo?
+              <details>
+                <summary>Ver resposta</summary>
+                <div class="code-block" style="margin-top:.5rem">
+                  <pre><code>% Definição
+\newcommand{\nome}[2]{Primeiro: #1; Segundo: #2}
+
+% Uso
+\nome{Alice}{42}</code></pre>
+                </div>
+              </details>
+            </li>
+            <li>
+              Como tornar o <strong>primeiro argumento opcional</strong> com valor padrão "Fonte" e manter um segundo argumento obrigatório?
+              <details>
+                <summary>Ver resposta</summary>
+                <div class="code-block" style="margin-top:.5rem">
+                  <pre><code>% Definição
+\newcommand{\creditoFigura}[2][Fonte]{\par\textit{#1: #2.}}
+
+% Uso (padrão)
+\creditoFigura{Elaborado pelo autor}
+% Uso (opcional informado)
+\creditoFigura[Adaptado de]{IBGE (2022)}</code></pre>
+                </div>
+              </details>
+            </li>
+            <li>
+              No exemplo <code>\\newcommand{\\unidade}[2]{$#1\\,\\mathrm{#2}$}</code>, o que <code>\\mathrm{#2}</code> garante?
+              <details>
+                <summary>Ver resposta</summary>
+                <p class="text-muted" style="margin-top:.5rem">Que a <em>unidade</em> será composta em fonte <strong>romana</strong> (não-itálica) mesmo no modo matemático, mantendo a tipografia correta.</p>
+              </details>
+            </li>
+          </ol>
+        </section>
+
+        <section class="functionality-showcase">
+          <h2 id="sec-9-pratica">9) Prática rápida</h2>
+          <p>Exemplo mínimo para testar agora no Overleaf ou local:</p>
+          <div class="code-block">
+            <button class="copy-button" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent)">Copiar</button>
+            <pre><code>\documentclass[a4paper,11pt]{article}
+% Pacotes úteis
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+% Definições desta aula
+\newcommand{\termoTecnico}[1]{\textit{\textcolor{blue}{#1}}}
+\newcommand{\unidade}[2]{$#1\,\mathrm{#2}$}
+\newcommand{\creditoFigura}[2][Fonte]{\par\textit{#1: #2.}}
+\newcommand{\erro}[1]{\textcolor{red}{#1}}
+\newcommand{\atencao}[1]{\textbf{\erro{#1}}}
+
+\begin{document}
+
+O conceito de \termoTecnico{entropia} é fundamental. A velocidade foi de \unidade{9.8}{m/s^2}.
+\creditoFigura{Elaborado pelo autor}
+\atencao{Risco de dados serem perdidos!}
+
+\end{document}</code></pre>
+          </div>
+        </section>
+      </article>
+      <nav id="pager" class="pager" aria-label="Navegação entre páginas"></nav>
+    </main>
+  </div>
+  <script src="../../assets/js/app.js" defer></script>
+</body>
+</html>

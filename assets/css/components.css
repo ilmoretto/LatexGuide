@@ -398,6 +398,50 @@ body {
   text-decoration: none; 
 }
 
+/* =============================================
+   CÓDIGO INLINE E BLOCO
+   ============================================= */
+/* Código inline: fundo escuro consistente e texto azul claro do tema */
+code {
+  background: var(--code-bg);
+  color: var(--primary);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+  font-size: 0.95em;
+}
+
+/* Em blocos de código, deixamos a cor padrão de leitura (não forçamos azul) */
+pre,
+pre code {
+  background: var(--code-bg);
+  color: var(--code-text);
+}
+
+/* =============================================
+   DROPDOWNS (details/summary) PARA SOLUÇÕES
+   ============================================= */
+details {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .5rem .75rem;
+  margin: 1rem 0;
+}
+
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+details > summary::marker { display: none; }
+details[open] {
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+
 .breadcrumbs a:hover { text-decoration: underline; }
 
 /* =============================================
@@ -442,6 +486,42 @@ body {
 @media (max-width: 640px) {
   .pager { flex-direction: column; }
   .pager a { padding: .9rem 1rem; }
+}
+
+/* =============================================
+   ANCORA E ROLAGEM SUAVE PARA SUMÁRIO INTERNO
+   ============================================= */
+html { scroll-behavior: smooth; }
+.page h1[id],
+.page h2[id],
+.page h3[id] { scroll-margin-top: 84px; }
+
+/* =============================================
+   SUMÁRIO INTERNO (TOC) ESTILOS
+   ============================================= */
+.toc-nav { padding: 1rem 1.25rem; }
+.toc-nav > strong { display: block; margin-bottom: .5rem; color: var(--accent); }
+.toc-nav ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.toc-nav ul li { margin: 0; }
+.toc-nav a {
+  display: inline-block;
+  padding: .4rem .65rem;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--text);
+  text-decoration: none;
+  font-size: .95rem;
+}
+.toc-nav a:hover { background: rgba(34, 211, 238, 0.2); border-color: rgba(34, 211, 238, 0.5); }
+.toc-nav a:focus { outline: 2px dashed var(--accent); outline-offset: 2px; }
+
+/* Realce sutil quando uma âncora é atingida */
+.page :target { animation: tocFlash 1.4s ease-out 1; }
+@keyframes tocFlash {
+  0% { box-shadow: 0 0 0 0 rgba(34,211,238,.0); background-color: transparent; }
+  20% { box-shadow: 0 0 0 4px rgba(34,211,238,.15); background-color: rgba(34,211,238,.06); }
+  100% { box-shadow: 0 0 0 0 rgba(34,211,238,.0); background-color: transparent; }
 }
 
 /* =============================================
@@ -581,4 +661,32 @@ button:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* TOC colapsável: fechado por padrão; abre ao clicar ou sempre aberto em telas maiores */
+.toc-nav .toc-content { display: none; margin-top: .5rem; }
+.toc-nav[open] .toc-content { display: block; }
+@media (min-width: 768px) {
+  .toc-nav .toc-content { display: block; }
+  .toc-nav > summary { cursor: default; }
+}
+
+/* Indicador de expandir/retrair no summary do TOC (mobile) */
+.toc-nav > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+}
+.toc-nav > summary::-webkit-details-marker { display: none; }
+.toc-nav > summary::after {
+  content: '▸';
+  font-size: .95rem;
+  line-height: 1;
+  color: var(--muted);
+}
+.toc-nav[open] > summary::after { content: '▾'; }
+@media (min-width: 768px) {
+  .toc-nav > summary::after { content: ''; }
 }

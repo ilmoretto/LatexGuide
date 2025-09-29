@@ -48,6 +48,18 @@
   --surface-secondary: var(--panel);
   --surface-tertiary: var(--panel);
   --surface-code: var(--code-bg);
+  /* Alias para compatibilidade com módulos que usam var(--code) */
+  --code: var(--code-text);
+
+  /* Semânticos para estados (evitam hex fixos em módulos) */
+  --success: #22c55e;          /* ok em ambos os temas sobre var(--bg)/var(--panel) */
+  --success-rgb: 34, 197, 94;
+  --danger: #ef4444;
+  --danger-rgb: 239, 68, 68;
+  --info: #0ea5e9;
+  --info-rgb: 14, 165, 233;
+  --warning: #f59e0b;
+  --warning-rgb: 245, 158, 11;
 }
 
 /* =============================================
@@ -82,6 +94,18 @@
   --surface-secondary: var(--panel);
   --surface-tertiary: var(--panel);
   --surface-code: var(--code-bg);
+  /* Alias para compatibilidade com módulos que usam var(--code) */
+  --code: var(--code-text);
+
+  /* Semânticos também no modo claro */
+  --success: #16a34a;
+  --success-rgb: 22, 163, 74;
+  --danger: #dc2626;
+  --danger-rgb: 220, 38, 38;
+  --info: #0284c7;
+  --info-rgb: 2, 132, 199;
+  --warning: #d97706;
+  --warning-rgb: 217, 119, 6;
 }
 
 /* Mapeamento de cores por módulo */
@@ -109,6 +133,12 @@
   --mod-grad-a-rgb: 139, 92, 246; --mod-grad-b-rgb: 6, 182, 212;
 }
 
+:root[data-module="mod-06"] {
+  /* Módulo 6: Azul claro (consistente com o pedido) e azul médio */
+  --mod-grad-a: #22d3ee; --mod-grad-b: #3b82f6;
+  --mod-grad-a-rgb: 34, 211, 238; --mod-grad-b-rgb: 59, 130, 246;
+}
+
 /* Ajustes específicos para modo claro */
 :root.light-theme .functionality-showcase {
   background: linear-gradient(135deg, var(--panel) 0%, rgba(99, 102, 241, 0.05) 100%);
@@ -126,10 +156,18 @@
   border-color: rgba(34, 211, 238, 0.2);
 }
 
-:root.light-theme .latex-command {
-  background: rgba(34, 211, 238, 0.1);
-  color: #0e7490;
-  border-color: rgba(34, 211, 238, 0.3);
+/* Realce para comandos LaTeX (ex.: \includeonly{...}) */
+.latex-command {
+  background: var(--code-bg);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+}
+
+.latex-command code {
+  background: transparent;
+  color: var(--primary);
 }
 
 :root.light-theme .search-highlight {

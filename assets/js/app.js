@@ -283,7 +283,6 @@
 
     if(data.courseTitle){
       $('#courseTitle')?.replaceChildren(document.createTextNode(data.courseTitle));
-      if(!document.title.includes('—')) document.title = data.courseTitle + ' — Estrutura';
     }
 
     const nav = document.createElement('nav');
@@ -292,32 +291,15 @@
 
     if(Array.isArray(data.extra) && data.extra.length){
       const header = document.createElement('div');
-      header.className = 'section-title';
-      header.textContent = 'Geral';
-      nav.appendChild(header);
-
-      const box = document.createElement('div');
-      box.className = 'module';
-      const ul = document.createElement('ul');
-      ul.className = 'module__list';
-
-      data.extra.forEach(link=>{
-        const li = document.createElement('li');
+      header.className = 'nav__extra';
+      (data.extra || []).forEach(item => {
         const a = document.createElement('a');
         a.className = 'module__link';
-        a.href = BASE_PATH + link.path;
-        a.textContent = link.title;
-        li.appendChild(a);
-        ul.appendChild(li);
+        a.href = BASE_PATH + (item.path || '/');
+        a.textContent = item.title || 'Página';
+        header.appendChild(a);
       });
-
-      box.appendChild(ul);
-      nav.appendChild(box);
-
-      const header2 = document.createElement('div');
-      header2.className = 'section-title';
-      header2.textContent = 'Módulos';
-      nav.appendChild(header2);
+      nav.appendChild(header);
     }
 
     (data.modules || []).forEach((mod, mi)=>{
@@ -355,6 +337,19 @@
       (mod.pages || []).forEach(p=> arr.push({ module: mod, page: p }));
     });
     return arr;
+  }
+
+  // Retorna uma lista linear de páginas priorizando `data.sequence` se existir
+  function sequencePages(data){
+    const flat = flatPages(data);
+    const byPath = new Map(flat.map(it => [normalize(it.page.path), it]));
+    const seq = Array.isArray(data.sequence) ? data.sequence.map(normalize) : [];
+    const seqItems = seq.map(p => byPath.get(p)).filter(Boolean);
+    if (!seqItems.length) return flat; // fallback: ordem padrão dos módulos
+    // Acrescentar quaisquer páginas que ficaram fora da sequência, mantendo ordem original
+    const inSeq = new Set(seq.map(p=>p));
+    const rest = flat.filter(it => !inSeq.has(normalize(it.page.path)));
+    return [...seqItems, ...rest];
   }
 
   function markActiveAndOpen(){
@@ -402,7 +397,7 @@
     if(!pager) return;
     pager.innerHTML = '';
 
-    const list = flatPages(data);
+    const list = sequencePages(data);
     const here = currentPath();
     const idx = list.findIndex(item => samePath(item.page.path, here));
 

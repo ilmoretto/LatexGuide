@@ -5,7 +5,7 @@
       "id": "mod-01",
       "title": "Módulo 1: Fundamentos",
       "pages": [
-        { "title": "Apresentação do Módulo", "path": "/modules/modulo-01/index.html" },
+        { "title": "Apresentação do Módulo 1", "path": "/modules/modulo-01/index.html" },
         { "title": "Aula 1: A Filosofia do LaTeX", "path": "/modules/modulo-01/aula-01.html" },
         { "title": "Aula 2: Preparando o Ambiente", "path": "/modules/modulo-01/aula-02.html" },
         { "title": "Aula 3: A Estrutura Mínima", "path": "/modules/modulo-01/aula-03.html" },
@@ -17,7 +17,7 @@
       "id": "mod-02",
       "title": "Módulo 2: Estrutura e Formatação Essencial do Texto",
       "pages": [
-        { "title": "Apresentação do Módulo", "path": "/modules/modulo-02/index.html" },
+        { "title": "Apresentação do Módulo 2", "path": "/modules/modulo-02/index.html" },
         { "title": "Aula 6: Classes e Configurações de Documento", "path": "/modules/modulo-02/aula-06.html" },
         { "title": "Aula 7: Estrutura Hierárquica do Documento", "path": "/modules/modulo-02/aula-07.html" },
         { "title": "Aula 8: Formatação e Estilos de Texto", "path": "/modules/modulo-02/aula-08.html" },
@@ -30,7 +30,7 @@
       "id": "mod-03",
       "title": "Módulo 3: O Poder da Matemática",
       "pages": [
-        { "title": "Apresentação do Módulo", "path": "/modules/modulo-03/index.html" },
+        { "title": "Apresentação do Módulo 3", "path": "/modules/modulo-03/index.html" },
         { "title": "Aula 12: A Linguagem Universal da Matemática", "path": "/modules/modulo-03/aula-12.html" },
         { "title": "Aula 13: Operadores, Delimitadores e Alinhamento", "path": "/modules/modulo-03/aula-13.html" },
         { "title": "Aula 14: Estruturas Tabulares - Matrizes e Vetores", "path": "/modules/modulo-03/aula-14.html" }
@@ -40,21 +40,33 @@
       "id": "mod-04",
       "title": "Módulo 4: Elementos Visuais - Figuras e Tabelas",
       "pages": [
-        { "title": "Apresentação do Módulo", "path": "/modules/modulo-04/index.html" },
+        { "title": "Apresentação do Módulo 4", "path": "/modules/modulo-04/index.html" },
         { "title": "Aula 15: O Mundo das Figuras - Inserindo e Controlando Imagens", "path": "/modules/modulo-04/aula-15.html" },
         { "title": "Aula 16: Figuras Flutuantes - A Arte da Diagramação Automática", "path": "/modules/modulo-04/aula-16.html" },
         { "title": "Aula 17: A Arte de Organizar Dados - Tabelas com tabular", "path": "/modules/modulo-04/aula-17.html" },
-        { "title": "Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas", "path": "/modules/modulo-04/aula-18.html" }
+        { "title": "Aula 18: Tabelas Avançadas e a Magia das Referências Cruzadas", "path": "/modules/modulo-04/aula-18.html" },
+        { "title": "Aula 25: O Controle do Layout – A Geometria da Página (geometry)", "path": "/modules/modulo-04/aula-25.html" }
       ]
     },
     {
       "id": "mod-05",
       "title": "Módulo 5: Documentos Longos e Bibliografia",
       "pages": [
-        { "title": "Apresentação do Módulo", "path": "/modules/modulo-05/index.html" },
+        { "title": "Apresentação do Módulo 5", "path": "/modules/modulo-05/index.html" },
         { "title": "Aula 19: Arquitetura de Grandes Projetos com \\input e \\include", "path": "/modules/modulo-05/aula-19.html" },
         { "title": "Aula 20: BibTeX - A Arte de Gerenciar Referências", "path": "/modules/modulo-05/aula-20.html" },
         { "title": "Aula 21: Citando, Compilando e Gerando a Bibliografia", "path": "/modules/modulo-05/aula-21.html" }
+      ]
+    },
+    {
+      "id": "mod-06",
+      "title": "Módulo 6: Personalização e Automação",
+      "pages": [
+        { "title": "Apresentação do Módulo", "path": "/modules/modulo-06/index.html" },
+        { "title": "Aula 22: Macros e \\newcommand", "path": "/modules/modulo-06/aula-22.html" },
+        { "title": "Aula 23: Comandos com Argumentos", "path": "/modules/modulo-06/aula-23.html" },
+        { "title": "Aula 24: Ambientes com \\newenvironment", "path": "/modules/modulo-06/aula-24.html" },
+        { "title": "Aula 26: Cabeçalhos, Rodapés e Listas", "path": "/modules/modulo-06/aula-26.html" }
       ]
     }
   ],
